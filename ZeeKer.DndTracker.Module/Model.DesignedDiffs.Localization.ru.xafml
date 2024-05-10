@@ -69,5 +69,19 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <DetailView Id="StorageOperation_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="StorageOperation" Caption="StorageOperation">
+              <LayoutGroup Id="Auto83061345-11d7-4762-b504-096a9005b210" Caption="">
+                <LayoutGroup Id="Auto9e963993-ad5a-4999-828d-4232c3226c1a" Caption="" />
+                <LayoutGroup Id="Auto606f1f7b-aae5-42ef-8049-bbc28dd0d824" Caption="" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
   </Views>
 </Application>

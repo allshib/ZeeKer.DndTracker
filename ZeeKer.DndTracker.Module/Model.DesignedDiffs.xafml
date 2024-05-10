@@ -10,6 +10,7 @@
       </OwnMembers>
     </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Person" ImageName="BO_Position_v92" />
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" ImageName="BO_StateMachine" />
   </BOModel>
   <Options>
     <LayoutManagerOptions RequiredFieldMark="*" />
@@ -134,9 +135,10 @@
     </DetailView>
     <ListView Id="CharacterStorage_Operations_ListView">
       <Columns>
-        <ColumnInfo Id="Coins" Index="0" />
-        <ColumnInfo Id="OperationType" Index="1" />
+        <ColumnInfo Id="OperationType" Index="0" />
+        <ColumnInfo Id="Coins" Index="1" />
         <ColumnInfo Id="Reason" Index="2" />
+        <ColumnInfo Id="OperationDate" SortIndex="0" SortOrder="Descending" />
       </Columns>
     </ListView>
     <DetailView Id="Person_DetailView">
@@ -297,5 +299,38 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <DetailView Id="StorageOperation_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="StorageOperation" RelativeSize="100">
+              <LayoutItem Id="Reason" RelativeSize="4.09556313993174" />
+              <LayoutGroup Id="Auto83061345-11d7-4762-b504-096a9005b210" ShowCaption="False" Direction="Horizontal" Index="1" RelativeSize="95.90443686006826" IsNewNode="True">
+                <LayoutGroup Id="Auto9e963993-ad5a-4999-828d-4232c3226c1a" ShowCaption="False" Index="0" RelativeSize="49.9492385786802" IsNewNode="True">
+                  <LayoutItem Id="OperationType" ViewItem="OperationType" Index="0" RelativeSize="3.0842230130486357" IsNewNode="True" />
+                  <LayoutItem Id="Coins" ViewItem="Coins" Index="1" RelativeSize="96.91577698695136" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Auto606f1f7b-aae5-42ef-8049-bbc28dd0d824" ShowCaption="False" Index="1" RelativeSize="50.0507614213198" IsNewNode="True">
+                  <LayoutItem Id="Item1" Index="0" RelativeSize="3.0842230130486357" IsNewNode="True" />
+                  <LayoutItem Id="Item2" Index="1" RelativeSize="96.91577698695136" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutItem Id="Coins" RelativeSize="91.82561307901908" Removed="True" />
+              <LayoutItem Id="OperationDate" Removed="True" />
+              <LayoutItem Id="OperationType" RelativeSize="3.542234332425068" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="StorageOperation_ListView">
+      <Columns>
+        <ColumnInfo Id="Storage" Index="-1" />
+        <ColumnInfo Id="OperationType" Index="0" />
+        <ColumnInfo Id="Coins" Index="1" />
+        <ColumnInfo Id="Reason" Index="2" />
+        <ColumnInfo Id="OperationDate" SortIndex="0" SortOrder="Descending" Index="3" />
+      </Columns>
+    </ListView>
   </Views>
 </Application>

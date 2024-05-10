@@ -25,6 +25,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         {
             // In the constructor, initialize collection properties, e.g.: 
             // this.AssociatedEntities = new ObservableCollection<AssociatedEntityObject>();
+            
         }
         [XafDisplayName("Причина")]
 
@@ -42,6 +43,15 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [ForeignKey(nameof(StorageId)), XafDisplayName("Хранилище")]
         public virtual CharacterStorage? Storage { get; set; }
 
+        [XafDisplayName("Дата операции")]
+        public virtual DateTimeOffset? OperationDate { get; set; }
+
+
+        public override void OnCreated()
+        {
+            base.OnCreated();
+            OperationDate = DateTimeOffset.Now;
+        }
         // Collection property:
         //public virtual IList<AssociatedEntityObject> AssociatedEntities { get; set; }
 
