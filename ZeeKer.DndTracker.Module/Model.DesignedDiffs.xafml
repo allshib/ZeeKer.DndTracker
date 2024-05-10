@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Title="ZeeKer.DndTracker" PreferredLanguage="ru-RU">
+  <BOModel>
+    <Class Name="DevExpress.Persistent.BaseImpl.EF.PermissionPolicy.PermissionPolicyUser" Caption="Base User" />
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Campain" ImageName="BO_User" />
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Character" ImageName="BO_Employee" />
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage" ImageName="ListSource">
+      <OwnMembers>
+        <Member Name="СopperСoins" ImmediatePostData="True" />
+      </OwnMembers>
+    </Class>
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Person" ImageName="BO_Position_v92" />
+  </BOModel>
+  <Options>
+    <LayoutManagerOptions RequiredFieldMark="*" />
+  </Options>
+  <SchemaModules>
+    <SchemaModule Name="SchedulerModuleBase" Version="23.2.4.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="23.2.4.0" IsNewNode="True" />
+  </SchemaModules>
+  <Views>
+    <ListView Id="ApplicationUser_ListView" Caption="Users" />
+    <DetailView Id="Character_DetailView">
+      <Items>
+        <PropertyEditor Id="Campain" PropertyName="Campain" IsNewNode="True" />
+        <PropertyEditor Id="LocalStorage.СopperСoins" PropertyName="LocalStorage.СopperСoins" IsNewNode="True" />
+        <PropertyEditor Id="LocalStorage.CoinsInfo" PropertyName="LocalStorage.CoinsInfo" IsNewNode="True" />
+        <PropertyEditor Id="LocalStorage.GoldCoins" PropertyName="LocalStorage.GoldCoins" IsNewNode="True" />
+        <PropertyEditor Id="LocalStorage.Operations" PropertyName="LocalStorage.Operations" View="CharacterStorage_Operations_ListView" IsNewNode="True" />
+        <PropertyEditor Id="LocalStorage.PlatinumCoins" PropertyName="LocalStorage.PlatinumCoins" IsNewNode="True" />
+        <PropertyEditor Id="LocalStorage.SilverCoins" PropertyName="LocalStorage.SilverCoins" IsNewNode="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="26.56675749318801">
+            <LayoutGroup Id="Character" RelativeSize="100" Direction="Vertical">
+              <TabbedGroup Id="Item2" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+                <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" Direction="Vertical" IsNewNode="True">
+                  <LayoutGroup Id="Auto59f86a82-ced4-4138-aef9-b854ecbbff0e" ShowCaption="False" Index="0" RelativeSize="100" Direction="Horizontal" IsNewNode="True">
+                    <LayoutGroup Id="Auto3978ed44-1b31-4fe5-bee3-d08d037c8806" ShowCaption="False" Index="0" RelativeSize="73" IsNewNode="True">
+                      <LayoutItem Id="Name" ViewItem="Name" CaptionLocation="Top" Index="0" RelativeSize="36.55172413793103" IsNewNode="True" />
+                      <LayoutItem Id="LocalStorage.CoinsInfo" ViewItem="LocalStorage.CoinsInfo" CaptionLocation="Top" Index="1" RelativeSize="31.03448275862069" IsNewNode="True" />
+                      <LayoutGroup Id="CoinsB2" ShowCaption="False" Index="2" RelativeSize="32.41379310344828" IsNewNode="True">
+                        <LayoutGroup Id="CoinsB" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
+                          <LayoutGroup Id="Coins" ShowCaption="True" CaptionLocation="Top" IsGroupCollapsed="True" IsCollapsibleGroup="True" Direction="Horizontal" Index="0" RelativeSize="100" IsNewNode="True">
+                            <LayoutGroup Id="Autoa5a2658e-c245-42ae-8efe-fd7748ef9ddf" ShowCaption="False" Index="0" IsNewNode="True">
+                              <LayoutItem Id="LocalStorage.GoldCoins" ViewItem="LocalStorage.GoldCoins" CaptionLocation="Top" Index="0" IsNewNode="True" />
+                              <LayoutItem Id="LocalStorage.СopperСoins" ViewItem="LocalStorage.СopperСoins" CaptionLocation="Top" Index="1" IsNewNode="True" />
+                            </LayoutGroup>
+                            <LayoutGroup Id="Auto3ff7cd62-c9c8-478b-b459-11caf4b60e4a" ShowCaption="False" Index="1" IsNewNode="True">
+                              <LayoutItem Id="LocalStorage.SilverCoins" ViewItem="LocalStorage.SilverCoins" CaptionLocation="Top" Index="0" IsNewNode="True" />
+                              <LayoutItem Id="LocalStorage.PlatinumCoins" ViewItem="LocalStorage.PlatinumCoins" CaptionLocation="Top" Index="1" IsNewNode="True" />
+                            </LayoutGroup>
+                          </LayoutGroup>
+                        </LayoutGroup>
+                      </LayoutGroup>
+                    </LayoutGroup>
+                    <LayoutItem Id="Item8" Index="1" RelativeSize="27" IsNewNode="True" />
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutGroup Id="Item3" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="1" RelativeSize="100" IsNewNode="True">
+                  <LayoutGroup Id="Auto608fd3c9-8619-46e5-b138-ba85d4b6f5fa" ShowCaption="False" Index="0" RelativeSize="49.75" IsNewNode="True">
+                    <LayoutItem Id="Campain" ViewItem="Campain" Index="0" RelativeSize="23.448275862068964" IsNewNode="True" />
+                    <LayoutItem Id="Person" ViewItem="Person" Index="1" RelativeSize="76.55172413793103" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Auto61d99964-231a-4e56-bb07-8779dffa36be" ShowCaption="False" Index="1" RelativeSize="50.25" IsNewNode="True">
+                    <LayoutItem Id="Item5" Index="0" RelativeSize="48.96551724137931" IsNewNode="True" />
+                    <LayoutItem Id="Item4" Index="1" RelativeSize="51.03448275862069" IsNewNode="True" />
+                  </LayoutGroup>
+                </LayoutGroup>
+              </TabbedGroup>
+              <LayoutItem Id="Name" Index="0" RelativeSize="4.632152588555858" Removed="True" />
+              <LayoutItem Id="LocalStorage" Removed="True" />
+              <LayoutItem Id="Person" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Item6" CaptionLocation="Top" Index="1" RelativeSize="73.433242506812" IsNewNode="True">
+            <LayoutGroup Id="Storages_Group" ShowCaption="True" Index="0" RelativeSize="100" IsNewNode="True">
+              <LayoutItem Id="Storages" ViewItem="Storages" Index="0" RelativeSize="100" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="Item7" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="1" RelativeSize="100" IsNewNode="True">
+              <LayoutItem Id="LocalStorage.Operations" ViewItem="LocalStorage.Operations" Index="0" RelativeSize="100" IsNewNode="True" />
+            </LayoutGroup>
+          </TabbedGroup>
+          <LayoutGroup Id="Storages_Group" Direction="Vertical" RelativeSize="74.97155858930603" Removed="True">
+            <LayoutItem Id="Storages" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Character_Storages_ListView">
+      <Columns>
+        <ColumnInfo Id="СopperСoins" Index="-1" />
+        <ColumnInfo Id="GoldCoins" Index="-1" />
+        <ColumnInfo Id="Local" Index="-1" />
+        <ColumnInfo Id="PlatinumCoins" Index="-1" />
+        <ColumnInfo Id="SilverCoins" Index="-1" />
+        <ColumnInfo Id="Name" Index="0" Width="171" />
+        <ColumnInfo Id="CoinsInfo" Index="1" Width="165" />
+      </Columns>
+    </ListView>
+    <DetailView Id="CharacterStorage_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="27.07622298065984">
+            <TabbedGroup Id="Item1" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+              <LayoutGroup Id="CharacterStorage" ShowCaption="True" Direction="Horizontal" Index="0" RelativeSize="100" IsNewNode="True">
+                <LayoutGroup Id="CharacterStorage_col1" ShowCaption="False" Index="0" RelativeSize="49.94786235662148" IsNewNode="True">
+                  <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="30.434782608695652" CaptionLocation="Top" IsNewNode="True" />
+                  <LayoutItem Id="CoinsInfo" ViewItem="CoinsInfo" Index="1" RelativeSize="25" CaptionLocation="Top" IsNewNode="True" />
+                  <LayoutItem Id="Local" ViewItem="Local" Index="2" RelativeSize="44.56521739130435" CaptionLocation="Top" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="CharacterStorage_col2" ShowCaption="False" Index="1" RelativeSize="50.05213764337852" IsNewNode="True">
+                  <LayoutItem Id="PlatinumCoins" ViewItem="PlatinumCoins" Index="0" RelativeSize="30.434782608695652" CaptionLocation="Top" IsNewNode="True" />
+                  <LayoutItem Id="GoldCoins" ViewItem="GoldCoins" Index="1" RelativeSize="14.130434782608695" IsNewNode="True" />
+                  <LayoutItem Id="SilverCoins" ViewItem="SilverCoins" Index="2" RelativeSize="25" CaptionLocation="Top" IsNewNode="True" />
+                  <LayoutItem Id="СopperСoins" ViewItem="СopperСoins" Index="3" RelativeSize="30.434782608695652" CaptionLocation="Top" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="1" RelativeSize="100" IsNewNode="True">
+                <LayoutItem Id="Description" ViewItem="Description" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True" />
+              </LayoutGroup>
+            </TabbedGroup>
+            <LayoutGroup Id="CharacterStorage" RelativeSize="100" Removed="True" />
+          </LayoutGroup>
+          <LayoutGroup Id="Operations_Group" Direction="Vertical" RelativeSize="72.92377701934016" Index="1">
+            <LayoutItem Id="Operations" RelativeSize="100" />
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="55.858310626702995" Removed="True">
+            <LayoutItem Id="Description" CaptionLocation="Top" RelativeSize="100" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="CharacterStorage_Operations_ListView">
+      <Columns>
+        <ColumnInfo Id="Coins" Index="0" />
+        <ColumnInfo Id="OperationType" Index="1" />
+        <ColumnInfo Id="Reason" Index="2" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Person_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="Auto5ad84b12-acd3-46d9-b731-62e10987a755" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="10.921501706484642" IsNewNode="True">
+            <LayoutGroup Id="Autofdab7d16-4c73-45d4-bc11-84c2c5cf410d" ShowCaption="False" Index="0" RelativeSize="49.84771573604061" IsNewNode="True">
+              <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="37.5" IsNewNode="True" />
+              <LayoutItem Id="Surname" ViewItem="Surname" Index="1" RelativeSize="27.083333333333332" IsNewNode="True" />
+              <LayoutItem Id="User" ViewItem="User" Index="2" RelativeSize="35.416666666666664" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutItem Id="Item2" Index="1" RelativeSize="50.15228426395939" IsNewNode="True" />
+          </LayoutGroup>
+          <LayoutGroup Id="Characters_Group" Direction="Vertical" RelativeSize="89.07849829351535" Index="1">
+            <LayoutItem Id="Characters" RelativeSize="100" />
+          </LayoutGroup>
+          <LayoutGroup Id="Person" RelativeSize="5.449591280653951" Direction="Vertical" Removed="True">
+            <LayoutGroup Id="Person_col1" RelativeSize="100" Direction="Horizontal" Removed="True">
+              <LayoutItem Id="FirstName" Index="0" RelativeSize="39.782016348773844" Removed="True" />
+              <LayoutItem Id="MiddleName" Index="0" RelativeSize="100" Removed="True" />
+              <LayoutItem Id="DisplayName" Index="1" RelativeSize="40.05449591280654" Removed="True" />
+              <LayoutItem Id="LastName" Index="1" RelativeSize="19.891008174386922" Removed="True" />
+              <LayoutItem Id="FullName" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="Person_col2" RelativeSize="66.62606577344701" Removed="True">
+              <LayoutItem Id="Address1" Index="0" RelativeSize="74.38692098092643" Removed="True" />
+              <LayoutItem Id="Address2" Index="0" RelativeSize="100" Removed="True" />
+              <LayoutItem Id="Birthday" Index="0" RelativeSize="49.59128065395095" Removed="True" />
+              <LayoutItem Id="Email" Index="0" RelativeSize="24.795640326975477" Removed="True" />
+            </LayoutGroup>
+            <LayoutItem Id="Photo" RelativeSize="33.37393422655298" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="ReportDataV2_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="ReportDataV2">
+              <LayoutItem Id="DisplayName" ViewItem="DisplayName" Index="0" IsNewNode="True" Removed="True" />
+              <LayoutItem Id="ParametersObjectType" ViewItem="ParametersObjectType" Index="1" IsNewNode="True" Removed="True" />
+              <LayoutItem Id="DataTypeCaption" ViewItem="DataTypeCaption" Index="2" IsNewNode="True" Removed="True" />
+              <LayoutItem Id="IsInplaceReport" Index="3" ViewItem="IsInplaceReport" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="StateMachine_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="StateMachine">
+              <LayoutGroup Id="StateMachine_col1">
+                <LayoutItem Id="Name" Index="0" ViewItem="Name" />
+                <LayoutItem Id="TargetObjectType" Index="1" ViewItem="TargetObjectType" />
+              </LayoutGroup>
+              <LayoutGroup Id="StateMachine_col2">
+                <LayoutItem Id="StatePropertyName" Index="1" ViewItem="StatePropertyName" />
+                <LayoutItem Id="ExpandActionsInDetailView" Index="2" ViewItem="ExpandActionsInDetailView" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="States_Group">
+            <LayoutItem Id="States" ViewItem="States" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="StateMachine_ListView">
+      <Columns>
+        <ColumnInfo Id="Active" Index="1" />
+        <ColumnInfo Id="TargetObjectType" Index="2" />
+        <ColumnInfo Id="StatePropertyName" Index="3" />
+        <ColumnInfo Id="StartState" Index="4" />
+        <ColumnInfo Id="ExpandActionsInDetailView" Index="5" />
+      </Columns>
+    </ListView>
+    <DetailView Id="StateMachineAppearance_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="StateMachineAppearance">
+              <LayoutGroup Id="StateMachineAppearance_col1">
+                <LayoutItem Id="AppearanceItemType" Index="0" ViewItem="AppearanceItemType" />
+                <LayoutItem Id="Context" Index="1" ViewItem="Context" />
+                <LayoutItem Id="TargetItems" Index="2" ViewItem="TargetItems" />
+                <LayoutItem Id="Priority" ViewItem="Priority" Index="3" IsNewNode="True" />
+                <LayoutItem Id="FontColor" Index="4" ViewItem="FontColor" />
+                <LayoutItem Id="BackColor" ViewItem="BackColor" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="StateMachineAppearance_col2">
+                <LayoutItem Id="BackColor" ViewItem="BackColor" Index="0" IsNewNode="True" />
+                <LayoutItem Id="FontStyle" Index="1" ViewItem="FontStyle" />
+                <LayoutItem Id="Enabled" Index="2" ViewItem="Enabled" />
+                <LayoutItem Id="Visibility" Index="3" ViewItem="Visibility" />
+                <LayoutItem Id="Priority" ViewItem="Priority" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="StateMachineState_Appearances_ListView">
+      <Columns>
+        <ColumnInfo Id="AppearanceItemType" Index="0" />
+        <ColumnInfo Id="Context" Index="1" />
+        <ColumnInfo Id="TargetItems" Index="2" />
+        <ColumnInfo Id="Priority" Index="3" />
+        <ColumnInfo Id="FontColor" Index="4" />
+        <ColumnInfo Id="BackColor" Index="5" />
+        <ColumnInfo Id="Enabled" Index="7" />
+        <ColumnInfo Id="Visibility" Index="8" />
+      </Columns>
+    </ListView>
+    <DetailView Id="StateMachineState_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="StateMachineState">
+              <LayoutItem Id="Caption" Index="0" ViewItem="Caption" />
+              <LayoutItem Id="Marker" Index="1" ViewItem="Marker" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors">
+            <LayoutItem Id="TargetObjectCriteria" ViewItem="TargetObjectCriteria" />
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs">
+            <LayoutGroup Id="Transitions" TextAlignMode="AlignLocal" Index="0">
+              <LayoutItem Id="Transitions" TextAlignMode="AutoSize" ViewItem="Transitions" />
+            </LayoutGroup>
+            <LayoutGroup Id="Appearances" TextAlignMode="AlignLocal" Index="1">
+              <LayoutItem Id="Appearances" TextAlignMode="AutoSize" ViewItem="Appearances" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="StateMachineState_Transitions_ListView">
+      <Columns>
+        <ColumnInfo Id="TargetState" Index="1" />
+        <ColumnInfo Id="Index" Index="2" />
+        <ColumnInfo Id="SaveAndCloseView" Index="3" />
+      </Columns>
+    </ListView>
+    <DetailView Id="StateMachineTransition_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="StateMachineTransition">
+              <LayoutItem Id="Caption" ViewItem="Caption" />
+              <LayoutItem Id="TargetState" Index="1" ViewItem="TargetState" />
+              <LayoutItem Id="Index" Index="2" ViewItem="Index" />
+              <LayoutItem Id="SaveAndCloseView" Index="3" ViewItem="SaveAndCloseView" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

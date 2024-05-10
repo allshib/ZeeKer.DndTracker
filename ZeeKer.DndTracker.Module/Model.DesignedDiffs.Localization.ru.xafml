@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Title="D&amp;D Tracker by Alex ZeeKer">
+  <BOModel>
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage">
+      <OwnMembers>
+        <Member Name="СopperСoins" DisplayFormat="{0:0мм}" />
+        <Member Name="GoldCoins" DisplayFormat="{0:0зм}" />
+        <Member Name="PlatinumCoins" DisplayFormat="{0:0пм}" />
+        <Member Name="SilverCoins" DisplayFormat="{0:0см}" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Views>
+    <DetailView Id="Character_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Character">
+              <TabbedGroup Id="Item2">
+                <LayoutGroup Id="Item1" Caption="Основная информация">
+                  <LayoutGroup Id="Auto59f86a82-ced4-4138-aef9-b854ecbbff0e" Caption="Auto59f86a82-ced4-4138-aef9-b854ecbbff0e(9)">
+                    <LayoutGroup Id="Auto3978ed44-1b31-4fe5-bee3-d08d037c8806" Caption="">
+                      <LayoutGroup Id="CoinsB2">
+                        <LayoutGroup Id="CoinsB">
+                          <LayoutGroup Id="Coins" Caption="Монеты">
+                            <LayoutGroup Id="Autoa5a2658e-c245-42ae-8efe-fd7748ef9ddf" Caption="Autoa5a2658e-c245-42ae-8efe-fd7748ef9ddf(12)" />
+                            <LayoutGroup Id="Auto3ff7cd62-c9c8-478b-b459-11caf4b60e4a" Caption="Auto3ff7cd62-c9c8-478b-b459-11caf4b60e4a(15)" />
+                          </LayoutGroup>
+                        </LayoutGroup>
+                      </LayoutGroup>
+                    </LayoutGroup>
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutGroup Id="Item3" Caption="Дополнительно">
+                  <LayoutGroup Id="Auto608fd3c9-8619-46e5-b138-ba85d4b6f5fa" Caption="Auto608fd3c9-8619-46e5-b138-ba85d4b6f5fa(13)" />
+                  <LayoutGroup Id="Auto61d99964-231a-4e56-bb07-8779dffa36be" Caption="Auto61d99964-231a-4e56-bb07-8779dffa36be(16)" />
+                </LayoutGroup>
+              </TabbedGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Item6">
+            <LayoutGroup Id="Storages_Group" Caption="Хранилища" />
+            <LayoutGroup Id="Item7" Caption="Операции инвентаря" />
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="CharacterStorage_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <TabbedGroup Id="Item1">
+              <LayoutGroup Id="CharacterStorage" Caption="Основное">
+                <LayoutGroup Id="CharacterStorage_col2" Caption="CharacterStorage_col2" />
+              </LayoutGroup>
+              <LayoutGroup Id="Item2" Caption="Дополнительно" />
+            </TabbedGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" Caption="Описание" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Person_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="Auto5ad84b12-acd3-46d9-b731-62e10987a755" Caption="Auto5ad84b12-acd3-46d9-b731-62e10987a755(6)">
+            <LayoutGroup Id="Autofdab7d16-4c73-45d4-bc11-84c2c5cf410d" Caption="" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>
