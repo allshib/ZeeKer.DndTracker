@@ -194,7 +194,7 @@
         <ColumnInfo Id="DefaultProperty" Index="0" />
       </Columns>
     </ListView>
-    <ListView Id="CharacterStorage_Operations_ListView" AllowLink="False" AllowNew="False" AllowUnlink="False" FreezeColumnIndices="True">
+    <ListView Id="CharacterStorage_Operations_ListView" AllowLink="False" AllowNew="False" AllowUnlink="False" FreezeColumnIndices="True" AllowDelete="False">
       <Columns>
         <ColumnInfo Id="DestinationCharacter" Index="-1" />
         <ColumnInfo Id="ID" Index="-1" />
@@ -208,7 +208,7 @@
         <ColumnInfo Id="OperationDate" SortIndex="0" SortOrder="Descending" Index="3" />
       </Columns>
     </ListView>
-    <ListView Id="CharacterStorage_OperationsFromThis_ListView" FreezeColumnIndices="True">
+    <ListView Id="CharacterStorage_OperationsFromThis_ListView" FreezeColumnIndices="True" AllowDelete="False" AllowLink="False" AllowNew="False">
       <Columns>
         <ColumnInfo Id="DestinationCharacter" Index="-1" />
         <ColumnInfo Id="ID" Index="-1" />
@@ -234,6 +234,7 @@
     <ListView Id="MyCharacterStorage_ListView" ClassName="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage" FreezeColumnIndices="True" Criteria="IsCurrentUserId([Character.Person.User.ID])" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="CoinsInfo" PropertyName="CoinsInfo" IsNewNode="True" />
+        <ColumnInfo Id="CopperCoins" PropertyName="CopperCoins" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="Description" PropertyName="Description" IsNewNode="True" />
         <ColumnInfo Id="GoldCoins" PropertyName="GoldCoins" IsNewNode="True" />
         <ColumnInfo Id="ID" PropertyName="ID" IsNewNode="True" />
@@ -244,7 +245,6 @@
         <ColumnInfo Id="DefaultProperty" PropertyName="DefaultProperty" SortIndex="-1" SortOrder="None" Index="0" IsNewNode="True" />
         <ColumnInfo Id="Character.Campain" PropertyName="Character.Campain" Index="1" SortIndex="-1" SortOrder="Ascending" GroupIndex="0" IsNewNode="True" />
         <ColumnInfo Id="Character" PropertyName="Character" Index="2" SortOrder="Ascending" GroupIndex="1" IsNewNode="True" />
-        <ColumnInfo Id="CopperCoins" PropertyName="CopperCoins" Index="3" IsNewNode="True" />
       </Columns>
     </ListView>
     <DetailView Id="Person_DetailView">
@@ -452,7 +452,7 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="StorageOperation_ListView" AllowNew="False" AllowUnlink="False" AllowDelete="True">
+    <ListView Id="StorageOperation_ListView" AllowNew="False" AllowUnlink="False" AllowDelete="False">
       <Columns>
         <ColumnInfo Id="Storage" Index="-1" />
         <ColumnInfo Id="OperationType" Index="0" />
