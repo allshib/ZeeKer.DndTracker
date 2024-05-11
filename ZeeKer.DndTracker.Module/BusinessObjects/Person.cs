@@ -23,7 +23,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
     [DefaultClassOptions]
 
 
-    [XafDisplayName("Игрок")]
+    [XafDisplayName("РРіСЂРѕРє")]
     [XafDefaultProperty(nameof(FullName))]
     public class Person : BaseObject
     {
@@ -32,13 +32,13 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             // In the constructor, initialize collection properties, e.g.: 
             // this.AssociatedEntities = new ObservableCollection<AssociatedEntityObject>();
         }
-        [XafDisplayName("Полное имя")]
+        [XafDisplayName("РџРѕР»РЅРѕРµ РёРјСЏ")]
         public virtual string FullName => $"{Surname} {Name}";
 
-        [XafDisplayName("Имя"), StringLength(150)]
+        [XafDisplayName("РРјСЏ"), StringLength(150)]
         public virtual string Name { get; set; }
 
-        [XafDisplayName("Фамилия"), StringLength(150)]
+        [XafDisplayName("Р¤Р°РјРёР»РёСЏ"), StringLength(150)]
         public virtual string Surname { get; set; }
 
         [Browsable(false)]
@@ -46,17 +46,17 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
 
         [ForeignKey(nameof(UserId))]
-        [XafDisplayName("Пользователь")]
+        [XafDisplayName("РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ")]
         [RuleRequiredField(DefaultContexts.Save)]
         public virtual ApplicationUser? User { get; set; }
 
-        [XafDisplayName("Персонажи")]
+        [XafDisplayName("РџРµСЂСЃРѕРЅР°Р¶Рё")]
         public virtual IList<Character> Characters { get; set; } = new ObservableCollection<Character>();
 
 
 
 
-        //[XafDisplayName("Тип")]
+        //[XafDisplayName("РўРёРї")]
         //public virtual PersonType PersonType { get; set; }
 
 

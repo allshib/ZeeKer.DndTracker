@@ -110,10 +110,17 @@ public class Startup {
         else {
             app.UseExceptionHandler("/Error");
             // The default HSTS value is 30 days. To change this for production scenarios, see: https://aka.ms/aspnetcore-hsts.
-            app.UseHsts();
+            //app.UseHsts();
         }
-        app.UseHttpsRedirection();
+        //app.UseHttpsRedirection();
         app.UseRequestLocalization();
+        var supportedCultures = new string[] { "ru-Ru" };
+        app.UseRequestLocalization(options =>
+            options
+                .AddSupportedCultures(supportedCultures)
+                .AddSupportedUICultures(supportedCultures)
+                .SetDefaultCulture("ru-Ru")
+        );
         app.UseStaticFiles();
         app.UseRouting();
         app.UseAuthentication();

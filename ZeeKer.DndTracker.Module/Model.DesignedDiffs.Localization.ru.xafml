@@ -16,6 +16,15 @@
   </BOModel>
   <NavigationItems>
     <Items>
+      <Item Id="Default">
+        <Items>
+          <Item Id="Campain_ListView" Caption="Кампейн" />
+          <Item Id="Character_ListView" Caption="Персонаж" />
+          <Item Id="CharacterStorage_ListView" Caption="Хранилище" />
+          <Item Id="Person_ListView" Caption="Игрок" />
+          <Item Id="StorageOperation_ListView" Caption="Операции над хранилищем" />
+        </Items>
+      </Item>
       <Item Id="PlayerHub" Caption="Уголок игрока">
         <Items>
           <Item Id="MyCharacter_ListView" Caption="Мои Персонажи" />

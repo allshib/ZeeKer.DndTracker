@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects;
     [DefaultClassOptions]
-    [XafDisplayName("Хранилище")]
+    [XafDisplayName("РҐСЂР°РЅРёР»РёС‰Рµ")]
     [XafDefaultProperty(nameof(DefaultProperty))]
     public class CharacterStorage : BaseObject
     {
@@ -18,32 +18,32 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects;
         }
 
         #region Fields
-        [XafDisplayName("Хранилище")]
+        [XafDisplayName("РҐСЂР°РЅРёР»РёС‰Рµ")]
         public string DefaultProperty => $"{Character?.Name} {Name}: {CoinsInfo}";
 
-        [XafDisplayName("Наименование"), StringLength(150)]
+        [XafDisplayName("РќР°РёРјРµРЅРѕРІР°РЅРёРµ"), StringLength(150)]
         public virtual string Name { get; set; }
 
-        [XafDisplayName("Описание"), StringLength(750)]
+        [XafDisplayName("РћРїРёСЃР°РЅРёРµ"), StringLength(750)]
         public virtual string Description { get; set; }
 
 
-        [XafDisplayName("Медные монеты")]
+        [XafDisplayName("РњРµРґРЅС‹Рµ РјРѕРЅРµС‚С‹")]
         public virtual decimal CopperCoins { get; set; }
 
-        [XafDisplayName("Серебрянные монеты")]
+        [XafDisplayName("РЎРµСЂРµР±СЂСЏРЅРЅС‹Рµ РјРѕРЅРµС‚С‹")]
         public decimal SilverCoins => CopperCoins / 10;
-        [XafDisplayName("Золотые монеты")]
+        [XafDisplayName("Р—РѕР»РѕС‚С‹Рµ РјРѕРЅРµС‚С‹")]
         public decimal GoldCoins => CopperCoins / 100;
-        [XafDisplayName("Платиновые монеты")]
+        [XafDisplayName("РџР»Р°С‚РёРЅРѕРІС‹Рµ РјРѕРЅРµС‚С‹")]
         public decimal PlatinumCoins => CopperCoins / 1000;
 
-        [XafDisplayName("Деньги")]
+        [XafDisplayName("Р”РµРЅСЊРіРё")]
         public string CoinsInfo =>
-            $"{TruncateCoins(GoldCoins, "зм", true)}{TruncateCoins((CopperCoins % 100)/10, "см", true)}{TruncateCoins(CopperCoins % 10, "мм")}";
+            $"{TruncateCoins(GoldCoins, "Р·Рј", true)}{TruncateCoins((CopperCoins % 100)/10, "СЃРј", true)}{TruncateCoins(CopperCoins % 10, "РјРј")}";
 
 
-        [XafDisplayName("Инвентарь персонажа")]
+        [XafDisplayName("РРЅРІРµРЅС‚Р°СЂСЊ РїРµСЂСЃРѕРЅР°Р¶Р°")]
         public virtual bool Local { get; set; }
 
         [Browsable(false)]
@@ -51,16 +51,16 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects;
 
 
         [ForeignKey(nameof(CharacterId))]
-        [XafDisplayName("Персонаж")]
+        [XafDisplayName("РџРµСЂСЃРѕРЅР°Р¶")]
         public virtual Character? Character { get; set; }
 
 
         [Aggregated]
-        [XafDisplayName("Простые Операции/Входящие")]
+        [XafDisplayName("РџСЂРѕСЃС‚С‹Рµ РћРїРµСЂР°С†РёРё/Р’С…РѕРґСЏС‰РёРµ")]
         public virtual IList<StorageOperation> Operations { get; set; } = new ObservableCollection<StorageOperation>();
 
         [Aggregated]
-        [XafDisplayName("Исходящие Операции")]
+        [XafDisplayName("РСЃС…РѕРґСЏС‰РёРµ РћРїРµСЂР°С†РёРё")]
         public virtual IList<StorageOperation> OperationsFromThis { get; set; } = new ObservableCollection<StorageOperation>();
 
         

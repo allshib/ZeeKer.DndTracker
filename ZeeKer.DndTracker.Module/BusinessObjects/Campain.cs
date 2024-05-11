@@ -20,7 +20,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
     // Register this entity in your DbContext (usually in the BusinessObjects folder of your project) with the "public DbSet<Campain> Campains { get; set; }" syntax.
     [DefaultClassOptions]
-    [XafDisplayName("Кампейн")]
+    [XafDisplayName("РљР°РјРїРµР№РЅ")]
     public class Campain : BaseObject
     {
         public Campain()
@@ -32,7 +32,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         // You can use the regular Code First syntax.
         // Property change notifications will be created automatically.
         // (see https://learn.microsoft.com/en-us/ef/core/change-tracking/change-detection#change-tracking-proxies for details)
-        [XafDisplayName("Название"), StringLength(150)]
+        [XafDisplayName("РќР°Р·РІР°РЅРёРµ"), StringLength(150)]
         public virtual string Name { get; set; }
 
         [Browsable(false)]
@@ -43,7 +43,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         //[Browsable(false)]
         [Aggregated]
-        [XafDisplayName("Персонажи")]
+        [XafDisplayName("РџРµСЂСЃРѕРЅР°Р¶Рё")]
         public virtual IList<Character> Characters { get; set; } = new ObservableCollection<Character>();
 
 

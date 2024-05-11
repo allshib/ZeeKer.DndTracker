@@ -21,7 +21,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
     // Register this entity in your DbContext (usually in the BusinessObjects folder of your project) with the "public DbSet<Character> Characters { get; set; }" syntax.
     [DefaultClassOptions]
-    [XafDisplayName("Персонаж")]
+    [XafDisplayName("РџРµСЂСЃРѕРЅР°Р¶")]
     public class Character : BaseObject
     {
         public Character()
@@ -33,7 +33,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
 
 
-        [XafDisplayName("Имя"), StringLength(150)]
+        [XafDisplayName("РРјСЏ"), StringLength(150)]
         [RuleRequiredField(DefaultContexts.Save)]
         public virtual string Name { get; set; }
 
@@ -41,7 +41,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [Browsable(false)]
         public virtual Guid? CampainId { get; set; }
 
-        [XafDisplayName("Кампейн")]
+        [XafDisplayName("РљР°РјРїРµР№РЅ")]
         [ForeignKey(nameof(CampainId))]
         [RuleRequiredField(DefaultContexts.Save)]
         public virtual Campain? Campain { get; set; }
@@ -52,16 +52,16 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
 
         [ForeignKey(nameof(PersonId))]
-        [XafDisplayName("Игрок")]
+        [XafDisplayName("РРіСЂРѕРє")]
         [RuleRequiredField(DefaultContexts.Save)]
         public virtual Person? Person { get; set; }
 
 
         [Aggregated]
-        [XafDisplayName("Хранилища")]
+        [XafDisplayName("РҐСЂР°РЅРёР»РёС‰Р°")]
         public virtual IList<CharacterStorage> Storages { get; set; } = new ObservableCollection<CharacterStorage>();
 
-        [XafDisplayName("Инвентарь")]
+        [XafDisplayName("РРЅРІРµРЅС‚Р°СЂСЊ")]
         public CharacterStorage LocalStorage => Storages?.FirstOrDefault(storage=>storage.Local);
 
 
@@ -84,7 +84,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         private void CreateLocalStorage()
         {
             var storage = ObjectSpace.CreateObject<CharacterStorage>();
-            storage.Name = "Инвентарь";
+            storage.Name = "РРЅРІРµРЅС‚Р°СЂСЊ";
             storage.Local = true;
             storage.Character = this;
             

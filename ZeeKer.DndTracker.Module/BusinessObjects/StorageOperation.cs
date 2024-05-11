@@ -19,7 +19,7 @@ using ZeeKer.DndTracker.Module.Types;
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
     [DefaultClassOptions]
-    [XafDisplayName("Операции над хранилищем")]
+    [XafDisplayName("РћРїРµСЂР°С†РёРё РЅР°Рґ С…СЂР°РЅРёР»РёС‰РµРј")]
     public class StorageOperation : BaseObject
     {
         public StorageOperation()
@@ -28,53 +28,53 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             // this.AssociatedEntities = new ObservableCollection<AssociatedEntityObject>();
             
         }
-        [XafDisplayName("Причина")]
+        [XafDisplayName("РџСЂРёС‡РёРЅР°")]
 
         public virtual string Reason { get; set; }
 
-        [XafDisplayName("Тип операции")]
+        [XafDisplayName("РўРёРї РѕРїРµСЂР°С†РёРё")]
         public virtual StorageOperationType OperationType { get; set; }
 
-        [XafDisplayName("Режим")]
+        [XafDisplayName("Р РµР¶РёРј")]
         public virtual OperationMode OperationMode { get; set; }
 
-        [XafDisplayName("Кол-во монет")]
+        [XafDisplayName("РљРѕР»-РІРѕ РјРѕРЅРµС‚")]
         public virtual decimal Coins { get; set; }
 
         [Browsable(false)]
         public virtual Guid? StorageId { get; set; }
 
-        [ForeignKey(nameof(StorageId)), XafDisplayName("Хранилище Получатель")]
+        [ForeignKey(nameof(StorageId)), XafDisplayName("РҐСЂР°РЅРёР»РёС‰Рµ РџРѕР»СѓС‡Р°С‚РµР»СЊ")]
         public virtual CharacterStorage? Storage { get; set; }
 
-        [XafDisplayName("Дата операции")]
+        [XafDisplayName("Р”Р°С‚Р° РѕРїРµСЂР°С†РёРё")]
         public virtual DateTimeOffset? OperationDate { get; set; }
 
 
         [Browsable(false)]
         public virtual Guid? SourceStorageId { get; set; }
 
-        [ForeignKey(nameof(SourceStorageId)), XafDisplayName("Хранилище Источник")]
+        [ForeignKey(nameof(SourceStorageId)), XafDisplayName("РҐСЂР°РЅРёР»РёС‰Рµ РСЃС‚РѕС‡РЅРёРє")]
         public virtual CharacterStorage? StorageSource { get; set; }
 
         [Browsable(false)]
         public virtual Guid? CreatedAtId { get; set; }
 
-        [XafDisplayName("Кем создано"), ForeignKey(nameof(CreatedAtId))]
+        [XafDisplayName("РљРµРј СЃРѕР·РґР°РЅРѕ"), ForeignKey(nameof(CreatedAtId))]
         public virtual Person? CreatedAt { get; set; }
 
         [Browsable(false)]
         public virtual Guid? CampainId { get; set; }
-        [XafDisplayName("Кампейн")]
+        [XafDisplayName("РљР°РјРїРµР№РЅ")]
         public virtual Campain? Campain { get; set; }
 
-        [XafDisplayName("Доступные персонажи"), NotMapped]
+        [XafDisplayName("Р”РѕСЃС‚СѓРїРЅС‹Рµ РїРµСЂСЃРѕРЅР°Р¶Рё"), NotMapped]
         public virtual IEnumerable<Character> ActiveCharacters => ObjectSpace.GetObjects<Character>(CriteriaOperator.Parse($"{nameof(Character.CampainId)} = ?", CampainId));
 
         [NotMapped, Browsable(false)]
         private Character destinationCharacter;
 
-        [NotMapped, XafDisplayName("Персонаж получатель")]
+        [NotMapped, XafDisplayName("РџРµСЂСЃРѕРЅР°Р¶ РїРѕР»СѓС‡Р°С‚РµР»СЊ")]
         public virtual Character DestinationCharacter
         {
             get
@@ -92,7 +92,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [NotMapped, Browsable(false)]
         private Character sourceCharacter;
 
-        [NotMapped, XafDisplayName("Персонаж Отправитель")]
+        [NotMapped, XafDisplayName("РџРµСЂСЃРѕРЅР°Р¶ РћС‚РїСЂР°РІРёС‚РµР»СЊ")]
         public virtual Character SourceCharacter
         {
             get

@@ -1,0 +1,8 @@
+version: '3.9'
+
+services:
+  dndtracker:
+    image: alexzeeker/zeekerdndtrackerblazorserver:0.1.8
+    restart: always
+    ports:
+     - 5220:8080
