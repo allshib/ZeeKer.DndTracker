@@ -9,9 +9,24 @@
         <Member Name="SilverCoins" DisplayFormat="{0:0см}" />
       </OwnMembers>
     </Class>
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation">
+      <OwnMembers>
+        <Member Name="Coins" DisplayFormat="{0:0м}" EditMask="0" />
+        <Member Name="OperationDate" DisplayFormat="{0:F}" EditMask="F" />
+      </OwnMembers>
+    </Class>
   </BOModel>
+  <Validation>
+    <Rules>
+      <RuleCriteria Id="StorageOperation_CorrectDestinOperation" CustomMessageTemplate="Разрешены только положительные операции" />
+    </Rules>
+  </Validation>
   <Views>
     <DetailView Id="Character_DetailView">
+      <Items>
+        <ActionContainerViewItem Id="AddGold" Caption="AddGold(32)" />
+        <ActionContainerViewItem Id="RemoveGoldCategory" Caption="RemoveGoldCategory(35)" />
+      </Items>
       <Layout>
         <LayoutGroup Id="Main">
           <LayoutGroup Id="SimpleEditors">
@@ -19,12 +34,17 @@
               <TabbedGroup Id="Item2">
                 <LayoutGroup Id="Item1" Caption="Основная информация">
                   <LayoutGroup Id="Auto59f86a82-ced4-4138-aef9-b854ecbbff0e" Caption="Auto59f86a82-ced4-4138-aef9-b854ecbbff0e(9)">
-                    <LayoutGroup Id="Auto3978ed44-1b31-4fe5-bee3-d08d037c8806" Caption="">
+                    <LayoutGroup Id="Auto3978ed44-1b31-4fe5-bee3-d08d037c8806" Caption="Auto3978ed44-1b31-4fe5-bee3-d08d037c8806(7)">
                       <LayoutGroup Id="CoinsB2">
                         <LayoutGroup Id="CoinsB">
                           <LayoutGroup Id="Coins" Caption="Монеты">
-                            <LayoutGroup Id="Autoa5a2658e-c245-42ae-8efe-fd7748ef9ddf" Caption="Autoa5a2658e-c245-42ae-8efe-fd7748ef9ddf(12)" />
-                            <LayoutGroup Id="Auto3ff7cd62-c9c8-478b-b459-11caf4b60e4a" Caption="Auto3ff7cd62-c9c8-478b-b459-11caf4b60e4a(15)" />
+                            <LayoutGroup Id="Autoa5a2658e-c245-42ae-8efe-fd7748ef9ddf" Caption="Autoa5a2658e-c245-42ae-8efe-fd7748ef9ddf(12)">
+                              <LayoutGroup Id="Auto00f0552f-dc3e-4d12-ad71-455f8a4f6bab" Caption="Auto00f0552f-dc3e-4d12-ad71-455f8a4f6bab(14)">
+                                <LayoutGroup Id="Autodfba4256-79ee-4877-99b8-38798b385bee" Caption="Autodfba4256-79ee-4877-99b8-38798b385bee(16)">
+                                  <LayoutGroup Id="Item8" Caption="Операции" />
+                                </LayoutGroup>
+                              </LayoutGroup>
+                            </LayoutGroup>
                           </LayoutGroup>
                         </LayoutGroup>
                       </LayoutGroup>
@@ -40,7 +60,8 @@
           </LayoutGroup>
           <TabbedGroup Id="Item6">
             <LayoutGroup Id="Storages_Group" Caption="Хранилища" />
-            <LayoutGroup Id="Item7" Caption="Операции инвентаря" />
+            <LayoutGroup Id="Item7" Caption="Операции инвентаря (простые/входящие)" />
+            <LayoutGroup Id="Item9" Caption="Операции инвентаря (Исходящие)" />
           </TabbedGroup>
         </LayoutGroup>
       </Layout>
@@ -73,11 +94,11 @@
       <Layout>
         <LayoutGroup Id="Main">
           <LayoutGroup Id="SimpleEditors">
-            <LayoutGroup Id="StorageOperation" Caption="StorageOperation">
-              <LayoutGroup Id="Auto83061345-11d7-4762-b504-096a9005b210" Caption="">
-                <LayoutGroup Id="Auto9e963993-ad5a-4999-828d-4232c3226c1a" Caption="" />
-                <LayoutGroup Id="Auto606f1f7b-aae5-42ef-8049-bbc28dd0d824" Caption="" />
+            <LayoutGroup Id="StorageOperation" Caption="Операция">
+              <LayoutGroup Id="StorageOperation_col1">
+                <LayoutGroup Id="Auto13bf19ea-65dd-4390-80d7-3d93e21423a9" Caption="" />
               </LayoutGroup>
+              <LayoutGroup Id="StorageOperation_col2" Caption="StorageOperation_col2" />
             </LayoutGroup>
           </LayoutGroup>
         </LayoutGroup>

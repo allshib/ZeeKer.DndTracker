@@ -34,18 +34,27 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Тип операции")]
         public virtual StorageOperationType OperationType { get; set; }
 
+        [XafDisplayName("Режим")]
+        public virtual OperationMode OperationMode { get; set; }
+
         [XafDisplayName("Кол-во монет")]
         public virtual decimal Coins { get; set; }
 
         [Browsable(false)]
         public virtual Guid? StorageId { get; set; }
 
-        [ForeignKey(nameof(StorageId)), XafDisplayName("Хранилище")]
+        [ForeignKey(nameof(StorageId)), XafDisplayName("Хранилище Получатель")]
         public virtual CharacterStorage? Storage { get; set; }
 
         [XafDisplayName("Дата операции")]
         public virtual DateTimeOffset? OperationDate { get; set; }
 
+
+        [Browsable(false)]
+        public virtual Guid? SourceStorageId { get; set; }
+
+        [ForeignKey(nameof(SourceStorageId)), XafDisplayName("Хранилище Источник")]
+        public virtual CharacterStorage? StorageSource { get; set; }
 
         public override void OnCreated()
         {
