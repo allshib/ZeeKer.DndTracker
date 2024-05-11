@@ -19,6 +19,7 @@ using ZeeKer.DndTracker.Module.Types;
 using ZeeKer.DndTracker.Module.UseCases;
 using ZeeKer.DndTracker.Module.UseCases.ManageCoinsUseCase;
 using static System.Net.Mime.MediaTypeNames;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace ZeeKer.DndTracker.Module.Controllers
 {
@@ -72,14 +73,61 @@ namespace ZeeKer.DndTracker.Module.Controllers
                 Caption = "-100з"
             };
             removeGold100Gold.Execute += RemoveGold100Gold_Execute;
+
+
+            var simpleTransferGold = new SimpleAction(this, "SimpleTransferGold", ActionCategories.SimpleTransferGoldCategory)
+            {
+                Caption = "Между своими"
+            };
+            simpleTransferGold.Execute += SimpleTransferGold_Execute;
+
+            var sendGold = new SimpleAction(this, "SendGold", ActionCategories.SimpleTransferGoldCategory)
+            {
+                Caption = "Отправить"
+            };
+            sendGold.Execute += SendGold_Execute;
+        }
+
+        private void SendGold_Execute(object sender, SimpleActionExecuteEventArgs e)
+        {
+            var character = View.CurrentObject as Character;
+            ExecuteOperation(
+                null,
+                0,
+                StorageOperationType.AddGoldCoins,
+                OperationMode.WithAnotherStorage,
+                character!.LocalStorage.ID,
+                character.ID,
+                null);
+        }
+
+
+
+        /// <summary>
+        /// Перевод голды себе в инвентарь
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SimpleTransferGold_Execute(object sender, SimpleActionExecuteEventArgs e)
+        {
+
+            var id = (View.CurrentObject as Character).ID;
+            ExecuteOperation(
+                ((Character)View.CurrentObject).LocalStorage.ID,
+                0,
+                StorageOperationType.AddGoldCoins,
+                OperationMode.WithAnotherStorage,
+                null,
+                id,
+                id);
         }
 
         private void RemoveGold100Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
-            => ExecuteSimpleOperation(1, StorageOperationType.RemoveGoldCoins);
+            => ExecuteSimpleOperation(100, StorageOperationType.RemoveGoldCoins);
         private void RemoveGold10Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
             => ExecuteSimpleOperation(10, StorageOperationType.RemoveGoldCoins);
         private void RemoveGold1Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
-            => ExecuteSimpleOperation(100, StorageOperationType.RemoveGoldCoins);
+            => ExecuteSimpleOperation(1, StorageOperationType.RemoveGoldCoins);
 
 
 
@@ -99,10 +147,25 @@ namespace ZeeKer.DndTracker.Module.Controllers
                 new ManageCoinsCommand(
                     ((Character)View.CurrentObject).LocalStorage.ID, coins, type));
 
+
+        private void ExecuteOperation(
+            Guid? destinationStorageId,
+            decimal coins,
+            StorageOperationType type,
+            OperationMode mode = OperationMode.Default,
+            Guid? sourceStorageId = null,
+            Guid? sourceCharacterId = null,
+            Guid? destinationCharacterId = null)
+            => useCase
+                .Execute(
+                    new ManageCoinsCommand(
+                        destinationStorageId, coins, type, mode, sourceStorageId, sourceCharacterId, destinationCharacterId));
+
         private void UseCase_AfterCommit(object sender, ManageCoinsUseCase.AfterCommitEventArgs e)
         {
             ObjectSpace.ReloadObject(((Character)View.CurrentObject).LocalStorage);
             ObjectSpace.ReloadCollection(((Character)View.CurrentObject).LocalStorage.Operations);
+            ObjectSpace.ReloadCollection(((Character)View.CurrentObject).Storages);
         }
 
         protected override void OnActivated()

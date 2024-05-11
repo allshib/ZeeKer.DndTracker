@@ -11,7 +11,6 @@
     </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation">
       <OwnMembers>
-        <Member Name="Coins" DisplayFormat="{0:0м}" EditMask="0" />
         <Member Name="OperationDate" DisplayFormat="{0:F}" EditMask="F" />
       </OwnMembers>
     </Class>
@@ -26,6 +25,8 @@
       <Items>
         <ActionContainerViewItem Id="AddGold" Caption="AddGold(32)" />
         <ActionContainerViewItem Id="RemoveGoldCategory" Caption="RemoveGoldCategory(35)" />
+        <ActionContainerViewItem Id="SendGold" Caption="SendGold(40)" />
+        <ActionContainerViewItem Id="SimpleTransferGold" Caption="SimpleTransferGold(39)" />
       </Items>
       <Layout>
         <LayoutGroup Id="Main">
@@ -40,8 +41,8 @@
                           <LayoutGroup Id="Coins" Caption="Монеты">
                             <LayoutGroup Id="Autoa5a2658e-c245-42ae-8efe-fd7748ef9ddf" Caption="Autoa5a2658e-c245-42ae-8efe-fd7748ef9ddf(12)">
                               <LayoutGroup Id="Auto00f0552f-dc3e-4d12-ad71-455f8a4f6bab" Caption="Auto00f0552f-dc3e-4d12-ad71-455f8a4f6bab(14)">
-                                <LayoutGroup Id="Autodfba4256-79ee-4877-99b8-38798b385bee" Caption="Autodfba4256-79ee-4877-99b8-38798b385bee(16)">
-                                  <LayoutGroup Id="Item8" Caption="Операции" />
+                                <LayoutGroup Id="Item8" Caption="Операции">
+                                  <LayoutGroup Id="Autodfbe3f29-6047-425f-9c10-756a27249c8a" Caption="" />
                                 </LayoutGroup>
                               </LayoutGroup>
                             </LayoutGroup>
@@ -91,12 +92,22 @@
       </Layout>
     </DetailView>
     <DetailView Id="StorageOperation_DetailView">
+      <Items>
+        <ActionContainerViewItem Id="Swap" Caption="Swap(12)" />
+      </Items>
       <Layout>
         <LayoutGroup Id="Main">
           <LayoutGroup Id="SimpleEditors">
             <LayoutGroup Id="StorageOperation" Caption="Операция">
               <LayoutGroup Id="StorageOperation_col1">
-                <LayoutGroup Id="Auto13bf19ea-65dd-4390-80d7-3d93e21423a9" Caption="" />
+                <LayoutGroup Id="Auto13bf19ea-65dd-4390-80d7-3d93e21423a9" Caption="Auto13bf19ea-65dd-4390-80d7-3d93e21423a9(9)">
+                  <LayoutGroup Id="Sender" Caption="Отправитель">
+                    <LayoutGroup Id="Autof500b491-fb6a-4954-b4cd-a21e6004bae9" Caption="" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Autocc2f1c72-bd51-4deb-9275-e6d208f05e68" Caption="Autocc2f1c72-bd51-4deb-9275-e6d208f05e68(12)">
+                    <LayoutGroup Id="Destination" Caption="Получатель" />
+                  </LayoutGroup>
+                </LayoutGroup>
               </LayoutGroup>
               <LayoutGroup Id="StorageOperation_col2" Caption="StorageOperation_col2" />
             </LayoutGroup>

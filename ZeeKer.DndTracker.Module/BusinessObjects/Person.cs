@@ -44,6 +44,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [ForeignKey(nameof(UserId))]
         [XafDisplayName("Пользователь")]
+        [RuleRequiredField(DefaultContexts.Save)]
         public virtual ApplicationUser? User { get; set; }
 
         [XafDisplayName("Персонажи")]

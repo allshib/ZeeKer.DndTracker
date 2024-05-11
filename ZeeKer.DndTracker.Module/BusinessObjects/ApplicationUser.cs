@@ -5,6 +5,7 @@ using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Security;
 using DevExpress.Persistent.BaseImpl.EF.PermissionPolicy;
+using DevExpress.Persistent.Validation;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects;
 
@@ -30,6 +31,7 @@ public class ApplicationUser : PermissionPolicyUser, ISecurityUserWithLoginInfo,
 
     [ForeignKey(nameof(PersonId))]
     [XafDisplayName("Игрок")]
+    [RuleRequiredField(DefaultContexts.Save)]
     public virtual Person? Person { get; set; }
 
     ISecurityUserLoginInfo ISecurityUserWithLoginInfo.CreateUserLoginInfo(string loginProviderName, string providerUserKey) {

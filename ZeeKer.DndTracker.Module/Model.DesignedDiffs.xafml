@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application Title="ZeeKer.DndTracker" PreferredLanguage="ru-RU">
+  <ActionDesign>
+    <Actions>
+      <Action Id="SwapStorages" PaintStyle="Image" ImageName="BO_StateMachine" />
+    </Actions>
+  </ActionDesign>
   <BOModel>
     <Class Name="DevExpress.Persistent.BaseImpl.EF.PermissionPolicy.PermissionPolicyUser" Caption="Base User" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Campain" ImageName="BO_User" />
@@ -13,8 +18,13 @@
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" ImageName="BO_StateMachine">
       <AppearanceRules>
         <AppearanceRule Id="BlockOperationEdit" Context="DetailView" TargetItems="*" Criteria="IsNewObject([This]) = False" Enabled="False" IsNewNode="True" />
-        <AppearanceRule Id="ChangeModeOperation" TargetItems="StorageSource, Storage" Visibility="Hide" Criteria="[OperationMode] = ##Enum#ZeeKer.DndTracker.Module.Types.OperationMode,Default#" IsNewNode="True" />
+        <AppearanceRule Id="ChangeModeOperation" TargetItems="Sender,Destination" Visibility="Hide" Criteria="[OperationMode] = ##Enum#ZeeKer.DndTracker.Module.Types.OperationMode,Default#" AppearanceItemType="LayoutItem" IsNewNode="True" />
+        <AppearanceRule Id="ChangeModeOperationAction" Priority="0" TargetItems="SwapStorages" Visibility="Hide" Criteria="[OperationMode] = ##Enum#ZeeKer.DndTracker.Module.Types.OperationMode,Default#" AppearanceItemType="Action" IsNewNode="True" />
       </AppearanceRules>
+      <OwnMembers>
+        <Member Name="Storage" DataSourceProperty="DestinationCharacter.Storages" />
+        <Member Name="StorageSource" DataSourceProperty="SourceCharacter.Storages" />
+      </OwnMembers>
     </Class>
   </BOModel>
   <Options>
@@ -43,33 +53,37 @@
         <PropertyEditor Id="LocalStorage.PlatinumCoins" PropertyName="LocalStorage.PlatinumCoins" IsNewNode="True" />
         <PropertyEditor Id="LocalStorage.SilverCoins" PropertyName="LocalStorage.SilverCoins" IsNewNode="True" />
         <ActionContainerViewItem Id="RemoveGoldCategory" PaintStyle="Caption" ActionContainer="RemoveGoldCategory" IsNewNode="True" />
+        <ActionContainerViewItem Id="SendGold" ActionContainer="SendGoldCategory" IsNewNode="True" />
+        <ActionContainerViewItem Id="SimpleTransferGold" PaintStyle="Caption" ActionContainer="SimpleTransferGoldCategory" IsNewNode="True" />
       </Items>
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="58.44686648501362">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="68.66485013623978">
             <LayoutGroup Id="Character" RelativeSize="100" Direction="Vertical">
               <TabbedGroup Id="Item2" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
                 <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" Direction="Vertical" IsNewNode="True">
                   <LayoutGroup Id="Auto59f86a82-ced4-4138-aef9-b854ecbbff0e" ShowCaption="False" Index="0" RelativeSize="100" Direction="Vertical" IsNewNode="True">
                     <LayoutGroup Id="Auto3978ed44-1b31-4fe5-bee3-d08d037c8806" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
-                      <LayoutItem Id="Name" ViewItem="Name" CaptionLocation="Top" Index="0" RelativeSize="13.984168865435356" IsNewNode="True" />
-                      <LayoutItem Id="LocalStorage.CoinsInfo" ViewItem="LocalStorage.CoinsInfo" CaptionLocation="Top" Index="1" RelativeSize="11.87335092348285" IsNewNode="True" />
-                      <LayoutGroup Id="CoinsB2" ShowCaption="False" Index="2" RelativeSize="74.14248021108179" IsNewNode="True">
+                      <LayoutItem Id="Name" ViewItem="Name" CaptionLocation="Top" Index="0" RelativeSize="11.674008810572687" IsNewNode="True" />
+                      <LayoutItem Id="LocalStorage.CoinsInfo" ViewItem="LocalStorage.CoinsInfo" CaptionLocation="Top" Index="1" RelativeSize="9.911894273127754" IsNewNode="True" />
+                      <LayoutGroup Id="CoinsB2" ShowCaption="False" Index="2" RelativeSize="78.41409691629956" IsNewNode="True">
                         <LayoutGroup Id="CoinsB" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
                           <LayoutGroup Id="Coins" ShowCaption="True" CaptionLocation="Top" IsGroupCollapsed="False" IsCollapsibleGroup="True" Direction="Vertical" Index="0" RelativeSize="100" IsNewNode="True">
                             <LayoutGroup Id="Autoa5a2658e-c245-42ae-8efe-fd7748ef9ddf" ShowCaption="False" Index="0" RelativeSize="100" Direction="Vertical" IsNewNode="True">
-                              <LayoutGroup Id="Auto00f0552f-dc3e-4d12-ad71-455f8a4f6bab" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="39.91596638655462" IsNewNode="True">
-                                <LayoutItem Id="LocalStorage.GoldCoins" ViewItem="LocalStorage.GoldCoins" CaptionLocation="Top" Index="0" RelativeSize="75.57840616966581" IsNewNode="True" />
-                                <LayoutGroup Id="Autodfba4256-79ee-4877-99b8-38798b385bee" ShowCaption="False" Index="1" RelativeSize="24.42159383033419" IsNewNode="True">
-                                  <LayoutGroup Id="Item8" ShowCaption="True" CaptionLocation="Right" Index="0" RelativeSize="100" IsNewNode="True">
-                                    <LayoutItem Id="AddGold" ViewItem="AddGold" Index="0" RelativeSize="50" IsNewNode="True" />
-                                    <LayoutItem Id="RemoveGoldCategory" ViewItem="RemoveGoldCategory" Index="1" RelativeSize="50" IsNewNode="True" />
+                              <LayoutGroup Id="Auto00f0552f-dc3e-4d12-ad71-455f8a4f6bab" ShowCaption="False" Direction="Vertical" Index="0" RelativeSize="54.31309904153355" IsNewNode="True">
+                                <LayoutItem Id="LocalStorage.GoldCoins" ViewItem="LocalStorage.GoldCoins" CaptionLocation="Top" Index="0" RelativeSize="31.176470588235293" IsNewNode="True" />
+                                <LayoutGroup Id="Item8" ShowCaption="True" CaptionLocation="Right" Index="1" RelativeSize="68.82352941176471" IsNewNode="True">
+                                  <LayoutItem Id="AddGold" ViewItem="AddGold" Index="0" RelativeSize="35.84905660377358" IsNewNode="True" />
+                                  <LayoutItem Id="RemoveGoldCategory" ViewItem="RemoveGoldCategory" Index="1" RelativeSize="28.30188679245283" IsNewNode="True" />
+                                  <LayoutGroup Id="Autodfbe3f29-6047-425f-9c10-756a27249c8a" ShowCaption="False" Direction="Horizontal" Index="2" RelativeSize="35.84905660377358" IsNewNode="True">
+                                    <LayoutItem Id="SimpleTransferGold" ViewItem="SimpleTransferGold" Index="0" RelativeSize="18.392370572207085" IsNewNode="True" />
+                                    <LayoutItem Id="SendGold" ViewItem="SendGold" Index="1" RelativeSize="81.60762942779292" IsNewNode="True" />
                                   </LayoutGroup>
                                 </LayoutGroup>
                               </LayoutGroup>
-                              <LayoutItem Id="LocalStorage.СopperСoins" ViewItem="LocalStorage.СopperСoins" CaptionLocation="Top" Index="1" RelativeSize="18.907563025210084" IsNewNode="True" />
-                              <LayoutItem Id="LocalStorage.SilverCoins" ViewItem="LocalStorage.SilverCoins" CaptionLocation="Top" Index="2" RelativeSize="18.907563025210084" IsNewNode="True" />
-                              <LayoutItem Id="LocalStorage.PlatinumCoins" ViewItem="LocalStorage.PlatinumCoins" CaptionLocation="Top" Index="3" RelativeSize="22.26890756302521" IsNewNode="True" />
+                              <LayoutItem Id="LocalStorage.СopperСoins" ViewItem="LocalStorage.СopperСoins" CaptionLocation="Top" Index="1" RelativeSize="14.37699680511182" IsNewNode="True" />
+                              <LayoutItem Id="LocalStorage.SilverCoins" ViewItem="LocalStorage.SilverCoins" CaptionLocation="Top" Index="2" RelativeSize="14.37699680511182" IsNewNode="True" />
+                              <LayoutItem Id="LocalStorage.PlatinumCoins" ViewItem="LocalStorage.PlatinumCoins" CaptionLocation="Top" Index="3" RelativeSize="16.93290734824281" IsNewNode="True" />
                             </LayoutGroup>
                           </LayoutGroup>
                         </LayoutGroup>
@@ -78,13 +92,13 @@
                   </LayoutGroup>
                 </LayoutGroup>
                 <LayoutGroup Id="Item3" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="1" RelativeSize="100" IsNewNode="True">
-                  <LayoutGroup Id="Auto608fd3c9-8619-46e5-b138-ba85d4b6f5fa" ShowCaption="False" Index="0" RelativeSize="49.625" IsNewNode="True">
-                    <LayoutItem Id="Campain" ViewItem="Campain" Index="0" RelativeSize="8.970976253298153" IsNewNode="True" />
-                    <LayoutItem Id="Person" ViewItem="Person" Index="1" RelativeSize="91.02902374670185" IsNewNode="True" />
+                  <LayoutGroup Id="Auto608fd3c9-8619-46e5-b138-ba85d4b6f5fa" ShowCaption="False" Index="0" RelativeSize="49.37655860349127" IsNewNode="True">
+                    <LayoutItem Id="Campain" ViewItem="Campain" Index="0" RelativeSize="7.488986784140969" IsNewNode="True" />
+                    <LayoutItem Id="Person" ViewItem="Person" Index="1" RelativeSize="92.51101321585904" IsNewNode="True" />
                   </LayoutGroup>
-                  <LayoutGroup Id="Auto61d99964-231a-4e56-bb07-8779dffa36be" ShowCaption="False" Index="1" RelativeSize="50.375" IsNewNode="True">
-                    <LayoutItem Id="Item5" Index="0" RelativeSize="34.300791556728235" IsNewNode="True" />
-                    <LayoutItem Id="Item4" Index="1" RelativeSize="65.69920844327177" IsNewNode="True" />
+                  <LayoutGroup Id="Auto61d99964-231a-4e56-bb07-8779dffa36be" ShowCaption="False" Index="1" RelativeSize="50.62344139650873" IsNewNode="True">
+                    <LayoutItem Id="Item5" Index="0" RelativeSize="28.634361233480178" IsNewNode="True" />
+                    <LayoutItem Id="Item4" Index="1" RelativeSize="71.36563876651982" IsNewNode="True" />
                   </LayoutGroup>
                 </LayoutGroup>
               </TabbedGroup>
@@ -93,7 +107,7 @@
               <LayoutItem Id="Person" Removed="True" />
             </LayoutGroup>
           </LayoutGroup>
-          <TabbedGroup Id="Item6" CaptionLocation="Top" Index="1" RelativeSize="41.55313351498638" IsNewNode="True">
+          <TabbedGroup Id="Item6" CaptionLocation="Top" Index="1" RelativeSize="31.33514986376022" IsNewNode="True">
             <LayoutGroup Id="Storages_Group" ShowCaption="True" Index="0" RelativeSize="100" IsNewNode="True">
               <LayoutItem Id="Storages" ViewItem="Storages" Index="0" RelativeSize="100" IsNewNode="True" />
             </LayoutGroup>
@@ -110,15 +124,19 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="Character_Storages_ListView">
+    <ListView Id="Character_Storages_ListView" FreezeColumnIndices="True">
       <Columns>
         <ColumnInfo Id="СopperСoins" Index="-1" />
+        <ColumnInfo Id="Character" Index="-1" />
+        <ColumnInfo Id="CoinsInfo" Index="-1" Width="165" />
+        <ColumnInfo Id="Description" Index="-1" />
         <ColumnInfo Id="GoldCoins" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
         <ColumnInfo Id="Local" Index="-1" />
+        <ColumnInfo Id="Name" Index="-1" Width="171" />
         <ColumnInfo Id="PlatinumCoins" Index="-1" />
         <ColumnInfo Id="SilverCoins" Index="-1" />
-        <ColumnInfo Id="Name" Index="0" Width="171" />
-        <ColumnInfo Id="CoinsInfo" Index="1" Width="165" />
+        <ColumnInfo Id="DefaultProperty" Index="0" />
       </Columns>
     </ListView>
     <DetailView Id="CharacterStorage_DetailView">
@@ -151,25 +169,47 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="CharacterStorage_Operations_ListView" AllowLink="False" AllowNew="False" AllowUnlink="False">
+    <ListView Id="CharacterStorage_ListView" FreezeColumnIndices="True">
       <Columns>
+        <ColumnInfo Id="СopperСoins" Index="-1" />
+        <ColumnInfo Id="Character" Index="-1" />
+        <ColumnInfo Id="CoinsInfo" Index="-1" />
+        <ColumnInfo Id="Description" Index="-1" />
+        <ColumnInfo Id="GoldCoins" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="Local" Index="-1" />
+        <ColumnInfo Id="Name" Index="-1" />
+        <ColumnInfo Id="PlatinumCoins" Index="-1" />
+        <ColumnInfo Id="SilverCoins" Index="-1" />
+        <ColumnInfo Id="DefaultProperty" Index="0" />
+      </Columns>
+    </ListView>
+    <ListView Id="CharacterStorage_Operations_ListView" AllowLink="False" AllowNew="False" AllowUnlink="False" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="DestinationCharacter" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="OperationMode" Index="-1" />
+        <ColumnInfo Id="Reason" Index="-1" />
+        <ColumnInfo Id="SourceCharacter" Index="-1" />
         <ColumnInfo Id="Storage" Index="-1" />
         <ColumnInfo Id="OperationType" Index="0" />
         <ColumnInfo Id="Coins" Index="1" />
-        <ColumnInfo Id="Reason" Index="2" />
-        <ColumnInfo Id="OperationMode" Index="3" />
-        <ColumnInfo Id="StorageSource" Index="4" />
-        <ColumnInfo Id="OperationDate" SortIndex="0" SortOrder="Descending" Index="5" />
+        <ColumnInfo Id="StorageSource" Index="2" />
+        <ColumnInfo Id="OperationDate" SortIndex="0" SortOrder="Descending" Index="3" />
       </Columns>
     </ListView>
-    <ListView Id="CharacterStorage_OperationsFromThis_ListView">
+    <ListView Id="CharacterStorage_OperationsFromThis_ListView" FreezeColumnIndices="True">
       <Columns>
+        <ColumnInfo Id="DestinationCharacter" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
         <ColumnInfo Id="OperationMode" Index="-1" />
+        <ColumnInfo Id="Reason" Index="-1" />
+        <ColumnInfo Id="SourceCharacter" Index="-1" />
+        <ColumnInfo Id="StorageSource" Index="-1" />
         <ColumnInfo Id="OperationType" Index="0" />
         <ColumnInfo Id="Coins" Index="1" />
-        <ColumnInfo Id="Reason" Index="2" />
-        <ColumnInfo Id="Storage" Index="3" />
-        <ColumnInfo Id="OperationDate" Index="4" />
+        <ColumnInfo Id="Storage" Index="2" />
+        <ColumnInfo Id="OperationDate" Index="3" SortIndex="0" SortOrder="Descending" />
       </Columns>
     </ListView>
     <DetailView Id="Person_DetailView">
@@ -338,19 +378,31 @@
         <PropertyEditor Id="OperationType" PropertyName="OperationType" IsNewNode="True" Removed="True" />
         <PropertyEditor Id="Storage" PropertyName="Storage" IsNewNode="True" />
         <PropertyEditor Id="StorageSource" PropertyName="StorageSource" IsNewNode="True" />
+        <ActionContainerViewItem Id="Swap" ActionContainer="SwapStoragesCategory" IsNewNode="True" />
       </Items>
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
           <LayoutGroup Id="SimpleEditors" RelativeSize="100">
             <LayoutGroup Id="StorageOperation" RelativeSize="100" Direction="Vertical">
               <LayoutGroup Id="StorageOperation_col1" RelativeSize="100">
-                <LayoutItem Id="Reason" RelativeSize="6.746987951807229" CaptionLocation="Top" />
-                <LayoutItem Id="OperationMode" RelativeSize="5.542168674698795" Index="1" CaptionLocation="Top" />
-                <LayoutItem Id="OperationType" ViewItem="OperationType" Index="2" RelativeSize="5.542168674698795" CaptionLocation="Top" IsNewNode="True" Removed="True" />
-                <LayoutItem Id="Coins" ViewItem="Coins" Index="3" RelativeSize="5.542168674698795" CaptionLocation="Top" IsNewNode="True" />
-                <LayoutGroup Id="Auto13bf19ea-65dd-4390-80d7-3d93e21423a9" ShowCaption="False" Direction="Horizontal" Index="4" RelativeSize="76.62650602409639" IsNewNode="True">
-                  <LayoutItem Id="StorageSource" ViewItem="StorageSource" CaptionLocation="Top" Index="0" RelativeSize="49.94786235662148" IsNewNode="True" />
-                  <LayoutItem Id="Storage" ViewItem="Storage" CaptionLocation="Top" Index="1" RelativeSize="50.05213764337852" IsNewNode="True" />
+                <LayoutItem Id="Reason" RelativeSize="6.021505376344086" CaptionLocation="Top" />
+                <LayoutItem Id="OperationMode" RelativeSize="4.946236559139785" Index="1" CaptionLocation="Top" />
+                <LayoutItem Id="OperationType" ViewItem="OperationType" Index="2" RelativeSize="4.946236559139785" CaptionLocation="Top" IsNewNode="True" Removed="True" />
+                <LayoutItem Id="Coins" Index="3" RelativeSize="4.946236559139785" CaptionLocation="Top" ViewItem="Coins" IsNewNode="True" />
+                <LayoutGroup Id="Auto13bf19ea-65dd-4390-80d7-3d93e21423a9" ShowCaption="False" Direction="Vertical" Index="4" RelativeSize="79.13978494623656" IsNewNode="True">
+                  <LayoutGroup Id="Sender" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="20.244565217391305" IsNewNode="True">
+                    <LayoutItem Id="SourceCharacter" ViewItem="SourceCharacter" CaptionLocation="Top" Index="0" RelativeSize="50" IsNewNode="True" />
+                    <LayoutGroup Id="Autof500b491-fb6a-4954-b4cd-a21e6004bae9" ShowCaption="False" Direction="Horizontal" Index="1" RelativeSize="50" IsNewNode="True">
+                      <LayoutItem Id="StorageSource" ViewItem="StorageSource" CaptionLocation="Top" Index="0" RelativeSize="84.27726120033812" IsNewNode="True" />
+                      <LayoutItem Id="Swap" ViewItem="Swap" Index="1" RelativeSize="15.722738799661876" IsNewNode="True" />
+                    </LayoutGroup>
+                  </LayoutGroup>
+                  <LayoutGroup Id="Autocc2f1c72-bd51-4deb-9275-e6d208f05e68" ShowCaption="False" Direction="Vertical" Index="1" RelativeSize="79.7554347826087" IsNewNode="True">
+                    <LayoutGroup Id="Destination" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+                      <LayoutItem Id="DestinationCharacter" ViewItem="DestinationCharacter" CaptionLocation="Top" Index="0" RelativeSize="10.37037037037037" IsNewNode="True" />
+                      <LayoutItem Id="Storage" ViewItem="Storage" CaptionLocation="Top" Index="1" RelativeSize="89.62962962962963" IsNewNode="True" />
+                    </LayoutGroup>
+                  </LayoutGroup>
                 </LayoutGroup>
               </LayoutGroup>
               <LayoutGroup Id="StorageOperation_col2" Index="1" RelativeSize="78.375" Removed="True">

@@ -4,4 +4,11 @@ using ZeeKer.DndTracker.Module.Types;
 
 namespace ZeeKer.DndTracker.Module.UseCases.ManageCoinsUseCase;
 
-public record ManageCoinsCommand(Guid StorageId,decimal Coins, StorageOperationType Type);
+public record ManageCoinsCommand(
+    Guid? StorageDestinationId,
+    decimal Coins, 
+    StorageOperationType Type, 
+    OperationMode Mode = OperationMode.Default, 
+    Guid? StorageSourceId = null,
+    Guid? SourceCharacterId = null,
+    Guid? DestinationCharacterId = null);

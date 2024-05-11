@@ -19,7 +19,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
     [DefaultClassOptions]
     [XafDisplayName("Хранилище")]
-    [XafDefaultProperty(nameof(CoinsInfo))]
+    //[XafDefaultProperty(nameof(CoinsInfo))]
+    [XafDefaultProperty(nameof(DefaultProperty))]
     public class CharacterStorage : BaseObject
     {
         public CharacterStorage()
@@ -27,6 +28,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         }
 
         #region Fields
+        [XafDisplayName("Хранилище")]
+        public string DefaultProperty => $"{Character?.Name} {Name}: {CoinsInfo}";
 
         [XafDisplayName("Наименование"), StringLength(150)]
         public virtual string Name { get; set; }

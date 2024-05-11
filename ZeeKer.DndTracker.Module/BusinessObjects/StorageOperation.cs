@@ -5,6 +5,7 @@ using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl.EF;
 using DevExpress.Persistent.Validation;
+using DevExpress.Xpo;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -56,11 +57,76 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [ForeignKey(nameof(SourceStorageId)), XafDisplayName("Хранилище Источник")]
         public virtual CharacterStorage? StorageSource { get; set; }
 
+        [Browsable(false)]
+        public virtual Guid? CreatedAtId { get; set; }
+
+        [XafDisplayName("Кем создано"), ForeignKey(nameof(CreatedAtId))]
+        public virtual Person? CreatedAt { get; set; }
+
+
+        [NotMapped, Browsable(false)]
+        private Character destinationCharacter;
+
+        [NotMapped, XafDisplayName("Персонаж получатель")]
+        public virtual Character DestinationCharacter
+        {
+            get
+            {
+                return destinationCharacter;
+            }
+            set
+            {
+                destinationCharacter = value;
+                OnPropertyChanged(this, new PropertyChangedEventArgs(nameof(DestinationCharacter)));
+            }
+        }
+
+
+        [NotMapped, Browsable(false)]
+        private Character sourceCharacter;
+
+        [NotMapped, XafDisplayName("Персонаж Отправитель")]
+        public virtual Character SourceCharacter
+        {
+            get
+            {
+                return sourceCharacter;
+            }
+            set
+            {
+                sourceCharacter = value;
+                OnPropertyChanged(this, new PropertyChangedEventArgs(nameof(SourceCharacter)));
+            }
+        }
+
         public override void OnCreated()
         {
             base.OnCreated();
             OperationDate = DateTimeOffset.Now;
+            CreatedAt = ObjectSpace.FindObject<Person>(
+                CriteriaOperator.FromLambda<Person>(person => person.UserId == (Guid)SecuritySystem.CurrentUserId));
         }
+
+        protected override void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnPropertyChanged(sender, e);
+
+            if (e.PropertyName is null)
+                return;
+
+
+
+            switch (e.PropertyName)
+            {
+                case nameof(DestinationCharacter):
+                    Storage = DestinationCharacter?.LocalStorage;
+                    break;
+                case nameof(SourceCharacter):
+                    StorageSource = SourceCharacter?.LocalStorage;
+                    break;
+            }
+        }
+
         // Collection property:
         //public virtual IList<AssociatedEntityObject> AssociatedEntities { get; set; }
 

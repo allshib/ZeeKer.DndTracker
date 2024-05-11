@@ -43,20 +43,29 @@ public class Updater : ModuleUpdater {
         if(userManager.FindUserByName<ApplicationUser>(ObjectSpace, "User") == null) {
             // Set a password if the standard authentication type is used
             string EmptyPassword = "";
-            _ = userManager.CreateUser<ApplicationUser>(ObjectSpace, "User", EmptyPassword, (user) => {
+            var userResult = userManager.CreateUser<ApplicationUser>(ObjectSpace, "User", EmptyPassword, (user) => {
                 // Add the Users role to the user
                 user.Roles.Add(defaultRole);
             });
+            
+            var person = ObjectSpace.CreateObject<Person>();
+            userResult.User.Person = person;
+            person.User = userResult.User;
+
         }
 
         // If a user named 'Admin' doesn't exist in the database, create this user
         if(userManager.FindUserByName<ApplicationUser>(ObjectSpace, "Admin") == null) {
             // Set a password if the standard authentication type is used
             string EmptyPassword = "";
-            _ = userManager.CreateUser<ApplicationUser>(ObjectSpace, "Admin", EmptyPassword, (user) => {
+            var userResult = userManager.CreateUser<ApplicationUser>(ObjectSpace, "Admin", EmptyPassword, (user) => {
                 // Add the Administrators role to the user
                 user.Roles.Add(adminRole);
             });
+
+            var person = ObjectSpace.CreateObject<Person>();
+            userResult.User.Person = person;
+            person.User = userResult.User;
         }
 
         ObjectSpace.CommitChanges(); //This line persists created object(s).
