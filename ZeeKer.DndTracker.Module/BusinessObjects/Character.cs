@@ -34,6 +34,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
 
         [XafDisplayName("Имя"), StringLength(150)]
+        [RuleRequiredField(DefaultContexts.Save)]
         public virtual string Name { get; set; }
 
 
@@ -42,6 +43,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [XafDisplayName("Кампейн")]
         [ForeignKey(nameof(CampainId))]
+        [RuleRequiredField(DefaultContexts.Save)]
         public virtual Campain? Campain { get; set; }
 
 
@@ -51,6 +53,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [ForeignKey(nameof(PersonId))]
         [XafDisplayName("Игрок")]
+        [RuleRequiredField(DefaultContexts.Save)]
         public virtual Person? Person { get; set; }
 
 
@@ -66,7 +69,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         {
             base.OnCreated();
             CreateLocalStorage();
-
+            var user = ObjectSpace.GetObjectByKey<ApplicationUser>(SecuritySystem.CurrentUserId);
+            Person = user?.Person;
 
         }
 

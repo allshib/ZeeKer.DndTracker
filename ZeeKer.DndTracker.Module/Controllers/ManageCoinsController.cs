@@ -91,7 +91,7 @@ namespace ZeeKer.DndTracker.Module.Controllers
         private void SendGold_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
             var character = View.CurrentObject as Character;
-            ExecuteOperation(
+            ExecuteOperation(character.CampainId,
                 null,
                 0,
                 StorageOperationType.AddGoldCoins,
@@ -111,44 +111,46 @@ namespace ZeeKer.DndTracker.Module.Controllers
         private void SimpleTransferGold_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
 
-            var id = (View.CurrentObject as Character).ID;
+            var character = View.CurrentObject as Character;
             ExecuteOperation(
-                ((Character)View.CurrentObject).LocalStorage.ID,
+                character.CampainId,
+                character.LocalStorage.ID,
                 0,
                 StorageOperationType.AddGoldCoins,
                 OperationMode.WithAnotherStorage,
                 null,
-                id,
-                id);
+                character.ID,
+                character.ID);
         }
 
         private void RemoveGold100Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
-            => ExecuteSimpleOperation(100, StorageOperationType.RemoveGoldCoins);
+            => ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 100, StorageOperationType.RemoveGoldCoins);
         private void RemoveGold10Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
-            => ExecuteSimpleOperation(10, StorageOperationType.RemoveGoldCoins);
+            => ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 10, StorageOperationType.RemoveGoldCoins);
         private void RemoveGold1Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
-            => ExecuteSimpleOperation(1, StorageOperationType.RemoveGoldCoins);
+            => ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 1, StorageOperationType.RemoveGoldCoins);
 
 
 
 
         private void AddGold100Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
-            => ExecuteSimpleOperation(100, StorageOperationType.AddGoldCoins);
+            => ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 100, StorageOperationType.AddGoldCoins);
         private void AddGold10Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
-            => ExecuteSimpleOperation(10, StorageOperationType.AddGoldCoins);
+            => ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 10, StorageOperationType.AddGoldCoins);
         private void AddGold1Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
-        => ExecuteSimpleOperation(1, StorageOperationType.AddGoldCoins);
+        => ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 1, StorageOperationType.AddGoldCoins);
         
 
 
-        private void ExecuteSimpleOperation(decimal coins, StorageOperationType type)
+        private void ExecuteSimpleOperation(Guid? campainId, decimal coins, StorageOperationType type)
         => useCase
             .Execute(
-                new ManageCoinsCommand(
+                new ManageCoinsCommand(campainId,
                     ((Character)View.CurrentObject).LocalStorage.ID, coins, type));
 
 
         private void ExecuteOperation(
+            Guid? campainId,
             Guid? destinationStorageId,
             decimal coins,
             StorageOperationType type,
@@ -158,7 +160,7 @@ namespace ZeeKer.DndTracker.Module.Controllers
             Guid? destinationCharacterId = null)
             => useCase
                 .Execute(
-                    new ManageCoinsCommand(
+                    new ManageCoinsCommand(campainId,
                         destinationStorageId, coins, type, mode, sourceStorageId, sourceCharacterId, destinationCharacterId));
 
         private void UseCase_AfterCommit(object sender, ManageCoinsUseCase.AfterCommitEventArgs e)

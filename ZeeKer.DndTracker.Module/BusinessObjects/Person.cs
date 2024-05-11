@@ -24,6 +24,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
 
     [XafDisplayName("Игрок")]
+    [XafDefaultProperty(nameof(FullName))]
     public class Person : BaseObject
     {
         public Person()
@@ -31,6 +32,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             // In the constructor, initialize collection properties, e.g.: 
             // this.AssociatedEntities = new ObservableCollection<AssociatedEntityObject>();
         }
+        [XafDisplayName("Полное имя")]
+        public virtual string FullName => $"{Surname} {Name}";
 
         [XafDisplayName("Имя"), StringLength(150)]
         public virtual string Name { get; set; }

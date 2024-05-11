@@ -102,7 +102,7 @@
               <LayoutGroup Id="StorageOperation_col1">
                 <LayoutGroup Id="Auto13bf19ea-65dd-4390-80d7-3d93e21423a9" Caption="Auto13bf19ea-65dd-4390-80d7-3d93e21423a9(9)">
                   <LayoutGroup Id="Sender" Caption="Отправитель">
-                    <LayoutGroup Id="Autof500b491-fb6a-4954-b4cd-a21e6004bae9" Caption="" />
+                    <LayoutGroup Id="Autof500b491-fb6a-4954-b4cd-a21e6004bae9" Caption="Autof500b491-fb6a-4954-b4cd-a21e6004bae9(12)" />
                   </LayoutGroup>
                   <LayoutGroup Id="Autocc2f1c72-bd51-4deb-9275-e6d208f05e68" Caption="Autocc2f1c72-bd51-4deb-9275-e6d208f05e68(12)">
                     <LayoutGroup Id="Destination" Caption="Получатель" />

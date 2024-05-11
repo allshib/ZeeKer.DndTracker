@@ -63,6 +63,13 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Кем создано"), ForeignKey(nameof(CreatedAtId))]
         public virtual Person? CreatedAt { get; set; }
 
+        [Browsable(false)]
+        public virtual Guid? CampainId { get; set; }
+        [XafDisplayName("Кампейн")]
+        public virtual Campain? Campain { get; set; }
+
+        [XafDisplayName("Доступные персонажи"), NotMapped]
+        public virtual IEnumerable<Character> ActiveCharacters => ObjectSpace.GetObjects<Character>(CriteriaOperator.Parse($"{nameof(Character.CampainId)} = ?", CampainId));
 
         [NotMapped, Browsable(false)]
         private Character destinationCharacter;
@@ -103,8 +110,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         {
             base.OnCreated();
             OperationDate = DateTimeOffset.Now;
-            CreatedAt = ObjectSpace.FindObject<Person>(
-                CriteriaOperator.FromLambda<Person>(person => person.UserId == (Guid)SecuritySystem.CurrentUserId));
+            var user = ObjectSpace.GetObjectByKey<ApplicationUser>(SecuritySystem.CurrentUserId);
+            CreatedAt = user.Person;
         }
 
         protected override void OnPropertyChanged(object sender, PropertyChangedEventArgs e)

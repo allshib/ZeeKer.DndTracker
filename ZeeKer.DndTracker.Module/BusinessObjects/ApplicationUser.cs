@@ -41,4 +41,15 @@ public class ApplicationUser : PermissionPolicyUser, ISecurityUserWithLoginInfo,
         result.User = this;
         return result;
     }
+
+    public override void OnCreated()
+    {
+        base.OnCreated();
+
+        var person = ObjectSpace.CreateObject<Person>();
+        person.User = this;
+        person.Name = "Геймер";
+        person.Surname = "Геймеров";
+        Person = person;
+    }
 }

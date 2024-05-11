@@ -5,6 +5,7 @@ using ZeeKer.DndTracker.Module.Types;
 namespace ZeeKer.DndTracker.Module.UseCases.ManageCoinsUseCase;
 
 public record ManageCoinsCommand(
+    Guid? CampainId,
     Guid? StorageDestinationId,
     decimal Coins, 
     StorageOperationType Type, 

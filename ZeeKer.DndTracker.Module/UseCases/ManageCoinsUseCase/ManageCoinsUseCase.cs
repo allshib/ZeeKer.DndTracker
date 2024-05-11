@@ -29,6 +29,7 @@ public class ManageCoinsUseCase: ShowViewUseCaseBase
         operation.Coins = request.Coins;
         operation.OperationMode = request.Mode;
         operation.SourceStorageId = request.StorageSourceId;
+        operation.CampainId = request.CampainId;
 
         operation.DestinationCharacter = request.DestinationCharacterId is not null
             ? os.GetObjectByKey<Character>(request.DestinationCharacterId)
