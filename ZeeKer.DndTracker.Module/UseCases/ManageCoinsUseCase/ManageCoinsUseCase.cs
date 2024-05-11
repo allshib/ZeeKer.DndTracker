@@ -59,33 +59,33 @@ public class ManageCoinsUseCase: ShowViewUseCaseBase
             case StorageOperationType.AddGoldCoins:
                 var addGoldCoins = operation.Coins * 100;
 
-                operation.Storage!.СopperСoins += addGoldCoins;
+                operation.Storage!.CopperCoins += addGoldCoins;
 
                 if (operation.SourceStorageId is not null)
-                    operation.StorageSource!.СopperСoins -= addGoldCoins;
+                    operation.StorageSource!.CopperCoins -= addGoldCoins;
                 break;
             case StorageOperationType.RemoveGoldCoins:
-                operation.Storage!.СopperСoins -= operation.Coins * 100;
+                operation.Storage!.CopperCoins -= operation.Coins * 100;
                 break;
             case StorageOperationType.AddSilverCoins:
                 var addSilverCoins = operation.Coins * 10;
 
-                operation.Storage!.СopperСoins += addSilverCoins;
+                operation.Storage!.CopperCoins += addSilverCoins;
 
                 if (operation.SourceStorageId is not null)
-                    operation.StorageSource!.СopperСoins -= addSilverCoins;
+                    operation.StorageSource!.CopperCoins -= addSilverCoins;
                 break;
             case StorageOperationType.RemoveSilverCoins:
-                operation.Storage!.СopperСoins -= operation.Coins * 10;
+                operation.Storage!.CopperCoins -= operation.Coins * 10;
                 break;
             case StorageOperationType.AddCopperCoins:
-                operation.Storage!.СopperСoins += operation.Coins;
+                operation.Storage!.CopperCoins += operation.Coins;
 
                 if (operation.SourceStorageId is not null)
-                    operation.StorageSource!.СopperСoins -= operation.Coins;
+                    operation.StorageSource!.CopperCoins -= operation.Coins;
                 break;
             case StorageOperationType.RemoveCopperCoins:
-                operation.Storage!.СopperСoins -= operation.Coins;
+                operation.Storage!.CopperCoins -= operation.Coins;
                 break;
             default:
                 throw new NotImplementedException();

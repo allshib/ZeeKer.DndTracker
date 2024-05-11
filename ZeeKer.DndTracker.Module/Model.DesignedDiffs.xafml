@@ -9,11 +9,7 @@
     <Class Name="DevExpress.Persistent.BaseImpl.EF.PermissionPolicy.PermissionPolicyUser" Caption="Base User" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Campain" ImageName="BO_User" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Character" ImageName="BO_Employee" />
-    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage" ImageName="ListSource">
-      <OwnMembers>
-        <Member Name="СopperСoins" ImmediatePostData="True" AllowEdit="False" />
-      </OwnMembers>
-    </Class>
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage" ImageName="ListSource" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Person" ImageName="BO_Position_v92" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" ImageName="BO_StateMachine">
       <AppearanceRules>
@@ -30,16 +26,30 @@
       </OwnMembers>
     </Class>
   </BOModel>
+  <NavigationItems>
+    <Items>
+      <Item Id="PlayerHub" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="MyCharacter_ListView" ViewId="MyCharacter_ListView" IsNewNode="True" />
+          <Item Id="MyCharacterStorage_ListView" ViewId="MyCharacterStorage_ListView" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Reports" Visible="False" />
+      <Item Id="State Machine" Visible="False" />
+    </Items>
+  </NavigationItems>
   <Options>
     <LayoutManagerOptions RequiredFieldMark="*" />
   </Options>
   <SchemaModules>
-    <SchemaModule Name="SchedulerModuleBase" Version="23.2.4.0" IsNewNode="True" />
-    <SchemaModule Name="SystemModule" Version="23.2.4.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerModuleBase" Version="23.2.6.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="23.2.6.0" IsNewNode="True" />
   </SchemaModules>
   <Validation>
     <Rules>
       <RuleCriteria Id="StorageOperation_CorrectDestinOperation" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" TargetContextIDs="Save" TargetCriteria="[OperationMode] = ##Enum#ZeeKer.DndTracker.Module.Types.OperationMode,WithAnotherStorage#" Criteria="[OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddGoldCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddSilverCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddCopperCoins#" IsNewNode="True" />
+      <RuleCriteria Id="StorageOperation_DifferentStorages" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" TargetContextIDs="Save" Criteria="[StorageSource] &lt;&gt; [Storage]" TargetCriteria="[OperationMode] = ##Enum#ZeeKer.DndTracker.Module.Types.OperationMode,WithAnotherStorage#" IsNewNode="True" />
+      <RuleCriteria Id="StorageOperationMoreZero" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" TargetContextIDs="Save" Criteria="[Coins] &gt; 0.0m" TargetCriteria="[OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddGoldCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,RemoveGoldCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddSilverCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,RemoveSilverCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddCopperCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,RemoveCopperCoins#" IsNewNode="True" />
     </Rules>
   </Validation>
   <Views>
@@ -48,7 +58,6 @@
       <Items>
         <ActionContainerViewItem Id="AddGold" PaintStyle="Caption" ActionContainer="AddGoldCategory" IsNewNode="True" />
         <PropertyEditor Id="Campain" PropertyName="Campain" IsNewNode="True" />
-        <PropertyEditor Id="LocalStorage.СopperСoins" PropertyName="LocalStorage.СopperСoins" IsNewNode="True" />
         <PropertyEditor Id="LocalStorage.CoinsInfo" PropertyName="LocalStorage.CoinsInfo" IsNewNode="True" />
         <PropertyEditor Id="LocalStorage.GoldCoins" PropertyName="LocalStorage.GoldCoins" IsNewNode="True" />
         <PropertyEditor Id="LocalStorage.Operations" PropertyName="LocalStorage.Operations" View="CharacterStorage_Operations_ListView" IsNewNode="True" />
@@ -129,7 +138,6 @@
     </DetailView>
     <ListView Id="Character_Storages_ListView" FreezeColumnIndices="True">
       <Columns>
-        <ColumnInfo Id="СopperСoins" Index="-1" />
         <ColumnInfo Id="Character" Index="-1" />
         <ColumnInfo Id="CoinsInfo" Index="-1" Width="165" />
         <ColumnInfo Id="Description" Index="-1" />
@@ -174,7 +182,6 @@
     </DetailView>
     <ListView Id="CharacterStorage_ListView" FreezeColumnIndices="True">
       <Columns>
-        <ColumnInfo Id="СopperСoins" Index="-1" />
         <ColumnInfo Id="Character" Index="-1" />
         <ColumnInfo Id="CoinsInfo" Index="-1" />
         <ColumnInfo Id="Description" Index="-1" />
@@ -213,6 +220,31 @@
         <ColumnInfo Id="Coins" Index="1" />
         <ColumnInfo Id="Storage" Index="2" />
         <ColumnInfo Id="OperationDate" Index="3" SortIndex="0" SortOrder="Descending" />
+      </Columns>
+    </ListView>
+    <ListView Id="MyCharacter_ListView" ClassName="ZeeKer.DndTracker.Module.BusinessObjects.Character" Criteria="IsCurrentUserId([Person.User.ID])" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="ID" PropertyName="ID" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Name" PropertyName="Name" SortIndex="0" SortOrder="Ascending" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="Campain" PropertyName="Campain" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="Person" PropertyName="Person" Index="2" IsNewNode="True" />
+        <ColumnInfo Id="LocalStorage" PropertyName="LocalStorage" Index="3" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="MyCharacterStorage_ListView" ClassName="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage" FreezeColumnIndices="True" Criteria="IsCurrentUserId([Character.Person.User.ID])" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="CoinsInfo" PropertyName="CoinsInfo" IsNewNode="True" />
+        <ColumnInfo Id="Description" PropertyName="Description" IsNewNode="True" />
+        <ColumnInfo Id="GoldCoins" PropertyName="GoldCoins" IsNewNode="True" />
+        <ColumnInfo Id="ID" PropertyName="ID" IsNewNode="True" />
+        <ColumnInfo Id="Local" PropertyName="Local" IsNewNode="True" />
+        <ColumnInfo Id="Name" PropertyName="Name" IsNewNode="True" />
+        <ColumnInfo Id="PlatinumCoins" PropertyName="PlatinumCoins" IsNewNode="True" />
+        <ColumnInfo Id="SilverCoins" PropertyName="SilverCoins" IsNewNode="True" />
+        <ColumnInfo Id="DefaultProperty" PropertyName="DefaultProperty" SortIndex="-1" SortOrder="None" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="Character.Campain" PropertyName="Character.Campain" Index="1" SortIndex="-1" SortOrder="Ascending" GroupIndex="0" IsNewNode="True" />
+        <ColumnInfo Id="Character" PropertyName="Character" Index="2" SortOrder="Ascending" GroupIndex="1" IsNewNode="True" />
+        <ColumnInfo Id="CopperCoins" PropertyName="CopperCoins" Index="3" IsNewNode="True" />
       </Columns>
     </ListView>
     <DetailView Id="Person_DetailView">

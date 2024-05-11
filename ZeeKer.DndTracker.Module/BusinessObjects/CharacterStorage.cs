@@ -1,25 +1,15 @@
-using DevExpress.Data.Filtering;
-using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
-using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl.EF;
-using DevExpress.Persistent.Validation;
-using System;
-using System.Collections.Generic;
+
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
 
-namespace ZeeKer.DndTracker.Module.BusinessObjects
-{
+namespace ZeeKer.DndTracker.Module.BusinessObjects;
     [DefaultClassOptions]
     [XafDisplayName("Õðàíèëèùå")]
-    //[XafDefaultProperty(nameof(CoinsInfo))]
     [XafDefaultProperty(nameof(DefaultProperty))]
     public class CharacterStorage : BaseObject
     {
@@ -39,18 +29,18 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
 
         [XafDisplayName("Ìåäíûå ìîíåòû")]
-        public virtual decimal ÑopperÑoins { get; set; }
+        public virtual decimal CopperCoins { get; set; }
 
         [XafDisplayName("Ñåðåáðÿííûå ìîíåòû")]
-        public decimal SilverCoins => ÑopperÑoins / 10;
+        public decimal SilverCoins => CopperCoins / 10;
         [XafDisplayName("Çîëîòûå ìîíåòû")]
-        public decimal GoldCoins => ÑopperÑoins / 100;
+        public decimal GoldCoins => CopperCoins / 100;
         [XafDisplayName("Ïëàòèíîâûå ìîíåòû")]
-        public decimal PlatinumCoins => ÑopperÑoins / 1000;
+        public decimal PlatinumCoins => CopperCoins / 1000;
 
         [XafDisplayName("Äåíüãè")]
         public string CoinsInfo =>
-            $"{TruncateCoins(GoldCoins, "çì", true)}{TruncateCoins((ÑopperÑoins % 100)/10, "ñì", true)}{TruncateCoins(ÑopperÑoins % 10, "ìì")}";
+            $"{TruncateCoins(GoldCoins, "çì", true)}{TruncateCoins((CopperCoins % 100)/10, "ñì", true)}{TruncateCoins(CopperCoins % 10, "ìì")}";
 
 
         [XafDisplayName("Èíâåíòàðü ïåðñîíàæà")]
@@ -77,32 +67,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         #endregion
 
-
-        #region Events
-        public event PropertyChangingEventHandler PropertyChanging;
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected override void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            base.OnPropertyChanged(sender, e);
-
-
-        }
-
-        #endregion
-
-
-
         private string TruncateCoins(decimal coins, string nominal, bool addZapit = false) =>
             coins >= 1
                 ? $"{Math.Truncate(coins)}{nominal}{(addZapit && Math.Truncate(coins) != coins ? ", " : "")}"
                 : "";
-        // Collection property:
-        //public virtual IList<AssociatedEntityObject> AssociatedEntities { get; set; }
-
-        //[Action(Caption = "My UI Action", ConfirmationMessage = "Are you sure?", ImageName = "Attention", AutoCommit = true)]
-        //public void ActionMethod() {
-        //    // Trigger custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
-        //    this.PersistentProperty = "Paid";
-        //}
     }
-}

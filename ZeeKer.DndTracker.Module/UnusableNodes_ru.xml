@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <BOModel Id="BOModel">
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage">
+      <OwnMembers Id="OwnMembers">
+        <Member Name="СopperСoins" DisplayFormat="{0:0мм}" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+</Application>

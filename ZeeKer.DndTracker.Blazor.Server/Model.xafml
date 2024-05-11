@@ -1,9 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application PreferredLanguage="ru-RU">
-  <NavigationItems NavigationStyle="Accordion" />
+  <NavigationItems NavigationStyle="Accordion">
+    <Items>
+      <Item Id="PlayerHub">
+        <Items>
+          <Item Id="MyDetails" ViewId="ApplicationUser_DetailView" ObjectKey="@CurrentUserID" Caption="My Details" ImageName="BO_MyDetails" IsNewNode="True" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
   <SchemaModules>
-    <SchemaModule Name="SchedulerModuleBase" Version="23.2.4.0" IsNewNode="True" />
-    <SchemaModule Name="SystemModule" Version="23.2.4.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerModuleBase" Version="23.2.6.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="23.2.6.0" IsNewNode="True" />
   </SchemaModules>
   <Views DefaultListEditor="DevExpress.ExpressApp.Blazor.Editors.DxGridListEditor" />
 </Application>

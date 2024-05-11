@@ -64,42 +64,44 @@ public class Updater : ModuleUpdater {
 
         ObjectSpace.CommitChanges(); //This line persists created object(s).
         ObjectSpace.Refresh();
-        
 
 
-        var campain = ObjectSpace.CreateObject<Campain>();
-        campain.Name = "И солнце закатилось";
-        ObjectSpace.CommitChanges();
+        if (ObjectSpace.FindObject<Campain>(CriteriaOperator.Parse("Name = ?", "И солнце закатилось")) is null)
+        {
+            var campain = ObjectSpace.CreateObject<Campain>();
+            campain.Name = "И солнце закатилось";
+            ObjectSpace.CommitChanges();
 
-        var campain2 = ObjectSpace.CreateObject<Campain>();
-        campain2.Name = "Тестовый кампейн";
-        ObjectSpace.CommitChanges();
-
-
-        var character = ObjectSpace.CreateObject<Character>();
-        character.Name = "Рей Аянами";
-        character.Campain = campain;
-        //character.Person.Name = "Александр";
-        //character.Person.Surname = "Шибалкин";
-        ObjectSpace.CommitChanges();
+            var campain2 = ObjectSpace.CreateObject<Campain>();
+            campain2.Name = "Тестовый кампейн";
+            ObjectSpace.CommitChanges();
 
 
-        campain.GameMaster = character.Person;
-        var character2 = ObjectSpace.CreateObject<Character>();
-        character2.Name = "Алина";
-        character2.Campain = campain;
-        ObjectSpace.CommitChanges();
+            var character = ObjectSpace.CreateObject<Character>();
+            character.Name = "Рей Аянами";
+            character.Campain = campain;
+            //character.Person.Name = "Александр";
+            //character.Person.Surname = "Шибалкин";
+            ObjectSpace.CommitChanges();
 
 
-        var character3 = ObjectSpace.CreateObject<Character>();
-        character3.Name = "Тестовый персонаж";
-        character3.Campain = campain2;
-        ObjectSpace.CommitChanges();
+            campain.GameMaster = character.Person;
+            var character2 = ObjectSpace.CreateObject<Character>();
+            character2.Name = "Алина";
+            character2.Campain = campain;
+            ObjectSpace.CommitChanges();
 
-        var character4 = ObjectSpace.CreateObject<Character>();
-        character4.Name = "Гунвард";
-        character4.Campain = campain;
-        ObjectSpace.CommitChanges();
+
+            var character3 = ObjectSpace.CreateObject<Character>();
+            character3.Name = "Тестовый персонаж";
+            character3.Campain = campain2;
+            ObjectSpace.CommitChanges();
+
+            var character4 = ObjectSpace.CreateObject<Character>();
+            character4.Name = "Гунвард";
+            character4.Campain = campain;
+            ObjectSpace.CommitChanges();
+        }
 #endif
     }
     public override void UpdateDatabaseBeforeUpdateSchema() {
