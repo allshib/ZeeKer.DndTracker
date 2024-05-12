@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ZeeKer.DndTracker.Module.BusinessObjects;
 
@@ -11,9 +12,11 @@ using ZeeKer.DndTracker.Module.BusinessObjects;
 namespace ZeeKer.DndTracker.Module.Migrations
 {
     [DbContext(typeof(DndTrackerEFCoreDbContext))]
-    partial class DndTrackerEFCoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240512142101_AddMultiTransactions")]
+    partial class AddMultiTransactions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -779,6 +782,9 @@ namespace ZeeKer.DndTracker.Module.Migrations
                     b.Property<decimal>("Coins")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<Guid?>("MultipleTransactionID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int>("OperationType")
                         .HasColumnType("int");
 
@@ -789,6 +795,8 @@ namespace ZeeKer.DndTracker.Module.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("MultipleTransactionID");
 
                     b.HasIndex("StorageDestinationId");
 
@@ -1044,12 +1052,16 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.TransactionSettings", b =>
                 {
+                    b.HasOne("ZeeKer.DndTracker.Module.BusinessObjects.MultipleTransaction", null)
+                        .WithMany("TransactionSettings")
+                        .HasForeignKey("MultipleTransactionID");
+
                     b.HasOne("ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage", "StorageDestination")
                         .WithMany()
                         .HasForeignKey("StorageDestinationId");
 
-                    b.HasOne("ZeeKer.DndTracker.Module.BusinessObjects.MultipleTransaction", "Transaction")
-                        .WithMany("TransactionSettings")
+                    b.HasOne("ZeeKer.DndTracker.Module.BusinessObjects.TransactionSettings", "Transaction")
+                        .WithMany()
                         .HasForeignKey("TransactionId");
 
                     b.Navigation("StorageDestination");

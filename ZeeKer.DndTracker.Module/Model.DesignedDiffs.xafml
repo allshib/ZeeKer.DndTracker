@@ -10,6 +10,11 @@
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Campain" ImageName="BO_User" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Character" ImageName="BO_Employee" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage" ImageName="ListSource" />
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.MultipleTransaction">
+      <AppearanceRules>
+        <AppearanceRule Id="NeCreated" Visibility="Hide" TargetItems="ActiveCharacters,TransactionSettings" Criteria="IsNewObject([This])" IsNewNode="True" />
+      </AppearanceRules>
+    </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Person" ImageName="BO_Position_v92" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" ImageName="BO_StateMachine">
       <AppearanceRules>
@@ -23,6 +28,12 @@
         <Member Name="SourceCharacter" DataSourceProperty="ActiveCharacters" />
         <Member Name="Storage" DataSourceProperty="DestinationCharacter.Storages" />
         <Member Name="StorageSource" DataSourceProperty="SourceCharacter.Storages" />
+      </OwnMembers>
+    </Class>
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.TransactionSettings">
+      <OwnMembers>
+        <Member Name="DestinationCharacter" DataSourceProperty="Transaction.ActiveCharacters" />
+        <Member Name="StorageDestination" DataSourceProperty="DestinationCharacter.Storages" />
       </OwnMembers>
     </Class>
   </BOModel>
@@ -220,6 +231,49 @@
         <ColumnInfo Id="Coins" Index="1" />
         <ColumnInfo Id="Storage" Index="2" />
         <ColumnInfo Id="OperationDate" Index="3" SortIndex="0" SortOrder="Descending" />
+      </Columns>
+    </ListView>
+    <ListView Id="MultipleTransaction_ActiveCharacters_ListView">
+      <Columns>
+        <ColumnInfo Id="LocalStorage" Index="-1" />
+        <ColumnInfo Id="Person" Index="-1" />
+      </Columns>
+    </ListView>
+    <DetailView Id="MultipleTransaction_DetailView">
+      <Items>
+        <ActionContainerViewItem Id="CreateTransactionCategory" ActionContainer="CreateTransactionCategory" PaintStyle="Caption" Caption="CreateTransactionCategory(11)" IsNewNode="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="8.65019011406844">
+            <LayoutGroup Id="MultipleTransaction" Caption="MultipleTransaction" RelativeSize="100">
+              <LayoutGroup Id="Auto4259883b-d0a9-4cca-aceb-d7511027c634" ShowCaption="False" Caption="" Direction="Horizontal" Index="0" RelativeSize="54.94505494505494" IsNewNode="True">
+                <LayoutItem Id="Reason" ViewItem="Reason" Index="0" RelativeSize="66.13026819923371" IsNewNode="True" />
+                <LayoutItem Id="CreateTransactionCategory" ViewItem="CreateTransactionCategory" Index="1" RelativeSize="33.86973180076628" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutItem Id="StorageSource" RelativeSize="45.05494505494506" />
+              <LayoutItem Id="Reason" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="91.34980988593156">
+            <LayoutGroup Id="TransactionSettings" RelativeSize="100">
+              <LayoutItem Id="TransactionSettings" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="ActiveCharacters" RelativeSize="100">
+              <LayoutItem Id="ActiveCharacters" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="MultipleTransaction_TransactionSettings_ListView" FreezeColumnIndices="True" AllowUnlink="False" AllowNew="False">
+      <Columns>
+        <ColumnInfo Id="DestinationCharacter" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="Transaction" Index="-1" />
+        <ColumnInfo Id="OperationType" Index="0" Width="134" />
+        <ColumnInfo Id="Coins" Index="1" />
+        <ColumnInfo Id="StorageDestination" Index="2" />
       </Columns>
     </ListView>
     <ListView Id="MyCharacter_ListView" ClassName="ZeeKer.DndTracker.Module.BusinessObjects.Character" Criteria="IsCurrentUserId([Person.User.ID])" IsNewNode="True">
@@ -459,6 +513,25 @@
         <ColumnInfo Id="Coins" Index="1" />
         <ColumnInfo Id="Reason" Index="2" />
         <ColumnInfo Id="OperationDate" SortIndex="0" SortOrder="Descending" Index="3" />
+      </Columns>
+    </ListView>
+    <DetailView Id="TransactionSettings_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="TransactionSettings" RelativeSize="100" Direction="Vertical" Caption="Настройки транзакции" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="TransactionSettings_ListView" FreezeColumnIndices="True" AllowLink="False" AllowNew="False" AllowUnlink="False" AllowDelete="True">
+      <Columns>
+        <ColumnInfo Id="DestinationCharacter" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="Transaction" Index="-1" />
+        <ColumnInfo Id="OperationType" Index="0" />
+        <ColumnInfo Id="Coins" Index="1" />
+        <ColumnInfo Id="StorageDestination" Index="2" />
       </Columns>
     </ListView>
   </Views>

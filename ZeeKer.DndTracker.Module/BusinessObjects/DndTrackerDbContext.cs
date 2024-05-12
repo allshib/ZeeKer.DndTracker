@@ -25,15 +25,15 @@ public class DndTrackerContextInitializer : DbContextTypesInfoInitializerBase {
 	}
 }
 //This factory creates DbContext for design-time services. For example, it is required for database migration.
-public class DndTrackerDesignTimeDbContextFactory(IConfiguration configuration) : IDesignTimeDbContextFactory<DndTrackerEFCoreDbContext> {
+public class DndTrackerDesignTimeDbContextFactory : IDesignTimeDbContextFactory<DndTrackerEFCoreDbContext> {
 	public DndTrackerEFCoreDbContext CreateDbContext(string[] args) {
 		//throw new InvalidOperationException("Make sure that the database connection string and connection provider are correct. After that, uncomment the code below and remove this exception.");
 		var optionsBuilder = new DbContextOptionsBuilder<DndTrackerEFCoreDbContext>();
         string connectionString = "";
 #if !RELEASE
-        connectionString = configuration.GetConnectionString("ConnectionString");
+        connectionString = "Integrated Security=SSPI;Pooling=true;MultipleActiveResultSets=true;Data Source=.;Initial Catalog=DndTracker; TrustServerCertificate = True";
 #else
-        connectionString = configuration.GetConnectionString("ConnectionStringRelease");
+        connectionString = "User Id=sa;Password=ZeeKer1218;MultipleActiveResultSets=true;Data Source=192.168.31.253;Initial Catalog=DndTracker; TrustServerCertificate = True";
 #endif
 
         optionsBuilder.UseSqlServer(connectionString);

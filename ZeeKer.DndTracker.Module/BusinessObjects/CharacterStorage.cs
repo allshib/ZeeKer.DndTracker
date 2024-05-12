@@ -62,8 +62,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects;
         [Aggregated]
         [XafDisplayName("Исходящие Операции")]
         public virtual IList<StorageOperation> OperationsFromThis { get; set; } = new ObservableCollection<StorageOperation>();
-
-        
+        [XafDisplayName("Настройки мульти-транзакций")]
+        public virtual IList<MultipleTransaction> MultipleTransactions { get; set; } = new ObservableCollection<MultipleTransaction>();
 
         #endregion
 
