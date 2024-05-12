@@ -41,7 +41,7 @@ namespace ZeeKer.DndTracker.Module.Controllers
         {
             var useCase = new TransactionCreateUseCase(Application);
             var multiple = View.CurrentObject as MultipleTransaction;
-            useCase.UseCase(multiple.ID);
+            useCase.Execute(multiple.ID);
             useCase.AfterCommit += UseCase_AfterCommit;
 
 
@@ -61,7 +61,7 @@ namespace ZeeKer.DndTracker.Module.Controllers
 
             public delegate void AfterCommitHandler(object sender, EventArgs args);
             public event AfterCommitHandler AfterCommit;
-            public void UseCase(Guid multipleTr)
+            public void Execute(Guid multipleTr)
             {
                 var os = application.CreateObjectSpace(typeof(TransactionSettings));
 
