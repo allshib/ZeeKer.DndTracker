@@ -1,4 +1,5 @@
-﻿using DevExpress.ExpressApp.EFCore.Updating;
+﻿using Castle.Core.Configuration;
+using DevExpress.ExpressApp.EFCore.Updating;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using DevExpress.Persistent.BaseImpl.EF.PermissionPolicy;
@@ -8,7 +9,8 @@ using DevExpress.ExpressApp.EFCore.DesignTime;
 using DevExpress.Office;
 using DevExpress.Persistent.BaseImpl.EF.StateMachine;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-
+using Microsoft.Extensions.Configuration;
+using IConfiguration = Microsoft.Extensions.Configuration.IConfiguration;
 namespace ZeeKer.DndTracker.Module.BusinessObjects;
 
 // This code allows our Model Editor to get relevant EF Core metadata at design time.
@@ -23,14 +25,21 @@ public class DndTrackerContextInitializer : DbContextTypesInfoInitializerBase {
 	}
 }
 //This factory creates DbContext for design-time services. For example, it is required for database migration.
-public class DndTrackerDesignTimeDbContextFactory : IDesignTimeDbContextFactory<DndTrackerEFCoreDbContext> {
+public class DndTrackerDesignTimeDbContextFactory(IConfiguration configuration) : IDesignTimeDbContextFactory<DndTrackerEFCoreDbContext> {
 	public DndTrackerEFCoreDbContext CreateDbContext(string[] args) {
-		throw new InvalidOperationException("Make sure that the database connection string and connection provider are correct. After that, uncomment the code below and remove this exception.");
-		//var optionsBuilder = new DbContextOptionsBuilder<DndTrackerEFCoreDbContext>();
-		//optionsBuilder.UseSqlServer("Integrated Security=SSPI;Data Source=(localdb)\\mssqllocaldb;Initial Catalog=ZeeKer.DndTracker");
-        //optionsBuilder.UseChangeTrackingProxies();
-        //optionsBuilder.UseObjectSpaceLinkProxies();
-		//return new DndTrackerEFCoreDbContext(optionsBuilder.Options);
+		//throw new InvalidOperationException("Make sure that the database connection string and connection provider are correct. After that, uncomment the code below and remove this exception.");
+		var optionsBuilder = new DbContextOptionsBuilder<DndTrackerEFCoreDbContext>();
+        string connectionString = "";
+#if !RELEASE
+        connectionString = configuration.GetConnectionString("ConnectionString");
+#else
+        connectionString = configuration.GetConnectionString("ConnectionStringRelease");
+#endif
+
+        optionsBuilder.UseSqlServer(connectionString);
+        optionsBuilder.UseChangeTrackingProxies();
+        optionsBuilder.UseObjectSpaceLinkProxies();
+		return new DndTrackerEFCoreDbContext(optionsBuilder.Options);
 	}
 }
 [TypesInfoInitializer(typeof(DndTrackerContextInitializer))]
