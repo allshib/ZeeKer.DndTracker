@@ -84,6 +84,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             CreateLocalStorage();
             var user = ObjectSpace.GetObjectByKey<ApplicationUser>(SecuritySystem.CurrentUserId);
             Person = user?.Person;
+            Info = ObjectSpace.CreateObject<CharacterInfo>();
 
         }
 

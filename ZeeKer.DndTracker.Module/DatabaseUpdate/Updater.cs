@@ -65,6 +65,12 @@ public class Updater : ModuleUpdater {
         ObjectSpace.CommitChanges(); //This line persists created object(s).
         ObjectSpace.Refresh();
 
+        var characters = ObjectSpace.GetObjects<Character>(CriteriaOperator.Parse("InfoId = ?", null));
+
+        foreach (var character in characters)
+            character.Info = ObjectSpace.CreateObject<CharacterInfo>();
+        ObjectSpace.CommitChanges();
+        ObjectSpace.Refresh();
 
         if (ObjectSpace.FindObject<Campain>(CriteriaOperator.Parse("Name = ?", "И солнце закатилось")) is null)
         {
