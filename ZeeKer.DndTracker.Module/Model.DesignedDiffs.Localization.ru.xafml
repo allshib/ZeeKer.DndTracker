@@ -63,7 +63,7 @@
                             <LayoutGroup Id="Autoa5a2658e-c245-42ae-8efe-fd7748ef9ddf" Caption="Autoa5a2658e-c245-42ae-8efe-fd7748ef9ddf(12)">
                               <LayoutGroup Id="Auto00f0552f-dc3e-4d12-ad71-455f8a4f6bab" Caption="Auto00f0552f-dc3e-4d12-ad71-455f8a4f6bab(14)">
                                 <LayoutGroup Id="Item8" Caption="Операции">
-                                  <LayoutGroup Id="Autodfbe3f29-6047-425f-9c10-756a27249c8a" Caption="" />
+                                  <LayoutGroup Id="Autodfbe3f29-6047-425f-9c10-756a27249c8a" Caption="Autodfbe3f29-6047-425f-9c10-756a27249c8a(19)" />
                                 </LayoutGroup>
                               </LayoutGroup>
                             </LayoutGroup>
@@ -82,8 +82,10 @@
           </LayoutGroup>
           <TabbedGroup Id="Item6">
             <LayoutGroup Id="Storages_Group" Caption="Хранилища" />
+            <LayoutGroup Id="Storages" Caption="Хранилища" />
             <LayoutGroup Id="Item7" Caption="Операции инвентаря (простые/входящие)" />
             <LayoutGroup Id="Item9" Caption="Операции инвентаря (Исходящие)" />
+            <LayoutGroup Id="MultipleTransaction" Caption="Преднастроенные операции" />
           </TabbedGroup>
         </LayoutGroup>
       </Layout>

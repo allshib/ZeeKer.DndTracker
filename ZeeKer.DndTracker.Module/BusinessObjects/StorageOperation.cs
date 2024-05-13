@@ -72,6 +72,12 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Кампейн")]
         public virtual Campain? Campain { get; set; }
 
+        [Browsable(false)]
+        public virtual Guid? MultiTransactionId { get; set; }
+
+        [XafDisplayName("Мулти-транзакция"), ForeignKey(nameof(MultiTransactionId))]
+        public virtual MultipleTransaction MultipleTransaction { get; set; }
+
         [XafDisplayName("Доступные персонажи"), NotMapped]
         public virtual IEnumerable<Character> ActiveCharacters => ObjectSpace.GetObjects<Character>(CriteriaOperator.Parse($"{nameof(Character.CampainId)} = ?", CampainId));
 

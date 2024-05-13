@@ -46,6 +46,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Доступные персонажи"), NotMapped]
         public virtual IEnumerable<Character> ActiveCharacters => ObjectSpace.GetObjects<Character>(CriteriaOperator.Parse($"{nameof(Character.CampainId)} = ?", StorageSource?.Character?.CampainId));
 
+        [XafDisplayName("Выполненные операции"), Aggregated]
+        public virtual IList<StorageOperation> StorageOperations { get; set; } = new ObservableCollection<StorageOperation>();
+
         // Alternatively, specify more UI options:
         //[XafDisplayName("My display name"), ToolTip("My hint message")]
         //[ModelDefault("EditMask", "(000)-00"), VisibleInListView(false)]

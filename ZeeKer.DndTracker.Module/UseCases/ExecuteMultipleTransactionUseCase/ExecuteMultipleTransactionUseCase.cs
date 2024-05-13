@@ -43,6 +43,7 @@ namespace ZeeKer.DndTracker.Module.UseCases.ExecuteMultipleTransactionUseCase
                 storageOperation.StorageSource = transaction.StorageSource;
                 storageOperation.Storage = settings.StorageDestination;
                 storageOperation.Coins = settings.Coins;
+                storageOperation.MultipleTransaction = transaction;
 
                 storageOperation.ExecuteOperation();
             }

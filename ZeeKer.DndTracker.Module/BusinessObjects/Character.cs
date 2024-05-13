@@ -5,6 +5,8 @@ using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl.EF;
 using DevExpress.Persistent.Validation;
+using DevExpress.XtraPrinting.Native;
+using DevExpress.XtraScheduler.Native;
 using Microsoft.Identity.Client.Extensions.Msal;
 using System;
 using System.Collections.Generic;
@@ -56,10 +58,21 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [RuleRequiredField(DefaultContexts.Save)]
         public virtual Person? Person { get; set; }
 
+        [Browsable(false)]
+        public virtual Guid? InfoId { get; set; }
+
+        [ForeignKey(nameof(InfoId)), XafDisplayName("Инфо")]
+        public virtual CharacterInfo Info { get; set; }
+
 
         [Aggregated]
         [XafDisplayName("Хранилища")]
         public virtual IList<CharacterStorage> Storages { get; set; } = new ObservableCollection<CharacterStorage>();
+
+
+        [XafDisplayName("Преднастроенные операции"), NotMapped]
+        public virtual IEnumerable<MultipleTransaction> MultipleTransaction => new ObservableCollection<MultipleTransaction>(Storages?.SelectMany(storage => storage.MultipleTransactions)) ?? new ObservableCollection<MultipleTransaction>();
+
 
         [XafDisplayName("Инвентарь")]
         public CharacterStorage LocalStorage => Storages?.FirstOrDefault(storage=>storage.Local);

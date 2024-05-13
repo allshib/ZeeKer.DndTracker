@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ZeeKer.DndTracker.Module.BusinessObjects;
 
@@ -11,9 +12,11 @@ using ZeeKer.DndTracker.Module.BusinessObjects;
 namespace ZeeKer.DndTracker.Module.Migrations
 {
     [DbContext(typeof(DndTrackerEFCoreDbContext))]
-    partial class DndTrackerEFCoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240513072434_AddMultiTrStorageOperationRelation")]
+    partial class AddMultiTrStorageOperationRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -637,9 +640,6 @@ namespace ZeeKer.DndTracker.Module.Migrations
                     b.Property<Guid?>("CampainId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("InfoId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Name")
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
@@ -651,59 +651,9 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasIndex("CampainId");
 
-                    b.HasIndex("InfoId");
-
                     b.HasIndex("PersonId");
 
                     b.ToTable("Characters");
-                });
-
-            modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.CharacterInfo", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Aligment")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Background")
-                        .HasMaxLength(2000)
-                        .HasColumnType("nvarchar(2000)");
-
-                    b.Property<string>("Eyes")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Flaws")
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<string>("Hair")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("Height")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Ideals")
-                        .HasMaxLength(800)
-                        .HasColumnType("nvarchar(800)");
-
-                    b.Property<string>("Personality")
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<double>("Weight")
-                        .HasColumnType("float");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("CharacterInfo");
                 });
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage", b =>
@@ -1048,18 +998,12 @@ namespace ZeeKer.DndTracker.Module.Migrations
                         .WithMany("Characters")
                         .HasForeignKey("CampainId");
 
-                    b.HasOne("ZeeKer.DndTracker.Module.BusinessObjects.CharacterInfo", "Info")
-                        .WithMany()
-                        .HasForeignKey("InfoId");
-
                     b.HasOne("ZeeKer.DndTracker.Module.BusinessObjects.Person", "Person")
                         .WithMany("Characters")
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("Campain");
-
-                    b.Navigation("Info");
 
                     b.Navigation("Person");
                 });
