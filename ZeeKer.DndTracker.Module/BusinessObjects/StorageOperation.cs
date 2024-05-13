@@ -123,7 +123,10 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             var user = ObjectSpace.GetObjectByKey<ApplicationUser>(SecuritySystem.CurrentUserId);
             CreatedAt = user.Person;
         }
-
+        public bool IsNewObject()
+        {
+            return ObjectSpace.IsNewObject(this);
+        }
         protected override void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnPropertyChanged(sender, e);

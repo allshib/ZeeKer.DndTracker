@@ -10,7 +10,11 @@
     <Class Name="DevExpress.Persistent.BaseImpl.EF.PermissionPolicy.PermissionPolicyUser" Caption="Base User" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Campain" ImageName="BO_User" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Character" ImageName="BO_Employee" />
-    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage" ImageName="ListSource" />
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage" ImageName="ListSource">
+      <OwnMembers>
+        <Member Name="CopperCoins" AllowEdit="False" />
+      </OwnMembers>
+    </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.MultipleTransaction" ImageName="Action_StateMachine">
       <AppearanceRules>
         <AppearanceRule Id="NewCreated" Visibility="Hide" TargetItems="ActiveCharacters,TransactionSettings" Criteria="IsNewObject([This])" IsNewNode="True" />
@@ -20,7 +24,8 @@
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Person" ImageName="BO_Position_v92" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" ImageName="BO_StateMachine">
       <AppearanceRules>
-        <AppearanceRule Id="BlockOperationEdit" Context="DetailView" TargetItems="*" Criteria="IsNewObject([This]) = False" Enabled="False" IsNewNode="True" />
+        <AppearanceRule Id="BlockOperationEdit" Context="DetailView" TargetItems="*;Reason" Criteria="IsNewObject([This]) = False" Enabled="False" IsNewNode="True" />
+        <AppearanceRule Id="BlockReason" Priority="0" Context="DetailView" TargetItems="Reason" Criteria="IsNewObject([This]) = False And Not IsNullOrEmpty([Reason])" Enabled="False" IsNewNode="True" />
         <AppearanceRule Id="ChangeModeOperation" TargetItems="Sender,Destination" Visibility="Hide" Criteria="[OperationMode] = ##Enum#ZeeKer.DndTracker.Module.Types.OperationMode,Default#" AppearanceItemType="LayoutItem" IsNewNode="True" />
         <AppearanceRule Id="ChangeModeOperationAction" Priority="0" TargetItems="SwapStorages" Visibility="Hide" Criteria="[OperationMode] = ##Enum#ZeeKer.DndTracker.Module.Types.OperationMode,Default#" AppearanceItemType="Action" IsNewNode="True" />
       </AppearanceRules>

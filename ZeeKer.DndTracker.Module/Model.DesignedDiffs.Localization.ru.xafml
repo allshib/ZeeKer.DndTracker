@@ -3,6 +3,7 @@
   <BOModel>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage">
       <OwnMembers>
+        <Member Name="CopperCoins" DisplayFormat="{0:0мм}" />
         <Member Name="GoldCoins" DisplayFormat="{0:0зм}" />
         <Member Name="PlatinumCoins" DisplayFormat="{0:0пм}" />
         <Member Name="SilverCoins" DisplayFormat="{0:0см}" />

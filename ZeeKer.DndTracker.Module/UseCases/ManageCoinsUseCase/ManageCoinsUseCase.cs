@@ -8,6 +8,7 @@ using ZeeKer.DndTracker.Module.Controllers;
 using Azure;
 using Microsoft.Identity.Client.Extensions.Msal;
 using ZeeKer.DndTracker.Module.Extensions;
+using System.ComponentModel.DataAnnotations;
 
 namespace ZeeKer.DndTracker.Module.UseCases.ManageCoinsUseCase;
 
@@ -44,9 +45,19 @@ public class ManageCoinsUseCase : ShowViewUseCaseBase
         var detailView = this.CreateDetailView(operation, os);
         this.OpenDetailView(detailView, () =>
         {
-            operation.ExecuteOperation();
+            if(operation.Executed)
+                operation.RollbackOperation();
 
-            os.CommitChanges();
+            operation.ExecuteOperation();
+            try
+            {
+                os.CommitChanges();
+            }
+            catch (Exception ex)
+            {
+                if(operation.Executed)
+                    operation.RollbackOperation();
+            }
             AfterCommit?.Invoke(this, new AfterCommitEventArgs());
 
         });
