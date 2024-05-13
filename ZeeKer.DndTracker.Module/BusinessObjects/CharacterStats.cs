@@ -13,6 +13,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using ZeeKer.DndTracker.Module.Extensions;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
@@ -34,16 +35,37 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [XafDisplayName("Сила")]
         public virtual int Strength { get; set; }
+
+        [XafDisplayName("Сила Бонус")]
+        public virtual int StrengthBonus => Strength.CalcStatsBonus();
+
         [XafDisplayName("Телосложение")]
         public virtual int Constitution { get; set; }
+
+        [XafDisplayName("Телосложение Бонус")]
+        public virtual int ConstitutionBonus => Constitution.CalcStatsBonus();
         [XafDisplayName("Интеллект")]
         public virtual int Intelegence { get; set; }
+        [XafDisplayName("Интеллект Бонус")]
+        public virtual int IntelegenceBonus => Intelegence.CalcStatsBonus();
+
         [XafDisplayName("Харизма")]
         public virtual int Charisma { get; set; }
+
+        [XafDisplayName("Харизма Бонус")]
+        public virtual int CharismaBonus => Charisma.CalcStatsBonus();
+
         [XafDisplayName("Ловкость")]
         public virtual int Dexterity { get; set; }
+
+        [XafDisplayName("Ловкость Бонус")]
+        public virtual int DexterityBonus => Dexterity.CalcStatsBonus();
+
         [XafDisplayName("Мудрость")]
         public virtual int Wisdom { get; set; }
+
+        [XafDisplayName("Мудрость Бонус")]
+        public virtual int WisdomBonus =>  Wisdom.CalcStatsBonus();
 
         [Browsable(false)]
         public virtual Guid? CharacterId { get; set; }

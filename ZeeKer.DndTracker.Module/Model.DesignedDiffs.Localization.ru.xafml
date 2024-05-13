@@ -86,9 +86,15 @@
                     </LayoutGroup>
                   </LayoutGroup>
                   <LayoutGroup Id="Item6" Caption="Характеристики">
-                    <LayoutGroup Id="Autob9677bbb-9791-4d02-a4b0-a1c175dbc40c" Caption="">
-                      <LayoutGroup Id="Auto640ccf67-3b1d-4ace-ac61-b9bc7d842707" Caption="" />
-                      <LayoutGroup Id="Auto8c357527-ef1a-4f5b-84be-a86b6f9a8e34" Caption="" />
+                    <LayoutGroup Id="Autob9677bbb-9791-4d02-a4b0-a1c175dbc40c" Caption="Autob9677bbb-9791-4d02-a4b0-a1c175dbc40c(51)">
+                      <LayoutGroup Id="Auto640ccf67-3b1d-4ace-ac61-b9bc7d842707" Caption="Auto640ccf67-3b1d-4ace-ac61-b9bc7d842707(52)">
+                        <LayoutGroup Id="Autod95e2523-151e-4a3f-b2e4-8e4d1c7981bd" Caption="Autod95e2523-151e-4a3f-b2e4-8e4d1c7981bd(60)">
+                          <LayoutGroup Id="Auto981e8216-d6a4-4fe2-ac33-c6abb7de9855" Caption="">
+                            <LayoutGroup Id="Item9" Caption="Характеристики" />
+                            <LayoutGroup Id="Item12" Caption="Бонусы" />
+                          </LayoutGroup>
+                        </LayoutGroup>
+                      </LayoutGroup>
                     </LayoutGroup>
                   </LayoutGroup>
                 </TabbedGroup>
