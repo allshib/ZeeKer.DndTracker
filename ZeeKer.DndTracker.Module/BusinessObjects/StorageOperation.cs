@@ -35,6 +35,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Тип операции")]
         public virtual StorageOperationType OperationType { get; set; }
 
+        [XafDisplayName("Выполнено")]
+        public virtual bool Executed { get; set; }
+
         [XafDisplayName("Режим")]
         public virtual OperationMode OperationMode { get; set; }
 

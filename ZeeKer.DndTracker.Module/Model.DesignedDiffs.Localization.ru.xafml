@@ -29,6 +29,7 @@
         <Items>
           <Item Id="MyCharacter_ListView" Caption="Мои Персонажи" />
           <Item Id="MyCharacterStorage_ListView" Caption="Хранилища моих персонажей" />
+          <Item Id="MyTransactions" Caption="Мои преднастроенные транзакции" />
         </Items>
       </Item>
     </Items>

@@ -4,7 +4,7 @@
     <Items>
       <Item Id="PlayerHub">
         <Items>
-          <Item Id="MyDetails" ViewId="ApplicationUser_DetailView" ObjectKey="@CurrentUserID" Caption="My Details" ImageName="BO_MyDetails" IsNewNode="True" />
+          <Item Id="MyDetails" ObjectKey="@CurrentUserID" Caption="My Details" ImageName="BO_MyDetails" ViewId="ApplicationUser_DetailView" IsNewNode="True" />
         </Items>
       </Item>
     </Items>

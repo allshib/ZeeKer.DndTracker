@@ -14,6 +14,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using ZeeKer.DndTracker.Module.UseCases.ExecuteMultipleTransactionUseCase;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
@@ -54,10 +55,12 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         // Collection property:
         //public virtual IList<AssociatedEntityObject> AssociatedEntities { get; set; }
 
-        //[Action(Caption = "My UI Action", ConfirmationMessage = "Are you sure?", ImageName = "Attention", AutoCommit = true)]
-        //public void ActionMethod() {
-        //    // Trigger custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
-        //    this.PersistentProperty = "Paid";
-        //}
+        [Action(Caption = "Выполнить транзакцию", ConfirmationMessage = "Вы уверены?", AutoCommit = true, SelectionDependencyType = MethodActionSelectionDependencyType.RequireSingleObject)]
+        public void Execute()
+        {
+            var useCase = new ExecuteMultipleTransactionUseCase(ObjectSpace);
+
+            useCase.Execute(this);
+        }
     }
 }

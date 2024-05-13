@@ -7,10 +7,11 @@ using static System.Net.Mime.MediaTypeNames;
 using ZeeKer.DndTracker.Module.Controllers;
 using Azure;
 using Microsoft.Identity.Client.Extensions.Msal;
+using ZeeKer.DndTracker.Module.Extensions;
 
 namespace ZeeKer.DndTracker.Module.UseCases.ManageCoinsUseCase;
 
-public class ManageCoinsUseCase: ShowViewUseCaseBase
+public class ManageCoinsUseCase : ShowViewUseCaseBase
 {
     public ManageCoinsUseCase(XafApplication application) : base(application)
     {
@@ -43,54 +44,15 @@ public class ManageCoinsUseCase: ShowViewUseCaseBase
         var detailView = this.CreateDetailView(operation, os);
         this.OpenDetailView(detailView, () =>
         {
-            CalculateStorageCoins(operation);
+            operation.ExecuteOperation();
 
             os.CommitChanges();
             AfterCommit?.Invoke(this, new AfterCommitEventArgs());
-            
+
         });
 
     }
 
-    private void CalculateStorageCoins(StorageOperation operation)
-    {
-        switch (operation.OperationType)
-        {
-            case StorageOperationType.AddGoldCoins:
-                var addGoldCoins = operation.Coins * 100;
 
-                operation.Storage!.CopperCoins += addGoldCoins;
-
-                if (operation.SourceStorageId is not null)
-                    operation.StorageSource!.CopperCoins -= addGoldCoins;
-                break;
-            case StorageOperationType.RemoveGoldCoins:
-                operation.Storage!.CopperCoins -= operation.Coins * 100;
-                break;
-            case StorageOperationType.AddSilverCoins:
-                var addSilverCoins = operation.Coins * 10;
-
-                operation.Storage!.CopperCoins += addSilverCoins;
-
-                if (operation.SourceStorageId is not null)
-                    operation.StorageSource!.CopperCoins -= addSilverCoins;
-                break;
-            case StorageOperationType.RemoveSilverCoins:
-                operation.Storage!.CopperCoins -= operation.Coins * 10;
-                break;
-            case StorageOperationType.AddCopperCoins:
-                operation.Storage!.CopperCoins += operation.Coins;
-
-                if (operation.SourceStorageId is not null)
-                    operation.StorageSource!.CopperCoins -= operation.Coins;
-                break;
-            case StorageOperationType.RemoveCopperCoins:
-                operation.Storage!.CopperCoins -= operation.Coins;
-                break;
-            default:
-                throw new NotImplementedException();
-
-        }
-    }
     public record AfterCommitEventArgs();
 }

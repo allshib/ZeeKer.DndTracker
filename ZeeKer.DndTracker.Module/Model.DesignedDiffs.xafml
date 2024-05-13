@@ -2,6 +2,7 @@
 <Application Title="ZeeKer.DndTracker" PreferredLanguage="ru-RU">
   <ActionDesign>
     <Actions>
+      <Action Id="MultipleTransaction.Execute" TargetObjectsCriteria="IsNewObject([This]) = False And [StorageSource] Is Not Null And [TransactionSettings][].Count() &gt; 0" ImageName="InsertField" />
       <Action Id="SwapStorages" PaintStyle="Image" ImageName="BO_StateMachine" />
     </Actions>
   </ActionDesign>
@@ -10,9 +11,10 @@
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Campain" ImageName="BO_User" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Character" ImageName="BO_Employee" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage" ImageName="ListSource" />
-    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.MultipleTransaction">
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.MultipleTransaction" ImageName="Action_StateMachine">
       <AppearanceRules>
-        <AppearanceRule Id="NeCreated" Visibility="Hide" TargetItems="ActiveCharacters,TransactionSettings" Criteria="IsNewObject([This])" IsNewNode="True" />
+        <AppearanceRule Id="NewCreated" Visibility="Hide" TargetItems="ActiveCharacters,TransactionSettings" Criteria="IsNewObject([This])" IsNewNode="True" />
+        <AppearanceRule Id="NewCreated_Action" Priority="0" Visibility="Hide" TargetItems="CreateTransaction" Criteria="IsNewObject([This])" AppearanceItemType="Action" IsNewNode="True" />
       </AppearanceRules>
     </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Person" ImageName="BO_Position_v92" />
@@ -43,6 +45,7 @@
         <Items IsNewNode="True">
           <Item Id="MyCharacter_ListView" ViewId="MyCharacter_ListView" IsNewNode="True" />
           <Item Id="MyCharacterStorage_ListView" ViewId="MyCharacterStorage_ListView" IsNewNode="True" />
+          <Item Id="MyTransactions" ViewId="MyMultipleTransaction_ListView" IsNewNode="True" />
         </Items>
       </Item>
       <Item Id="Reports" Visible="False" />
@@ -285,7 +288,7 @@
         <ColumnInfo Id="LocalStorage" PropertyName="LocalStorage" Index="3" IsNewNode="True" />
       </Columns>
     </ListView>
-    <ListView Id="MyCharacterStorage_ListView" ClassName="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage" FreezeColumnIndices="True" Criteria="IsCurrentUserId([Character.Person.User.ID])" IsNewNode="True">
+    <ListView Id="MyCharacterStorage_ListView" ClassName="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage" FreezeColumnIndices="True" Criteria="IsCurrentUserId([Character.Person.User.ID])" AutoExpandAllGroups="True" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="CoinsInfo" PropertyName="CoinsInfo" IsNewNode="True" />
         <ColumnInfo Id="CopperCoins" PropertyName="CopperCoins" Index="-1" IsNewNode="True" />
@@ -299,6 +302,15 @@
         <ColumnInfo Id="DefaultProperty" PropertyName="DefaultProperty" SortIndex="-1" SortOrder="None" Index="0" IsNewNode="True" />
         <ColumnInfo Id="Character.Campain" PropertyName="Character.Campain" Index="1" SortIndex="-1" SortOrder="Ascending" GroupIndex="0" IsNewNode="True" />
         <ColumnInfo Id="Character" PropertyName="Character" Index="2" SortOrder="Ascending" GroupIndex="1" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="MyMultipleTransaction_ListView" ClassName="ZeeKer.DndTracker.Module.BusinessObjects.MultipleTransaction" Criteria="IsCurrentUserId([StorageSource.Character.Person.User.ID])" AutoExpandAllGroups="True" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="ID" PropertyName="ID" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Reason" PropertyName="Reason" SortIndex="0" SortOrder="Ascending" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="StorageSource" PropertyName="StorageSource" Index="1" SortOrder="Ascending" GroupIndex="2" IsNewNode="True" />
+        <ColumnInfo Id="StorageSource.Character" PropertyName="StorageSource.Character" Index="2" SortOrder="Ascending" GroupIndex="1" IsNewNode="True" />
+        <ColumnInfo Id="StorageSource.Character.Campain" PropertyName="StorageSource.Character.Campain" Index="3" SortOrder="Ascending" GroupIndex="0" IsNewNode="True" />
       </Columns>
     </ListView>
     <DetailView Id="Person_DetailView">
@@ -494,7 +506,6 @@
                     </LayoutGroup>
                   </LayoutGroup>
                 </LayoutGroup>
-                <LayoutItem Id="OperationDate" Index="5" RelativeSize="30.043541364296082" Removed="True" />
               </LayoutGroup>
               <LayoutGroup Id="StorageOperation_col2" Index="1" RelativeSize="78.375" Removed="True">
                 <LayoutItem Id="OperationDate" RelativeSize="100" Index="0" Removed="True" />
