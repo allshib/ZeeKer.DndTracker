@@ -39,6 +39,15 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [RuleRequiredField(DefaultContexts.Save)]
         public virtual string Name { get; set; }
 
+        [XafDisplayName("Уровень")]
+        public virtual int Level { get; set; }
+
+        [Browsable(false)]
+        public virtual Guid? StatsId { get; set; }
+
+        [ForeignKey(nameof(StatsId)), XafDisplayName("Характеристики")]
+        public virtual CharacterStats? Stats { get; set; }
+
 
         [Browsable(false)]
         public virtual Guid? CampainId { get; set; }
@@ -85,7 +94,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             var user = ObjectSpace.GetObjectByKey<ApplicationUser>(SecuritySystem.CurrentUserId);
             Person = user?.Person;
             Info = ObjectSpace.CreateObject<CharacterInfo>();
-
+            Stats = ObjectSpace.CreateObject<CharacterStats>();
+            Stats.Character = this;
+            Level = 1;
         }
 
         public override void OnSaving()

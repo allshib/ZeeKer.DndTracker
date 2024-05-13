@@ -72,6 +72,16 @@ public class Updater : ModuleUpdater {
         ObjectSpace.CommitChanges();
         ObjectSpace.Refresh();
 
+        var characters2 = ObjectSpace.GetObjects<Character>(CriteriaOperator.Parse("StatsId = ?", null));
+
+        foreach (var character in characters2)
+        {
+            character.Stats = ObjectSpace.CreateObject<CharacterStats>();
+            character.Stats.Character = character;
+        }
+        ObjectSpace.CommitChanges();
+        ObjectSpace.Refresh();
+
         if (ObjectSpace.FindObject<Campain>(CriteriaOperator.Parse("Name = ?", "И солнце закатилось")) is null)
         {
             var campain = ObjectSpace.CreateObject<Campain>();

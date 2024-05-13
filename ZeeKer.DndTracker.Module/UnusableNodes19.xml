@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="StateMachineState_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <TabbedGroup Id="Tabs">
+            <LayoutGroup Id="Transitions" TextAlignMode="AlignLocal">
+              <LayoutItem Id="Transitions" TextAlignMode="AutoSize" />
+            </LayoutGroup>
+            <LayoutGroup Id="Appearances" TextAlignMode="AlignLocal">
+              <LayoutItem Id="Appearances" TextAlignMode="AutoSize" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Character_DetailView">
+      <Items Id="Items">
+        <ActionContainerViewItem Id="SendGold" ActionContainer="SendGoldCategory" />
+      </Items>
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Character">
+              <LayoutItem Id="Name" Index="0" RelativeSize="4.632152588555858" Removed="True" />
+              <LayoutItem Id="Info" Index="1" RelativeSize="6.622516556291391" Removed="True" />
+              <LayoutItem Id="LocalStorage" Removed="True" />
+              <LayoutItem Id="Person" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="CharacterStorage_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <TabbedGroup Id="Item1">
+              <LayoutGroup Id="CharacterStorage">
+                <LayoutGroup Id="CharacterStorage_col2">
+                  <LayoutItem Id="СopperСoins" ViewItem="СopperСoins" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </TabbedGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>
