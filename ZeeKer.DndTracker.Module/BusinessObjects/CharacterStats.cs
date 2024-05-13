@@ -21,7 +21,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
     [DefaultClassOptions]
     //[ImageName("BO_Contact")]
     //[DefaultProperty("Name")]
-    [XafDisplayName("Õàðàêòåðèñòèêè")]
+    [XafDisplayName("Ð¥Ð°Ñ€Ð°ÐºÑ‚ÐµÑ€Ð¸ÑÑ‚Ð¸ÐºÐ¸")]
    
     public class CharacterStats : BaseObject
     {
@@ -33,48 +33,48 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         
 
-        [XafDisplayName("Ñèëà")]
+        [XafDisplayName("Ð¡Ð¸Ð»Ð°")]
         public virtual int Strength { get; set; }
 
-        [XafDisplayName("Ñèëà Áîíóñ")]
+        [XafDisplayName("Ð¡Ð¸Ð»Ð° Ð‘Ð¾Ð½ÑƒÑ")]
         public virtual int StrengthBonus => Strength.CalcStatsBonus();
 
-        [XafDisplayName("Òåëîñëîæåíèå")]
+        [XafDisplayName("Ð¢ÐµÐ»Ð¾ÑÐ»Ð¾Ð¶ÐµÐ½Ð¸Ðµ")]
         public virtual int Constitution { get; set; }
 
-        [XafDisplayName("Òåëîñëîæåíèå Áîíóñ")]
+        [XafDisplayName("Ð¢ÐµÐ»Ð¾ÑÐ»Ð¾Ð¶ÐµÐ½Ð¸Ðµ Ð‘Ð¾Ð½ÑƒÑ")]
         public virtual int ConstitutionBonus => Constitution.CalcStatsBonus();
-        [XafDisplayName("Èíòåëëåêò")]
+        [XafDisplayName("Ð˜Ð½Ñ‚ÐµÐ»Ð»ÐµÐºÑ‚")]
         public virtual int Intelegence { get; set; }
-        [XafDisplayName("Èíòåëëåêò Áîíóñ")]
+        [XafDisplayName("Ð˜Ð½Ñ‚ÐµÐ»Ð»ÐµÐºÑ‚ Ð‘Ð¾Ð½ÑƒÑ")]
         public virtual int IntelegenceBonus => Intelegence.CalcStatsBonus();
 
-        [XafDisplayName("Õàðèçìà")]
+        [XafDisplayName("Ð¥Ð°Ñ€Ð¸Ð·Ð¼Ð°")]
         public virtual int Charisma { get; set; }
 
-        [XafDisplayName("Õàðèçìà Áîíóñ")]
+        [XafDisplayName("Ð¥Ð°Ñ€Ð¸Ð·Ð¼Ð° Ð‘Ð¾Ð½ÑƒÑ")]
         public virtual int CharismaBonus => Charisma.CalcStatsBonus();
 
-        [XafDisplayName("Ëîâêîñòü")]
+        [XafDisplayName("Ð›Ð¾Ð²ÐºÐ¾ÑÑ‚ÑŒ")]
         public virtual int Dexterity { get; set; }
 
-        [XafDisplayName("Ëîâêîñòü Áîíóñ")]
+        [XafDisplayName("Ð›Ð¾Ð²ÐºÐ¾ÑÑ‚ÑŒ Ð‘Ð¾Ð½ÑƒÑ")]
         public virtual int DexterityBonus => Dexterity.CalcStatsBonus();
 
-        [XafDisplayName("Ìóäðîñòü")]
+        [XafDisplayName("ÐœÑƒÐ´Ñ€Ð¾ÑÑ‚ÑŒ")]
         public virtual int Wisdom { get; set; }
 
-        [XafDisplayName("Ìóäðîñòü Áîíóñ")]
+        [XafDisplayName("ÐœÑƒÐ´Ñ€Ð¾ÑÑ‚ÑŒ Ð‘Ð¾Ð½ÑƒÑ")]
         public virtual int WisdomBonus =>  Wisdom.CalcStatsBonus();
 
         [Browsable(false)]
         public virtual Guid? CharacterId { get; set; }
 
-        [ForeignKey(nameof(CharacterId)), XafDisplayName("Ïåðñîíàæ")]
+        [ForeignKey(nameof(CharacterId)), XafDisplayName("ÐŸÐµÑ€ÑÐ¾Ð½Ð°Ð¶")]
         public virtual Character? Character { get; set; }
 
 
-        [XafDisplayName("Áîíóñ ìàñòåðñòâà")]
+        [XafDisplayName("Ð‘Ð¾Ð½ÑƒÑ Ð¼Ð°ÑÑ‚ÐµÑ€ÑÑ‚Ð²Ð°")]
         public virtual int Profiency => CalculateProfiency();
 
         private int CalculateProfiency()

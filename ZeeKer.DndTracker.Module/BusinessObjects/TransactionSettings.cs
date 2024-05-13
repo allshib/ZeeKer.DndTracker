@@ -20,7 +20,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
 
     //[DefaultClassOptions]
-    [XafDisplayName("Настройки транзакции")]
+    [XafDisplayName("РќР°СЃС‚СЂРѕР№РєРё С‚СЂР°РЅР·Р°РєС†РёРё")]
     
     public class TransactionSettings : BaseObject
     {
@@ -32,20 +32,20 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [Browsable(false)]
         public virtual Guid? TransactionId { get; set; }
 
-        [ForeignKey(nameof(TransactionId)), XafDisplayName("Транзакция")]
+        [ForeignKey(nameof(TransactionId)), XafDisplayName("РўСЂР°РЅР·Р°РєС†РёСЏ")]
         public virtual MultipleTransaction? Transaction {  get; set; }
 
-        [XafDisplayName("Тип операции")]
+        [XafDisplayName("РўРёРї РѕРїРµСЂР°С†РёРё")]
         public virtual StorageOperationType OperationType { get; set; }
 
-        [XafDisplayName("Кол-во монет")]
+        [XafDisplayName("РљРѕР»-РІРѕ РјРѕРЅРµС‚")]
         [Column(TypeName = "decimal(18,2)")]
         public virtual decimal Coins { get; set; }
 
         [NotMapped, Browsable(false)]
         private Character destinationCharacter;
 
-        [NotMapped, XafDisplayName("Персонаж получатель")]
+        [NotMapped, XafDisplayName("РџРµСЂСЃРѕРЅР°Р¶ РїРѕР»СѓС‡Р°С‚РµР»СЊ")]
         public virtual Character DestinationCharacter
         {
             get
@@ -60,7 +60,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         }
         [Browsable(false)]
         public virtual Guid? StorageDestinationId { get; set; }
-        [ForeignKey(nameof(StorageDestinationId)), XafDisplayName("Хранилище Получатель")]
+        [ForeignKey(nameof(StorageDestinationId)), XafDisplayName("РҐСЂР°РЅРёР»РёС‰Рµ РџРѕР»СѓС‡Р°С‚РµР»СЊ")]
         public virtual CharacterStorage? StorageDestination { get; set; }
 
 

@@ -22,7 +22,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
     //[DefaultClassOptions]
     //[ImageName("BO_Contact")]
     //[DefaultProperty("Name")]
-    [XafDisplayName("Множественная транзация")]
+    [XafDisplayName("РњРЅРѕР¶РµСЃС‚РІРµРЅРЅР°СЏ С‚СЂР°РЅР·Р°С†РёСЏ")]
     [XafDefaultProperty(nameof(Reason))]
     public class MultipleTransaction : BaseObject
     {
@@ -32,21 +32,21 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             // this.AssociatedEntities = new ObservableCollection<AssociatedEntityObject>();
         }
 
-        [XafDisplayName("Причина")]
+        [XafDisplayName("РџСЂРёС‡РёРЅР°")]
         public virtual string Reason { get; set; }
 
         [Browsable(false)]
         public virtual Guid? StorageSourceId {  get; set; }
-        [XafDisplayName("Хранилище источник"), ForeignKey(nameof(StorageSourceId))]
+        [XafDisplayName("РҐСЂР°РЅРёР»РёС‰Рµ РёСЃС‚РѕС‡РЅРёРє"), ForeignKey(nameof(StorageSourceId))]
         public virtual CharacterStorage? StorageSource { get; set; }
 
-        [XafDisplayName("Настройки транзакций"), Aggregated]
+        [XafDisplayName("РќР°СЃС‚СЂРѕР№РєРё С‚СЂР°РЅР·Р°РєС†РёР№"), Aggregated]
         public virtual IList<TransactionSettings> TransactionSettings { get; set; } = new ObservableCollection<TransactionSettings>();
 
-        [XafDisplayName("Доступные персонажи"), NotMapped]
+        [XafDisplayName("Р”РѕСЃС‚СѓРїРЅС‹Рµ РїРµСЂСЃРѕРЅР°Р¶Рё"), NotMapped]
         public virtual IEnumerable<Character> ActiveCharacters => ObjectSpace.GetObjects<Character>(CriteriaOperator.Parse($"{nameof(Character.CampainId)} = ?", StorageSource?.Character?.CampainId));
 
-        [XafDisplayName("Выполненные операции"), Aggregated]
+        [XafDisplayName("Р’С‹РїРѕР»РЅРµРЅРЅС‹Рµ РѕРїРµСЂР°С†РёРё"), Aggregated]
         public virtual IList<StorageOperation> StorageOperations { get; set; } = new ObservableCollection<StorageOperation>();
 
         // Alternatively, specify more UI options:
@@ -58,7 +58,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         // Collection property:
         //public virtual IList<AssociatedEntityObject> AssociatedEntities { get; set; }
 
-        [Action(Caption = "Выполнить транзакцию", ConfirmationMessage = "Вы уверены?", AutoCommit = true, SelectionDependencyType = MethodActionSelectionDependencyType.RequireSingleObject)]
+        [Action(Caption = "Р’С‹РїРѕР»РЅРёС‚СЊ С‚СЂР°РЅР·Р°РєС†РёСЋ", ConfirmationMessage = "Р’С‹ СѓРІРµСЂРµРЅС‹?", AutoCommit = true, SelectionDependencyType = MethodActionSelectionDependencyType.RequireSingleObject)]
         public void Execute()
         {
             var useCase = new ExecuteMultipleTransactionUseCase(ObjectSpace);

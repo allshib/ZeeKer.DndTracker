@@ -18,7 +18,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
 
     //[DefaultProperty("Name")]
-    [XafDisplayName("Информация о персонаже")]
+    [XafDisplayName("РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїРµСЂСЃРѕРЅР°Р¶Рµ")]
     public class CharacterInfo : BaseObject
     {
         
@@ -27,31 +27,31 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             // In the constructor, initialize collection properties, e.g.: 
             // this.AssociatedEntities = new ObservableCollection<AssociatedEntityObject>();
         }
-        [XafDisplayName("Возраст")]
+        [XafDisplayName("Р’РѕР·СЂР°СЃС‚")]
         public virtual int Age { get; set; }
-        [XafDisplayName("Рост (см)")]
+        [XafDisplayName("Р РѕСЃС‚ (СЃРј)")]
         public virtual int Height { get; set; }
-        [XafDisplayName("Вес (кг)")]
+        [XafDisplayName("Р’РµСЃ (РєРі)")]
         public virtual double Weight { get; set; }
-        [XafDisplayName("Предыстория"), StringLength(2000)]
+        [XafDisplayName("РџСЂРµРґС‹СЃС‚РѕСЂРёСЏ"), StringLength(2000)]
         public virtual string Background { get; set; }
 
-        [XafDisplayName("Черты характера"), StringLength(1000)]
+        [XafDisplayName("Р§РµСЂС‚С‹ С…Р°СЂР°РєС‚РµСЂР°"), StringLength(1000)]
         public virtual string Personality { get; set; }
 
-        [XafDisplayName("Идеалы"), StringLength(800)]
+        [XafDisplayName("РРґРµР°Р»С‹"), StringLength(800)]
         public virtual string Ideals { get; set; }
 
-        [XafDisplayName("Страхи"), StringLength(1000)]
+        [XafDisplayName("РЎС‚СЂР°С…Рё"), StringLength(1000)]
         public virtual string Flaws { get; set; }
 
-        [XafDisplayName("Мировозрение"), StringLength(50)]
+        [XafDisplayName("РњРёСЂРѕРІРѕР·СЂРµРЅРёРµ"), StringLength(50)]
         public virtual string Aligment { get; set; }
 
-        [XafDisplayName("Глаза"), StringLength(50)]
+        [XafDisplayName("Р“Р»Р°Р·Р°"), StringLength(50)]
         public virtual string Eyes { get; set; }
 
-        [XafDisplayName("Волосы"), StringLength(50)]
+        [XafDisplayName("Р’РѕР»РѕСЃС‹"), StringLength(50)]
         public virtual string Hair { get; set; }
 
         //[Action(Caption = "My UI Action", ConfirmationMessage = "Are you sure?", ImageName = "Attention", AutoCommit = true)]

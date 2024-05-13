@@ -57,12 +57,15 @@ public class Startup {
                         // We recommend that you refer to the following help topic before you use an in-memory database: https://docs.microsoft.com/en-us/ef/core/testing/in-memory
                         //options.UseInMemoryDatabase("InMemory");
                         string connectionString = null;
-                        if(Configuration.GetConnectionString("ConnectionString") != null) {
-                            connectionString = Configuration.GetConnectionString("ConnectionString");
+#if RELEASE
+                        
+                        if(Configuration.GetConnectionString("ConnectionStringRelease") != null) {
+                            connectionString = Configuration.GetConnectionString("ConnectionStringRelease");
                         }
-#if EASYTEST
-                        if(Configuration.GetConnectionString("EasyTestConnectionString") != null) {
-                            connectionString = Configuration.GetConnectionString("EasyTestConnectionString");
+#else
+
+                        if (Configuration.GetConnectionString("ConnectionString") != null) {
+                            connectionString = Configuration.GetConnectionString("ConnectionString");
                         }
 #endif
                         ArgumentNullException.ThrowIfNull(connectionString);
@@ -106,7 +109,8 @@ public class Startup {
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
-        if(env.IsDevelopment()) {
+        
+        if (env.IsDevelopment()) {
             app.UseDeveloperExceptionPage();
         }
         else {
