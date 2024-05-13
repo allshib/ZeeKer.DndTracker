@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="StateMachineState_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <TabbedGroup Id="Tabs">
+            <LayoutGroup Id="Transitions" TextAlignMode="AlignLocal">
+              <LayoutItem Id="Transitions" TextAlignMode="AutoSize" />
+            </LayoutGroup>
+            <LayoutGroup Id="Appearances" TextAlignMode="AlignLocal">
+              <LayoutItem Id="Appearances" TextAlignMode="AutoSize" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Character_DetailView">
+      <Items Id="Items">
+        <ActionContainerViewItem Id="SendGold" ActionContainer="SendGoldCategory" />
+      </Items>
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <TabbedGroup Id="Item6">
+            <LayoutGroup Id="Storages_Group">
+              <LayoutItem Id="Storages" ViewItem="Storages" />
+            </LayoutGroup>
+          </TabbedGroup>
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Character">
+              <TabbedGroup Id="Item2">
+                <LayoutGroup Id="Item1">
+                  <LayoutGroup Id="Auto59f86a82-ced4-4138-aef9-b854ecbbff0e">
+                    <LayoutGroup Id="Auto3978ed44-1b31-4fe5-bee3-d08d037c8806">
+                      <LayoutGroup Id="CoinsB2">
+                        <LayoutGroup Id="CoinsB">
+                          <LayoutGroup Id="Coins">
+                            <LayoutGroup Id="Autoa5a2658e-c245-42ae-8efe-fd7748ef9ddf">
+                              <LayoutItem Id="LocalStorage.СopperСoins" ViewItem="LocalStorage.СopperСoins" />
+                            </LayoutGroup>
+                          </LayoutGroup>
+                        </LayoutGroup>
+                      </LayoutGroup>
+                    </LayoutGroup>
+                  </LayoutGroup>
+                </LayoutGroup>
+              </TabbedGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="CharacterStorage_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <TabbedGroup Id="Item1">
+              <LayoutGroup Id="CharacterStorage">
+                <LayoutGroup Id="CharacterStorage_col2">
+                  <LayoutItem Id="СopperСoins" ViewItem="СopperСoins" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </TabbedGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

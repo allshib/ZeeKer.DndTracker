@@ -86,11 +86,11 @@
               </TabbedGroup>
             </LayoutGroup>
           </LayoutGroup>
-          <TabbedGroup Id="Item6">
+          <TabbedGroup Id="Tabs">
             <LayoutGroup Id="Storages_Group" Caption="Хранилища" />
-            <LayoutGroup Id="Item7" Caption="Операции инвентаря (простые/входящие)" />
-            <LayoutGroup Id="Item9" Caption="Операции инвентаря (Исходящие)" />
-            <LayoutGroup Id="MultipleTransaction" Caption="Преднастроенные операции" />
+            <LayoutGroup Id="InventoryOperation_Group1" Caption="Операции инвентаря (простые/входящие)" />
+            <LayoutGroup Id="InventoryOperation_Group2" Caption="Операции инвентаря (Исходящие)" />
+            <LayoutGroup Id="MultipleTransaction_Group" Caption="Преднастроенные операции" />
           </TabbedGroup>
         </LayoutGroup>
       </Layout>
