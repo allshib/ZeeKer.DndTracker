@@ -233,6 +233,18 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="Character_ListView" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="Info" Index="-1" />
+        <ColumnInfo Id="Stats" Index="-1" />
+        <ColumnInfo Id="Name" Index="0" />
+        <ColumnInfo Id="Level" Index="1" />
+        <ColumnInfo Id="Campain" Index="2" />
+        <ColumnInfo Id="Person" Index="3" />
+        <ColumnInfo Id="LocalStorage" Index="4" />
+      </Columns>
+    </ListView>
     <ListView Id="Character_Storages_ListView" FreezeColumnIndices="True">
       <Columns>
         <ColumnInfo Id="Character" Index="-1" />
