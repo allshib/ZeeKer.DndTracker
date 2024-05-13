@@ -66,7 +66,9 @@ public class Startup {
                         }
 #endif
                         ArgumentNullException.ThrowIfNull(connectionString);
-                        options.UseSqlServer(connectionString);
+                        options.UseSqlServer(connectionString,
+                            o => o.UseQuerySplittingBehavior(QuerySplittingBehavior.SingleQuery));
+
                         options.UseChangeTrackingProxies();
                         options.UseObjectSpaceLinkProxies();
                         options.UseLazyLoadingProxies();

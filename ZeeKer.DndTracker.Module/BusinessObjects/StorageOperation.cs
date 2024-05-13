@@ -39,6 +39,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         public virtual OperationMode OperationMode { get; set; }
 
         [XafDisplayName("Кол-во монет")]
+        [Column(TypeName = "decimal(18,2)")]
         public virtual decimal Coins { get; set; }
 
         [Browsable(false)]

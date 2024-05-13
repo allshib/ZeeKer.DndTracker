@@ -67,9 +67,10 @@ public class DndTrackerEFCoreDbContext : DbContext {
     public DbSet<CharacterStorage> CharacterStorages { get; set; }
     public DbSet<StorageOperation> StorageOperations { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder Builder)
+    protected override void OnConfiguring(DbContextOptionsBuilder builder)
     {
-        Builder.ConfigureWarnings(delegate (WarningsConfigurationBuilder warnings)
+        
+        builder.ConfigureWarnings(delegate (WarningsConfigurationBuilder warnings)
         {
             // The following line will suppress the warning
             // "'Foo.Bar' and 'Bar.Foo' were separated into two relationships as

@@ -29,6 +29,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects;
 
 
         [XafDisplayName("Медные монеты")]
+        [Column(TypeName = "decimal(18,2)")]
         public virtual decimal CopperCoins { get; set; }
 
         [XafDisplayName("Серебрянные монеты")]
