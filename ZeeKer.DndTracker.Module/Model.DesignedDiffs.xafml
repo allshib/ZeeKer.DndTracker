@@ -28,6 +28,8 @@
         <AppearanceRule Id="BlockReason" Priority="0" Context="DetailView" TargetItems="Reason" Criteria="IsNewObject([This]) = False And Not IsNullOrEmpty([Reason])" Enabled="False" IsNewNode="True" />
         <AppearanceRule Id="ChangeModeOperation" TargetItems="Sender,Destination" Visibility="Hide" Criteria="[OperationMode] = ##Enum#ZeeKer.DndTracker.Module.Types.OperationMode,Default#" AppearanceItemType="LayoutItem" IsNewNode="True" />
         <AppearanceRule Id="ChangeModeOperationAction" Priority="0" TargetItems="SwapStorages" Visibility="Hide" Criteria="[OperationMode] = ##Enum#ZeeKer.DndTracker.Module.Types.OperationMode,Default#" AppearanceItemType="Action" IsNewNode="True" />
+        <AppearanceRule Id="HideCharacterFields" TargetItems="DestinationCharacter,SourceCharacter" Visibility="Hide" Criteria="IsNewObject([This]) = False" IsNewNode="True" />
+        <AppearanceRule Id="HideSwap" Priority="0" Context="DetailView" TargetItems="SwapStorages" Criteria="IsNewObject([This]) = False" Enabled="" AppearanceItemType="Action" Visibility="Hide" IsNewNode="True" />
       </AppearanceRules>
       <OwnMembers>
         <Member Name="ActiveCharacters" AllowEdit="False" />
