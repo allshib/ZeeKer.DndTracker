@@ -115,6 +115,18 @@
   </Validation>
   <Views>
     <ListView Id="ApplicationUser_ListView" Caption="Users" />
+    <ListView Id="Campain_Characters_ListView" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="Campain" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="Info" Index="-1" />
+        <ColumnInfo Id="Level" Index="-1" />
+        <ColumnInfo Id="Stats" Index="-1" />
+        <ColumnInfo Id="Name" Index="0" />
+        <ColumnInfo Id="Person" Index="1" />
+        <ColumnInfo Id="LocalStorage" Index="2" />
+      </Columns>
+    </ListView>
     <ListView Id="Campain_ListView" FreezeColumnIndices="True">
       <Columns>
         <ColumnInfo Id="ID" Index="-1" />
@@ -367,36 +379,46 @@
     </ListView>
     <ListView Id="CharacterStorage_Operations_ListView" AllowLink="False" AllowNew="False" AllowUnlink="False" FreezeColumnIndices="True" AllowDelete="False">
       <Columns>
+        <ColumnInfo Id="Coins" Index="-1" />
         <ColumnInfo Id="DestinationCharacter" Index="-1" />
         <ColumnInfo Id="ID" Index="-1" />
         <ColumnInfo Id="OperationMode" Index="-1" />
+        <ColumnInfo Id="OperationType" Index="-1" />
         <ColumnInfo Id="Reason" Index="-1" />
+        <ColumnInfo Id="ShortOperationInfo" Index="-1" />
         <ColumnInfo Id="SourceCharacter" Index="-1" />
         <ColumnInfo Id="Storage" Index="-1" />
-        <ColumnInfo Id="OperationType" Index="0" />
-        <ColumnInfo Id="Coins" Index="1" />
-        <ColumnInfo Id="StorageSource" Index="2" />
-        <ColumnInfo Id="OperationDate" SortIndex="0" SortOrder="Descending" Index="3" />
+        <ColumnInfo Id="StorageSource" Index="-1" />
+        <ColumnInfo Id="ShortOperationInfoAndSource" Index="0" />
+        <ColumnInfo Id="OperationDate" SortIndex="0" SortOrder="Descending" Index="1" />
       </Columns>
     </ListView>
     <ListView Id="CharacterStorage_OperationsFromThis_ListView" FreezeColumnIndices="True" AllowDelete="False" AllowLink="False" AllowNew="False">
       <Columns>
+        <ColumnInfo Id="Coins" Index="-1" />
         <ColumnInfo Id="DestinationCharacter" Index="-1" />
         <ColumnInfo Id="ID" Index="-1" />
         <ColumnInfo Id="OperationMode" Index="-1" />
+        <ColumnInfo Id="OperationType" Index="-1" />
         <ColumnInfo Id="Reason" Index="-1" />
+        <ColumnInfo Id="ShortOperationInfo" Index="-1" Width="152" />
         <ColumnInfo Id="SourceCharacter" Index="-1" />
+        <ColumnInfo Id="Storage" Index="-1" />
         <ColumnInfo Id="StorageSource" Index="-1" />
-        <ColumnInfo Id="OperationType" Index="0" />
-        <ColumnInfo Id="Coins" Index="1" />
-        <ColumnInfo Id="Storage" Index="2" />
-        <ColumnInfo Id="OperationDate" Index="3" SortIndex="0" SortOrder="Descending" />
+        <ColumnInfo Id="ShortOperationInfoAndDestination" Index="0" />
+        <ColumnInfo Id="OperationDate" Index="1" SortIndex="0" SortOrder="Descending" />
       </Columns>
     </ListView>
-    <ListView Id="MultipleTransaction_ActiveCharacters_ListView">
+    <ListView Id="MultipleTransaction_ActiveCharacters_ListView" FreezeColumnIndices="True">
       <Columns>
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="Info" Index="-1" />
+        <ColumnInfo Id="Level" Index="-1" />
         <ColumnInfo Id="LocalStorage" Index="-1" />
         <ColumnInfo Id="Person" Index="-1" />
+        <ColumnInfo Id="Stats" Index="-1" />
+        <ColumnInfo Id="Name" Index="0" />
+        <ColumnInfo Id="Campain" Index="1" />
       </Columns>
     </ListView>
     <DetailView Id="MultipleTransaction_DetailView">
@@ -432,6 +454,27 @@
         <ColumnInfo Id="Reason" Index="0" />
         <ColumnInfo Id="StorageSource" Index="1" />
         <ColumnInfo Id="FinalGoldSum" Index="2" />
+      </Columns>
+    </ListView>
+    <ListView Id="MultipleTransaction_StorageOperations_ListView" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="Campain" Index="-1" />
+        <ColumnInfo Id="Coins" Index="-1" />
+        <ColumnInfo Id="CreatedAt" Index="-1" />
+        <ColumnInfo Id="DestinationCharacter" Index="-1" />
+        <ColumnInfo Id="Executed" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="MultipleTransaction" Index="-1" />
+        <ColumnInfo Id="OperationMode" Index="-1" />
+        <ColumnInfo Id="OperationType" Index="-1" />
+        <ColumnInfo Id="Reason" Index="-1" />
+        <ColumnInfo Id="ShortOperationInfo" Index="-1" Width="113" />
+        <ColumnInfo Id="ShortOperationInfoAndSource" Index="-1" />
+        <ColumnInfo Id="SourceCharacter" Index="-1" />
+        <ColumnInfo Id="Storage" Index="-1" />
+        <ColumnInfo Id="StorageSource" Index="-1" />
+        <ColumnInfo Id="ShortOperationInfoAndDestination" Index="0" />
+        <ColumnInfo Id="OperationDate" Index="1" />
       </Columns>
     </ListView>
     <ListView Id="MultipleTransaction_TransactionSettings_ListView" FreezeColumnIndices="True" AllowUnlink="False" AllowNew="False">
@@ -477,6 +520,14 @@
         <ColumnInfo Id="StorageSource" PropertyName="StorageSource" Index="2" SortOrder="Ascending" GroupIndex="2" IsNewNode="True" />
         <ColumnInfo Id="StorageSource.Character" PropertyName="StorageSource.Character" Index="3" SortOrder="Ascending" GroupIndex="1" IsNewNode="True" />
         <ColumnInfo Id="StorageSource.Character.Campain" PropertyName="StorageSource.Character.Campain" Index="4" SortOrder="Ascending" GroupIndex="0" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="Person_Characters_ListView">
+      <Columns>
+        <ColumnInfo Id="Info" Index="-1" />
+        <ColumnInfo Id="Stats" Index="-1" />
+        <ColumnInfo Id="Campain" Index="2" />
+        <ColumnInfo Id="LocalStorage" Index="3" />
       </Columns>
     </ListView>
     <DetailView Id="Person_DetailView">
@@ -646,7 +697,15 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="StorageOperation_ActiveCharacters_ListView" AllowDelete="False" AllowLink="False" AllowNew="False" />
+    <ListView Id="StorageOperation_ActiveCharacters_ListView" AllowDelete="False" AllowLink="False" AllowNew="False">
+      <Columns>
+        <ColumnInfo Id="Info" Index="-1" />
+        <ColumnInfo Id="Person" Index="-1" />
+        <ColumnInfo Id="Stats" Index="-1" />
+        <ColumnInfo Id="Campain" Index="2" />
+        <ColumnInfo Id="LocalStorage" Index="3" />
+      </Columns>
+    </ListView>
     <DetailView Id="StorageOperation_DetailView">
       <Items>
         <PropertyEditor Id="ActiveCharacters" Removed="True" />
@@ -697,13 +756,23 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="StorageOperation_ListView" AllowNew="False" AllowUnlink="False" AllowDelete="False">
+    <ListView Id="StorageOperation_ListView" AllowNew="False" AllowUnlink="False" AllowDelete="False" FreezeColumnIndices="True">
       <Columns>
+        <ColumnInfo Id="Campain" Index="-1" />
+        <ColumnInfo Id="Coins" Index="-1" />
+        <ColumnInfo Id="CreatedAt" Index="-1" />
+        <ColumnInfo Id="DestinationCharacter" Index="-1" />
+        <ColumnInfo Id="Executed" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="MultipleTransaction" Index="-1" />
+        <ColumnInfo Id="OperationMode" Index="-1" />
+        <ColumnInfo Id="OperationType" Index="-1" />
+        <ColumnInfo Id="Reason" Index="-1" />
+        <ColumnInfo Id="SourceCharacter" Index="-1" />
         <ColumnInfo Id="Storage" Index="-1" />
-        <ColumnInfo Id="OperationType" Index="0" />
-        <ColumnInfo Id="Coins" Index="1" />
-        <ColumnInfo Id="Reason" Index="2" />
-        <ColumnInfo Id="OperationDate" SortIndex="0" SortOrder="Descending" Index="3" />
+        <ColumnInfo Id="ShortOperationInfo" Index="0" Width="134" />
+        <ColumnInfo Id="StorageSource" Index="1" />
+        <ColumnInfo Id="OperationDate" SortIndex="0" SortOrder="Descending" Index="2" />
       </Columns>
     </ListView>
     <DetailView Id="TransactionSettings_DetailView">

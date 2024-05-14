@@ -14,6 +14,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using ZeeKer.DndTracker.Module.Extensions;
 using ZeeKer.DndTracker.Module.Types;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
@@ -115,6 +116,15 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
                 OnPropertyChanged(this, new PropertyChangedEventArgs(nameof(SourceCharacter)));
             }
         }
+
+        [NotMapped, XafDisplayName("Инфо")]
+        public virtual string ShortOperationInfo => $"{OperationType.GetEnumRuText()} ({Convert.ToInt32(Coins)}){(String.IsNullOrEmpty(Reason)? "":$" ({Reason})")}";
+
+        [NotMapped, XafDisplayName("Инфо+Ист")]
+        public virtual string ShortOperationInfoAndSource => $"{ShortOperationInfo}{(SourceStorageId is null? "": $" От \"{StorageSource.DefaultProperty}\"")}";
+
+        [NotMapped, XafDisplayName("Инфо+Получ")]
+        public virtual string ShortOperationInfoAndDestination => $"{ShortOperationInfo}{(StorageId is null ? "" : $" Для \"{Storage.DefaultProperty}\"")}";
 
         public override void OnCreated()
         {
