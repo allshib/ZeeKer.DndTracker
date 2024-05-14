@@ -18,7 +18,7 @@ using ZeeKer.DndTracker.Module.Types;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
-    [DefaultClassOptions]
+    //[DefaultClassOptions]
     [XafDisplayName("Операции над хранилищем")]
     public class StorageOperation : BaseObject
     {

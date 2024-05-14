@@ -1,2 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Application />
+<Application>
+  <NavigationItems>
+    <Items>
+      <Item Id="Security">
+        <Items>
+          <Item Id="ApplicationUser_ListView" Caption="Пользователи" />
+          <Item Id="PermissionPolicyRole_ListView" Caption="Роль" />
+        </Items>
+      </Item>
+      <Item Id="MyZone">
+        <Items>
+          <Item Id="MyDetails" Caption="Личный кабинет" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
+</Application>

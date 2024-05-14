@@ -18,7 +18,7 @@ using ZeeKer.DndTracker.Module.Extensions;
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
     // Register this entity in your DbContext (usually in the BusinessObjects folder of your project) with the "public DbSet<CharacterStats> CharacterStatss { get; set; }" syntax.
-    [DefaultClassOptions]
+    //[DefaultClassOptions]
     //[ImageName("BO_Contact")]
     //[DefaultProperty("Name")]
     [XafDisplayName("Характеристики")]

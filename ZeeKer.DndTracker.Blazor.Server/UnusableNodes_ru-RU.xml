@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Application Company="ZeeKer РУ">
-  <NavigationItems>
-    <Items>
-      <Item Id="MyZone">
-        <Items>
+<Application>
+  <NavigationItems Id="NavigationItems">
+    <Items Id="Items">
+      <Item Id="PlayerHub">
+        <Items Id="Items">
           <Item Id="MyDetails" Caption="Личный кабинет" />
         </Items>
       </Item>

@@ -53,15 +53,50 @@
   </BOModel>
   <NavigationItems StartupNavigationItem="MyCharacter_ListView">
     <Items>
-      <Item Id="PlayerHub" IsNewNode="True">
+      <Item Id="PlayerHub" Index="1" IsNewNode="True">
         <Items IsNewNode="True">
           <Item Id="MyCharacter_ListView" ViewId="MyCharacter_ListView" IsNewNode="True" />
           <Item Id="MyCharacterStorage_ListView" ViewId="MyCharacterStorage_ListView" IsNewNode="True" />
           <Item Id="MyTransactions" ViewId="MyMultipleTransaction_ListView" IsNewNode="True" />
         </Items>
       </Item>
-      <Item Id="Reports" Visible="False" />
-      <Item Id="State Machine" Visible="False" />
+      <Item Id="MasterZone" Index="2" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Campain_ListView" ObjectKey="" ViewId="Campain_ListView" IsNewNode="True" />
+          <Item Id="Character_ListView" ObjectKey="" ViewId="Character_ListView" IsNewNode="True" />
+          <Item Id="CharacterStorage_ListView" ObjectKey="" ViewId="CharacterStorage_ListView" IsNewNode="True" />
+          <Item Id="Person_ListView" ObjectKey="" ViewId="Person_ListView" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Security" Index="3" IsNewNode="True" />
+      <Item Id="MyZone" Index="4" IsNewNode="True" />
+      <Item Id="Additional" Index="5" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Event_ListView" ViewId="Event_ListView" ObjectKey="" IsNewNode="True" />
+          <Item Id="Reports" Visible="True" IsNewNode="True">
+            <Items IsNewNode="True">
+              <Item Id="Dashboards" ViewId="DashboardData_ListView" ObjectKey="" Caption="Dashboards" IsNewNode="True" />
+              <Item Id="ReportsV2" ViewId="ReportDataV2_ListView" ObjectKey="" Caption="Reports" IsNewNode="True" />
+            </Items>
+          </Item>
+          <Item Id="State Machine" Visible="False" IsNewNode="True">
+            <Items IsNewNode="True">
+              <Item Id="StateMachine_ListView" ViewId="StateMachine_ListView" ObjectKey="" IsNewNode="True" />
+            </Items>
+          </Item>
+        </Items>
+      </Item>
+      <Item Id="Default">
+        <Items>
+          <Item Id="Campain_ListView" Removed="True" />
+          <Item Id="Character_ListView" Removed="True" />
+          <Item Id="CharacterStorage_ListView" Removed="True" />
+          <Item Id="Event_ListView" Removed="True" />
+          <Item Id="Person_ListView" Removed="True" />
+        </Items>
+      </Item>
+      <Item Id="Reports" Visible="False" Removed="True" />
+      <Item Id="State Machine" Visible="False" Removed="True" />
     </Items>
   </NavigationItems>
   <Options>
@@ -80,6 +115,13 @@
   </Validation>
   <Views>
     <ListView Id="ApplicationUser_ListView" Caption="Users" />
+    <ListView Id="Campain_ListView" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="Name" Index="0" />
+        <ColumnInfo Id="GameMaster" Index="1" />
+      </Columns>
+    </ListView>
     <DetailView Id="Character_DetailView">
       <Items>
         <ActionContainerViewItem Id="AddGold" PaintStyle="Caption" ActionContainer="AddGoldCategory" IsNewNode="True" />
@@ -249,6 +291,14 @@
         <ColumnInfo Id="LocalStorage" Index="4" />
       </Columns>
     </ListView>
+    <ListView Id="Character_MultipleTransaction_ListView" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="Reason" Index="0" />
+        <ColumnInfo Id="StorageSource" Index="1" />
+        <ColumnInfo Id="FinalGoldSum" Index="2" />
+      </Columns>
+    </ListView>
     <ListView Id="Character_Storages_ListView" FreezeColumnIndices="True">
       <Columns>
         <ColumnInfo Id="Character" Index="-1" />
@@ -305,6 +355,14 @@
         <ColumnInfo Id="PlatinumCoins" Index="-1" />
         <ColumnInfo Id="SilverCoins" Index="-1" />
         <ColumnInfo Id="DefaultProperty" Index="0" />
+      </Columns>
+    </ListView>
+    <ListView Id="CharacterStorage_MultipleTransactions_ListView" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="StorageSource" Index="-1" />
+        <ColumnInfo Id="Reason" Index="0" />
+        <ColumnInfo Id="FinalGoldSum" Index="1" Width="117" />
       </Columns>
     </ListView>
     <ListView Id="CharacterStorage_Operations_ListView" AllowLink="False" AllowNew="False" AllowUnlink="False" FreezeColumnIndices="True" AllowDelete="False">
@@ -368,6 +426,14 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="MultipleTransaction_ListView" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="Reason" Index="0" />
+        <ColumnInfo Id="StorageSource" Index="1" />
+        <ColumnInfo Id="FinalGoldSum" Index="2" />
+      </Columns>
+    </ListView>
     <ListView Id="MultipleTransaction_TransactionSettings_ListView" FreezeColumnIndices="True" AllowUnlink="False" AllowNew="False">
       <Columns>
         <ColumnInfo Id="DestinationCharacter" Index="-1" />
@@ -381,10 +447,10 @@
     <ListView Id="MyCharacter_ListView" ClassName="ZeeKer.DndTracker.Module.BusinessObjects.Character" Criteria="IsCurrentUserId([Person.User.ID])" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="ID" PropertyName="ID" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Person" PropertyName="Person" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="Name" PropertyName="Name" SortIndex="0" SortOrder="Ascending" Index="0" IsNewNode="True" />
         <ColumnInfo Id="Campain" PropertyName="Campain" Index="1" IsNewNode="True" />
-        <ColumnInfo Id="Person" PropertyName="Person" Index="2" IsNewNode="True" />
-        <ColumnInfo Id="LocalStorage" PropertyName="LocalStorage" Index="3" IsNewNode="True" />
+        <ColumnInfo Id="LocalStorage" PropertyName="LocalStorage" Index="2" IsNewNode="True" />
       </Columns>
     </ListView>
     <ListView Id="MyCharacterStorage_ListView" ClassName="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage" FreezeColumnIndices="True" Criteria="IsCurrentUserId([Character.Person.User.ID])" AutoExpandAllGroups="True" IsNewNode="True">
@@ -407,9 +473,10 @@
       <Columns IsNewNode="True">
         <ColumnInfo Id="ID" PropertyName="ID" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="Reason" PropertyName="Reason" SortIndex="0" SortOrder="Ascending" Index="0" IsNewNode="True" />
-        <ColumnInfo Id="StorageSource" PropertyName="StorageSource" Index="1" SortOrder="Ascending" GroupIndex="2" IsNewNode="True" />
-        <ColumnInfo Id="StorageSource.Character" PropertyName="StorageSource.Character" Index="2" SortOrder="Ascending" GroupIndex="1" IsNewNode="True" />
-        <ColumnInfo Id="StorageSource.Character.Campain" PropertyName="StorageSource.Character.Campain" Index="3" SortOrder="Ascending" GroupIndex="0" IsNewNode="True" />
+        <ColumnInfo Id="FinalGoldSum" PropertyName="FinalGoldSum" Index="1" Width="113" IsNewNode="True" />
+        <ColumnInfo Id="StorageSource" PropertyName="StorageSource" Index="2" SortOrder="Ascending" GroupIndex="2" IsNewNode="True" />
+        <ColumnInfo Id="StorageSource.Character" PropertyName="StorageSource.Character" Index="3" SortOrder="Ascending" GroupIndex="1" IsNewNode="True" />
+        <ColumnInfo Id="StorageSource.Character.Campain" PropertyName="StorageSource.Character.Campain" Index="4" SortOrder="Ascending" GroupIndex="0" IsNewNode="True" />
       </Columns>
     </ListView>
     <DetailView Id="Person_DetailView">
@@ -445,6 +512,15 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="Person_ListView" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="Name" Index="-1" />
+        <ColumnInfo Id="Surname" Index="-1" />
+        <ColumnInfo Id="FullName" Index="0" />
+        <ColumnInfo Id="User" Index="1" />
+      </Columns>
+    </ListView>
     <DetailView Id="ReportDataV2_DetailView">
       <Layout>
         <LayoutGroup Id="Main">

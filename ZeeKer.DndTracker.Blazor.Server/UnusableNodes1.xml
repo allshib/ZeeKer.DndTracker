@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <NavigationItems Id="NavigationItems">
+    <Items Id="Items">
+      <Item Id="Default" Removed="True" />
+      <Item Id="PlayerHub">
+        <Items Id="Items">
+          <Item Id="MyDetails" ObjectKey="@CurrentUserID" Caption="My Details" ImageName="BO_MyDetails" ViewId="ApplicationUser_DetailView" Removed="True" />
+        </Items>
+      </Item>
+      <Item Id="MasterZone">
+        <Items Id="Items">
+          <Item Id="Person_ListView" Removed="True" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
+</Application>

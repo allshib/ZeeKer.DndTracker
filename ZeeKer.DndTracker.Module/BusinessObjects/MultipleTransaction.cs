@@ -14,6 +14,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using ZeeKer.DndTracker.Module.Extensions;
 using ZeeKer.DndTracker.Module.UseCases.ExecuteMultipleTransactionUseCase;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
@@ -49,14 +50,18 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Выполненные операции"), Aggregated]
         public virtual IList<StorageOperation> StorageOperations { get; set; } = new ObservableCollection<StorageOperation>();
 
-        // Alternatively, specify more UI options:
-        //[XafDisplayName("My display name"), ToolTip("My hint message")]
-        //[ModelDefault("EditMask", "(000)-00"), VisibleInListView(false)]
-        //[RuleRequiredField(DefaultContexts.Save)]
-        //public virtual string Name { get; set; }
+        [XafDisplayName("Итоговая сумма"), NotMapped]
+        public virtual decimal FinalGoldSum => GetFinalGoldSum();
 
-        // Collection property:
-        //public virtual IList<AssociatedEntityObject> AssociatedEntities { get; set; }
+
+        private decimal GetFinalGoldSum()
+        {
+            if (TransactionSettings.Count == 0)
+                return 0;
+
+            return TransactionSettings.Sum(x=>x.GetCopperCoinsSum()) / 100;
+        }
+
 
         [Action(Caption = "Выполнить транзакцию", ConfirmationMessage = "Вы уверены?", AutoCommit = true, SelectionDependencyType = MethodActionSelectionDependencyType.RequireSingleObject)]
         public void Execute()

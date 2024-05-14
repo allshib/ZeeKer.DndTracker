@@ -2,11 +2,22 @@
 <Application PreferredLanguage="ru-RU">
   <NavigationItems NavigationStyle="Accordion">
     <Items>
-      <Item Id="PlayerHub">
+      <Item Id="PlayerHub" ImageName="Sad" />
+      <Item Id="MasterZone" ImageName="State_ItemVisibility_Show" />
+      <Item Id="Security" ImageName="ProtectedContent">
+        <Items>
+          <Item Id="ApplicationUser_ListView" ObjectKey="" ViewId="ApplicationUser_ListView" IsNewNode="True" />
+          <Item Id="PermissionPolicyRole_ListView" ObjectKey="" ViewId="PermissionPolicyRole_ListView" IsNewNode="True" />
+          <Item Id="Person_ListView" ObjectKey="" ViewId="Person_ListView" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="MyZone" ImageName="Action_Security_ChangePassword">
         <Items>
           <Item Id="MyDetails" ObjectKey="@CurrentUserID" Caption="My Details" ImageName="BO_MyDetails" ViewId="ApplicationUser_DetailView" IsNewNode="True" />
         </Items>
       </Item>
+      <Item Id="Additional" ImageName="BO_Report" />
+      <Item Id="Default" Removed="True" />
     </Items>
   </NavigationItems>
   <SchemaModules>
