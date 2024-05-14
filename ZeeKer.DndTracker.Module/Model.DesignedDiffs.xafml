@@ -410,7 +410,7 @@
         <ColumnInfo Id="SourceCharacter" Index="-1" />
         <ColumnInfo Id="Storage" Index="-1" />
         <ColumnInfo Id="StorageSource" Index="-1" />
-        <ColumnInfo Id="ShortOperationInfoAndSource" Index="0" Width="94" />
+        <ColumnInfo Id="ShortOperationInfoAndSource" Index="0" Width="415" />
         <ColumnInfo Id="OperationDate" SortIndex="0" SortOrder="Descending" Index="1" />
       </Columns>
     </ListView>
@@ -426,7 +426,7 @@
         <ColumnInfo Id="SourceCharacter" Index="-1" />
         <ColumnInfo Id="Storage" Index="-1" />
         <ColumnInfo Id="StorageSource" Index="-1" />
-        <ColumnInfo Id="ShortOperationInfoAndDestination" Index="0" Width="91" />
+        <ColumnInfo Id="ShortOperationInfoAndDestination" Index="0" Width="439" />
         <ColumnInfo Id="OperationDate" Index="1" SortIndex="0" SortOrder="Descending" />
       </Columns>
     </ListView>
