@@ -36,21 +36,86 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Сила")]
         public virtual int Strength { get; set; }
 
+        [XafDisplayName("Сила (calc)"), NotMapped]
+        public virtual string StrengthCalc {
+            get
+            {
+                return $"{Strength} ({(Strength >= 10 ? "+" : "-")}{StrengthBonus})";
+            }
+            set
+            {
+                var val = value?.Length>2? value.Substring(0, 2): value;
+
+                if (int.TryParse(val, out int outValue))
+                    Strength = outValue;
+
+            }
+        }
+
         [XafDisplayName("Сила Бонус")]
         public virtual int StrengthBonus => Strength.CalcStatsBonus();
 
+
         [XafDisplayName("Телосложение")]
         public virtual int Constitution { get; set; }
+        [XafDisplayName("Телосложение (calc)"), NotMapped]
+        public virtual string ConstitutionCalc
+        {
+            get
+            {
+                return $"{Constitution} ({(Constitution >= 10 ? "+" : "-")}{ConstitutionBonus})";
+            }
+            set
+            {
+                var val = value?.Length > 2 ? value.Substring(0, 2) : value;
+
+                if (int.TryParse(val, out int outValue))
+                    Constitution = outValue;
+
+            }
+        }
 
         [XafDisplayName("Телосложение Бонус")]
         public virtual int ConstitutionBonus => Constitution.CalcStatsBonus();
         [XafDisplayName("Интеллект")]
         public virtual int Intelegence { get; set; }
+        [XafDisplayName("Интеллект (calc)"), NotMapped]
+        public virtual string IntelegenceCalc
+        {
+            get
+            {
+                return $"{Intelegence} ({(Intelegence >= 10 ? "+" : "-")}{IntelegenceBonus})";
+            }
+            set
+            {
+                var val = value?.Length > 2 ? value.Substring(0, 2) : value;
+
+                if (int.TryParse(val, out int outValue))
+                    Intelegence = outValue;
+
+            }
+        }
         [XafDisplayName("Интеллект Бонус")]
         public virtual int IntelegenceBonus => Intelegence.CalcStatsBonus();
 
         [XafDisplayName("Харизма")]
         public virtual int Charisma { get; set; }
+        [XafDisplayName("Харизма (calc)"), NotMapped]
+        public virtual string CharismaCalc
+        {
+            get
+            {
+                return $"{Charisma} ({(Charisma >= 10 ? "+" : "-")}{CharismaBonus})";
+            }
+            set
+            {
+                var val = value?.Length > 2 ? value.Substring(0, 2) : value;
+
+                if (int.TryParse(val, out int outValue))
+                    Charisma = outValue;
+
+            }
+        }
 
         [XafDisplayName("Харизма Бонус")]
         public virtual int CharismaBonus => Charisma.CalcStatsBonus();
@@ -58,11 +123,44 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Ловкость")]
         public virtual int Dexterity { get; set; }
 
+        [XafDisplayName("Ловкость (calc)"), NotMapped]
+        public virtual string DexterityCalc
+        {
+            get
+            {
+                return $"{Dexterity} ({(Dexterity >= 10 ? "+" : "-")}{DexterityBonus})";
+            }
+            set
+            {
+                var val = value?.Length > 2 ? value.Substring(0, 2) : value;
+
+                if (int.TryParse(val, out int outValue))
+                    Dexterity = outValue;
+
+            }
+        }
+
         [XafDisplayName("Ловкость Бонус")]
         public virtual int DexterityBonus => Dexterity.CalcStatsBonus();
 
         [XafDisplayName("Мудрость")]
         public virtual int Wisdom { get; set; }
+        [XafDisplayName("Мудрость (calc)"), NotMapped]
+        public virtual string WisdomCalc
+        {
+            get
+            {
+                return $"{Wisdom} ({(Wisdom >= 10 ? "+" : "-")}{WisdomBonus})";
+            }
+            set
+            {
+                var val = value?.Length > 2 ? value.Substring(0, 2) : value;
+
+                if (int.TryParse(val, out int outValue))
+                    Wisdom = outValue;
+
+            }
+        }
 
         [XafDisplayName("Мудрость Бонус")]
         public virtual int WisdomBonus =>  Wisdom.CalcStatsBonus();

@@ -14,6 +14,16 @@
         <Member Name="Stats" AllowEdit="False" />
       </OwnMembers>
     </Class>
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStats">
+      <OwnMembers>
+        <Member Name="CharismaCalc" ImmediatePostData="True" />
+        <Member Name="ConstitutionCalc" ImmediatePostData="True" />
+        <Member Name="DexterityCalc" ImmediatePostData="True" />
+        <Member Name="IntelegenceCalc" ImmediatePostData="True" />
+        <Member Name="StrengthCalc" ImmediatePostData="True" />
+        <Member Name="WisdomCalc" ImmediatePostData="True" />
+      </OwnMembers>
+    </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage" ImageName="ListSource">
       <OwnMembers>
         <Member Name="CopperCoins" AllowEdit="False" />
@@ -164,17 +174,23 @@
         <PropertyEditor Id="Stats" PropertyName="Stats" IsNewNode="True" Removed="True" />
         <PropertyEditor Id="Stats.Charisma" PropertyName="Stats.Charisma" IsNewNode="True" />
         <PropertyEditor Id="Stats.CharismaBonus" PropertyName="Stats.CharismaBonus" IsNewNode="True" />
+        <PropertyEditor Id="Stats.CharismaCalc" PropertyName="Stats.CharismaCalc" IsNewNode="True" />
         <PropertyEditor Id="Stats.Constitution" PropertyName="Stats.Constitution" IsNewNode="True" />
         <PropertyEditor Id="Stats.ConstitutionBonus" PropertyName="Stats.ConstitutionBonus" IsNewNode="True" />
+        <PropertyEditor Id="Stats.ConstitutionCalc" PropertyName="Stats.ConstitutionCalc" IsNewNode="True" />
         <PropertyEditor Id="Stats.Dexterity" PropertyName="Stats.Dexterity" IsNewNode="True" />
         <PropertyEditor Id="Stats.DexterityBonus" PropertyName="Stats.DexterityBonus" IsNewNode="True" />
+        <PropertyEditor Id="Stats.DexterityCalc" PropertyName="Stats.DexterityCalc" IsNewNode="True" />
         <PropertyEditor Id="Stats.Intelegence" PropertyName="Stats.Intelegence" IsNewNode="True" />
         <PropertyEditor Id="Stats.IntelegenceBonus" PropertyName="Stats.IntelegenceBonus" IsNewNode="True" />
+        <PropertyEditor Id="Stats.IntelegenceCalc" PropertyName="Stats.IntelegenceCalc" IsNewNode="True" />
         <PropertyEditor Id="Stats.Profiency" PropertyName="Stats.Profiency" IsNewNode="True" />
         <PropertyEditor Id="Stats.Strength" PropertyName="Stats.Strength" IsNewNode="True" />
         <PropertyEditor Id="Stats.StrengthBonus" PropertyName="Stats.StrengthBonus" IsNewNode="True" />
+        <PropertyEditor Id="Stats.StrengthCalc" PropertyName="Stats.StrengthCalc" IsNewNode="True" />
         <PropertyEditor Id="Stats.Wisdom" PropertyName="Stats.Wisdom" IsNewNode="True" />
         <PropertyEditor Id="Stats.WisdomBonus" PropertyName="Stats.WisdomBonus" IsNewNode="True" />
+        <PropertyEditor Id="Stats.WisdomCalc" PropertyName="Stats.WisdomCalc" IsNewNode="True" />
         <PropertyEditor Id="Storages" PropertyName="Storages" View="Character_Storages_ListView" IsNewNode="True" Removed="True" />
       </Items>
       <Layout>
@@ -200,8 +216,8 @@
                                     <LayoutItem Id="AddGold" ViewItem="AddGold" Index="0" RelativeSize="34" IsNewNode="True" />
                                     <LayoutItem Id="RemoveGoldCategory" ViewItem="RemoveGoldCategory" Index="1" RelativeSize="26" IsNewNode="True" />
                                     <LayoutGroup Id="Autodfbe3f29-6047-425f-9c10-756a27249c8a" ShowCaption="False" Direction="Horizontal" Index="2" RelativeSize="40" IsNewNode="True">
-                                      <LayoutItem Id="SimpleTransferGold" ViewItem="SimpleTransferGold" Index="0" RelativeSize="18.84297520661157" IsNewNode="True" />
-                                      <LayoutItem Id="SendGold" ViewItem="SendGold" Index="1" RelativeSize="81.15702479338843" IsNewNode="True" />
+                                      <LayoutItem Id="SimpleTransferGold" ViewItem="SimpleTransferGold" Index="0" RelativeSize="19.453924914675767" IsNewNode="True" />
+                                      <LayoutItem Id="SendGold" ViewItem="SendGold" Index="1" RelativeSize="80.54607508532423" IsNewNode="True" />
                                     </LayoutGroup>
                                   </LayoutGroup>
                                 </LayoutGroup>
@@ -215,11 +231,11 @@
                     </LayoutGroup>
                   </LayoutGroup>
                   <LayoutGroup Id="Item3" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="1" RelativeSize="100" IsNewNode="True">
-                    <LayoutGroup Id="Auto608fd3c9-8619-46e5-b138-ba85d4b6f5fa" ShowCaption="False" Index="0" RelativeSize="49.17787742899851" IsNewNode="True">
+                    <LayoutGroup Id="Auto608fd3c9-8619-46e5-b138-ba85d4b6f5fa" ShowCaption="False" Index="0" RelativeSize="49.07692307692308" IsNewNode="True">
                       <LayoutItem Id="Campain" ViewItem="Campain" Index="0" RelativeSize="6.808510638297872" IsNewNode="True" />
                       <LayoutItem Id="Person" ViewItem="Person" Index="1" RelativeSize="93.19148936170212" IsNewNode="True" />
                     </LayoutGroup>
-                    <LayoutGroup Id="Auto61d99964-231a-4e56-bb07-8779dffa36be" ShowCaption="False" Index="1" RelativeSize="50.82212257100149" IsNewNode="True">
+                    <LayoutGroup Id="Auto61d99964-231a-4e56-bb07-8779dffa36be" ShowCaption="False" Index="1" RelativeSize="50.92307692307692" IsNewNode="True">
                       <LayoutItem Id="Item5" Index="0" RelativeSize="50" IsNewNode="True" />
                       <LayoutItem Id="Item4" Index="1" RelativeSize="50" IsNewNode="True" />
                     </LayoutGroup>
@@ -227,11 +243,11 @@
                   <LayoutGroup Id="Item10" ShowCaption="True" CaptionLocation="Top" Index="2" RelativeSize="100" IsNewNode="True">
                     <LayoutItem Id="Info.Aligment" ViewItem="Info.Aligment" CaptionLocation="Top" Index="0" RelativeSize="10.212765957446809" IsNewNode="True" />
                     <LayoutGroup Id="Auto8ab736c5-b9a3-406a-a204-5a3ee18a7d70" ShowCaption="False" Direction="Horizontal" Index="1" RelativeSize="28.085106382978722" IsNewNode="True">
-                      <LayoutGroup Id="Autoaf90cbbb-d0b9-448f-a762-74e164cc2fd7" ShowCaption="False" Index="0" RelativeSize="49.92526158445441" IsNewNode="True">
+                      <LayoutGroup Id="Autoaf90cbbb-d0b9-448f-a762-74e164cc2fd7" ShowCaption="False" Index="0" RelativeSize="49.84615384615385" IsNewNode="True">
                         <LayoutItem Id="Info.Height" ViewItem="Info.Height" CaptionLocation="Top" Index="0" RelativeSize="34.84848484848485" IsNewNode="True" />
                         <LayoutItem Id="Info.Age" ViewItem="Info.Age" CaptionLocation="Top" Index="1" RelativeSize="65.15151515151516" IsNewNode="True" />
                       </LayoutGroup>
-                      <LayoutGroup Id="Auto00091fed-9288-46c7-871f-e3f5db99503e" ShowCaption="False" Index="1" RelativeSize="50.07473841554559" IsNewNode="True">
+                      <LayoutGroup Id="Auto00091fed-9288-46c7-871f-e3f5db99503e" ShowCaption="False" Index="1" RelativeSize="50.15384615384615" IsNewNode="True">
                         <LayoutItem Id="Info.Weight" ViewItem="Info.Weight" CaptionLocation="Top" Index="0" RelativeSize="34.84848484848485" IsNewNode="True" />
                         <LayoutItem Id="Info.Eyes" ViewItem="Info.Eyes" CaptionLocation="Top" Index="1" RelativeSize="30.303030303030305" IsNewNode="True" />
                         <LayoutItem Id="Info.Hair" ViewItem="Info.Hair" CaptionLocation="Top" Index="2" RelativeSize="34.84848484848485" IsNewNode="True" />
@@ -248,22 +264,14 @@
                       <LayoutGroup Id="Auto640ccf67-3b1d-4ace-ac61-b9bc7d842707" ShowCaption="False" Index="0" RelativeSize="100" Direction="Vertical" IsNewNode="True">
                         <LayoutGroup Id="Autod95e2523-151e-4a3f-b2e4-8e4d1c7981bd" ShowCaption="False" Index="0" RelativeSize="100" Direction="Vertical" IsNewNode="True">
                           <LayoutItem Id="Stats.Profiency" ViewItem="Stats.Profiency" CaptionLocation="Top" Index="0" RelativeSize="10.212765957446809" IsNewNode="True" />
-                          <LayoutGroup Id="Auto981e8216-d6a4-4fe2-ac33-c6abb7de9855" ShowCaption="False" Direction="Horizontal" Index="1" RelativeSize="89.7872340425532" IsNewNode="True">
-                            <LayoutGroup Id="Item9" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="77.42899850523169" IsNewNode="True">
-                              <LayoutItem Id="Stats.Strength" ViewItem="Stats.Strength" CaptionLocation="Top" Index="0" RelativeSize="12.339331619537274" IsNewNode="True" />
-                              <LayoutItem Id="Stats.Constitution" ViewItem="Stats.Constitution" CaptionLocation="Top" Index="1" RelativeSize="10.282776349614396" IsNewNode="True" />
-                              <LayoutItem Id="Stats.Intelegence" ViewItem="Stats.Intelegence" CaptionLocation="Top" Index="2" RelativeSize="10.282776349614396" IsNewNode="True" />
-                              <LayoutItem Id="Stats.Dexterity" ViewItem="Stats.Dexterity" CaptionLocation="Top" Index="3" RelativeSize="10.282776349614396" IsNewNode="True" />
-                              <LayoutItem Id="Stats.Wisdom" ViewItem="Stats.Wisdom" CaptionLocation="Top" Index="4" RelativeSize="10.282776349614396" IsNewNode="True" />
-                              <LayoutItem Id="Stats.Charisma" ViewItem="Stats.Charisma" CaptionLocation="Top" Index="5" RelativeSize="46.52956298200514" IsNewNode="True" />
-                            </LayoutGroup>
-                            <LayoutGroup Id="Item12" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="22.57100149476831" IsNewNode="True">
-                              <LayoutItem Id="Stats.StrengthBonus" ViewItem="Stats.StrengthBonus" CaptionLocation="Top" Index="0" RelativeSize="12.339331619537274" IsNewNode="True" />
-                              <LayoutItem Id="Stats.ConstitutionBonus" ViewItem="Stats.ConstitutionBonus" CaptionLocation="Top" Index="1" RelativeSize="10.282776349614396" IsNewNode="True" />
-                              <LayoutItem Id="Stats.IntelegenceBonus" ViewItem="Stats.IntelegenceBonus" CaptionLocation="Top" Index="2" RelativeSize="10.282776349614396" IsNewNode="True" />
-                              <LayoutItem Id="Stats.DexterityBonus" ViewItem="Stats.DexterityBonus" CaptionLocation="Top" Index="3" RelativeSize="10.282776349614396" IsNewNode="True" />
-                              <LayoutItem Id="Stats.WisdomBonus" ViewItem="Stats.WisdomBonus" CaptionLocation="Top" Index="4" RelativeSize="10.282776349614396" IsNewNode="True" />
-                              <LayoutItem Id="Stats.CharismaBonus" ViewItem="Stats.CharismaBonus" CaptionLocation="Top" Index="5" RelativeSize="46.52956298200514" IsNewNode="True" />
+                          <LayoutGroup Id="Auto981e8216-d6a4-4fe2-ac33-c6abb7de9855" ShowCaption="False" Direction="Vertical" Index="1" RelativeSize="89.7872340425532" IsNewNode="True">
+                            <LayoutGroup Id="Item9" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+                              <LayoutItem Id="Stats.StrengthCalc" ViewItem="Stats.StrengthCalc" Index="0" RelativeSize="12.532637075718016" CaptionLocation="Top" IsNewNode="True" />
+                              <LayoutItem Id="Stats.ConstitutionCalc" ViewItem="Stats.ConstitutionCalc" Index="1" RelativeSize="10.443864229765014" CaptionLocation="Top" IsNewNode="True" />
+                              <LayoutItem Id="Stats.DexterityCalc" ViewItem="Stats.DexterityCalc" Index="2" RelativeSize="10.443864229765014" CaptionLocation="Top" IsNewNode="True" />
+                              <LayoutItem Id="Stats.IntelegenceCalc" ViewItem="Stats.IntelegenceCalc" Index="3" RelativeSize="10.443864229765014" CaptionLocation="Top" IsNewNode="True" />
+                              <LayoutItem Id="Stats.WisdomCalc" ViewItem="Stats.WisdomCalc" Index="4" RelativeSize="10.443864229765014" CaptionLocation="Top" IsNewNode="True" />
+                              <LayoutItem Id="Stats.CharismaCalc" ViewItem="Stats.CharismaCalc" Index="5" RelativeSize="45.69190600522193" CaptionLocation="Top" IsNewNode="True" />
                             </LayoutGroup>
                           </LayoutGroup>
                         </LayoutGroup>
