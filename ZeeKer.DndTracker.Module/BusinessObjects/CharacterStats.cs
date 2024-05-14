@@ -40,7 +40,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         public virtual string StrengthCalc {
             get
             {
-                return $"{Strength} ({(Strength >= 10 ? "+" : "-")}{StrengthBonus})";
+                return $"{Strength} ({(Strength >= 10 ? "+" : "")}{StrengthBonus})";
             }
             set
             {
@@ -63,7 +63,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         {
             get
             {
-                return $"{Constitution} ({(Constitution >= 10 ? "+" : "-")}{ConstitutionBonus})";
+                return $"{Constitution} ({(Constitution >= 10 ? "+" : "")}{ConstitutionBonus})";
             }
             set
             {
@@ -84,7 +84,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         {
             get
             {
-                return $"{Intelegence} ({(Intelegence >= 10 ? "+" : "-")}{IntelegenceBonus})";
+                return $"{Intelegence} ({(Intelegence >= 10 ? "+" : "")}{IntelegenceBonus})";
             }
             set
             {
@@ -105,7 +105,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         {
             get
             {
-                return $"{Charisma} ({(Charisma >= 10 ? "+" : "-")}{CharismaBonus})";
+                return $"{Charisma} ({(Charisma >= 10 ? "+" : "")}{CharismaBonus})";
             }
             set
             {
@@ -128,7 +128,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         {
             get
             {
-                return $"{Dexterity} ({(Dexterity >= 10 ? "+" : "-")}{DexterityBonus})";
+                return $"{Dexterity} ({(Dexterity >= 10 ? "+" : "")}{DexterityBonus})";
             }
             set
             {
@@ -150,7 +150,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         {
             get
             {
-                return $"{Wisdom} ({(Wisdom >= 10 ? "+" : "-")}{WisdomBonus})";
+                return $"{Wisdom} ({(Wisdom >= 10 ? "+" : "")}{WisdomBonus})";
             }
             set
             {
