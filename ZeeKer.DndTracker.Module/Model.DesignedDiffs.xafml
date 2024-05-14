@@ -9,7 +9,11 @@
   <BOModel>
     <Class Name="DevExpress.Persistent.BaseImpl.EF.PermissionPolicy.PermissionPolicyUser" Caption="Base User" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Campain" ImageName="BO_User" />
-    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Character" ImageName="BO_Employee" />
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Character" ImageName="BO_Employee">
+      <OwnMembers>
+        <Member Name="Stats" AllowEdit="False" />
+      </OwnMembers>
+    </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage" ImageName="ListSource">
       <OwnMembers>
         <Member Name="CopperCoins" AllowEdit="False" />
@@ -103,7 +107,7 @@
         <ActionContainerViewItem Id="RemoveGoldCategory" PaintStyle="Caption" ActionContainer="RemoveGoldCategory" IsNewNode="True" />
         <ActionContainerViewItem Id="SendGold" ActionContainer="SendGoldCategory" IsNewNode="True" />
         <ActionContainerViewItem Id="SimpleTransferGold" PaintStyle="Caption" ActionContainer="SimpleTransferGoldCategory" IsNewNode="True" />
-        <PropertyEditor Id="Stats" Removed="True" />
+        <PropertyEditor Id="Stats" PropertyName="Stats" IsNewNode="True" Removed="True" />
         <PropertyEditor Id="Stats.Charisma" PropertyName="Stats.Charisma" IsNewNode="True" />
         <PropertyEditor Id="Stats.CharismaBonus" PropertyName="Stats.CharismaBonus" IsNewNode="True" />
         <PropertyEditor Id="Stats.Constitution" PropertyName="Stats.Constitution" IsNewNode="True" />
