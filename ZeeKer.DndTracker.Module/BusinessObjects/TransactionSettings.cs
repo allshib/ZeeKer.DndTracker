@@ -11,9 +11,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using ZeeKer.DndTracker.Module.Extensions;
 using ZeeKer.DndTracker.Module.Types;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
@@ -28,6 +30,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         {
             // In the constructor, initialize collection properties, e.g.: 
             // this.AssociatedEntities = new ObservableCollection<AssociatedEntityObject>();
+            //DestinationCharacter = StorageDestination?.Character;
         }
         [Browsable(false)]
         public virtual Guid? TransactionId { get; set; }
@@ -41,6 +44,12 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Кол-во монет")]
         [Column(TypeName = "decimal(18,2)")]
         public virtual decimal Coins { get; set; }
+        [NotMapped, XafDisplayName("Инфо")]
+        public virtual string ShortOperationInfo => $"{OperationType.GetEnumRuText()} ({Convert.ToInt32(Coins)})";
+
+        [NotMapped, XafDisplayName("Инфо+Получ")]
+        public virtual string ShortOperationInfoAndDestination => $"{ShortOperationInfo}{(StorageDestinationId is null ? "" : $" Для \"{StorageDestination.DefaultProperty}\"")}";
+
 
         [NotMapped, Browsable(false)]
         private Character destinationCharacter;

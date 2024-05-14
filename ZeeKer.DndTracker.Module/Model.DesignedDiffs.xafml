@@ -487,12 +487,13 @@
     </ListView>
     <ListView Id="MultipleTransaction_TransactionSettings_ListView" FreezeColumnIndices="True" AllowUnlink="False" AllowNew="False">
       <Columns>
+        <ColumnInfo Id="Coins" Index="-1" />
         <ColumnInfo Id="DestinationCharacter" Index="-1" />
         <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="OperationType" Index="-1" Width="134" />
+        <ColumnInfo Id="StorageDestination" Index="-1" />
         <ColumnInfo Id="Transaction" Index="-1" />
-        <ColumnInfo Id="OperationType" Index="0" Width="134" />
-        <ColumnInfo Id="Coins" Index="1" />
-        <ColumnInfo Id="StorageDestination" Index="2" />
+        <ColumnInfo Id="ShortOperationInfoAndDestination" Index="0" Width="657" />
       </Columns>
     </ListView>
     <ListView Id="MyCharacter_ListView" ClassName="ZeeKer.DndTracker.Module.BusinessObjects.Character" Criteria="IsCurrentUserId([Person.User.ID])" IsNewNode="True">
@@ -787,7 +788,18 @@
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
           <LayoutGroup Id="SimpleEditors" RelativeSize="100">
-            <LayoutGroup Id="TransactionSettings" RelativeSize="100" Direction="Vertical" Caption="Настройки транзакции" />
+            <LayoutGroup Id="TransactionSettings" RelativeSize="100" Direction="Vertical" Caption="Настройки транзакции">
+              <LayoutGroup Id="TransactionSettings_col1" RelativeSize="10.102739726027398">
+                <LayoutItem Id="OperationType" RelativeSize="54.23728813559322" />
+                <LayoutItem Id="Coins" RelativeSize="45.76271186440678" />
+                <LayoutItem Id="ShortOperationInfo" RelativeSize="32.53012048192771" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="TransactionSettings_col2" RelativeSize="89.8972602739726">
+                <LayoutItem Id="DestinationCharacter" Index="0" RelativeSize="5.142857142857143" />
+                <LayoutItem Id="StorageDestination" Index="1" RelativeSize="94.85714285714286" />
+                <LayoutItem Id="ShortOperationInfoAndDestination" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
           </LayoutGroup>
         </LayoutGroup>
       </Layout>
