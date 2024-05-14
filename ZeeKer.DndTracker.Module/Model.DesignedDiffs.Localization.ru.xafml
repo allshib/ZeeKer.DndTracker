@@ -47,6 +47,7 @@
   </NavigationItems>
   <Validation>
     <Rules>
+      <RuleCriteria Id="Character_OnlyOneInventory" CustomMessageTemplate="У персонажа обязательно должен быть ровно 1 личный инвентарь" />
       <RuleCriteria Id="StorageOperation_CorrectDestinOperation" CustomMessageTemplate="Разрешены только положительные операции" />
       <RuleCriteria Id="StorageOperation_DifferentStorages" CustomMessageTemplate="Запрещено переводить монеты в то же хранилище" />
       <RuleCriteria Id="StorageOperationMoreZero" CustomMessageTemplate="При таком типе операции кол-во монет должно быть больше 0" />

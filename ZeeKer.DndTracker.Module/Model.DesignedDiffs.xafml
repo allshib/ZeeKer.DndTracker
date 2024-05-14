@@ -118,6 +118,7 @@
   </SchemaModules>
   <Validation>
     <Rules>
+      <RuleCriteria Id="Character_OnlyOneInventory" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.Character" TargetCriteria="[Storages][]" TargetContextIDs="Save" Criteria="[Storages][[Local] = True].Count() = 1" IsNewNode="True" />
       <RuleCriteria Id="StorageOperation_CorrectDestinOperation" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" TargetContextIDs="Save" TargetCriteria="[OperationMode] = ##Enum#ZeeKer.DndTracker.Module.Types.OperationMode,WithAnotherStorage#" Criteria="[OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddGoldCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddSilverCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddCopperCoins#" IsNewNode="True" />
       <RuleCriteria Id="StorageOperation_DifferentStorages" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" TargetContextIDs="Save" Criteria="[StorageSource] &lt;&gt; [Storage]" TargetCriteria="[OperationMode] = ##Enum#ZeeKer.DndTracker.Module.Types.OperationMode,WithAnotherStorage#" IsNewNode="True" />
       <RuleCriteria Id="StorageOperationMoreZero" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" TargetContextIDs="Save" Criteria="[Coins] &gt; 0.0m" TargetCriteria="[OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddGoldCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,RemoveGoldCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddSilverCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,RemoveSilverCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddCopperCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,RemoveCopperCoins#" IsNewNode="True" />
@@ -336,19 +337,20 @@
     <DetailView Id="CharacterStorage_DetailView">
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="27.07622298065984">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="37.97250859106529">
             <TabbedGroup Id="Item1" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
               <LayoutGroup Id="CharacterStorage" ShowCaption="True" Direction="Horizontal" Index="0" RelativeSize="100" IsNewNode="True">
-                <LayoutGroup Id="CharacterStorage_col1" ShowCaption="False" Index="0" RelativeSize="49.94786235662148" IsNewNode="True">
-                  <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="30.434782608695652" CaptionLocation="Top" IsNewNode="True" />
-                  <LayoutItem Id="CoinsInfo" ViewItem="CoinsInfo" Index="1" RelativeSize="25" CaptionLocation="Top" IsNewNode="True" />
-                  <LayoutItem Id="Local" ViewItem="Local" Index="2" RelativeSize="44.56521739130435" CaptionLocation="Top" IsNewNode="True" />
+                <LayoutGroup Id="CharacterStorage_col1" ShowCaption="False" Index="0" RelativeSize="49.92435703479576" IsNewNode="True">
+                  <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="27.272727272727273" CaptionLocation="Top" IsNewNode="True" />
+                  <LayoutItem Id="CoinsInfo" ViewItem="CoinsInfo" Index="1" RelativeSize="22.727272727272727" CaptionLocation="Top" IsNewNode="True" />
+                  <LayoutItem Id="Local" ViewItem="Local" Index="2" RelativeSize="22.727272727272727" CaptionLocation="Top" IsNewNode="True" />
+                  <LayoutItem Id="Item3" Index="3" RelativeSize="27.272727272727273" IsNewNode="True" />
                 </LayoutGroup>
-                <LayoutGroup Id="CharacterStorage_col2" ShowCaption="False" Index="1" RelativeSize="50.05213764337852" IsNewNode="True">
-                  <LayoutItem Id="PlatinumCoins" ViewItem="PlatinumCoins" Index="0" RelativeSize="30.434782608695652" CaptionLocation="Top" IsNewNode="True" />
-                  <LayoutItem Id="GoldCoins" ViewItem="GoldCoins" Index="1" RelativeSize="14.130434782608695" IsNewNode="True" />
-                  <LayoutItem Id="SilverCoins" ViewItem="SilverCoins" Index="2" RelativeSize="25" CaptionLocation="Top" IsNewNode="True" />
-                  <LayoutItem Id="СopperСoins" ViewItem="СopperСoins" Index="3" RelativeSize="30.434782608695652" CaptionLocation="Top" IsNewNode="True" />
+                <LayoutGroup Id="CharacterStorage_col2" ShowCaption="False" Index="1" RelativeSize="50.07564296520424" IsNewNode="True">
+                  <LayoutItem Id="PlatinumCoins" ViewItem="PlatinumCoins" Index="0" RelativeSize="27.272727272727273" CaptionLocation="Top" IsNewNode="True" />
+                  <LayoutItem Id="GoldCoins" ViewItem="GoldCoins" Index="1" RelativeSize="22.727272727272727" CaptionLocation="Top" IsNewNode="True" />
+                  <LayoutItem Id="SilverCoins" ViewItem="SilverCoins" Index="2" RelativeSize="22.727272727272727" CaptionLocation="Top" IsNewNode="True" />
+                  <LayoutItem Id="CopperCoins" ViewItem="CopperCoins" Index="3" RelativeSize="27.272727272727273" CaptionLocation="Top" IsNewNode="True" />
                 </LayoutGroup>
               </LayoutGroup>
               <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="1" RelativeSize="100" IsNewNode="True">
@@ -357,6 +359,17 @@
             </TabbedGroup>
             <LayoutGroup Id="CharacterStorage" RelativeSize="100" Removed="True" />
           </LayoutGroup>
+          <TabbedGroup Id="Tabs" Index="1" RelativeSize="62.02749140893471">
+            <LayoutGroup Id="Operations" RelativeSize="100">
+              <LayoutItem Id="Operations" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="OperationsFromThis" RelativeSize="100">
+              <LayoutItem Id="OperationsFromThis" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="MultipleTransactions" RelativeSize="100">
+              <LayoutItem Id="MultipleTransactions" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
           <LayoutGroup Id="SizeableEditors" RelativeSize="55.858310626702995" Removed="True">
             <LayoutItem Id="Description" CaptionLocation="Top" RelativeSize="100" Removed="True" />
           </LayoutGroup>
@@ -397,7 +410,7 @@
         <ColumnInfo Id="SourceCharacter" Index="-1" />
         <ColumnInfo Id="Storage" Index="-1" />
         <ColumnInfo Id="StorageSource" Index="-1" />
-        <ColumnInfo Id="ShortOperationInfoAndSource" Index="0" />
+        <ColumnInfo Id="ShortOperationInfoAndSource" Index="0" Width="94" />
         <ColumnInfo Id="OperationDate" SortIndex="0" SortOrder="Descending" Index="1" />
       </Columns>
     </ListView>
@@ -413,7 +426,7 @@
         <ColumnInfo Id="SourceCharacter" Index="-1" />
         <ColumnInfo Id="Storage" Index="-1" />
         <ColumnInfo Id="StorageSource" Index="-1" />
-        <ColumnInfo Id="ShortOperationInfoAndDestination" Index="0" />
+        <ColumnInfo Id="ShortOperationInfoAndDestination" Index="0" Width="91" />
         <ColumnInfo Id="OperationDate" Index="1" SortIndex="0" SortOrder="Descending" />
       </Columns>
     </ListView>
