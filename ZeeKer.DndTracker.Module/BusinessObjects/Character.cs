@@ -73,6 +73,11 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [ForeignKey(nameof(InfoId)), XafDisplayName("Инфо")]
         public virtual CharacterInfo Info { get; set; }
 
+        [Browsable(false)]
+        public virtual Guid? ClassId { get; set; }
+
+        [ForeignKey(nameof(ClassId)), XafDisplayName("Класс")]
+        public virtual CharacterClass Class { get; set; }
 
         [Aggregated]
         [XafDisplayName("Хранилища")]
@@ -95,7 +100,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             Person = user?.Person;
             Info = ObjectSpace.CreateObject<CharacterInfo>();
             Stats = ObjectSpace.CreateObject<CharacterStats>();
-            //Stats.CharacterId = ID;
+            Class = ObjectSpace.CreateObject<CharacterClass>();
+            
 
             Level = 1;
         }

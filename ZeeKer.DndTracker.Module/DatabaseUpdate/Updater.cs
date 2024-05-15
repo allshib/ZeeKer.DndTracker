@@ -9,119 +9,132 @@ using DevExpress.Persistent.BaseImpl.EF;
 using DevExpress.Persistent.BaseImpl.EF.PermissionPolicy;
 using ZeeKer.DndTracker.Module.BusinessObjects;
 using Microsoft.Extensions.DependencyInjection;
+using ZeeKer.DndTracker.Module.Types;
 
 namespace ZeeKer.DndTracker.Module.DatabaseUpdate;
 
-// For more typical usage scenarios, be sure to check out https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.Updating.ModuleUpdater
+
 public class Updater : ModuleUpdater {
     public Updater(IObjectSpace objectSpace, Version currentDBVersion) :
         base(objectSpace, currentDBVersion) {
     }
+    public override void UpdateDatabaseBeforeUpdateSchema()
+    {
+        base.UpdateDatabaseBeforeUpdateSchema();
+    }
+
     public override void UpdateDatabaseAfterUpdateSchema() {
         base.UpdateDatabaseAfterUpdateSchema();
-        //string name = "MyName";
-        //EntityObject1 theObject = ObjectSpace.FirstOrDefault<EntityObject1>(u => u.Name == name);
-        //if(theObject == null) {
-        //    theObject = ObjectSpace.CreateObject<EntityObject1>();
-        //    theObject.Name = name;
-        //}
+
+        if (CurrentDBVersion < new Version("0.2.1"))
+        {
+            CreateDefaulUsers();
+            CreateDefaultEntities();
+        }
+
+        if (CurrentDBVersion < new Version("0.2.4"))
+            CreateDefaultClasses();
+
+    }
+
+    private void CreateDefaultClasses()
+    {
+        CreateClass("Бард", CharacterClassType.Bard, DiceRollType.K8);
+        CreateClass("Варвар", CharacterClassType.Barbarian, DiceRollType.K12);
+        CreateClass("Воин", CharacterClassType.Fighter, DiceRollType.K10);
+        CreateClass("Волшебник", CharacterClassType.Wizard, DiceRollType.K6);
+        CreateClass("Друид", CharacterClassType.Druid, DiceRollType.K8);
+        CreateClass("Жрец", CharacterClassType.Cleric, DiceRollType.K8);
+        CreateClass("Изобретатель", CharacterClassType.Artificer, DiceRollType.K8);
+        CreateClass("Колдун", CharacterClassType.Warlock, DiceRollType.K8);
+        CreateClass("Монах", CharacterClassType.Monk, DiceRollType.K8);
+        CreateClass("Паладин", CharacterClassType.Paladin, DiceRollType.K10);
+        CreateClass("Плут", CharacterClassType.Rogue, DiceRollType.K8);
+        CreateClass("Следопыт", CharacterClassType.Ranger, DiceRollType.K10);
+        CreateClass("Чародей", CharacterClassType.Sorcerer, DiceRollType.K6);
+        ObjectSpace.CommitChanges();
+    }
 
 
+    private void CreateClass(string name, CharacterClassType type, DiceRollType helthDice)
+    {
+        var characterClass = ObjectSpace.CreateObject<CharacterClass>();
 
-        // The code below creates users and roles for testing purposes only.
-        // In production code, you can create users and assign roles to them automatically, as described in the following help topic:
-        // https://docs.devexpress.com/eXpressAppFramework/119064/data-security-and-safety/security-system/authentication
-#if !RELEASE
-        // If a role doesn't exist in the database, create this role
+        characterClass.Name = name;
+        characterClass.ClassType = type;
+        characterClass.HealthDice = helthDice;
+    }
+
+    private void CreateDefaulUsers()
+    {
         var defaultRole = CreateDefaultRole();
         var adminRole = CreateAdminRole();
 
-        ObjectSpace.CommitChanges(); //This line persists created object(s).
+        ObjectSpace.CommitChanges();
 
         UserManager userManager = ObjectSpace.ServiceProvider.GetRequiredService<UserManager>();
-        // If a user named 'User' doesn't exist in the database, create this user
-        if(userManager.FindUserByName<ApplicationUser>(ObjectSpace, "User") == null) {
-            // Set a password if the standard authentication type is used
+
+        if (userManager.FindUserByName<ApplicationUser>(ObjectSpace, "User") == null)
+        {
+
             string EmptyPassword = "";
             var userResult = userManager.CreateUser<ApplicationUser>(ObjectSpace, "User", EmptyPassword, (user) => {
                 // Add the Users role to the user
                 user.Roles.Add(defaultRole);
             });
-            
+
 
         }
 
-        // If a user named 'Admin' doesn't exist in the database, create this user
-        if(userManager.FindUserByName<ApplicationUser>(ObjectSpace, "Admin") == null) {
-            // Set a password if the standard authentication type is used
+        if (userManager.FindUserByName<ApplicationUser>(ObjectSpace, "Admin") == null)
+        {
+
             string EmptyPassword = "";
             var userResult = userManager.CreateUser<ApplicationUser>(ObjectSpace, "Admin", EmptyPassword, (user) => {
-                // Add the Administrators role to the user
+
                 user.Roles.Add(adminRole);
             });
 
         }
-
         ObjectSpace.CommitChanges(); //This line persists created object(s).
         ObjectSpace.Refresh();
-
-        //var characters = ObjectSpace.GetObjects<Character>(CriteriaOperator.Parse("InfoId = ?", null));
-
-        //foreach (var character in characters)
-        //    character.Info = ObjectSpace.CreateObject<CharacterInfo>();
-        //ObjectSpace.CommitChanges();
-        //ObjectSpace.Refresh();
-
-        //var characters2 = ObjectSpace.GetObjects<Character>(CriteriaOperator.Parse("StatsId = ?", null));
-
-        //foreach (var character in characters2)
-        //{
-        //    character.Stats = ObjectSpace.CreateObject<CharacterStats>();
-        //    character.Stats.Character = character;
-        //}
-        //ObjectSpace.CommitChanges();
-        //ObjectSpace.Refresh();
-
-        if (ObjectSpace.FindObject<Campain>(CriteriaOperator.Parse("Name = ?", "И солнце закатилось")) is null)
-        {
-            var campain = ObjectSpace.CreateObject<Campain>();
-            campain.Name = "И солнце закатилось";
-            ObjectSpace.CommitChanges();
-
-            var campain2 = ObjectSpace.CreateObject<Campain>();
-            campain2.Name = "Тестовый кампейн";
-            ObjectSpace.CommitChanges();
-
-
-            var character = ObjectSpace.CreateObject<Character>();
-            character.Name = "Рей Аянами";
-            character.Campain = campain;
-            //character.Person.Name = "Александр";
-            //character.Person.Surname = "Шибалкин";
-            ObjectSpace.CommitChanges();
-
-
-            campain.GameMaster = character.Person;
-            var character2 = ObjectSpace.CreateObject<Character>();
-            character2.Name = "Алина";
-            character2.Campain = campain;
-            ObjectSpace.CommitChanges();
-
-
-            var character3 = ObjectSpace.CreateObject<Character>();
-            character3.Name = "Тестовый персонаж";
-            character3.Campain = campain2;
-            ObjectSpace.CommitChanges();
-
-            var character4 = ObjectSpace.CreateObject<Character>();
-            character4.Name = "Гунвард";
-            character4.Campain = campain;
-            ObjectSpace.CommitChanges();
-        }
-#endif
     }
-    public override void UpdateDatabaseBeforeUpdateSchema() {
-        base.UpdateDatabaseBeforeUpdateSchema();
+
+
+    private void CreateDefaultEntities()
+    {
+        var campain = ObjectSpace.CreateObject<Campain>();
+        campain.Name = "И солнце закатилось";
+        ObjectSpace.CommitChanges();
+
+        var campain2 = ObjectSpace.CreateObject<Campain>();
+        campain2.Name = "Тестовый кампейн";
+        ObjectSpace.CommitChanges();
+
+
+        var character = ObjectSpace.CreateObject<Character>();
+        character.Name = "Рей Аянами";
+        character.Campain = campain;
+
+        ObjectSpace.CommitChanges();
+
+
+        campain.GameMaster = character.Person;
+        var character2 = ObjectSpace.CreateObject<Character>();
+        character2.Name = "Алина";
+        character2.Campain = campain;
+        ObjectSpace.CommitChanges();
+
+
+        var character3 = ObjectSpace.CreateObject<Character>();
+        character3.Name = "Тестовый персонаж";
+        character3.Campain = campain2;
+        ObjectSpace.CommitChanges();
+
+        var character4 = ObjectSpace.CreateObject<Character>();
+        character4.Name = "Гунвард";
+        character4.Campain = campain;
+        ObjectSpace.CommitChanges();
     }
     private PermissionPolicyRole CreateAdminRole() {
         PermissionPolicyRole adminRole = ObjectSpace.FirstOrDefault<PermissionPolicyRole>(r => r.Name == "Administrators");

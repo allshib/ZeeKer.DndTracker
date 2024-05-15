@@ -14,13 +14,13 @@ namespace ZeeKer.DndTracker.Blazor.Server;
 public class DndTrackerBlazorApplication : BlazorApplication {
     public DndTrackerBlazorApplication() {
         ApplicationName = "ZeeKer.DndTracker";
-        CheckCompatibilityType = DevExpress.ExpressApp.CheckCompatibilityType.DatabaseSchema;
+        CheckCompatibilityType = CheckCompatibilityType.ModuleInfo;
         DatabaseVersionMismatch += DndTrackerBlazorApplication_DatabaseVersionMismatch;
     }
     protected override void OnSetupStarted() {
         base.OnSetupStarted();
 #if DEBUG
-        if(System.Diagnostics.Debugger.IsAttached && CheckCompatibilityType == CheckCompatibilityType.DatabaseSchema) {
+        if(System.Diagnostics.Debugger.IsAttached && CheckCompatibilityType == CheckCompatibilityType.ModuleInfo) {
             DatabaseUpdateMode = DatabaseUpdateMode.UpdateDatabaseAlways;
         }
 #endif

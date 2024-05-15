@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Application Title="D&amp;D Tracker by Alex ZeeKer">
+<Application Title="D&amp;D Tracker by Alex ZeeKer" Company="Alex ZeeKer" Copyright="2024" Description="Приложение трекер для D&amp;D">
   <BOModel>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage">
       <OwnMembers>
@@ -29,6 +29,7 @@
           <Item Id="Campain_ListView" Caption="Кампейн" />
           <Item Id="Character_ListView" Caption="Персонаж" />
           <Item Id="CharacterStorage_ListView" Caption="Хранилище" />
+          <Item Id="Classes" Caption="Классы" />
           <Item Id="Person_ListView" Caption="Игрок" />
         </Items>
       </Item>

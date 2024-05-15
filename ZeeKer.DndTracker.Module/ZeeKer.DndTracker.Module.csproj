@@ -3,7 +3,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <CheckEolTargetFramework>false</CheckEolTargetFramework>
     <Deterministic>false</Deterministic>
-    <AssemblyVersion>1.0.*</AssemblyVersion>
+    <AssemblyVersion>0.2.4</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
     <Configurations>Debug;Release;EasyTest</Configurations>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -13,7 +13,9 @@
     <None Remove="Model.DesignedDiffs.Localization.ru.xafml" />
     <None Remove="Model.DesignedDiffs.xafml" />
   </ItemGroup>
-
+  <PropertyGroup>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+  </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="Model.DesignedDiffs.Localization.ru-RU.xafml">
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>

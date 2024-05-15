@@ -46,12 +46,12 @@ public class DndTrackerDesignTimeDbContextFactory : IDesignTimeDbContextFactory<
 public class DndTrackerEFCoreDbContext : DbContext {
 	public DndTrackerEFCoreDbContext(DbContextOptions<DndTrackerEFCoreDbContext> options) : base(options) {
 	}
-	//public DbSet<ModuleInfo> ModulesInfo { get; set; }
+	public DbSet<ModuleInfo> ModulesInfo { get; set; }
 	public DbSet<ModelDifference> ModelDifferences { get; set; }
 	public DbSet<ModelDifferenceAspect> ModelDifferenceAspects { get; set; }
 	public DbSet<PermissionPolicyRole> Roles { get; set; }
-	public DbSet<ZeeKer.DndTracker.Module.BusinessObjects.ApplicationUser> Users { get; set; }
-    public DbSet<ZeeKer.DndTracker.Module.BusinessObjects.ApplicationUserLoginInfo> UserLoginInfos { get; set; }
+	public DbSet<ApplicationUser> Users { get; set; }
+    public DbSet<ApplicationUserLoginInfo> UserLoginInfos { get; set; }
 	public DbSet<FileData> FileData { get; set; }
 	public DbSet<ReportDataV2> ReportDataV2 { get; set; }
     public DbSet<StateMachine> StateMachines { get; set; }
@@ -60,12 +60,13 @@ public class DndTrackerEFCoreDbContext : DbContext {
     public DbSet<StateMachineAppearance> StateMachineAppearances { get; set; }
 	public DbSet<DashboardData> DashboardData { get; set; }
     public DbSet<Event> Event { get; set; }
-
     public DbSet<Campain> Campains { get; set; }
     public DbSet<Character> Characters { get; set; }
     public DbSet<Person> Persons { get; set; }
     public DbSet<CharacterStorage> CharacterStorages { get; set; }
     public DbSet<StorageOperation> StorageOperations { get; set; }
+    public DbSet<CharacterClass> CharacterClasses { get; set; }
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
     {
