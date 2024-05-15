@@ -121,5 +121,11 @@ public class DndTrackerEFCoreDbContext : DbContext {
         modelBuilder.Entity<StorageOperation>()
             .HasOne(op => op.StorageSource)
             .WithMany(storage => storage.OperationsFromThis);
+
+
+        modelBuilder.Entity<Character>()
+            .HasOne(ch => ch.Class)
+            .WithMany(ch => ch.Characters)
+            .OnDelete(DeleteBehavior.SetNull);
     }
 }

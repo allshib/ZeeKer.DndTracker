@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ZeeKer.DndTracker.Module.BusinessObjects;
 
@@ -11,9 +12,11 @@ using ZeeKer.DndTracker.Module.BusinessObjects;
 namespace ZeeKer.DndTracker.Module.Migrations
 {
     [DbContext(typeof(DndTrackerEFCoreDbContext))]
-    partial class DndTrackerEFCoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240515160740_AddCharacterClassCharacterRelation")]
+    partial class AddCharacterClassCharacterRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,7 +48,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ModulesInfo", (string)null);
+                    b.ToTable("ModulesInfo");
                 });
 
             modelBuilder.Entity("DevExpress.Persistent.BaseImpl.EF.DashboardData", b =>
@@ -65,7 +68,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("DashboardData", (string)null);
+                    b.ToTable("DashboardData");
                 });
 
             modelBuilder.Entity("DevExpress.Persistent.BaseImpl.EF.Event", b =>
@@ -125,7 +128,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasIndex("RecurrencePatternID");
 
-                    b.ToTable("Event", (string)null);
+                    b.ToTable("Event");
                 });
 
             modelBuilder.Entity("DevExpress.Persistent.BaseImpl.EF.FileData", b =>
@@ -145,7 +148,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("FileData", (string)null);
+                    b.ToTable("FileData");
                 });
 
             modelBuilder.Entity("DevExpress.Persistent.BaseImpl.EF.ModelDifference", b =>
@@ -165,7 +168,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("ModelDifferences", (string)null);
+                    b.ToTable("ModelDifferences");
                 });
 
             modelBuilder.Entity("DevExpress.Persistent.BaseImpl.EF.ModelDifferenceAspect", b =>
@@ -187,7 +190,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasIndex("OwnerID");
 
-                    b.ToTable("ModelDifferenceAspects", (string)null);
+                    b.ToTable("ModelDifferenceAspects");
                 });
 
             modelBuilder.Entity("DevExpress.Persistent.BaseImpl.EF.PermissionPolicy.PermissionPolicyActionPermissionObject", b =>
@@ -206,7 +209,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasIndex("RoleID");
 
-                    b.ToTable("PermissionPolicyActionPermissionObject", (string)null);
+                    b.ToTable("PermissionPolicyActionPermissionObject");
                 });
 
             modelBuilder.Entity("DevExpress.Persistent.BaseImpl.EF.PermissionPolicy.PermissionPolicyMemberPermissionsObject", b =>
@@ -234,7 +237,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasIndex("TypePermissionObjectID");
 
-                    b.ToTable("PermissionPolicyMemberPermissionsObject", (string)null);
+                    b.ToTable("PermissionPolicyMemberPermissionsObject");
                 });
 
             modelBuilder.Entity("DevExpress.Persistent.BaseImpl.EF.PermissionPolicy.PermissionPolicyNavigationPermissionObject", b =>
@@ -259,7 +262,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasIndex("RoleID");
 
-                    b.ToTable("PermissionPolicyNavigationPermissionObject", (string)null);
+                    b.ToTable("PermissionPolicyNavigationPermissionObject");
                 });
 
             modelBuilder.Entity("DevExpress.Persistent.BaseImpl.EF.PermissionPolicy.PermissionPolicyObjectPermissionsObject", b =>
@@ -290,7 +293,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasIndex("TypePermissionObjectID");
 
-                    b.ToTable("PermissionPolicyObjectPermissionsObject", (string)null);
+                    b.ToTable("PermissionPolicyObjectPermissionsObject");
                 });
 
             modelBuilder.Entity("DevExpress.Persistent.BaseImpl.EF.PermissionPolicy.PermissionPolicyRoleBase", b =>
@@ -321,7 +324,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("PermissionPolicyRoleBase", (string)null);
+                    b.ToTable("PermissionPolicyRoleBase");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("PermissionPolicyRoleBase");
 
@@ -359,7 +362,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasIndex("RoleID");
 
-                    b.ToTable("PermissionPolicyTypePermissionObject", (string)null);
+                    b.ToTable("PermissionPolicyTypePermissionObject");
                 });
 
             modelBuilder.Entity("DevExpress.Persistent.BaseImpl.EF.PermissionPolicy.PermissionPolicyUser", b =>
@@ -387,7 +390,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("PermissionPolicyUser", (string)null);
+                    b.ToTable("PermissionPolicyUser");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("PermissionPolicyUser");
 
@@ -420,7 +423,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("ReportDataV2", (string)null);
+                    b.ToTable("ReportDataV2");
                 });
 
             modelBuilder.Entity("DevExpress.Persistent.BaseImpl.EF.Resource", b =>
@@ -437,7 +440,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasKey("Key");
 
-                    b.ToTable("Resource", (string)null);
+                    b.ToTable("Resource");
                 });
 
             modelBuilder.Entity("DevExpress.Persistent.BaseImpl.EF.StateMachine.StateMachine", b =>
@@ -468,7 +471,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasIndex("StartStateID");
 
-                    b.ToTable("StateMachines", (string)null);
+                    b.ToTable("StateMachines");
                 });
 
             modelBuilder.Entity("DevExpress.Persistent.BaseImpl.EF.StateMachine.StateMachineAppearance", b =>
@@ -517,7 +520,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasIndex("StateID");
 
-                    b.ToTable("StateMachineAppearances", (string)null);
+                    b.ToTable("StateMachineAppearances");
                 });
 
             modelBuilder.Entity("DevExpress.Persistent.BaseImpl.EF.StateMachine.StateMachineState", b =>
@@ -542,7 +545,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasIndex("StateMachineID");
 
-                    b.ToTable("StateMachineStates", (string)null);
+                    b.ToTable("StateMachineStates");
                 });
 
             modelBuilder.Entity("DevExpress.Persistent.BaseImpl.EF.StateMachine.StateMachineTransition", b =>
@@ -572,7 +575,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasIndex("TargetStateID");
 
-                    b.ToTable("StateMachineTransitions", (string)null);
+                    b.ToTable("StateMachineTransitions");
                 });
 
             modelBuilder.Entity("EventResource", b =>
@@ -587,7 +590,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasIndex("ResourcesKey");
 
-                    b.ToTable("EventResource", (string)null);
+                    b.ToTable("EventResource");
                 });
 
             modelBuilder.Entity("PermissionPolicyRolePermissionPolicyUser", b =>
@@ -602,7 +605,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasIndex("UsersID");
 
-                    b.ToTable("PermissionPolicyRolePermissionPolicyUser", (string)null);
+                    b.ToTable("PermissionPolicyRolePermissionPolicyUser");
                 });
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.ApplicationUserLoginInfo", b =>
@@ -628,7 +631,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
                         .IsUnique()
                         .HasFilter("[LoginProviderName] IS NOT NULL AND [ProviderUserKey] IS NOT NULL");
 
-                    b.ToTable("PermissionPolicyUserLoginInfo", (string)null);
+                    b.ToTable("PermissionPolicyUserLoginInfo");
                 });
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.Campain", b =>
@@ -648,7 +651,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasIndex("GameMasterId");
 
-                    b.ToTable("Campains", (string)null);
+                    b.ToTable("Campains");
                 });
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.Character", b =>
@@ -691,7 +694,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasIndex("StatsId");
 
-                    b.ToTable("Characters", (string)null);
+                    b.ToTable("Characters");
                 });
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.CharacterClass", b =>
@@ -711,7 +714,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("CharacterClasses", (string)null);
+                    b.ToTable("CharacterClasses");
                 });
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.CharacterInfo", b =>
@@ -759,7 +762,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("CharacterInfo", (string)null);
+                    b.ToTable("CharacterInfo");
                 });
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.CharacterStats", b =>
@@ -793,7 +796,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasIndex("CharacterId");
 
-                    b.ToTable("CharacterStats", (string)null);
+                    b.ToTable("CharacterStats");
                 });
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage", b =>
@@ -823,7 +826,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasIndex("CharacterId");
 
-                    b.ToTable("CharacterStorages", (string)null);
+                    b.ToTable("CharacterStorages");
                 });
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.MultipleTransaction", b =>
@@ -842,7 +845,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasIndex("StorageSourceId");
 
-                    b.ToTable("MultipleTransaction", (string)null);
+                    b.ToTable("MultipleTransaction");
                 });
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.Person", b =>
@@ -864,7 +867,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Persons", (string)null);
+                    b.ToTable("Persons");
                 });
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation", b =>
@@ -918,7 +921,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasIndex("StorageId");
 
-                    b.ToTable("StorageOperations", (string)null);
+                    b.ToTable("StorageOperations");
                 });
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.TransactionSettings", b =>
@@ -945,7 +948,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
                     b.HasIndex("TransactionId");
 
-                    b.ToTable("TransactionSettings", (string)null);
+                    b.ToTable("TransactionSettings");
                 });
 
             modelBuilder.Entity("DevExpress.Persistent.BaseImpl.EF.PermissionPolicy.PermissionPolicyRole", b =>

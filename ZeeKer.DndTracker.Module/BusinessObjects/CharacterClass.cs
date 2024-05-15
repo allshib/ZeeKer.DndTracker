@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -16,7 +17,7 @@ using ZeeKer.DndTracker.Module.Types;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
-    [XafDisplayName("Класс персонажа")]
+    [XafDisplayName("РљР»Р°СЃСЃ РїРµСЂСЃРѕРЅР°Р¶Р°")]
     [XafDefaultProperty(nameof(Name))]
     public class CharacterClass : BaseObject
     {
@@ -25,15 +26,17 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             
         }
 
-        [XafDisplayName("Название")]
+        [XafDisplayName("РќР°Р·РІР°РЅРёРµ")]
         public virtual string Name { get; set; }
 
-        [XafDisplayName("Кость хитов")]
+        [XafDisplayName("РљРѕСЃС‚СЊ С…РёС‚РѕРІ")]
         public virtual DiceRollType HealthDice { get; set; }
 
-        [XafDisplayName("Тип")]
+        [XafDisplayName("РўРёРї")]
         public virtual CharacterClassType ClassType { get; set; }
 
+        [XafDisplayName("РџРµСЂСЃРѕРЅР°Р¶Рё")]
+        public virtual IList<Character> Characters { get; set; } = new ObservableCollection<Character>();
 
         //[Action(Caption = "My UI Action", ConfirmationMessage = "Are you sure?", ImageName = "Attention", AutoCommit = true)]
         //public void ActionMethod() {
