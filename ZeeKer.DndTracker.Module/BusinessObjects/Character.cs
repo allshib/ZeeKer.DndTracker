@@ -100,9 +100,6 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             Person = user?.Person;
             Info = ObjectSpace.CreateObject<CharacterInfo>();
             Stats = ObjectSpace.CreateObject<CharacterStats>();
-            Class = ObjectSpace.CreateObject<CharacterClass>();
-            
-
             Level = 1;
         }
 
