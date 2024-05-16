@@ -121,6 +121,13 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <DetailView Id="CharacterDataList_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" Caption="Main">
+          <LayoutGroup Id="CharacterDataItems_Group" Caption="Персонажи" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <DetailView Id="CharacterStorage_DetailView">
       <Layout>
         <LayoutGroup Id="Main">

@@ -36,6 +36,11 @@
         <AppearanceRule Id="NewCreated_Action" Priority="0" Visibility="Hide" TargetItems="CreateTransaction" Criteria="IsNewObject([This])" AppearanceItemType="Action" IsNewNode="True" />
       </AppearanceRules>
     </Class>
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.NonPersistent.CharacterDataItem">
+      <AppearanceRules>
+        <AppearanceRule Id="Selected" TargetItems="*" BackColor="192, 255, 192" Criteria="[Selected] = True" IsNewNode="True" />
+      </AppearanceRules>
+    </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Person" ImageName="BO_Position_v92" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" ImageName="BO_StateMachine">
       <AppearanceRules>
@@ -346,6 +351,21 @@
               <LayoutItem Id="ClassType" Index="1" RelativeSize="3.4076015727391873" />
               <LayoutItem Id="HealthDice" Index="2" RelativeSize="91.87418086500655" />
             </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="CharacterDataList_CharacterDataItems_ListView">
+      <Columns>
+        <ColumnInfo Id="Selected" Index="-1" />
+      </Columns>
+    </ListView>
+    <DetailView Id="CharacterDataList_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutItem Id="CharacterDataItems" ViewItem="CharacterDataItems" Index="0" RelativeSize="100" IsNewNode="True" />
+          <LayoutGroup Id="CharacterDataItems_Group" RelativeSize="100" Removed="True">
+            <LayoutItem Id="CharacterDataItems" Removed="True" />
           </LayoutGroup>
         </LayoutGroup>
       </Layout>

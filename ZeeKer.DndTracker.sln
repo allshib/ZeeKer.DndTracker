@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution-folder", "solution
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeeKer.DndTracker.LongStoryShort", "ZeeKer.DndTracker.LongStoryShort\ZeeKer.DndTracker.LongStoryShort.csproj", "{B865B762-BF5D-45BE-9C21-206EB37B9F4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,12 @@ Global
 		{E40ECC95-85DD-46DE-A2AE-FC5A83703D2C}.EasyTest|Any CPU.Build.0 = EasyTest|Any CPU
 		{E40ECC95-85DD-46DE-A2AE-FC5A83703D2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E40ECC95-85DD-46DE-A2AE-FC5A83703D2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B865B762-BF5D-45BE-9C21-206EB37B9F4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B865B762-BF5D-45BE-9C21-206EB37B9F4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B865B762-BF5D-45BE-9C21-206EB37B9F4F}.EasyTest|Any CPU.ActiveCfg = Debug|Any CPU
+		{B865B762-BF5D-45BE-9C21-206EB37B9F4F}.EasyTest|Any CPU.Build.0 = Debug|Any CPU
+		{B865B762-BF5D-45BE-9C21-206EB37B9F4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B865B762-BF5D-45BE-9C21-206EB37B9F4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
