@@ -82,7 +82,7 @@ public class DndTrackerEFCoreDbContext : DbContext {
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
-        base.OnModelCreating(modelBuilder);
+        
         modelBuilder.HasChangeTrackingStrategy(ChangeTrackingStrategy.ChangingAndChangedNotificationsWithOriginalValues);
         modelBuilder.UsePropertyAccessMode(PropertyAccessMode.PreferFieldDuringConstruction);
         modelBuilder.Entity<ZeeKer.DndTracker.Module.BusinessObjects.ApplicationUserLoginInfo>(b => {
@@ -98,34 +98,37 @@ public class DndTrackerEFCoreDbContext : DbContext {
             .OnDelete(DeleteBehavior.Cascade);
 
 
-
         modelBuilder.Entity<Character>()
             .HasOne(t=>t.Person)
             .WithMany(t=>t.Characters)
-            .OnDelete(DeleteBehavior.NoAction);
+            .OnDelete(DeleteBehavior.Restrict);
 
         modelBuilder.Entity<ApplicationUser>()
             .HasOne(t => t.Person)
             .WithOne(t => t.User)
-            .OnDelete(DeleteBehavior.NoAction);
+            .OnDelete(DeleteBehavior.SetNull);
 
         modelBuilder.Entity<Person>()
             .HasOne(t => t.User)
             .WithOne(t => t.Person)
-            .OnDelete(DeleteBehavior.NoAction);
+            .OnDelete(DeleteBehavior.SetNull);
 
         modelBuilder.Entity<StorageOperation>()
             .HasOne(op => op.Storage)
             .WithMany(storage => storage.Operations);
+        //.OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<StorageOperation>()
             .HasOne(op => op.StorageSource)
             .WithMany(storage => storage.OperationsFromThis);
+            //.OnDelete(DeleteBehavior.Cascade);
 
 
         modelBuilder.Entity<Character>()
             .HasOne(ch => ch.Class)
             .WithMany(ch => ch.Characters)
             .OnDelete(DeleteBehavior.SetNull);
+
+        base.OnModelCreating(modelBuilder);
     }
 }

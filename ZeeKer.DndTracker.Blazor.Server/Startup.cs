@@ -69,8 +69,14 @@ public class Startup {
                         }
 #endif
                         ArgumentNullException.ThrowIfNull(connectionString);
-                        options.UseSqlServer(connectionString,
-                            o => o.UseQuerySplittingBehavior(QuerySplittingBehavior.SingleQuery));
+                        options.UseSqlServer(
+                            connectionString,
+                            sqlOptions => 
+                            {
+                                sqlOptions.EnableRetryOnFailure();
+                                sqlOptions.CommandTimeout(60); // Установка тайм-аута команды в 60 секунд
+                                sqlOptions.UseQuerySplittingBehavior(QuerySplittingBehavior.SingleQuery);
+                            });
 
                         options.UseChangeTrackingProxies();
                         options.UseObjectSpaceLinkProxies();
