@@ -115,6 +115,7 @@
       <Item Id="Testing" Index="7" IsNewNode="True">
         <Items IsNewNode="True">
           <Item Id="Infos" ViewId="CharacterInfo_ListView" IsNewNode="True" />
+          <Item Id="Skills" ViewId="Skills_ListView" IsNewNode="True" />
           <Item Id="Stats" ViewId="CharacterStats_ListView" IsNewNode="True" />
         </Items>
       </Item>

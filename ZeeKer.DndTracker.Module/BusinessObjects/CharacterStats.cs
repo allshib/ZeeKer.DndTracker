@@ -175,6 +175,11 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Бонус мастерства")]
         public virtual int Profiency => CalculateProfiency();
 
+        [Browsable(false)]
+        public virtual Guid? SkillsId { get; set; }
+        [XafDisplayName("Навыки")]
+        public virtual Skills Skills { get; set; }
+
         private int CalculateProfiency()
         {
             if (CharacterId is null || Character.Level < 5) return 2;
@@ -185,10 +190,11 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             return 6;
 
         }
-        //[Action(Caption = "My UI Action", ConfirmationMessage = "Are you sure?", ImageName = "Attention", AutoCommit = true)]
-        //public void ActionMethod() {
-        //    // Trigger custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
-        //    this.PersistentProperty = "Paid";
-        //}
+        public override void OnCreated()
+        {
+            base.OnCreated();
+
+            Skills = ObjectSpace.CreateObject<Skills>();
+        }
     }
 }

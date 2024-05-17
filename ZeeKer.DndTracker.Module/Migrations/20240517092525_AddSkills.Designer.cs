@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ZeeKer.DndTracker.Module.BusinessObjects;
 
@@ -11,9 +12,11 @@ using ZeeKer.DndTracker.Module.BusinessObjects;
 namespace ZeeKer.DndTracker.Module.Migrations
 {
     [DbContext(typeof(DndTrackerEFCoreDbContext))]
-    partial class DndTrackerEFCoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240517092525_AddSkills")]
+    partial class AddSkills
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -784,9 +787,6 @@ namespace ZeeKer.DndTracker.Module.Migrations
                     b.Property<int>("Intelegence")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("SkillsId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("Strength")
                         .HasColumnType("int");
 
@@ -873,48 +873,13 @@ namespace ZeeKer.DndTracker.Module.Migrations
                     b.ToTable("Persons");
                 });
 
-            modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Dependency")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("HasSkill")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("SkillType")
-                        .HasColumnType("int");
-
-                    b.Property<Guid?>("SkillsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Value")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("SkillsId");
-
-                    b.ToTable("SkillDetail");
-                });
-
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.Skills", b =>
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("StatsId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("ID");
-
-                    b.HasIndex("StatsId")
-                        .IsUnique()
-                        .HasFilter("[StatsId] IS NOT NULL");
 
                     b.ToTable("Skills");
                 });
@@ -1242,24 +1207,439 @@ namespace ZeeKer.DndTracker.Module.Migrations
                     b.Navigation("StorageSource");
                 });
 
-            modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail", b =>
-                {
-                    b.HasOne("ZeeKer.DndTracker.Module.BusinessObjects.Skills", "Skills")
-                        .WithMany("SkillDetails")
-                        .HasForeignKey("SkillsId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("Skills");
-                });
-
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.Skills", b =>
                 {
-                    b.HasOne("ZeeKer.DndTracker.Module.BusinessObjects.CharacterStats", "Stats")
-                        .WithOne("Skills")
-                        .HasForeignKey("ZeeKer.DndTracker.Module.BusinessObjects.Skills", "StatsId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.OwnsOne("ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail", "Acrobatics", b1 =>
+                        {
+                            b1.Property<Guid>("SkillsID")
+                                .HasColumnType("uniqueidentifier");
 
-                    b.Navigation("Stats");
+                            b1.Property<int>("Dependency")
+                                .HasColumnType("int");
+
+                            b1.Property<bool>("HasSkill")
+                                .HasColumnType("bit");
+
+                            b1.Property<int>("Value")
+                                .HasColumnType("int");
+
+                            b1.HasKey("SkillsID");
+
+                            b1.ToTable("Skills");
+
+                            b1.WithOwner()
+                                .HasForeignKey("SkillsID");
+                        });
+
+                    b.OwnsOne("ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail", "AnimalHandling", b1 =>
+                        {
+                            b1.Property<Guid>("SkillsID")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Dependency")
+                                .HasColumnType("int");
+
+                            b1.Property<bool>("HasSkill")
+                                .HasColumnType("bit");
+
+                            b1.Property<int>("Value")
+                                .HasColumnType("int");
+
+                            b1.HasKey("SkillsID");
+
+                            b1.ToTable("Skills");
+
+                            b1.WithOwner()
+                                .HasForeignKey("SkillsID");
+                        });
+
+                    b.OwnsOne("ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail", "Arcana", b1 =>
+                        {
+                            b1.Property<Guid>("SkillsID")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Dependency")
+                                .HasColumnType("int");
+
+                            b1.Property<bool>("HasSkill")
+                                .HasColumnType("bit");
+
+                            b1.Property<int>("Value")
+                                .HasColumnType("int");
+
+                            b1.HasKey("SkillsID");
+
+                            b1.ToTable("Skills");
+
+                            b1.WithOwner()
+                                .HasForeignKey("SkillsID");
+                        });
+
+                    b.OwnsOne("ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail", "Athletics", b1 =>
+                        {
+                            b1.Property<Guid>("SkillsID")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Dependency")
+                                .HasColumnType("int");
+
+                            b1.Property<bool>("HasSkill")
+                                .HasColumnType("bit");
+
+                            b1.Property<int>("Value")
+                                .HasColumnType("int");
+
+                            b1.HasKey("SkillsID");
+
+                            b1.ToTable("Skills");
+
+                            b1.WithOwner()
+                                .HasForeignKey("SkillsID");
+                        });
+
+                    b.OwnsOne("ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail", "Deception", b1 =>
+                        {
+                            b1.Property<Guid>("SkillsID")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Dependency")
+                                .HasColumnType("int");
+
+                            b1.Property<bool>("HasSkill")
+                                .HasColumnType("bit");
+
+                            b1.Property<int>("Value")
+                                .HasColumnType("int");
+
+                            b1.HasKey("SkillsID");
+
+                            b1.ToTable("Skills");
+
+                            b1.WithOwner()
+                                .HasForeignKey("SkillsID");
+                        });
+
+                    b.OwnsOne("ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail", "History", b1 =>
+                        {
+                            b1.Property<Guid>("SkillsID")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Dependency")
+                                .HasColumnType("int");
+
+                            b1.Property<bool>("HasSkill")
+                                .HasColumnType("bit");
+
+                            b1.Property<int>("Value")
+                                .HasColumnType("int");
+
+                            b1.HasKey("SkillsID");
+
+                            b1.ToTable("Skills");
+
+                            b1.WithOwner()
+                                .HasForeignKey("SkillsID");
+                        });
+
+                    b.OwnsOne("ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail", "Insight", b1 =>
+                        {
+                            b1.Property<Guid>("SkillsID")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Dependency")
+                                .HasColumnType("int");
+
+                            b1.Property<bool>("HasSkill")
+                                .HasColumnType("bit");
+
+                            b1.Property<int>("Value")
+                                .HasColumnType("int");
+
+                            b1.HasKey("SkillsID");
+
+                            b1.ToTable("Skills");
+
+                            b1.WithOwner()
+                                .HasForeignKey("SkillsID");
+                        });
+
+                    b.OwnsOne("ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail", "Intimidation", b1 =>
+                        {
+                            b1.Property<Guid>("SkillsID")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Dependency")
+                                .HasColumnType("int");
+
+                            b1.Property<bool>("HasSkill")
+                                .HasColumnType("bit");
+
+                            b1.Property<int>("Value")
+                                .HasColumnType("int");
+
+                            b1.HasKey("SkillsID");
+
+                            b1.ToTable("Skills");
+
+                            b1.WithOwner()
+                                .HasForeignKey("SkillsID");
+                        });
+
+                    b.OwnsOne("ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail", "Investigation", b1 =>
+                        {
+                            b1.Property<Guid>("SkillsID")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Dependency")
+                                .HasColumnType("int");
+
+                            b1.Property<bool>("HasSkill")
+                                .HasColumnType("bit");
+
+                            b1.Property<int>("Value")
+                                .HasColumnType("int");
+
+                            b1.HasKey("SkillsID");
+
+                            b1.ToTable("Skills");
+
+                            b1.WithOwner()
+                                .HasForeignKey("SkillsID");
+                        });
+
+                    b.OwnsOne("ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail", "Medicine", b1 =>
+                        {
+                            b1.Property<Guid>("SkillsID")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Dependency")
+                                .HasColumnType("int");
+
+                            b1.Property<bool>("HasSkill")
+                                .HasColumnType("bit");
+
+                            b1.Property<int>("Value")
+                                .HasColumnType("int");
+
+                            b1.HasKey("SkillsID");
+
+                            b1.ToTable("Skills");
+
+                            b1.WithOwner()
+                                .HasForeignKey("SkillsID");
+                        });
+
+                    b.OwnsOne("ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail", "Nature", b1 =>
+                        {
+                            b1.Property<Guid>("SkillsID")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Dependency")
+                                .HasColumnType("int");
+
+                            b1.Property<bool>("HasSkill")
+                                .HasColumnType("bit");
+
+                            b1.Property<int>("Value")
+                                .HasColumnType("int");
+
+                            b1.HasKey("SkillsID");
+
+                            b1.ToTable("Skills");
+
+                            b1.WithOwner()
+                                .HasForeignKey("SkillsID");
+                        });
+
+                    b.OwnsOne("ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail", "Perception", b1 =>
+                        {
+                            b1.Property<Guid>("SkillsID")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Dependency")
+                                .HasColumnType("int");
+
+                            b1.Property<bool>("HasSkill")
+                                .HasColumnType("bit");
+
+                            b1.Property<int>("Value")
+                                .HasColumnType("int");
+
+                            b1.HasKey("SkillsID");
+
+                            b1.ToTable("Skills");
+
+                            b1.WithOwner()
+                                .HasForeignKey("SkillsID");
+                        });
+
+                    b.OwnsOne("ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail", "Performance", b1 =>
+                        {
+                            b1.Property<Guid>("SkillsID")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Dependency")
+                                .HasColumnType("int");
+
+                            b1.Property<bool>("HasSkill")
+                                .HasColumnType("bit");
+
+                            b1.Property<int>("Value")
+                                .HasColumnType("int");
+
+                            b1.HasKey("SkillsID");
+
+                            b1.ToTable("Skills");
+
+                            b1.WithOwner()
+                                .HasForeignKey("SkillsID");
+                        });
+
+                    b.OwnsOne("ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail", "Persuasion", b1 =>
+                        {
+                            b1.Property<Guid>("SkillsID")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Dependency")
+                                .HasColumnType("int");
+
+                            b1.Property<bool>("HasSkill")
+                                .HasColumnType("bit");
+
+                            b1.Property<int>("Value")
+                                .HasColumnType("int");
+
+                            b1.HasKey("SkillsID");
+
+                            b1.ToTable("Skills");
+
+                            b1.WithOwner()
+                                .HasForeignKey("SkillsID");
+                        });
+
+                    b.OwnsOne("ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail", "Religion", b1 =>
+                        {
+                            b1.Property<Guid>("SkillsID")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Dependency")
+                                .HasColumnType("int");
+
+                            b1.Property<bool>("HasSkill")
+                                .HasColumnType("bit");
+
+                            b1.Property<int>("Value")
+                                .HasColumnType("int");
+
+                            b1.HasKey("SkillsID");
+
+                            b1.ToTable("Skills");
+
+                            b1.WithOwner()
+                                .HasForeignKey("SkillsID");
+                        });
+
+                    b.OwnsOne("ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail", "SleightOfHand", b1 =>
+                        {
+                            b1.Property<Guid>("SkillsID")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Dependency")
+                                .HasColumnType("int");
+
+                            b1.Property<bool>("HasSkill")
+                                .HasColumnType("bit");
+
+                            b1.Property<int>("Value")
+                                .HasColumnType("int");
+
+                            b1.HasKey("SkillsID");
+
+                            b1.ToTable("Skills");
+
+                            b1.WithOwner()
+                                .HasForeignKey("SkillsID");
+                        });
+
+                    b.OwnsOne("ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail", "Stealth", b1 =>
+                        {
+                            b1.Property<Guid>("SkillsID")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Dependency")
+                                .HasColumnType("int");
+
+                            b1.Property<bool>("HasSkill")
+                                .HasColumnType("bit");
+
+                            b1.Property<int>("Value")
+                                .HasColumnType("int");
+
+                            b1.HasKey("SkillsID");
+
+                            b1.ToTable("Skills");
+
+                            b1.WithOwner()
+                                .HasForeignKey("SkillsID");
+                        });
+
+                    b.OwnsOne("ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail", "Survival", b1 =>
+                        {
+                            b1.Property<Guid>("SkillsID")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Dependency")
+                                .HasColumnType("int");
+
+                            b1.Property<bool>("HasSkill")
+                                .HasColumnType("bit");
+
+                            b1.Property<int>("Value")
+                                .HasColumnType("int");
+
+                            b1.HasKey("SkillsID");
+
+                            b1.ToTable("Skills");
+
+                            b1.WithOwner()
+                                .HasForeignKey("SkillsID");
+                        });
+
+                    b.Navigation("Acrobatics");
+
+                    b.Navigation("AnimalHandling");
+
+                    b.Navigation("Arcana");
+
+                    b.Navigation("Athletics");
+
+                    b.Navigation("Deception");
+
+                    b.Navigation("History");
+
+                    b.Navigation("Insight");
+
+                    b.Navigation("Intimidation");
+
+                    b.Navigation("Investigation");
+
+                    b.Navigation("Medicine");
+
+                    b.Navigation("Nature");
+
+                    b.Navigation("Perception");
+
+                    b.Navigation("Performance");
+
+                    b.Navigation("Persuasion");
+
+                    b.Navigation("Religion");
+
+                    b.Navigation("SleightOfHand");
+
+                    b.Navigation("Stealth");
+
+                    b.Navigation("Survival");
                 });
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation", b =>
@@ -1375,11 +1755,6 @@ namespace ZeeKer.DndTracker.Module.Migrations
                     b.Navigation("Characters");
                 });
 
-            modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.CharacterStats", b =>
-                {
-                    b.Navigation("Skills");
-                });
-
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage", b =>
                 {
                     b.Navigation("MultipleTransactions");
@@ -1401,11 +1776,6 @@ namespace ZeeKer.DndTracker.Module.Migrations
                     b.Navigation("Characters");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.Skills", b =>
-                {
-                    b.Navigation("SkillDetails");
                 });
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.ApplicationUser", b =>

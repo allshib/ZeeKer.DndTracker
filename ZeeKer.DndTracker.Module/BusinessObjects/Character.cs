@@ -94,6 +94,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Создано")]
         public virtual DateTimeOffset CreatedAt { get; set; }
 
+        
+
         public override void OnCreated()
         {
             base.OnCreated();

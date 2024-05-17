@@ -11,6 +11,7 @@ using DevExpress.Persistent.BaseImpl.EF.StateMachine;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using IConfiguration = Microsoft.Extensions.Configuration.IConfiguration;
+using System.Reflection.Emit;
 namespace ZeeKer.DndTracker.Module.BusinessObjects;
 
 // This code allows our Model Editor to get relevant EF Core metadata at design time.
@@ -66,6 +67,8 @@ public class DndTrackerEFCoreDbContext : DbContext {
     public DbSet<CharacterStorage> CharacterStorages { get; set; }
     public DbSet<StorageOperation> StorageOperations { get; set; }
     public DbSet<CharacterClass> CharacterClasses { get; set; }
+
+    public DbSet<Skills> Skills { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
@@ -157,6 +160,25 @@ public class DndTrackerEFCoreDbContext : DbContext {
             .WithOne(st => st.Character)
             .OnDelete(DeleteBehavior.SetNull);
 
+
+
+
+        modelBuilder.Entity<SkillDetail>()
+            .HasOne(x => x.Skills)
+            .WithMany(x => x.SkillDetails)
+            .OnDelete(DeleteBehavior.Cascade);
+
+
+        modelBuilder.Entity<Skills>()
+            .HasOne(skills=>skills.Stats)
+            .WithOne(st => st.Skills)
+            .HasForeignKey<Skills>(a => a.StatsId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+
         base.OnModelCreating(modelBuilder);
     }
+
+
+    
 }

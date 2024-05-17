@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ZeeKer.DndTracker.Module.BusinessObjects;
 
@@ -11,9 +12,11 @@ using ZeeKer.DndTracker.Module.BusinessObjects;
 namespace ZeeKer.DndTracker.Module.Migrations
 {
     [DbContext(typeof(DndTrackerEFCoreDbContext))]
-    partial class DndTrackerEFCoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240517102957_AddSkills2")]
+    partial class AddSkills2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -784,9 +787,6 @@ namespace ZeeKer.DndTracker.Module.Migrations
                     b.Property<int>("Intelegence")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("SkillsId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("Strength")
                         .HasColumnType("int");
 
@@ -907,14 +907,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("StatsId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("ID");
-
-                    b.HasIndex("StatsId")
-                        .IsUnique()
-                        .HasFilter("[StatsId] IS NOT NULL");
 
                     b.ToTable("Skills");
                 });
@@ -1252,16 +1245,6 @@ namespace ZeeKer.DndTracker.Module.Migrations
                     b.Navigation("Skills");
                 });
 
-            modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.Skills", b =>
-                {
-                    b.HasOne("ZeeKer.DndTracker.Module.BusinessObjects.CharacterStats", "Stats")
-                        .WithOne("Skills")
-                        .HasForeignKey("ZeeKer.DndTracker.Module.BusinessObjects.Skills", "StatsId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("Stats");
-                });
-
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation", b =>
                 {
                     b.HasOne("ZeeKer.DndTracker.Module.BusinessObjects.Campain", "Campain")
@@ -1373,11 +1356,6 @@ namespace ZeeKer.DndTracker.Module.Migrations
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.CharacterClass", b =>
                 {
                     b.Navigation("Characters");
-                });
-
-            modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.CharacterStats", b =>
-                {
-                    b.Navigation("Skills");
                 });
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage", b =>
