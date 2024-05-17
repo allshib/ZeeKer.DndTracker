@@ -42,28 +42,40 @@ public class ManageCoinsUseCase : ShowViewUseCaseBase
             : operation.StorageSource?.Character;
 
 
-        var detailView = this.CreateDetailView(operation, os);
-        this.OpenDetailView(detailView, () =>
+        if (request.FastOperation)
+            RunOperation(operation, os, request.FastOperation);
+        else
         {
-            if(operation.Executed)
-                operation.RollbackOperation();
-
-            operation.ExecuteOperation();
-            try
+            var detailView = this.CreateDetailView(operation, os);
+            this.OpenDetailView(detailView, () =>
             {
-                os.CommitChanges();
-            }
-            catch (Exception ex)
-            {
-                if(operation.Executed)
-                    operation.RollbackOperation();
-            }
-            AfterCommit?.Invoke(this, new AfterCommitEventArgs());
-
-        });
+                RunOperation(operation, os, request.FastOperation);
+            });
+        }
+        
 
     }
 
+    private void RunOperation(StorageOperation operation, IObjectSpace os, bool fastOperation)
+    {
+        if (operation.Executed)
+            operation.RollbackOperation();
+
+        operation.ExecuteOperation();
+        try
+        {
+            os.CommitChanges();
+        }
+        catch (Exception ex)
+        {
+            if (operation.Executed)
+                operation.RollbackOperation();
+
+            if (fastOperation)
+                throw;
+        }
+        AfterCommit?.Invoke(this, new AfterCommitEventArgs());
+    }
 
     public record AfterCommitEventArgs();
 }

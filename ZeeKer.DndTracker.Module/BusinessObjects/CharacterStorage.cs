@@ -28,7 +28,10 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects;
         public virtual string Description { get; set; }
 
 
-        [XafDisplayName("Медные монеты")]
+        [XafDisplayName("Быстрые операции")]
+        public virtual bool FastOperations { get; set; }
+
+    [XafDisplayName("Медные монеты")]
         [Column(TypeName = "decimal(18,2)")]
         public virtual decimal CopperCoins { get; set; }
 

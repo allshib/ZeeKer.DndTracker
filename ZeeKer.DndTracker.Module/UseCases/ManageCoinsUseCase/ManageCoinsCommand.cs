@@ -12,4 +12,5 @@ public record ManageCoinsCommand(
     OperationMode Mode = OperationMode.Default, 
     Guid? StorageSourceId = null,
     Guid? SourceCharacterId = null,
-    Guid? DestinationCharacterId = null);
+    Guid? DestinationCharacterId = null,
+    bool FastOperation = false);

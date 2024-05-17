@@ -137,41 +137,49 @@ namespace ZeeKer.DndTracker.Module.Controllers
 
         private void RemoveGold3Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
-            ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 3, StorageOperationType.RemoveGoldCoins);
+            var character = View.CurrentObject as Character;
+            ExecuteSimpleOperation(character.CampainId, 3, StorageOperationType.RemoveGoldCoins, character.LocalStorage.FastOperations);
         }
 
         private void RemoveGold2Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
-            ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 2, StorageOperationType.RemoveGoldCoins);
+            var character = View.CurrentObject as Character;
+            ExecuteSimpleOperation(character.CampainId, 2, StorageOperationType.RemoveGoldCoins, character.LocalStorage.FastOperations);
         }
 
         private void RemoveGold5Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
-            ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 5, StorageOperationType.RemoveGoldCoins);
+            var character = View.CurrentObject as Character;
+            ExecuteSimpleOperation(character.CampainId, 5, StorageOperationType.RemoveGoldCoins, character.LocalStorage.FastOperations);
         }
 
         private void RemoveGold500Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
-            ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 500, StorageOperationType.RemoveGoldCoins);
+            var character = View.CurrentObject as Character;
+            ExecuteSimpleOperation(character.CampainId, 500, StorageOperationType.RemoveGoldCoins, character.LocalStorage.FastOperations);
         }
 
         private void RemoveGold250Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
-            ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 250, StorageOperationType.RemoveGoldCoins);
+            var character = View.CurrentObject as Character;
+            ExecuteSimpleOperation(character.CampainId, 250, StorageOperationType.RemoveGoldCoins, character.LocalStorage.FastOperations);
         }
 
         private void AddGold500Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
-            ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 500, StorageOperationType.AddGoldCoins);
+            var character = View.CurrentObject as Character;
+            ExecuteSimpleOperation(character.CampainId, 500, StorageOperationType.AddGoldCoins, character.LocalStorage.FastOperations);
         }
 
         private void AddGold250Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
-            ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 250, StorageOperationType.AddGoldCoins);
+            var character = View.CurrentObject as Character;
+            ExecuteSimpleOperation(character.CampainId, 250, StorageOperationType.AddGoldCoins, character.LocalStorage.FastOperations);
         }
         private void AddGold50Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
-            ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 50, StorageOperationType.AddGoldCoins);
+            var character = View.CurrentObject as Character;
+            ExecuteSimpleOperation(character.CampainId, 50, StorageOperationType.AddGoldCoins, character.LocalStorage.FastOperations);
         }
 
 
@@ -212,29 +220,54 @@ namespace ZeeKer.DndTracker.Module.Controllers
         }
 
         private void RemoveGold100Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
-            => ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 100, StorageOperationType.RemoveGoldCoins);
+        {
+            var character = View.CurrentObject as Character;
+            ExecuteSimpleOperation(character.CampainId, 100,
+                StorageOperationType.RemoveGoldCoins, character.LocalStorage.FastOperations);
+        }
+
         private void RemoveGold10Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
-            => ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 10, StorageOperationType.RemoveGoldCoins);
+        {
+            var character = View.CurrentObject as Character;
+            ExecuteSimpleOperation(character.CampainId, 10,
+                StorageOperationType.RemoveGoldCoins, character.LocalStorage.FastOperations);
+        }
+
         private void RemoveGold1Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
-            => ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 1, StorageOperationType.RemoveGoldCoins);
+        {
+            var character = View.CurrentObject as Character;
+            ExecuteSimpleOperation(character.CampainId, 1,
+                StorageOperationType.RemoveGoldCoins, character.LocalStorage.FastOperations);
+        }
 
 
 
 
         private void AddGold100Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
-            => ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 100, StorageOperationType.AddGoldCoins);
+        {
+            var character = View.CurrentObject as Character;
+            ExecuteSimpleOperation(character.CampainId, 100, StorageOperationType.AddGoldCoins, character.LocalStorage.FastOperations);
+        }
+
         private void AddGold10Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
-            => ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 10, StorageOperationType.AddGoldCoins);
+        {
+            var character = View.CurrentObject as Character;
+            ExecuteSimpleOperation(character.CampainId, 10, StorageOperationType.AddGoldCoins, character.LocalStorage.FastOperations);
+        }
+
         private void AddGold1Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
-        => ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 1, StorageOperationType.AddGoldCoins);
-        
+        {
+            var character = View.CurrentObject as Character;
+            ExecuteSimpleOperation(character.CampainId, 1, StorageOperationType.AddGoldCoins, character.LocalStorage.FastOperations);
+        }
 
 
-        private void ExecuteSimpleOperation(Guid? campainId, decimal coins, StorageOperationType type)
+
+        private void ExecuteSimpleOperation(Guid? campainId, decimal coins, StorageOperationType type, bool fastOperation = false)
         => useCase
             .Execute(
                 new ManageCoinsCommand(campainId,
-                    ((Character)View.CurrentObject).LocalStorage.ID, coins, type));
+                    ((Character)View.CurrentObject).LocalStorage.ID, coins, type, FastOperation: fastOperation));
 
 
         private void ExecuteOperation(
