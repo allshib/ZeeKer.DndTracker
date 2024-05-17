@@ -7,7 +7,7 @@ public class Ac
     public int value { get; set; }
 }
 
-public class Acrobatics
+public class Skill
 {
     [JsonPropertyName("baseStat")]
     public string baseStat { get; set; }
@@ -17,6 +17,9 @@ public class Acrobatics
 
     [JsonPropertyName("label")]
     public string label { get; set; }
+
+    [JsonPropertyName("isProf")]
+    public int isProf { get; set; }
 }
 
 public class Age
@@ -683,58 +686,58 @@ public class Saves
 public class Skills
 {
     [JsonPropertyName("acrobatics")]
-    public Acrobatics acrobatics { get; set; }
+    public Skill acrobatics { get; set; }
 
     [JsonPropertyName("investigation")]
-    public Investigation investigation { get; set; }
+    public Skill investigation { get; set; }
 
     [JsonPropertyName("athletics")]
-    public Athletics athletics { get; set; }
+    public Skill athletics { get; set; }
 
     [JsonPropertyName("perception")]
-    public Perception perception { get; set; }
+    public Skill perception { get; set; }
 
     [JsonPropertyName("survival")]
-    public Survival survival { get; set; }
+    public Skill survival { get; set; }
 
     [JsonPropertyName("performance")]
-    public Performance performance { get; set; }
+    public Skill performance { get; set; }
 
     [JsonPropertyName("intimidation")]
-    public Intimidation intimidation { get; set; }
+    public Skill intimidation { get; set; }
 
     [JsonPropertyName("history")]
-    public History history { get; set; }
+    public Skill history { get; set; }
 
     [JsonPropertyName("sleight of hand")]
-    public SleightOfHand sleightofhand { get; set; }
+    public Skill sleightofhand { get; set; }
 
     [JsonPropertyName("arcana")]
-    public Arcana arcana { get; set; }
+    public Skill arcana { get; set; }
 
     [JsonPropertyName("medicine")]
-    public Medicine medicine { get; set; }
+    public Skill medicine { get; set; }
 
     [JsonPropertyName("deception")]
-    public Deception deception { get; set; }
+    public Skill deception { get; set; }
 
     [JsonPropertyName("nature")]
-    public Nature nature { get; set; }
+    public Skill nature { get; set; }
 
     [JsonPropertyName("insight")]
-    public Insight insight { get; set; }
+    public Skill insight { get; set; }
 
     [JsonPropertyName("religion")]
-    public Religion religion { get; set; }
+    public Skill religion { get; set; }
 
     [JsonPropertyName("stealth")]
-    public Stealth stealth { get; set; }
+    public Skill stealth { get; set; }
 
     [JsonPropertyName("persuasion")]
-    public Persuasion persuasion { get; set; }
+    public Skill persuasion { get; set; }
 
     [JsonPropertyName("animal handling")]
-    public AnimalHandling animalhandling { get; set; }
+    public Skill animalhandling { get; set; }
 }
 
 public class Skin

@@ -3,6 +3,7 @@
   <ActionDesign>
     <Actions>
       <Action Id="MultipleTransaction.Execute" TargetObjectsCriteria="IsNewObject([This]) = False And [StorageSource] Is Not Null And [TransactionSettings][].Count() &gt; 0" ImageName="InsertField" />
+      <Action Id="SkillDetail.SetSkillOwn" PaintStyle="Image" ImageName="State_Validation_Valid" />
       <Action Id="SwapStorages" PaintStyle="Image" ImageName="BO_StateMachine" />
     </Actions>
   </ActionDesign>
@@ -682,13 +683,15 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="Skills_SkillDetails_ListView">
+    <ListView Id="Skills_SkillDetails_ListView" AutoExpandAllGroups="True" FreezeColumnIndices="True" AllowDelete="False" AllowLink="False" AllowNew="False">
       <Columns>
-        <ColumnInfo Id="DefaultProperty" Index="-1" />
-        <ColumnInfo Id="SkillType" Index="0" />
-        <ColumnInfo Id="Value" Index="1" />
-        <ColumnInfo Id="Dependency" Index="2" SortOrder="Ascending" GroupIndex="0" />
-        <ColumnInfo Id="HasSkill" Index="3" />
+        <ColumnInfo Id="HasSkill" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="Skills" Index="-1" />
+        <ColumnInfo Id="SkillType" Index="-1" />
+        <ColumnInfo Id="Value" Index="-1" />
+        <ColumnInfo Id="DefaultProperty" Index="0" />
+        <ColumnInfo Id="Dependency" Index="1" SortOrder="Ascending" GroupIndex="0" />
       </Columns>
     </ListView>
     <DetailView Id="StateMachine_DetailView">

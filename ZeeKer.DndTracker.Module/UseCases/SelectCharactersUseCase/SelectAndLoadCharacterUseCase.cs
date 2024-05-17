@@ -64,16 +64,53 @@ namespace ZeeKer.DndTracker.Module.UseCases.SelectCharactersUseCase
                 character.Info.Eyes = selectedCharacter.subInfo?.eyes?.value;
                 character.Info.Hair = selectedCharacter.subInfo?.hair?.value;
                 
+                SetSkills(character.Stats.Skills, selectedCharacter.skills);
+
                 character.Campain = persistentObjectSpace
                     .FindObject<Campain>(CriteriaOperator
                     .Parse($"{nameof(Name)} = ?", "Пустой"));
             }
             persistentObjectSpace.CommitChanges();
 
-            newCharacters.Fix();
+            //newCharacters.Fix();
 
             persistentObjectSpace.CommitChanges();
             persistentObjectSpace.Refresh();
+        }
+
+        private void SetSkills(BusinessObjects.Skills skills, Skills skillsEntity)
+        {
+            if (skills is null || skillsEntity is null)
+                return;
+
+            skills.Acrobatics.HasSkill = IntToBool(skillsEntity?.acrobatics?.isProf);
+            skills.AnimalHandling.HasSkill = IntToBool(skillsEntity?.animalhandling?.isProf);
+            skills.Arcana.HasSkill = IntToBool(skillsEntity?.arcana?.isProf);
+            skills.Athletics.HasSkill = IntToBool(skillsEntity?.athletics?.isProf);
+            skills.Deception.HasSkill = IntToBool(skillsEntity?.deception?.isProf);
+            skills.History.HasSkill = IntToBool(skillsEntity?.history?.isProf);
+            skills.Insight.HasSkill = IntToBool(skillsEntity?.insight?.isProf);
+            skills.Intimidation.HasSkill = IntToBool(skillsEntity?.intimidation?.isProf);
+            skills.Investigation.HasSkill = IntToBool(skillsEntity?.investigation?.isProf);
+            skills.Medicine.HasSkill = IntToBool(skillsEntity?.medicine?.isProf);
+            skills.Nature.HasSkill = IntToBool(skillsEntity?.nature?.isProf);
+            skills.Perception.HasSkill = IntToBool(skillsEntity?.perception?.isProf);
+            skills.Performance.HasSkill = IntToBool(skillsEntity?.performance?.isProf);
+            skills.Persuasion.HasSkill = IntToBool(skillsEntity?.persuasion?.isProf);
+            skills.Religion.HasSkill = IntToBool(skillsEntity?.religion?.isProf);
+            skills.SleightOfHand.HasSkill = IntToBool(skillsEntity?.sleightofhand?.isProf);
+            skills.Stealth.HasSkill = IntToBool(skillsEntity?.stealth?.isProf);
+            skills.Survival.HasSkill = IntToBool(skillsEntity?.survival?.isProf);
+        }
+
+        private bool IntToBool(int? isProf)
+        {
+            switch(isProf)
+            {
+                case 1: return true;
+                default: return false;
+            }
+
         }
 
         private int GetIntValue(string value)

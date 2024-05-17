@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using ZeeKer.DndTracker.Module.Types;
 using DevExpress.Persistent.BaseImpl.EF;
+using DevExpress.ExpressApp.Utils;
+using DevExpress.ExpressApp.Actions;
+using DevExpress.Persistent.Base;
+using ZeeKer.DndTracker.Module.UseCases.ExecuteMultipleTransactionUseCase;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
@@ -16,8 +20,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
     public class SkillDetail : BaseObject
     {
         public SkillDetail() : base() { }
-
-        public virtual string DefaultProperty => $"{SkillType} ({Value})";
+        [XafDisplayName("Навык (Текст)")]
+        public virtual string DefaultProperty => $"{CaptionHelper.GetDisplayText(SkillType)} ({(Value > 0 ? "+" : "")}{Value})";
 
         [XafDisplayName("Значение"), NotMapped]
         public virtual int Value => GetBonus(Skills?.Stats, Dependency, HasSkill);
@@ -50,6 +54,13 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
                 case SkillDependencyType.Charisma: return stats.CharismaBonus + (hasSkill ? stats.Profiency : 0);
                 default: throw new NotImplementedException();
             }
+        }
+
+
+        [Action(Caption = "Овладеть", AutoCommit = true, SelectionDependencyType = MethodActionSelectionDependencyType.RequireSingleObject)]
+        public void SetSkillOwn()
+        {
+            HasSkill = !HasSkill;
         }
     }
 }
