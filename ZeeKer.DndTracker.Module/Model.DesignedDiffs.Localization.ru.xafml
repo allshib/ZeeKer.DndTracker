@@ -44,6 +44,7 @@
           <Item Id="Person_ListView" Caption="Игрок" />
         </Items>
       </Item>
+      <Item Id="Testing" Caption="Вспомогательные сущности (для тестирования)" />
     </Items>
   </NavigationItems>
   <Validation>

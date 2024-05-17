@@ -103,13 +103,19 @@
           </Item>
         </Items>
       </Item>
-      <Item Id="Default">
+      <Item Id="Default" Index="6">
         <Items>
           <Item Id="Campain_ListView" Removed="True" />
           <Item Id="Character_ListView" Removed="True" />
           <Item Id="CharacterStorage_ListView" Removed="True" />
           <Item Id="Event_ListView" Removed="True" />
           <Item Id="Person_ListView" Removed="True" />
+        </Items>
+      </Item>
+      <Item Id="Testing" Index="7" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Infos" ViewId="CharacterInfo_ListView" IsNewNode="True" />
+          <Item Id="Stats" ViewId="CharacterStats_ListView" IsNewNode="True" />
         </Items>
       </Item>
       <Item Id="Reports" Visible="False" Removed="True" />
@@ -370,6 +376,30 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="CharacterStats_ListView">
+      <Columns>
+        <ColumnInfo Id="Charisma" Index="-1" />
+        <ColumnInfo Id="CharismaBonus" Index="-1" />
+        <ColumnInfo Id="Constitution" Index="-1" />
+        <ColumnInfo Id="ConstitutionBonus" Index="-1" />
+        <ColumnInfo Id="Dexterity" Index="-1" />
+        <ColumnInfo Id="DexterityBonus" Index="-1" />
+        <ColumnInfo Id="Intelegence" Index="-1" />
+        <ColumnInfo Id="IntelegenceBonus" Index="-1" />
+        <ColumnInfo Id="Profiency" Index="-1" />
+        <ColumnInfo Id="Strength" Index="-1" />
+        <ColumnInfo Id="StrengthBonus" Index="-1" />
+        <ColumnInfo Id="Wisdom" Index="-1" />
+        <ColumnInfo Id="WisdomBonus" Index="-1" />
+        <ColumnInfo Id="StrengthCalc" Index="0" />
+        <ColumnInfo Id="ConstitutionCalc" Index="1" />
+        <ColumnInfo Id="IntelegenceCalc" Index="2" />
+        <ColumnInfo Id="CharismaCalc" Index="3" />
+        <ColumnInfo Id="DexterityCalc" Index="4" />
+        <ColumnInfo Id="WisdomCalc" Index="5" />
+        <ColumnInfo Id="Character" Index="6" />
+      </Columns>
+    </ListView>
     <DetailView Id="CharacterStorage_DetailView">
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">

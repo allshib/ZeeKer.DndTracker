@@ -35,6 +35,29 @@ public class Updater : ModuleUpdater {
         if (CurrentDBVersion < new Version("0.2.4"))
             CreateDefaultClasses();
 
+        if (CurrentDBVersion < new Version("0.2.5"))
+        {
+            CreateEmptyCompain();
+            SetCreatedAtDateForCharacter();
+        }
+
+    }
+
+    private void SetCreatedAtDateForCharacter()
+    {
+        var characters = ObjectSpace.GetObjects<Character>();
+        foreach (Character character in characters)
+        {
+            character.CreatedAt = DateTimeOffset.Now;
+        }
+        ObjectSpace.CommitChanges();
+    }
+
+    private void CreateEmptyCompain()
+    {
+        var emptyCompain = ObjectSpace.CreateObject<Campain>();
+        emptyCompain.Name = "Пустой";
+        ObjectSpace.CommitChanges();
     }
 
     private void CreateDefaultClasses()

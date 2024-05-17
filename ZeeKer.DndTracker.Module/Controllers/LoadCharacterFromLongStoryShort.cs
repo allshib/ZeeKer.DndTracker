@@ -50,7 +50,7 @@ namespace ZeeKer.DndTracker.Module.Controllers
 
             var useCase = new SelectAndLoadCharacterUseCase(Application);
 
-            useCase.ShowDialog(characterList);
+            useCase.ShowDialog(characterList, ObjectSpace);
         }
 
         private void LoadFromLLS_CustomizePopupWindowParams(object sender, CustomizePopupWindowParamsEventArgs e)

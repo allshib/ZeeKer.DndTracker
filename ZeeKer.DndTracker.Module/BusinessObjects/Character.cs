@@ -32,7 +32,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             // this.AssociatedEntities = new ObservableCollection<AssociatedEntityObject>();
         }
 
-
+        
 
 
         [XafDisplayName("Имя"), StringLength(150)]
@@ -91,6 +91,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Инвентарь")]
         public CharacterStorage LocalStorage => Storages?.FirstOrDefault(storage=>storage.Local);
 
+        [XafDisplayName("Создано")]
+        public virtual DateTimeOffset CreatedAt { get; set; }
 
         public override void OnCreated()
         {
@@ -101,14 +103,24 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             Info = ObjectSpace.CreateObject<CharacterInfo>();
             Stats = ObjectSpace.CreateObject<CharacterStats>();
             Level = 1;
+            CreatedAt = DateTimeOffset.Now;
         }
 
         public override void OnSaving()
         {
             base.OnSaving();
 
+            if (ObjectSpace.IsObjectToDelete(this))
+                OnDeleting();
+            
         }
-        
+
+        private void OnDeleting()
+        {
+            ObjectSpace.Delete(Info);
+            //Stats.CharacterId = null;
+            //ObjectSpace.Delete(Stats);
+        }
 
         private void CreateLocalStorage()
         {
