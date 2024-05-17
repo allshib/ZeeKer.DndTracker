@@ -136,6 +136,11 @@ public class DndTrackerEFCoreDbContext : DbContext {
             .HasForeignKey<CharacterStats>(a => a.CharacterId)
             .OnDelete(DeleteBehavior.Cascade);
 
+        modelBuilder.Entity<Character>()
+            .HasMany(ch=>ch.Storages)
+            .WithOne(st=>st.Character)
+            .OnDelete(DeleteBehavior.Cascade);
+
         base.OnModelCreating(modelBuilder);
     }
 }
