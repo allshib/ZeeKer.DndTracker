@@ -31,12 +31,12 @@ namespace ZeeKer.DndTracker.Module.Controllers
             InitializeComponent();
             TargetObjectType = typeof(Character);
             TargetViewType = ViewType.ListView;
-            var loadFromLLS = new PopupWindowShowAction(this, "LoadFromLongStoryShort", PredefinedCategory.Unspecified)
+            var importFromLLS = new PopupWindowShowAction(this, "ImportFromLongStoryShort", PredefinedCategory.Unspecified)
             {
-                Caption = "Загрузить из LSS"
+                Caption = "Импорт из LSS (ALFA)"
             };
-            loadFromLLS.Execute += LoadFromLLS_Execute;
-            loadFromLLS.CustomizePopupWindowParams += LoadFromLLS_CustomizePopupWindowParams;
+            importFromLLS.Execute += LoadFromLLS_Execute;
+            importFromLLS.CustomizePopupWindowParams += LoadFromLLS_CustomizePopupWindowParams;
         }
 
         private void LoadFromLLS_Execute(object sender, PopupWindowShowActionExecuteEventArgs e)

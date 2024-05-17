@@ -85,7 +85,7 @@ public class DndTrackerEFCoreDbContext : DbContext {
         
         modelBuilder.HasChangeTrackingStrategy(ChangeTrackingStrategy.ChangingAndChangedNotificationsWithOriginalValues);
         modelBuilder.UsePropertyAccessMode(PropertyAccessMode.PreferFieldDuringConstruction);
-        modelBuilder.Entity<ZeeKer.DndTracker.Module.BusinessObjects.ApplicationUserLoginInfo>(b => {
+        modelBuilder.Entity<ApplicationUserLoginInfo>(b => {
             b.HasIndex(nameof(DevExpress.ExpressApp.Security.ISecurityUserLoginInfo.LoginProviderName), nameof(DevExpress.ExpressApp.Security.ISecurityUserLoginInfo.ProviderUserKey)).IsUnique();
         });
         modelBuilder.Entity<StateMachine>()
