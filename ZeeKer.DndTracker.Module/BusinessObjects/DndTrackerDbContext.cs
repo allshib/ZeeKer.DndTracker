@@ -116,12 +116,28 @@ public class DndTrackerEFCoreDbContext : DbContext {
         modelBuilder.Entity<StorageOperation>()
             .HasOne(op => op.Storage)
             .WithMany(storage => storage.Operations);
-        //.OnDelete(DeleteBehavior.Cascade);
+        //.OnDelete(DeleteBehavior.SetNull);
 
         modelBuilder.Entity<StorageOperation>()
             .HasOne(op => op.StorageSource)
             .WithMany(storage => storage.OperationsFromThis);
-            //.OnDelete(DeleteBehavior.Cascade);
+            //.OnDelete(DeleteBehavior.SetNull);
+
+        //modelBuilder.Entity<CharacterStorage>()
+        //    .HasMany(st=>st.MultipleTransactions)
+        //    .WithOne(tr=>tr.StorageSource)
+        //    .OnDelete(DeleteBehavior.SetNull);
+
+        //modelBuilder.Entity<MultipleTransaction>()
+        //    .HasMany(st => st.TransactionSettings)
+        //    .WithOne(tr => tr.Transaction)
+        //    .OnDelete(DeleteBehavior.Cascade);
+
+        //modelBuilder.Entity<MultipleTransaction>()
+        //    .HasMany(st => st.StorageOperations)
+        //    .WithOne(tr => tr.MultipleTransaction)
+        //    .OnDelete(DeleteBehavior.SetNull);
+
 
 
         modelBuilder.Entity<Character>()
@@ -137,9 +153,9 @@ public class DndTrackerEFCoreDbContext : DbContext {
             .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<Character>()
-            .HasMany(ch=>ch.Storages)
-            .WithOne(st=>st.Character)
-            .OnDelete(DeleteBehavior.Cascade);
+            .HasMany(ch => ch.Storages)
+            .WithOne(st => st.Character)
+            .OnDelete(DeleteBehavior.SetNull);
 
         base.OnModelCreating(modelBuilder);
     }
