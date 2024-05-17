@@ -47,20 +47,55 @@ namespace ZeeKer.DndTracker.Module.Controllers
             };
             addGold10Gold.Execute += AddGold10Gold_Execute;
 
+            var addGold50Gold = new SimpleAction(this, "Add50Gold", ActionCategories.AddGoldCategory)
+            {
+                Caption = "+50з"
+            };
+            addGold50Gold.Execute += AddGold50Gold_Execute;
+
             var addGold100Gold = new SimpleAction(this, "Add100Gold", ActionCategories.AddGoldCategory)
             {
                 Caption = "+100з"
             };
             addGold100Gold.Execute += AddGold100Gold_Execute;
 
+            var addGold250Gold = new SimpleAction(this, "Add250Gold", ActionCategories.AddGoldCategory)
+            {
+                Caption = "+250з"
+            };
+            addGold250Gold.Execute += AddGold250Gold_Execute;
+
+            var addGold500Gold = new SimpleAction(this, "Add500Gold", ActionCategories.AddGoldCategory)
+            {
+                Caption = "+500з"
+            };
+            addGold500Gold.Execute += AddGold500Gold_Execute;
 
 
-            var removeGold1Gold = new SimpleAction(this, "RemoveRemoveGold", ActionCategories.RemoveGoldCategory)
+
+            var removeGold1Gold = new SimpleAction(this, "Remove1Gold", ActionCategories.RemoveGoldCategory)
             {
                 Caption = "-1з"
             };
             removeGold1Gold.Execute += RemoveGold1Gold_Execute;
 
+            var removeGold2Gold = new SimpleAction(this, "Remove2Gold", ActionCategories.RemoveGoldCategory)
+            {
+                Caption = "-2з"
+            };
+            removeGold2Gold.Execute += RemoveGold2Gold_Execute;
+
+            var removeGold3Gold = new SimpleAction(this, "Remove3Gold", ActionCategories.RemoveGoldCategory)
+            {
+                Caption = "-3з"
+            };
+            removeGold3Gold.Execute += RemoveGold3Gold_Execute;
+
+            var removeGold5Gold = new SimpleAction(this, "Remove5Gold", ActionCategories.RemoveGoldCategory)
+            {
+                Caption = "-5з"
+            };
+            removeGold5Gold.Execute += RemoveGold5Gold_Execute;
 
             var removeGold10Gold = new SimpleAction(this, "RemoveTenGold", ActionCategories.RemoveGoldCategory)
             {
@@ -73,6 +108,18 @@ namespace ZeeKer.DndTracker.Module.Controllers
                 Caption = "-100з"
             };
             removeGold100Gold.Execute += RemoveGold100Gold_Execute;
+
+            var removeGold250Gold = new SimpleAction(this, "Remove250Gold", ActionCategories.RemoveGoldCategory)
+            {
+                Caption = "-250з"
+            };
+            removeGold250Gold.Execute += RemoveGold250Gold_Execute;
+
+            var removeGold500Gold = new SimpleAction(this, "Remove500Gold", ActionCategories.RemoveGoldCategory)
+            {
+                Caption = "-500з"
+            };
+            removeGold500Gold.Execute += RemoveGold500Gold_Execute;
 
 
             var simpleTransferGold = new SimpleAction(this, "SimpleTransferGold", ActionCategories.SimpleTransferGoldCategory)
@@ -87,6 +134,47 @@ namespace ZeeKer.DndTracker.Module.Controllers
             };
             sendGold.Execute += SendGold_Execute;
         }
+
+        private void RemoveGold3Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
+        {
+            ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 3, StorageOperationType.RemoveGoldCoins);
+        }
+
+        private void RemoveGold2Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
+        {
+            ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 2, StorageOperationType.RemoveGoldCoins);
+        }
+
+        private void RemoveGold5Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
+        {
+            ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 5, StorageOperationType.RemoveGoldCoins);
+        }
+
+        private void RemoveGold500Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
+        {
+            ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 500, StorageOperationType.RemoveGoldCoins);
+        }
+
+        private void RemoveGold250Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
+        {
+            ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 250, StorageOperationType.RemoveGoldCoins);
+        }
+
+        private void AddGold500Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
+        {
+            ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 500, StorageOperationType.AddGoldCoins);
+        }
+
+        private void AddGold250Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
+        {
+            ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 250, StorageOperationType.AddGoldCoins);
+        }
+        private void AddGold50Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
+        {
+            ExecuteSimpleOperation((View.CurrentObject as Character).CampainId, 50, StorageOperationType.AddGoldCoins);
+        }
+
+
 
         private void SendGold_Execute(object sender, SimpleActionExecuteEventArgs e)
         {

@@ -6,6 +6,26 @@
       <Action Id="SkillDetail.SetSkillOwn" PaintStyle="Image" ImageName="State_Validation_Valid" />
       <Action Id="SwapStorages" PaintStyle="Image" ImageName="BO_StateMachine" />
     </Actions>
+    <ActionToContainerMapping>
+      <ActionContainer Id="AddGoldCategory">
+        <ActionLink ActionId="AddOneGold" Index="1" />
+        <ActionLink ActionId="AddTenGold" Index="2" />
+        <ActionLink ActionId="Add50Gold" Index="3" />
+        <ActionLink ActionId="Add100Gold" Index="4" />
+        <ActionLink ActionId="Add250Gold" Index="5" />
+        <ActionLink ActionId="Add500Gold" Index="6" />
+      </ActionContainer>
+      <ActionContainer Id="RemoveGoldCategory">
+        <ActionLink ActionId="Remove1Gold" Index="1" />
+        <ActionLink ActionId="Remove2Gold" Index="2" />
+        <ActionLink ActionId="Remove3Gold" Index="3" />
+        <ActionLink ActionId="Remove5Gold" Index="4" />
+        <ActionLink ActionId="RemoveTenGold" Index="5" />
+        <ActionLink ActionId="Remove100Gold" Index="6" />
+        <ActionLink ActionId="Remove250Gold" Index="7" />
+        <ActionLink ActionId="Remove500Gold" Index="8" />
+      </ActionContainer>
+    </ActionToContainerMapping>
   </ActionDesign>
   <BOModel>
     <Class Name="DevExpress.Persistent.BaseImpl.EF.PermissionPolicy.PermissionPolicyUser" Caption="Base User" />
