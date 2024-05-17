@@ -41,6 +41,21 @@ public class Updater : ModuleUpdater {
             SetCreatedAtDateForCharacter();
         }
 
+
+        if (CurrentDBVersion < new Version("0.2.6"))
+        {
+            FillSkills();
+        }
+    }
+
+    private void FillSkills()
+    {
+        var stats = ObjectSpace.GetObjects<CharacterStats>(CriteriaOperator.Parse($"{nameof(CharacterStats.SkillsId)} = ?", null));
+        foreach (var stat in stats)
+        {
+            stat.Skills = ObjectSpace.CreateObject<BusinessObjects.Skills>();
+        }
+        ObjectSpace.CommitChanges();
     }
 
     private void SetCreatedAtDateForCharacter()

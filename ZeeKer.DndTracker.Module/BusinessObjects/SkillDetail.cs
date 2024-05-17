@@ -19,8 +19,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         public virtual string DefaultProperty => $"{SkillType} ({Value})";
 
-        [XafDisplayName("Значение")]
-        public virtual int Value { get; set; }
+        [XafDisplayName("Значение"), NotMapped]
+        public virtual int Value => GetBonus(Skills?.Stats, Dependency, HasSkill);
         [XafDisplayName("Владение")]
         public virtual bool HasSkill { get; set; }
         [XafDisplayName("От чего зависит")]
@@ -34,5 +34,22 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         public virtual Skills Skills { get; set; }
         [Browsable(false)]
         public virtual Guid? SkillsId { get; set; }
+
+        private int GetBonus(CharacterStats stats, SkillDependencyType dependency, bool hasSkill)
+        {
+            if(stats is null)
+                return 0;
+
+            switch (dependency)
+            {
+                case SkillDependencyType.Strength: return stats.StrengthBonus + (hasSkill? stats.Profiency : 0);
+                case SkillDependencyType.Dexterity: return stats.DexterityBonus + (hasSkill ? stats.Profiency : 0);
+                case SkillDependencyType.Constitution: return stats.ConstitutionBonus + (hasSkill ? stats.Profiency : 0);
+                case SkillDependencyType.Intelligence: return stats.IntelegenceBonus + (hasSkill ? stats.Profiency : 0);
+                case SkillDependencyType.Wisdom: return stats.WisdomBonus + (hasSkill ? stats.Profiency : 0);
+                case SkillDependencyType.Charisma: return stats.CharismaBonus + (hasSkill ? stats.Profiency : 0);
+                default: throw new NotImplementedException();
+            }
+        }
     }
 }

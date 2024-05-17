@@ -42,6 +42,11 @@
       </AppearanceRules>
     </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Person" ImageName="BO_Position_v92" />
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail">
+      <AppearanceRules>
+        <AppearanceRule Id="Bold" Criteria="[HasSkill] = True" FontStyle="Bold" TargetItems="*" IsNewNode="True" />
+      </AppearanceRules>
+    </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" ImageName="BO_StateMachine">
       <AppearanceRules>
         <AppearanceRule Id="BlockOperationEdit" Context="DetailView" TargetItems="*;Reason" Criteria="IsNewObject([This]) = False" Enabled="False" IsNewNode="True" />
@@ -200,6 +205,7 @@
         <PropertyEditor Id="Stats.IntelegenceBonus" PropertyName="Stats.IntelegenceBonus" IsNewNode="True" />
         <PropertyEditor Id="Stats.IntelegenceCalc" PropertyName="Stats.IntelegenceCalc" IsNewNode="True" />
         <PropertyEditor Id="Stats.Profiency" PropertyName="Stats.Profiency" IsNewNode="True" />
+        <PropertyEditor Id="Stats.Skills.SkillDetails" PropertyName="Stats.Skills.SkillDetails" View="Skills_SkillDetails_ListView" IsNewNode="True" />
         <PropertyEditor Id="Stats.Strength" PropertyName="Stats.Strength" IsNewNode="True" />
         <PropertyEditor Id="Stats.StrengthBonus" PropertyName="Stats.StrengthBonus" IsNewNode="True" />
         <PropertyEditor Id="Stats.StrengthCalc" PropertyName="Stats.StrengthCalc" IsNewNode="True" />
@@ -258,7 +264,8 @@
                               <LayoutItem Id="Stats.DexterityCalc" ViewItem="Stats.DexterityCalc" Index="2" RelativeSize="10.443864229765014" CaptionLocation="Top" IsNewNode="True" />
                               <LayoutItem Id="Stats.IntelegenceCalc" ViewItem="Stats.IntelegenceCalc" Index="3" RelativeSize="10.443864229765014" CaptionLocation="Top" IsNewNode="True" />
                               <LayoutItem Id="Stats.WisdomCalc" ViewItem="Stats.WisdomCalc" Index="4" RelativeSize="10.443864229765014" CaptionLocation="Top" IsNewNode="True" />
-                              <LayoutItem Id="Stats.CharismaCalc" ViewItem="Stats.CharismaCalc" Index="5" RelativeSize="45.69190600522193" CaptionLocation="Top" IsNewNode="True" />
+                              <LayoutItem Id="Stats.CharismaCalc" ViewItem="Stats.CharismaCalc" Index="5" RelativeSize="10.443864229765014" CaptionLocation="Top" IsNewNode="True" />
+                              <LayoutItem Id="Stats.Skills.SkillDetails" ViewItem="Stats.Skills.SkillDetails" Index="6" RelativeSize="35.24804177545692" IsNewNode="True" />
                             </LayoutGroup>
                           </LayoutGroup>
                         </LayoutGroup>
@@ -675,6 +682,15 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="Skills_SkillDetails_ListView">
+      <Columns>
+        <ColumnInfo Id="DefaultProperty" Index="-1" />
+        <ColumnInfo Id="SkillType" Index="0" />
+        <ColumnInfo Id="Value" Index="1" />
+        <ColumnInfo Id="Dependency" Index="2" SortOrder="Ascending" GroupIndex="0" />
+        <ColumnInfo Id="HasSkill" Index="3" />
+      </Columns>
+    </ListView>
     <DetailView Id="StateMachine_DetailView">
       <Layout>
         <LayoutGroup Id="Main">
