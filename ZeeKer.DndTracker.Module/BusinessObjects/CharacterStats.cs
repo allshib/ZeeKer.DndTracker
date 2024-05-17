@@ -168,7 +168,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [Browsable(false)]
         public virtual Guid? CharacterId { get; set; }
 
-        [ForeignKey(nameof(CharacterId)), XafDisplayName("Персонаж")]
+        [XafDisplayName("Персонаж")]
         public virtual Character? Character { get; set; }
 
 

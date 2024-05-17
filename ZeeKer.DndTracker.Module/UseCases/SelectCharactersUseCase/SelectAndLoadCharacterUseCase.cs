@@ -73,7 +73,7 @@ namespace ZeeKer.DndTracker.Module.UseCases.SelectCharactersUseCase
             newCharacters.Fix();
 
             persistentObjectSpace.CommitChanges();
-            ObjectSpace.Refresh();
+            persistentObjectSpace.Refresh();
         }
 
         private int GetIntValue(string value)
