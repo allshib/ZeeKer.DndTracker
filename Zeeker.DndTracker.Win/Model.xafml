@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Logo="ExpressAppLogo">
+  <NavigationItems NavigationStyle="Accordion" DefaultChildItemsDisplayStyle="List" />
+  <Options UIType="TabbedMDI" FormStyle="Ribbon" />
+  <SchemaModules>
+    <SchemaModule Name="SchedulerModuleBase" Version="23.2.6.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerWindowsFormsModule" Version="23.2.6.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="23.2.6.0" IsNewNode="True" />
+    <SchemaModule Name="SystemWindowsFormsModule" Version="23.2.6.0" IsNewNode="True" />
+  </SchemaModules>
+</Application>
