@@ -1,4 +1,4 @@
-using DevExpress.Data.Filtering;
+п»їusing DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
@@ -19,7 +19,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
     
 
-    [XafDisplayName("Навыки")]
+    [XafDisplayName("РќР°РІС‹РєРё")]
     public class Skills : BaseObject
     {
         public Skills() : base()
@@ -29,81 +29,81 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [Browsable(false)]
         public virtual Guid? StatsId {  get; set; }
-        [XafDisplayName("Характеристики")]
+        [XafDisplayName("РҐР°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё")]
         public virtual CharacterStats Stats { get; set; }
 
         public virtual ObservableCollection<SkillDetail> SkillDetails { get; set; }
 
         [NotMapped]
-        [XafDisplayName("Акробатика")]
+        [XafDisplayName("РђРєСЂРѕР±Р°С‚РёРєР°")]
         public virtual SkillDetail Acrobatics => GetSkillByType(SkillType.Acrobatics);
 
         [NotMapped]
-        [XafDisplayName("Уход за животными")]
+        [XafDisplayName("РЈС…РѕРґ Р·Р° Р¶РёРІРѕС‚РЅС‹РјРё")]
         public virtual SkillDetail AnimalHandling => GetSkillByType(SkillType.AnimalHandling);
 
         [NotMapped]
-        [XafDisplayName("Магия")]
+        [XafDisplayName("РњР°РіРёСЏ")]
         public virtual SkillDetail Arcana => GetSkillByType(SkillType.Arcana);
 
         [NotMapped]
-        [XafDisplayName("Атлетика")]
+        [XafDisplayName("РђС‚Р»РµС‚РёРєР°")]
         public virtual SkillDetail Athletics => GetSkillByType(SkillType.Athletics);
 
         [NotMapped]
-        [XafDisplayName("Обман")]
+        [XafDisplayName("РћР±РјР°РЅ")]
         public virtual SkillDetail Deception => GetSkillByType(SkillType.Deception);
 
         [NotMapped]
-        [XafDisplayName("История")]
+        [XafDisplayName("РСЃС‚РѕСЂРёСЏ")]
         public virtual SkillDetail History => GetSkillByType(SkillType.History);
 
         [NotMapped]
-        [XafDisplayName("Проницательность")]
+        [XafDisplayName("РџСЂРѕРЅРёС†Р°С‚РµР»СЊРЅРѕСЃС‚СЊ")]
         public virtual SkillDetail Insight => GetSkillByType(SkillType.Insight);
 
         [NotMapped]
-        [XafDisplayName("Запугивание")]
+        [XafDisplayName("Р—Р°РїСѓРіРёРІР°РЅРёРµ")]
         public virtual SkillDetail Intimidation => GetSkillByType(SkillType.Intimidation);
 
         [NotMapped]
-        [XafDisplayName("Расследование")]
+        [XafDisplayName("Р Р°СЃСЃР»РµРґРѕРІР°РЅРёРµ")]
         public virtual SkillDetail Investigation => GetSkillByType(SkillType.Investigation);
 
         [NotMapped]
-        [XafDisplayName("Медицина")]
+        [XafDisplayName("РњРµРґРёС†РёРЅР°")]
         public virtual SkillDetail Medicine => GetSkillByType(SkillType.Medicine);
 
         [NotMapped]
-        [XafDisplayName("Природа")]
+        [XafDisplayName("РџСЂРёСЂРѕРґР°")]
         public virtual SkillDetail Nature => GetSkillByType(SkillType.Nature);
 
         [NotMapped]
-        [XafDisplayName("Восприятие")]
+        [XafDisplayName("Р’РѕСЃРїСЂРёСЏС‚РёРµ")]
         public virtual SkillDetail Perception => GetSkillByType(SkillType.Perception);
 
         [NotMapped]
-        [XafDisplayName("Выступление")]
+        [XafDisplayName("Р’С‹СЃС‚СѓРїР»РµРЅРёРµ")]
         public virtual SkillDetail Performance => GetSkillByType(SkillType.Performance);
 
         [NotMapped]
-        [XafDisplayName("Убеждение")]
+        [XafDisplayName("РЈР±РµР¶РґРµРЅРёРµ")]
         public virtual SkillDetail Persuasion => GetSkillByType(SkillType.Persuasion);
 
         [NotMapped]
-        [XafDisplayName("Религия")]
+        [XafDisplayName("Р РµР»РёРіРёСЏ")]
         public virtual SkillDetail Religion => GetSkillByType(SkillType.Religion);
 
         [NotMapped]
-        [XafDisplayName("Ловкость рук")]
+        [XafDisplayName("Р›РѕРІРєРѕСЃС‚СЊ СЂСѓРє")]
         public virtual SkillDetail SleightOfHand => GetSkillByType(SkillType.SleightOfHand);
 
         [NotMapped]
-        [XafDisplayName("Скрытность")]
+        [XafDisplayName("РЎРєСЂС‹С‚РЅРѕСЃС‚СЊ")]
         public virtual SkillDetail Stealth => GetSkillByType(SkillType.Stealth);
 
         [NotMapped]
-        [XafDisplayName("Выживание")]
+        [XafDisplayName("Р’С‹Р¶РёРІР°РЅРёРµ")]
         public virtual SkillDetail Survival => GetSkillByType(SkillType.Survival);
 
         public override void OnCreated()

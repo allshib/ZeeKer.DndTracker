@@ -175,6 +175,12 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Бонус мастерства")]
         public virtual int Profiency => CalculateProfiency();
 
+        [XafDisplayName("Инициатива")]
+        public virtual int Initiative => DexterityBonus;
+
+        //[XafDisplayName("Скорость")]
+        //public virtual int Speed { get; set; }
+
         [Browsable(false)]
         public virtual Guid? SkillsId { get; set; }
         [XafDisplayName("Навыки")]

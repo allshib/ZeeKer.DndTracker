@@ -11,6 +11,7 @@ WORKDIR /src
 RUN  dotnet nuget add source https://nuget.devexpress.com/l3z7cu3SbW8ILErtLepj7MP5ouS1gvDZzRZUJXPgnHgleXz3YD/api/v3/index.json -n devexpress-nuget
 COPY ["ZeeKer.DndTracker.Blazor.Server/ZeeKer.DndTracker.Blazor.Server.csproj", "ZeeKer.DndTracker.Blazor.Server/"]
 COPY ["ZeeKer.DndTracker.Module/ZeeKer.DndTracker.Module.csproj", "ZeeKer.DndTracker.Module/"]
+COPY ["ZeeKer.DndTracker.LongStoryShort/ZeeKer.DndTracker.LongStoryShort.csproj", "ZeeKer.DndTracker.LongStoryShort/"]
 RUN dotnet restore "./ZeeKer.DndTracker.Blazor.Server/ZeeKer.DndTracker.Blazor.Server.csproj"
 COPY . .
 WORKDIR "/src/ZeeKer.DndTracker.Blazor.Server"
