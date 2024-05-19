@@ -39,6 +39,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [RuleRequiredField(DefaultContexts.Save)]
         public virtual string Name { get; set; }
 
+        [XafDisplayName("Очки здоровья")]
+        public virtual int Health { get; set; }
+
         [XafDisplayName("Уровень")]
         public virtual int Level { get; set; }
 
