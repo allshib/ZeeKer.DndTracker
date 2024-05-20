@@ -71,6 +71,7 @@ public class DndTrackerEFCoreDbContext : DbContext {
     public DbSet<Skills> Skills { get; set; }
 
 
+
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
     {
         
@@ -175,6 +176,10 @@ public class DndTrackerEFCoreDbContext : DbContext {
             .HasForeignKey<Skills>(a => a.StatsId)
             .OnDelete(DeleteBehavior.Cascade);
 
+        modelBuilder.Entity<Character>()
+            .HasOne(ch => ch.Race)
+            .WithMany(race => race.Characters)
+            .OnDelete(DeleteBehavior.SetNull);
 
         base.OnModelCreating(modelBuilder);
     }

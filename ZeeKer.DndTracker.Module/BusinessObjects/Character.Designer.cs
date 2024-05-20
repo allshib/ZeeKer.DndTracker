@@ -42,6 +42,13 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [ForeignKey(nameof(ClassId)), XafDisplayName("Класс")]
         public virtual CharacterClass Class { get; set; }
+
+        [Browsable(false)]
+        public virtual Guid? RaceId { get; set; }
+
+        [ForeignKey(nameof(RaceId)), XafDisplayName("Раса")]
+        public virtual Race Race { get; set; }
+
         #endregion
 
         #region Health
@@ -55,7 +62,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Очки здоровья (временные)")]
         public virtual int HealthTemp { get; set; }
         [XafDisplayName("Информация о здоровье")]
-        public virtual string HealthInfo => $"Здоровье: {Health}/{HealthMax}{(HealthTemp > 0 ? $" + {HealthTemp}" : "")} КЗ: {Armor}";
+        public virtual string HealthInfo => $"Здоровье: {Health}/{HealthMax}{(HealthTemp > 0 ? $" + {HealthTemp}" : "")}, КЗ: {Armor}";
         #endregion
 
         #region Дополнительно

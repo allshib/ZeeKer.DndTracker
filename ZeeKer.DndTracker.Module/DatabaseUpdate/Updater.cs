@@ -51,6 +51,73 @@ public class Updater : ModuleUpdater {
         {
             UpdateHealth();
         }
+
+        if (CurrentDBVersion < new Version("0.2.9"))
+        {
+            CreateDefaultRaces();
+        }
+    }
+
+    private void CreateDefaultRaces()
+    {
+        CreateRace("Ааракокра", RaceType.Aarakocra);
+        CreateRace("Аасимар", RaceType.Aasimar);
+        CreateRace("Автогном", RaceType.Autognome);
+        CreateRace("Астральный эльф", RaceType.AstralElf);
+        CreateRace("Багбир", RaceType.Bugbear);
+        CreateRace("Ведалкен", RaceType.Vedalken);
+        CreateRace("Вердан", RaceType.Verdan);
+        CreateRace("Симик-гибрид", RaceType.SimicHybrid);
+        CreateRace("Гит", RaceType.Gith);
+        CreateRace("Гифф", RaceType.Giff);
+        CreateRace("Гном", RaceType.Gnome);
+        CreateRace("Гоблин", RaceType.Goblin);
+        CreateRace("Голиаф", RaceType.Goliath);
+        CreateRace("Грюн", RaceType.Grung);
+        CreateRace("Дварф", RaceType.Dwarf);
+        CreateRace("Генази", RaceType.Genasi);
+        CreateRace("Драконорожденный", RaceType.Dragonborn);
+        CreateRace("Харенгон", RaceType.Harengon);
+        CreateRace("Калаштар", RaceType.Kalashtar);
+        CreateRace("Кендер", RaceType.Kender);
+        CreateRace("Кенку", RaceType.Kenku);
+        CreateRace("Кентавр", RaceType.Centaur);
+        CreateRace("Кобольд", RaceType.Kobold);
+        CreateRace("Варфорджд", RaceType.Warforged);
+        CreateRace("Леонин", RaceType.Leonin);
+        CreateRace("Локатан", RaceType.Locathan);
+        CreateRace("Локсодон", RaceType.Loxondon);
+        CreateRace("Ящеролюд", RaceType.Lizardfolk);
+        CreateRace("Минотавр", RaceType.Minotaur);
+        CreateRace("Орк", RaceType.Orc);
+        CreateRace("Плазмоид", RaceType.Plazmoid);
+        CreateRace("Полуорк", RaceType.HalfOrc);
+        CreateRace("Полурослик", RaceType.Halfling);
+        CreateRace("Полуэльф", RaceType.HalfElf);
+        CreateRace("Сатир", RaceType.Satyr);
+        CreateRace("Оулин", RaceType.Owlin);
+        CreateRace("Табакси", RaceType.Tabaxi);
+        CreateRace("Тифлинг", RaceType.Tiefling);
+        CreateRace("Тортль", RaceType.Tortle);
+        CreateRace("Три-Крин", RaceType.ThriKreen);
+        CreateRace("Тритон", RaceType.Triton);
+        CreateRace("Фирболг", RaceType.Firbolg);
+        CreateRace("Фея", RaceType.Fairy);
+        CreateRace("Хадози", RaceType.Hadozee);
+        CreateRace("Хобгоблин", RaceType.Hobgoblin);
+        CreateRace("Оборотень", RaceType.Changeling);
+        CreateRace("Человек", RaceType.Human);
+        CreateRace("Шифт", RaceType.Shifter);
+        CreateRace("Эльф", RaceType.Elf);
+        CreateRace("Юань-ти чистокровный", RaceType.YuantiPureblood);
+        ObjectSpace.CommitChanges();
+    }
+
+    private void CreateRace(string name, RaceType raceType)
+    {
+        var race = ObjectSpace.CreateObject<BusinessObjects.Race>();
+        race.Name = name;
+        race.RaceType = raceType;
     }
 
     private void UpdateHealth()
