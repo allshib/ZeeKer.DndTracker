@@ -20,7 +20,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
     public class SkillDetail : BaseObject
     {
         public SkillDetail() : base() { }
-        [XafDisplayName("Навык (Текст)")]
+        [XafDisplayName("Навык (Текст)"), NotMapped]
         public virtual string DefaultProperty => $"{CaptionHelper.GetDisplayText(SkillType)} ({(Value > 0 ? "+" : "")}{Value})";
 
         [XafDisplayName("Значение"), NotMapped]

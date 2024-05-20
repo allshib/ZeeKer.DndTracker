@@ -1,4 +1,4 @@
-using DevExpress.Data.Filtering;
+ï»¿using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
@@ -16,7 +16,7 @@ using System.Text;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
-    [XafDisplayName("Íàçíà÷åííûé ïðåäìåò")]
+    [XafDisplayName("ÐÐ°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½Ñ‹Ð¹ Ð¿Ñ€ÐµÐ´Ð¼ÐµÑ‚")]
     [XafDefaultProperty(nameof(Name))]
     public class AssignedItem : BaseObject
     {
@@ -26,19 +26,20 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         }
         [Browsable(false)]
         public virtual Guid? StorageId { get; set; }
-        [ForeignKey(nameof(StorageId)), XafDisplayName("Õðàíèëèùå")]
+        [ForeignKey(nameof(StorageId)), XafDisplayName("Ð¥Ñ€Ð°Ð½Ð¸Ð»Ð¸Ñ‰Ðµ")]
         public virtual CharacterStorage Storage { get; set; }
 
 
         [Browsable(false)]
         public virtual Guid? ItemId { get; set; }
-        [ForeignKey(nameof(ItemId)), XafDisplayName("Ïðåäìåò")]
+        [ForeignKey(nameof(ItemId)), XafDisplayName("ÐŸÑ€ÐµÐ´Ð¼ÐµÑ‚")]
         public virtual Item Item { get; set; }
 
-        [XafDisplayName("Êîëè÷åñòâî")]
+        [XafDisplayName("ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾")]
         public virtual int Count {  get; set; }
 
-        [XafDisplayName("Íàèìåíîâàíèå")]
+        [NotMapped]
+        [XafDisplayName("ÐÐ°Ð¸Ð¼ÐµÐ½Ð¾Ð²Ð°Ð½Ð¸Ðµ")]
         public virtual string Name => $"{Item?.DefaultProperty}";
 
         public override void OnCreated()

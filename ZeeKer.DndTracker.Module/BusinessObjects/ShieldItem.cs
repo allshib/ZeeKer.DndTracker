@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -29,7 +30,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         public virtual int ACBonus { get; set; }
 
         public override ItemType ItemType => ItemType.ShieldItem;
-
+        [NotMapped]
         public override string DefaultProperty => $"{Name} ({ACBonus})";
 
         public override void OnCreated()

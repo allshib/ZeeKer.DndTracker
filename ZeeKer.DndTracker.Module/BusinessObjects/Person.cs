@@ -32,7 +32,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             // In the constructor, initialize collection properties, e.g.: 
             // this.AssociatedEntities = new ObservableCollection<AssociatedEntityObject>();
         }
-        [XafDisplayName("Полное имя")]
+        [XafDisplayName("Полное имя"), NotMapped]
         public virtual string FullName => $"{Surname} {Name}";
 
         [XafDisplayName("Имя"), StringLength(150)]

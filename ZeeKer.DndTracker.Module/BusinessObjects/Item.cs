@@ -1,4 +1,4 @@
-using DevExpress.Data.Filtering;
+п»їusing DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
@@ -11,12 +11,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using ZeeKer.DndTracker.Module.Types;
 
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
-    [XafDisplayName("Предмет")]
+    [XafDisplayName("РџСЂРµРґРјРµС‚")]
     [XafDefaultProperty(nameof(DefaultProperty))]
     public abstract class Item : BaseObject
     {
@@ -24,26 +25,26 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         {
             
         }
-        [XafDisplayName("Наименование"), StringLength(200)]
+        [XafDisplayName("РќР°РёРјРµРЅРѕРІР°РЅРёРµ"), StringLength(200)]
         public virtual string Name { get; set; }
 
 
-        [XafDisplayName("Описание"), StringLength(1000)]
+        [XafDisplayName("РћРїРёСЃР°РЅРёРµ"), StringLength(1000)]
         public virtual string Description { get; set; }
 
-        [XafDisplayName("Тип")]
+        [XafDisplayName("РўРёРї")]
         public virtual ItemType ItemType => ItemType.Unknown;
 
-        [XafDisplayName("Назначения")]
+        [XafDisplayName("РќР°Р·РЅР°С‡РµРЅРёСЏ")]
         public virtual IList<AssignedItem> AssignedItems { get; set; } = new ObservableCollection<AssignedItem>();
 
-        [XafDisplayName("Предмет")]
+        [XafDisplayName("РџСЂРµРґРјРµС‚"), NotMapped]
         public virtual string DefaultProperty => $"{Name}";
 
-        [XafDisplayName("Вес")]
+        [XafDisplayName("Р’РµСЃ")]
         public virtual double Weight { get; set; }
 
-        [XafDisplayName("Редкость")]
+        [XafDisplayName("Р РµРґРєРѕСЃС‚СЊ")]
         public virtual ItemRarityType Rarity { get; set; }
     }
 }

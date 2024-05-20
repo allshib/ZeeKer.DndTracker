@@ -1,4 +1,4 @@
-using DevExpress.Data.Filtering;
+Ôªøusing DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -18,22 +19,23 @@ using ZeeKer.DndTracker.Module.Types;
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
 
-    [XafDisplayName("¡ÓÌˇ")]
+    [XafDisplayName("–ë—Ä–æ–Ω—è")]
     public class ArmorItem : Item
     {
         public ArmorItem()
         {
             
         }
-        [XafDisplayName(" «")]
+        [XafDisplayName("–ö–ó")]
         public virtual int AC {  get; set; }
 
 
-        [XafDisplayName(" Î‡ÒÒ ·ÓÌË")]
+        [XafDisplayName("–ö–ª–∞—Å—Å –±—Ä–æ–Ω–∏")]
         public virtual ArmorType ArmorType { get; set; }
 
         public override ItemType ItemType => ItemType.Armor;
 
-        public override string DefaultProperty => $"{Name}, “ËÔ: {CaptionHelper.GetDisplayText(ArmorType)},  «: {AC}";
+        [NotMapped]
+        public override string DefaultProperty => $"{Name}, –¢–∏–ø: {CaptionHelper.GetDisplayText(ArmorType)}, –ö–ó: {AC}";
     }
 }

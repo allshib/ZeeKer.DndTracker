@@ -52,7 +52,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             }
         }
 
-        [XafDisplayName("Сила Бонус")]
+        [XafDisplayName("Сила Бонус"), NotMapped]
         public virtual int StrengthBonus => Strength.CalcStatsBonus();
 
 
@@ -75,7 +75,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             }
         }
 
-        [XafDisplayName("Телосложение Бонус")]
+        [XafDisplayName("Телосложение Бонус"), NotMapped]
         public virtual int ConstitutionBonus => Constitution.CalcStatsBonus();
         [XafDisplayName("Интеллект")]
         public virtual int Intelegence { get; set; }
@@ -95,7 +95,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
             }
         }
-        [XafDisplayName("Интеллект Бонус")]
+        [XafDisplayName("Интеллект Бонус"), NotMapped]
         public virtual int IntelegenceBonus => Intelegence.CalcStatsBonus();
 
         [XafDisplayName("Харизма")]
@@ -117,7 +117,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             }
         }
 
-        [XafDisplayName("Харизма Бонус")]
+        [XafDisplayName("Харизма Бонус"), NotMapped]
         public virtual int CharismaBonus => Charisma.CalcStatsBonus();
 
         [XafDisplayName("Ловкость")]
@@ -140,7 +140,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             }
         }
 
-        [XafDisplayName("Ловкость Бонус")]
+        [XafDisplayName("Ловкость Бонус"), NotMapped]
         public virtual int DexterityBonus => Dexterity.CalcStatsBonus();
 
         [XafDisplayName("Мудрость")]
@@ -162,7 +162,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             }
         }
 
-        [XafDisplayName("Мудрость Бонус")]
+        [XafDisplayName("Мудрость Бонус"), NotMapped]
         public virtual int WisdomBonus =>  Wisdom.CalcStatsBonus();
 
         [Browsable(false)]
@@ -172,10 +172,10 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         public virtual Character? Character { get; set; }
 
 
-        [XafDisplayName("Бонус мастерства")]
+        [XafDisplayName("Бонус мастерства"), NotMapped]
         public virtual int Profiency => CalculateProfiency();
 
-        [XafDisplayName("Инициатива")]
+        [XafDisplayName("Инициатива"), NotMapped]
         public virtual int Initiative => DexterityBonus;
 
         //[XafDisplayName("Скорость")]

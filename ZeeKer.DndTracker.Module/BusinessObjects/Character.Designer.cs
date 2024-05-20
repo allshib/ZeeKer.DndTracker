@@ -48,7 +48,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [ForeignKey(nameof(RaceId)), XafDisplayName("Раса")]
         public virtual Race Race { get; set; }
-        [XafDisplayName("Максимальный вес")]
+        [XafDisplayName("Максимальный вес"), NotMapped]
         public virtual double MaxWeight => Stats?.Strength?? 1 * 15;
 
         #endregion
@@ -57,7 +57,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("КЗ")]
         public virtual int Armor { get; set; }
 
-        [XafDisplayName("КЗ (calc)")]
+        [XafDisplayName("КЗ (calc)"), NotMapped]
         public virtual int ArmorCalc => GetACValue();
 
 
@@ -68,7 +68,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [XafDisplayName("Очки здоровья (временные)")]
         public virtual int HealthTemp { get; set; }
-        [XafDisplayName("Информация о здоровье")]
+        [XafDisplayName("Информация о здоровье"), NotMapped]
         public virtual string HealthInfo => $"Здоровье: {Health}/{HealthMax}{(HealthTemp > 0 ? $" + {HealthTemp}" : "")}, КЗ: {ArmorCalc}";
         #endregion
 
@@ -114,7 +114,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Преднастроенные операции"), NotMapped]
         public virtual IEnumerable<MultipleTransaction> MultipleTransaction => new ObservableCollection<MultipleTransaction>(Storages?.SelectMany(storage => storage.MultipleTransactions)) ?? new ObservableCollection<MultipleTransaction>();
 
-
+        [NotMapped]
         [XafDisplayName("Инвентарь")]
         public CharacterStorage LocalStorage => Storages?.FirstOrDefault(storage => storage.Local);
         #endregion
