@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ZeeKer.DndTracker.Module.BusinessObjects;
 
@@ -11,9 +12,11 @@ using ZeeKer.DndTracker.Module.BusinessObjects;
 namespace ZeeKer.DndTracker.Module.Migrations
 {
     [DbContext(typeof(DndTrackerEFCoreDbContext))]
-    partial class DndTrackerEFCoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240520095352_AddItems")]
+    partial class AddItems
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,6 +27,21 @@ namespace ZeeKer.DndTracker.Module.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("CharacterStorageItem", b =>
+                {
+                    b.Property<Guid>("ItemsID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("StoragesID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ItemsID", "StoragesID");
+
+                    b.HasIndex("StoragesID");
+
+                    b.ToTable("CharacterStorageItem");
+                });
 
             modelBuilder.Entity("DevExpress.ExpressApp.EFCore.Updating.ModuleInfo", b =>
                 {
@@ -631,30 +649,6 @@ namespace ZeeKer.DndTracker.Module.Migrations
                     b.ToTable("PermissionPolicyUserLoginInfo");
                 });
 
-            modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.AssignedItem", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
-
-                    b.Property<Guid?>("ItemId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("StorageId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("ItemId");
-
-                    b.HasIndex("StorageId");
-
-                    b.ToTable("AssignedItems");
-                });
-
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.Campain", b =>
                 {
                     b.Property<Guid>("ID")
@@ -1131,6 +1125,21 @@ namespace ZeeKer.DndTracker.Module.Migrations
                     b.HasDiscriminator().HasValue("ArmorItem");
                 });
 
+            modelBuilder.Entity("CharacterStorageItem", b =>
+                {
+                    b.HasOne("ZeeKer.DndTracker.Module.BusinessObjects.Item", null)
+                        .WithMany()
+                        .HasForeignKey("ItemsID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage", null)
+                        .WithMany()
+                        .HasForeignKey("StoragesID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("DevExpress.Persistent.BaseImpl.EF.Event", b =>
                 {
                     b.HasOne("DevExpress.Persistent.BaseImpl.EF.Event", "RecurrencePattern")
@@ -1279,23 +1288,6 @@ namespace ZeeKer.DndTracker.Module.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.AssignedItem", b =>
-                {
-                    b.HasOne("ZeeKer.DndTracker.Module.BusinessObjects.Item", "Item")
-                        .WithMany("AssignedItems")
-                        .HasForeignKey("ItemId")
-                        .OnDelete(DeleteBehavior.SetNull);
-
-                    b.HasOne("ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage", "Storage")
-                        .WithMany("Items")
-                        .HasForeignKey("StorageId")
-                        .OnDelete(DeleteBehavior.SetNull);
-
-                    b.Navigation("Item");
-
-                    b.Navigation("Storage");
-                });
-
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.Campain", b =>
                 {
                     b.HasOne("ZeeKer.DndTracker.Module.BusinessObjects.Person", "GameMaster")
@@ -1307,7 +1299,7 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.Character", b =>
                 {
-                    b.HasOne("ZeeKer.DndTracker.Module.BusinessObjects.AssignedItem", "ArmorItem")
+                    b.HasOne("ZeeKer.DndTracker.Module.BusinessObjects.ArmorItem", "ArmorItem")
                         .WithMany()
                         .HasForeignKey("ArmorItemId");
 
@@ -1516,18 +1508,11 @@ namespace ZeeKer.DndTracker.Module.Migrations
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage", b =>
                 {
-                    b.Navigation("Items");
-
                     b.Navigation("MultipleTransactions");
 
                     b.Navigation("Operations");
 
                     b.Navigation("OperationsFromThis");
-                });
-
-            modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.Item", b =>
-                {
-                    b.Navigation("AssignedItems");
                 });
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.MultipleTransaction", b =>

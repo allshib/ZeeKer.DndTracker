@@ -69,6 +69,10 @@ public class DndTrackerEFCoreDbContext : DbContext {
     public DbSet<CharacterClass> CharacterClasses { get; set; }
 
     public DbSet<Skills> Skills { get; set; }
+    public DbSet<Item> Items { get; set; }
+    public DbSet<ArmorItem> ArmorItems { get; set; }
+    public DbSet<AssignedItem> AssignedItems { get; set; }
+
 
 
 
@@ -180,6 +184,17 @@ public class DndTrackerEFCoreDbContext : DbContext {
             .HasOne(ch => ch.Race)
             .WithMany(race => race.Characters)
             .OnDelete(DeleteBehavior.SetNull);
+
+        modelBuilder.Entity<Item>()
+            .HasMany(item => item.AssignedItems)
+            .WithOne(ass=>ass.Item)
+            .OnDelete(DeleteBehavior.SetNull);
+
+        modelBuilder.Entity<CharacterStorage>()
+            .HasMany(st=>st.Items)
+            .WithOne(ass=>ass.Storage)
+            .OnDelete(DeleteBehavior.SetNull);
+            
 
         base.OnModelCreating(modelBuilder);
     }

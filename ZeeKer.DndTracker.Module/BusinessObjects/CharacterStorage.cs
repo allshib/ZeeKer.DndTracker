@@ -17,6 +17,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects;
         {
         }
 
+        [XafDisplayName("Предметы")]
+        public virtual IList<AssignedItem> Items { get; set; } = new ObservableCollection<AssignedItem>();
+
         #region Fields
         [XafDisplayName("Хранилище")]
         public string DefaultProperty => $"{Character?.Name} {Name}: {CoinsInfo}";

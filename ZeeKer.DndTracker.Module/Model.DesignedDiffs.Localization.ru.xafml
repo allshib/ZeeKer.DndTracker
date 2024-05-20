@@ -30,6 +30,7 @@
           <Item Id="Character_ListView" Caption="Персонаж" />
           <Item Id="CharacterStorage_ListView" Caption="Хранилище" />
           <Item Id="Classes" Caption="Классы" />
+          <Item Id="Items" Caption="Предметы" />
           <Item Id="Person_ListView" Caption="Игрок" />
         </Items>
       </Item>
@@ -106,6 +107,7 @@
                       <LayoutGroup Id="Auto00091fed-9288-46c7-871f-e3f5db99503e" Caption="Auto00091fed-9288-46c7-871f-e3f5db99503e(38)" />
                     </LayoutGroup>
                   </LayoutGroup>
+                  <LayoutGroup Id="Item1" Caption="Экипировка" />
                   <LayoutGroup Id="Additional" Caption="Дополнительно">
                     <LayoutGroup Id="Auto608fd3c9-8619-46e5-b138-ba85d4b6f5fa" Caption="Auto608fd3c9-8619-46e5-b138-ba85d4b6f5fa(13)" />
                     <LayoutGroup Id="Auto61d99964-231a-4e56-bb07-8779dffa36be" Caption="Auto61d99964-231a-4e56-bb07-8779dffa36be(16)" />

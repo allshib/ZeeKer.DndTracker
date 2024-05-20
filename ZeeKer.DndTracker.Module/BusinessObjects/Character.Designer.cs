@@ -85,6 +85,14 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         #endregion
 
         #region Storages And Operations
+
+        [Browsable(false)]
+        public virtual Guid? ArmorItemId { get; set; }
+
+        [XafDisplayName("Броня"), ForeignKey(nameof(ArmorItemId))]
+        public virtual AssignedItem ArmorItem { get; set; }
+
+
         [Aggregated]
         [XafDisplayName("Хранилища")]
         public virtual IList<CharacterStorage> Storages { get; set; } = new ObservableCollection<CharacterStorage>();
