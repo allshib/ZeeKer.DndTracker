@@ -46,6 +46,22 @@ public class Updater : ModuleUpdater {
         {
             FillSkills();
         }
+
+        if (CurrentDBVersion < new Version("0.2.8"))
+        {
+            UpdateHealth();
+        }
+    }
+
+    private void UpdateHealth()
+    {
+        var characters = ObjectSpace.GetObjects<Character>();
+
+        foreach (Character character in characters)
+        {
+            character.HealthMax = character.Health;
+        }
+        ObjectSpace.CommitChanges();
     }
 
     private void FillSkills()

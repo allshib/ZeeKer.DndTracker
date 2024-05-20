@@ -41,6 +41,13 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [XafDisplayName("Очки здоровья")]
         public virtual int Health { get; set; }
+        [XafDisplayName("Очки здоровья (max)")]
+        public virtual int HealthMax { get; set; }
+
+        [XafDisplayName("Очки здоровья (временные)")]
+        public virtual int HealthTemp { get; set; }
+        [XafDisplayName("Информация о здоровье")]
+        public virtual string HealthInfo => $"Здоровье: {Health}/{HealthMax}{(HealthTemp > 0? $" + {HealthTemp}" : "")} КЗ: {Armor}";
 
         [XafDisplayName("Уровень")]
         public virtual int Level { get; set; }
