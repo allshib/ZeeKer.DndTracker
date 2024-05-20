@@ -58,6 +58,15 @@
     </Rules>
   </Validation>
   <Views>
+    <DetailView Id="ArmorItem_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Item" Caption="Item" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <DetailView Id="Character_DetailView">
       <Items>
         <ActionContainerViewItem Id="AddGold" Caption="AddGold(32)" />

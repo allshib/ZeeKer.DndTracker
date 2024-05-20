@@ -171,6 +171,31 @@
   </Validation>
   <Views>
     <ListView Id="ApplicationUser_ListView" Caption="Users" />
+    <DetailView Id="ArmorItem_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="22.879684418145956">
+            <LayoutGroup Id="ArmorItem" RelativeSize="71.55172413793103">
+              <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="38.55421686746988" IsNewNode="True" />
+              <LayoutItem Id="ArmorType" RelativeSize="28.91566265060241" Index="1" />
+              <LayoutItem Id="AC" RelativeSize="32.53012048192771" Index="2" />
+            </LayoutGroup>
+            <LayoutGroup Id="Item" RelativeSize="28.448275862068964">
+              <LayoutItem Id="Weight" Index="0" RelativeSize="100" />
+              <LayoutItem Id="DefaultProperty" Removed="True" />
+              <LayoutItem Id="ItemType" RelativeSize="29.62962962962963" Removed="True" />
+              <LayoutItem Id="Name" RelativeSize="47.36842105263158" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="77.12031558185404">
+            <LayoutItem Id="Description" RelativeSize="100" CaptionLocation="Top" />
+          </LayoutGroup>
+          <LayoutGroup Id="AssignedItems_Group" Direction="Vertical" RelativeSize="38.658777120315584" Removed="True">
+            <LayoutItem Id="AssignedItems" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <DetailView Id="AssignedItem_DetailView">
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
@@ -282,10 +307,11 @@
                         <LayoutItem Id="LocalStorage.CoinsInfo" ViewItem="LocalStorage.CoinsInfo" CaptionLocation="Left" Index="5" RelativeSize="4.528301886792453" IsNewNode="True" />
                         <LayoutItem Id="LocalStorage.FastOperations" ViewItem="LocalStorage.FastOperations" Index="6" RelativeSize="4.528301886792453" IsNewNode="True" />
                         <LayoutGroup Id="HealthDopInfo" ShowCaption="True" CaptionLocation="Top" Index="7" RelativeSize="5.283018867924528" IsCollapsibleGroup="True" IsGroupCollapsed="True" IsNewNode="True">
-                          <LayoutItem Id="HealthMax" ViewItem="HealthMax" Index="0" RelativeSize="0" IsNewNode="True" />
-                          <LayoutItem Id="Health" ViewItem="Health" Index="1" RelativeSize="0" IsNewNode="True" />
-                          <LayoutItem Id="HealthTemp" ViewItem="HealthTemp" Index="2" RelativeSize="0" IsNewNode="True" />
-                          <LayoutItem Id="Armor" ViewItem="Armor" Index="3" RelativeSize="0" IsNewNode="True" />
+                          <LayoutItem Id="HealthMax" ViewItem="HealthMax" Index="0" RelativeSize="23.529411764705884" IsNewNode="True" />
+                          <LayoutItem Id="Health" ViewItem="Health" Index="1" RelativeSize="17.647058823529413" IsNewNode="True" />
+                          <LayoutItem Id="HealthTemp" ViewItem="HealthTemp" Index="2" RelativeSize="17.647058823529413" IsNewNode="True" />
+                          <LayoutItem Id="MaxWeight" ViewItem="MaxWeight" Index="3" RelativeSize="17.647058823529413" IsNewNode="True" />
+                          <LayoutItem Id="Armor" ViewItem="Armor" Index="4" RelativeSize="23.529411764705884" IsNewNode="True" />
                         </LayoutGroup>
                         <LayoutGroup Id="CoinsB2" ShowCaption="False" Index="8" RelativeSize="61.509433962264154" IsNewNode="True">
                           <LayoutGroup Id="CoinsB" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
@@ -351,16 +377,16 @@
                     </LayoutGroup>
                     <LayoutItem Id="Info.Background" ViewItem="Info.Background" CaptionLocation="Top" Index="2" RelativeSize="15.660377358490566" IsNewNode="True" />
                     <LayoutItem Id="Info.Personality" ViewItem="Info.Personality" CaptionLocation="Top" Index="3" RelativeSize="15.660377358490566" IsNewNode="True" />
-                    <LayoutItem Id="Info.Ideals" ViewItem="Info.Ideals" CaptionLocation="Top" Index="4" RelativeSize="14.90566037735849" IsNewNode="True" />
-                    <LayoutItem Id="Info.Flaws" ViewItem="Info.Flaws" CaptionLocation="Top" Index="5" RelativeSize="15.09433962264151" IsNewNode="True" />
-                    <LayoutItem Id="Item11" Index="6" RelativeSize="4.716981132075472" IsNewNode="True" />
+                    <LayoutItem Id="Info.Ideals" ViewItem="Info.Ideals" CaptionLocation="Top" Index="4" RelativeSize="14.716981132075471" IsNewNode="True" />
+                    <LayoutItem Id="Info.Flaws" ViewItem="Info.Flaws" CaptionLocation="Top" Index="5" RelativeSize="14.90566037735849" IsNewNode="True" />
+                    <LayoutItem Id="Item11" Index="6" RelativeSize="5.09433962264151" IsNewNode="True" />
                   </LayoutGroup>
                   <LayoutGroup Id="Additional" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="4" RelativeSize="100" ImageName="Action_CreateDashboard" IsNewNode="True">
-                    <LayoutGroup Id="Auto608fd3c9-8619-46e5-b138-ba85d4b6f5fa" ShowCaption="False" Index="0" RelativeSize="48.40255591054313" IsNewNode="True">
+                    <LayoutGroup Id="Auto608fd3c9-8619-46e5-b138-ba85d4b6f5fa" ShowCaption="False" Index="0" RelativeSize="48.242811501597444" IsNewNode="True">
                       <LayoutItem Id="Campain" ViewItem="Campain" Index="0" RelativeSize="6.037735849056604" IsNewNode="True" />
                       <LayoutItem Id="Person" ViewItem="Person" Index="1" RelativeSize="93.9622641509434" IsNewNode="True" />
                     </LayoutGroup>
-                    <LayoutGroup Id="Auto61d99964-231a-4e56-bb07-8779dffa36be" ShowCaption="False" Index="1" RelativeSize="51.59744408945687" IsNewNode="True">
+                    <LayoutGroup Id="Auto61d99964-231a-4e56-bb07-8779dffa36be" ShowCaption="False" Index="1" RelativeSize="51.757188498402556" IsNewNode="True">
                       <LayoutItem Id="Item5" Index="0" RelativeSize="49.24528301886792" IsNewNode="True" />
                       <LayoutItem Id="Item4" Index="1" RelativeSize="50.75471698113208" IsNewNode="True" />
                     </LayoutGroup>
@@ -584,6 +610,24 @@
         <ColumnInfo Id="Count" Index="1" />
       </Columns>
     </ListView>
+    <DetailView Id="Item_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="12.22879684418146">
+            <LayoutGroup Id="Item" RelativeSize="100">
+              <LayoutItem Id="Name" RelativeSize="51.61290322580645" />
+              <LayoutItem Id="Weight" RelativeSize="48.38709677419355" Index="1" />
+              <LayoutItem Id="DefaultProperty" RelativeSize="21.818181818181817" Removed="True" />
+              <LayoutItem Id="ItemType" RelativeSize="27.906976744186046" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="87.77120315581854">
+            <LayoutItem Id="Description" RelativeSize="100" CaptionLocation="Top" />
+          </LayoutGroup>
+          <LayoutGroup Id="AssignedItems_Group" Removed="True" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <ListView Id="Item_ListView" FreezeColumnIndices="True">
       <Columns>
         <ColumnInfo Id="Description" Index="-1" />

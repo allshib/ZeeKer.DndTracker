@@ -37,5 +37,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Назначения")]
         public virtual IList<AssignedItem> AssignedItems { get; set; } = new ObservableCollection<AssignedItem>();
         public virtual string DefaultProperty => $"{Name}";
+
+        [XafDisplayName("Вес")]
+        public virtual double Weight { get; set; }
     }
 }
