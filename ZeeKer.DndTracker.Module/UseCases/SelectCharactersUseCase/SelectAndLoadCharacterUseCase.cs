@@ -46,9 +46,17 @@ namespace ZeeKer.DndTracker.Module.UseCases.SelectCharactersUseCase
 
                 character.Name = selectedCharacter.name?.value;
                 character.Level = selectedCharacter.info?.level?.value?? 1;
+                character.Race = persistentObjectSpace
+                    .FindObject<BusinessObjects.Race>(CriteriaOperator.Parse("Name = ?", selectedCharacter.info?.race?.value));
                 character.Class = persistentObjectSpace
                     .FindObject<CharacterClass>(CriteriaOperator
                     .Parse($"{nameof(Name)} = ?", selectedCharacter.info?.charClass?.value??""));
+
+                character.Health = selectedCharacter.vitality?.hpcurrent?.value?? 0;
+                character.HealthMax = selectedCharacter.vitality?.hpmax?.value ?? 0;
+                character.HealthTemp = selectedCharacter.vitality?.hptemp?.value ?? 0;
+                character.Armor = selectedCharacter.vitality?.ac?.value ?? 0;
+
 
                 character.Stats.Strength = selectedCharacter.stats?.str?.score?? 0;
                 character.Stats.Wisdom = selectedCharacter.stats?.wis?.score?? 0;
