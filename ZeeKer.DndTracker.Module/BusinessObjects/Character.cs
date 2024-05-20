@@ -68,6 +68,26 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             storage.Character = this;
             
         }
+
+        private int GetACValue()
+        {
+            if(ArmorItem?.Item is null)
+                return Stats.DexterityBonus;
+            var armor = ArmorItem?.Item as ArmorItem;
+
+            switch(armor.ArmorType)
+            {
+                case Types.ArmorType.Heavy:
+                    return armor.AC;
+
+                case Types.ArmorType.Medium:
+                    return Stats.DexterityBonus > 2? armor.AC + 2 : armor.AC + Stats.DexterityBonus;
+
+                case Types.ArmorType.Light:
+                    return armor.AC + Stats.DexterityBonus;
+                default: return Stats.DexterityBonus;
+            }
+        }
         #endregion
     }
 }

@@ -54,6 +54,11 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         #region Health
         [XafDisplayName("КЗ")]
         public virtual int Armor { get; set; }
+
+        [XafDisplayName("КЗ (calc)")]
+        public virtual int ArmorCalc => GetACValue();
+
+
         [XafDisplayName("Очки здоровья")]
         public virtual int Health { get; set; }
         [XafDisplayName("Очки здоровья (max)")]
@@ -62,7 +67,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Очки здоровья (временные)")]
         public virtual int HealthTemp { get; set; }
         [XafDisplayName("Информация о здоровье")]
-        public virtual string HealthInfo => $"Здоровье: {Health}/{HealthMax}{(HealthTemp > 0 ? $" + {HealthTemp}" : "")}, КЗ: {Armor}";
+        public virtual string HealthInfo => $"Здоровье: {Health}/{HealthMax}{(HealthTemp > 0 ? $" + {HealthTemp}" : "")}, КЗ: {ArmorCalc}";
         #endregion
 
         #region Дополнительно

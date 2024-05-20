@@ -17,6 +17,7 @@ using System.Text;
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
     [XafDisplayName("Назначенный предмет")]
+    [XafDefaultProperty(nameof(Name))]
     public class AssignedItem : BaseObject
     {
         public AssignedItem()
@@ -36,5 +37,14 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [XafDisplayName("Количество")]
         public virtual int Count {  get; set; }
+
+        [XafDisplayName("Наименование")]
+        public virtual string Name => $"{Item?.DefaultProperty}";
+
+        public override void OnCreated()
+        {
+            base.OnCreated();
+            Count = 1;
+        }
     }
 }

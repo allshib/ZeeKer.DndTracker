@@ -2,6 +2,7 @@ using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
+using DevExpress.ExpressApp.Utils;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl.EF;
 using DevExpress.Persistent.Validation;
@@ -32,5 +33,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         public virtual ArmorType ArmorType { get; set; }
 
         public override ItemType ItemType => ItemType.Armor;
+
+        public override string DefaultProperty => $"{Name}, Òθο: {CaptionHelper.GetDisplayText(ArmorType)}, ΚΗ: {AC}";
     }
 }

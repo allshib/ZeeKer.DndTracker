@@ -50,6 +50,7 @@
   </NavigationItems>
   <Validation>
     <Rules>
+      <RuleRange Id="@415080c0-cbc1-4d68-b2b8-cb6e1c54b6bd" CustomMessageTemplate="Количество не должно быть меньше 1" />
       <RuleCriteria Id="Character_OnlyOneInventory" CustomMessageTemplate="У персонажа обязательно должен быть ровно 1 личный инвентарь" />
       <RuleCriteria Id="StorageOperation_CorrectDestinOperation" CustomMessageTemplate="Разрешены только положительные операции" />
       <RuleCriteria Id="StorageOperation_DifferentStorages" CustomMessageTemplate="Запрещено переводить монеты в то же хранилище" />
@@ -101,13 +102,13 @@
                       </LayoutGroup>
                     </LayoutGroup>
                   </LayoutGroup>
+                  <LayoutGroup Id="Equip" Caption="Экипировка" />
                   <LayoutGroup Id="About" Caption="О персонаже">
                     <LayoutGroup Id="Auto8ab736c5-b9a3-406a-a204-5a3ee18a7d70" Caption="Auto8ab736c5-b9a3-406a-a204-5a3ee18a7d70(34)">
                       <LayoutGroup Id="Autoaf90cbbb-d0b9-448f-a762-74e164cc2fd7" Caption="Autoaf90cbbb-d0b9-448f-a762-74e164cc2fd7(35)" />
                       <LayoutGroup Id="Auto00091fed-9288-46c7-871f-e3f5db99503e" Caption="Auto00091fed-9288-46c7-871f-e3f5db99503e(38)" />
                     </LayoutGroup>
                   </LayoutGroup>
-                  <LayoutGroup Id="Item1" Caption="Экипировка" />
                   <LayoutGroup Id="Additional" Caption="Дополнительно">
                     <LayoutGroup Id="Auto608fd3c9-8619-46e5-b138-ba85d4b6f5fa" Caption="Auto608fd3c9-8619-46e5-b138-ba85d4b6f5fa(13)" />
                     <LayoutGroup Id="Auto61d99964-231a-4e56-bb07-8779dffa36be" Caption="Auto61d99964-231a-4e56-bb07-8779dffa36be(16)" />

@@ -2,6 +2,7 @@ using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
+using DevExpress.ExpressApp.Utils;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl.EF;
 using DevExpress.Persistent.Validation;
@@ -16,6 +17,7 @@ using ZeeKer.DndTracker.Module.Types;
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
     [XafDisplayName("Предмет")]
+    [XafDefaultProperty(nameof(DefaultProperty))]
     public class Item : BaseObject
     {
         public Item()
@@ -34,6 +36,6 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [XafDisplayName("Назначения")]
         public virtual IList<AssignedItem> AssignedItems { get; set; } = new ObservableCollection<AssignedItem>();
-
+        public virtual string DefaultProperty => $"{Name}";
     }
 }

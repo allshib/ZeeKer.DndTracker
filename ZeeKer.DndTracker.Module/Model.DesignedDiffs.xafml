@@ -162,6 +162,7 @@
   </SchemaModules>
   <Validation>
     <Rules>
+      <RuleRange Id="@415080c0-cbc1-4d68-b2b8-cb6e1c54b6bd" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.AssignedItem" TargetPropertyName="Count" MinimumValue="1" MaximumValue="999999" TargetContextIDs="Save" IsNewNode="True" />
       <RuleCriteria Id="Character_OnlyOneInventory" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.Character" TargetCriteria="[Storages][]" TargetContextIDs="Save" Criteria="[Storages][[Local] = True].Count() = 1" IsNewNode="True" />
       <RuleCriteria Id="StorageOperation_CorrectDestinOperation" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" TargetContextIDs="Save" TargetCriteria="[OperationMode] = ##Enum#ZeeKer.DndTracker.Module.Types.OperationMode,WithAnotherStorage#" Criteria="[OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddGoldCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddSilverCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddCopperCoins#" IsNewNode="True" />
       <RuleCriteria Id="StorageOperation_DifferentStorages" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" TargetContextIDs="Save" Criteria="[StorageSource] &lt;&gt; [Storage]" TargetCriteria="[OperationMode] = ##Enum#ZeeKer.DndTracker.Module.Types.OperationMode,WithAnotherStorage#" IsNewNode="True" />
@@ -170,6 +171,29 @@
   </Validation>
   <Views>
     <ListView Id="ApplicationUser_ListView" Caption="Users" />
+    <DetailView Id="AssignedItem_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="AssignedItem" RelativeSize="100">
+              <LayoutItem Id="Item" Index="0" RelativeSize="6.31163708086785" />
+              <LayoutItem Id="Count" Index="1" RelativeSize="93.68836291913215" />
+              <LayoutItem Id="Name" Index="2" RelativeSize="88.95463510848126" Removed="True" />
+              <LayoutItem Id="Storage" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="AssignedItem_ListView" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="Item" Index="-1" />
+        <ColumnInfo Id="Name" Index="0" />
+        <ColumnInfo Id="Storage" Index="1" />
+        <ColumnInfo Id="Count" Index="2" />
+      </Columns>
+    </ListView>
     <ListView Id="Campain_Characters_ListView" FreezeColumnIndices="True">
       <Columns>
         <ColumnInfo Id="Campain" Index="-1" />
@@ -274,8 +298,8 @@
                                     <LayoutItem Id="AddGold" ViewItem="AddGold" Index="0" RelativeSize="34" IsNewNode="True" />
                                     <LayoutItem Id="RemoveGoldCategory" ViewItem="RemoveGoldCategory" Index="1" RelativeSize="26" IsNewNode="True" />
                                     <LayoutGroup Id="Autodfbe3f29-6047-425f-9c10-756a27249c8a" ShowCaption="False" Direction="Horizontal" Index="2" RelativeSize="40" IsNewNode="True">
-                                      <LayoutItem Id="SimpleTransferGold" ViewItem="SimpleTransferGold" Index="0" RelativeSize="20.503597122302157" IsNewNode="True" />
-                                      <LayoutItem Id="SendGold" ViewItem="SendGold" Index="1" RelativeSize="79.49640287769785" IsNewNode="True" />
+                                      <LayoutItem Id="SimpleTransferGold" ViewItem="SimpleTransferGold" Index="0" RelativeSize="20.284697508896798" IsNewNode="True" />
+                                      <LayoutItem Id="SendGold" ViewItem="SendGold" Index="1" RelativeSize="79.7153024911032" IsNewNode="True" />
                                     </LayoutGroup>
                                   </LayoutGroup>
                                 </LayoutGroup>
@@ -309,14 +333,17 @@
                       </LayoutGroup>
                     </LayoutGroup>
                   </LayoutGroup>
-                  <LayoutGroup Id="About" ShowCaption="True" CaptionLocation="Top" Index="2" RelativeSize="100" ImageName="BO_Note" IsNewNode="True">
+                  <LayoutGroup Id="Equip" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="2" RelativeSize="100" ImageName="ProtectedContent" IsNewNode="True">
+                    <LayoutItem Id="ArmorItem" ViewItem="ArmorItem" Index="0" RelativeSize="100" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="About" ShowCaption="True" CaptionLocation="Top" Index="3" RelativeSize="100" ImageName="BO_Note" IsNewNode="True">
                     <LayoutItem Id="Info.Aligment" ViewItem="Info.Aligment" CaptionLocation="Top" Index="0" RelativeSize="9.056603773584905" IsNewNode="True" />
                     <LayoutGroup Id="Auto8ab736c5-b9a3-406a-a204-5a3ee18a7d70" ShowCaption="False" Direction="Horizontal" Index="1" RelativeSize="24.90566037735849" IsNewNode="True">
-                      <LayoutGroup Id="Autoaf90cbbb-d0b9-448f-a762-74e164cc2fd7" ShowCaption="False" Index="0" RelativeSize="48.87096774193548" IsNewNode="True">
+                      <LayoutGroup Id="Autoaf90cbbb-d0b9-448f-a762-74e164cc2fd7" ShowCaption="False" Index="0" RelativeSize="48.722044728434504" IsNewNode="True">
                         <LayoutItem Id="Info.Height" ViewItem="Info.Height" CaptionLocation="Top" Index="0" RelativeSize="34.84848484848485" IsNewNode="True" />
                         <LayoutItem Id="Info.Age" ViewItem="Info.Age" CaptionLocation="Top" Index="1" RelativeSize="65.15151515151516" IsNewNode="True" />
                       </LayoutGroup>
-                      <LayoutGroup Id="Auto00091fed-9288-46c7-871f-e3f5db99503e" ShowCaption="False" Index="1" RelativeSize="51.12903225806452" IsNewNode="True">
+                      <LayoutGroup Id="Auto00091fed-9288-46c7-871f-e3f5db99503e" ShowCaption="False" Index="1" RelativeSize="51.277955271565496" IsNewNode="True">
                         <LayoutItem Id="Info.Weight" ViewItem="Info.Weight" CaptionLocation="Top" Index="0" RelativeSize="34.84848484848485" IsNewNode="True" />
                         <LayoutItem Id="Info.Eyes" ViewItem="Info.Eyes" CaptionLocation="Top" Index="1" RelativeSize="30.303030303030305" IsNewNode="True" />
                         <LayoutItem Id="Info.Hair" ViewItem="Info.Hair" CaptionLocation="Top" Index="2" RelativeSize="34.84848484848485" IsNewNode="True" />
@@ -324,19 +351,16 @@
                     </LayoutGroup>
                     <LayoutItem Id="Info.Background" ViewItem="Info.Background" CaptionLocation="Top" Index="2" RelativeSize="15.660377358490566" IsNewNode="True" />
                     <LayoutItem Id="Info.Personality" ViewItem="Info.Personality" CaptionLocation="Top" Index="3" RelativeSize="15.660377358490566" IsNewNode="True" />
-                    <LayoutItem Id="Info.Ideals" ViewItem="Info.Ideals" CaptionLocation="Top" Index="4" RelativeSize="15.09433962264151" IsNewNode="True" />
-                    <LayoutItem Id="Info.Flaws" ViewItem="Info.Flaws" CaptionLocation="Top" Index="5" RelativeSize="15.283018867924529" IsNewNode="True" />
-                    <LayoutItem Id="Item11" Index="6" RelativeSize="4.339622641509434" IsNewNode="True" />
-                  </LayoutGroup>
-                  <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="3" RelativeSize="100" IsNewNode="True">
-                    <LayoutItem Id="ArmorItem" ViewItem="ArmorItem" Index="0" RelativeSize="100" IsNewNode="True" />
+                    <LayoutItem Id="Info.Ideals" ViewItem="Info.Ideals" CaptionLocation="Top" Index="4" RelativeSize="14.90566037735849" IsNewNode="True" />
+                    <LayoutItem Id="Info.Flaws" ViewItem="Info.Flaws" CaptionLocation="Top" Index="5" RelativeSize="15.09433962264151" IsNewNode="True" />
+                    <LayoutItem Id="Item11" Index="6" RelativeSize="4.716981132075472" IsNewNode="True" />
                   </LayoutGroup>
                   <LayoutGroup Id="Additional" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="4" RelativeSize="100" ImageName="Action_CreateDashboard" IsNewNode="True">
-                    <LayoutGroup Id="Auto608fd3c9-8619-46e5-b138-ba85d4b6f5fa" ShowCaption="False" Index="0" RelativeSize="48.54838709677419" IsNewNode="True">
+                    <LayoutGroup Id="Auto608fd3c9-8619-46e5-b138-ba85d4b6f5fa" ShowCaption="False" Index="0" RelativeSize="48.40255591054313" IsNewNode="True">
                       <LayoutItem Id="Campain" ViewItem="Campain" Index="0" RelativeSize="6.037735849056604" IsNewNode="True" />
                       <LayoutItem Id="Person" ViewItem="Person" Index="1" RelativeSize="93.9622641509434" IsNewNode="True" />
                     </LayoutGroup>
-                    <LayoutGroup Id="Auto61d99964-231a-4e56-bb07-8779dffa36be" ShowCaption="False" Index="1" RelativeSize="51.45161290322581" IsNewNode="True">
+                    <LayoutGroup Id="Auto61d99964-231a-4e56-bb07-8779dffa36be" ShowCaption="False" Index="1" RelativeSize="51.59744408945687" IsNewNode="True">
                       <LayoutItem Id="Item5" Index="0" RelativeSize="49.24528301886792" IsNewNode="True" />
                       <LayoutItem Id="Item4" Index="1" RelativeSize="50.75471698113208" IsNewNode="True" />
                     </LayoutGroup>
@@ -490,6 +514,15 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="CharacterStorage_Items_ListView" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="Count" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="Item" Index="-1" />
+        <ColumnInfo Id="Storage" Index="-1" />
+        <ColumnInfo Id="Name" Index="0" />
+      </Columns>
+    </ListView>
     <ListView Id="CharacterStorage_ListView" FreezeColumnIndices="True">
       <Columns>
         <ColumnInfo Id="Character" Index="-1" />
@@ -542,6 +575,21 @@
         <ColumnInfo Id="StorageSource" Index="-1" />
         <ColumnInfo Id="ShortOperationInfoAndDestination" Index="0" Width="439" />
         <ColumnInfo Id="OperationDate" Index="1" SortIndex="0" SortOrder="Descending" />
+      </Columns>
+    </ListView>
+    <ListView Id="Item_AssignedItems_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Index="-1" />
+        <ColumnInfo Id="Storage" Index="0" />
+        <ColumnInfo Id="Count" Index="1" />
+      </Columns>
+    </ListView>
+    <ListView Id="Item_ListView" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="Description" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="Name" Index="0" />
+        <ColumnInfo Id="ItemType" Index="1" />
       </Columns>
     </ListView>
     <ListView Id="MultipleTransaction_ActiveCharacters_ListView" FreezeColumnIndices="True">
