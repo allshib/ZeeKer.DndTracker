@@ -30,7 +30,11 @@
           <Item Id="Character_ListView" Caption="Персонаж" />
           <Item Id="CharacterStorage_ListView" Caption="Хранилище" />
           <Item Id="Classes" Caption="Классы" />
-          <Item Id="Items" Caption="Предметы" />
+          <Item Id="Its" Caption="Предметы">
+            <Items>
+              <Item Id="Items" Caption="Предметы" />
+            </Items>
+          </Item>
           <Item Id="Person_ListView" Caption="Игрок" />
         </Items>
       </Item>
@@ -62,7 +66,10 @@
       <Layout>
         <LayoutGroup Id="Main">
           <LayoutGroup Id="SimpleEditors">
-            <LayoutGroup Id="Item" Caption="Item" />
+            <LayoutGroup Id="Item" Caption="Item">
+              <LayoutGroup Id="Item_col1" Caption="Item_col1" />
+              <LayoutGroup Id="Item_col2" Caption="Item_col2" />
+            </LayoutGroup>
           </LayoutGroup>
         </LayoutGroup>
       </Layout>
@@ -162,6 +169,19 @@
         <LayoutGroup Id="Main">
           <LayoutGroup Id="Auto5ad84b12-acd3-46d9-b731-62e10987a755" Caption="Auto5ad84b12-acd3-46d9-b731-62e10987a755(6)">
             <LayoutGroup Id="Autofdab7d16-4c73-45d4-bc11-84c2c5cf410d" Caption="" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="ShieldItem_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="ShieldItem" Caption="КЗ Бонус" />
+            <LayoutGroup Id="Item">
+              <LayoutGroup Id="Item_col2" Caption="Item_col2" />
+              <LayoutGroup Id="Item_col1" Caption="Item_col1" />
+            </LayoutGroup>
           </LayoutGroup>
         </LayoutGroup>
       </Layout>

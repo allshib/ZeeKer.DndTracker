@@ -71,21 +71,23 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         private int GetACValue()
         {
+            var shieldBonus = ShieldItem?.Item is not null? ((ShieldItem)ShieldItem.Item).ACBonus : 0;
+
             if(ArmorItem?.Item is null)
-                return Stats.DexterityBonus;
+                return Stats?.DexterityBonus??0 + shieldBonus;
             var armor = ArmorItem?.Item as ArmorItem;
 
             switch(armor.ArmorType)
             {
                 case Types.ArmorType.Heavy:
-                    return armor.AC;
+                    return armor.AC + shieldBonus;
 
                 case Types.ArmorType.Medium:
-                    return Stats.DexterityBonus > 2? armor.AC + 2 : armor.AC + Stats.DexterityBonus;
+                    return Stats?.DexterityBonus > 2? armor.AC + 2 + shieldBonus : armor.AC + Stats?.DexterityBonus??0 + shieldBonus;
 
                 case Types.ArmorType.Light:
-                    return armor.AC + Stats.DexterityBonus;
-                default: return Stats.DexterityBonus;
+                    return armor.AC + Stats?.DexterityBonus??0 + shieldBonus;
+                default: return Stats?.DexterityBonus??0 + shieldBonus;
             }
         }
         #endregion

@@ -18,7 +18,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
     [XafDisplayName("Предмет")]
     [XafDefaultProperty(nameof(DefaultProperty))]
-    public class Item : BaseObject
+    public abstract class Item : BaseObject
     {
         public Item()
         {
@@ -36,9 +36,14 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [XafDisplayName("Назначения")]
         public virtual IList<AssignedItem> AssignedItems { get; set; } = new ObservableCollection<AssignedItem>();
+
+        [XafDisplayName("Предмет")]
         public virtual string DefaultProperty => $"{Name}";
 
         [XafDisplayName("Вес")]
         public virtual double Weight { get; set; }
+
+        [XafDisplayName("Редкость")]
+        public virtual ItemRarityType Rarity { get; set; }
     }
 }

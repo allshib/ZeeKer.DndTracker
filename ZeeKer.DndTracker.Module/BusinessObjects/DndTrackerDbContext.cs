@@ -71,6 +71,8 @@ public class DndTrackerEFCoreDbContext : DbContext {
     public DbSet<Skills> Skills { get; set; }
     public DbSet<Item> Items { get; set; }
     public DbSet<ArmorItem> ArmorItems { get; set; }
+    public DbSet<ShieldItem> ShieldItems { get; set; }
+
     public DbSet<AssignedItem> AssignedItems { get; set; }
 
 

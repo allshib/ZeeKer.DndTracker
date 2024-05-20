@@ -99,6 +99,12 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Броня"), ForeignKey(nameof(ArmorItemId))]
         public virtual AssignedItem ArmorItem { get; set; }
 
+        [Browsable(false)]
+        public virtual Guid? ShieldItemId { get; set; }
+
+        [XafDisplayName("Щит"), ForeignKey(nameof(ShieldItemId))]
+        public virtual AssignedItem ShieldItem { get; set; }
+
 
         [Aggregated]
         [XafDisplayName("Хранилища")]
