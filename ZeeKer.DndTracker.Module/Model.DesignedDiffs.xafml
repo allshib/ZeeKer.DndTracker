@@ -162,7 +162,7 @@
   </SchemaModules>
   <Validation>
     <Rules>
-      <RuleRange Id="@415080c0-cbc1-4d68-b2b8-cb6e1c54b6bd" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.AssignedItem" TargetPropertyName="Count" MinimumValue="1" MaximumValue="999999" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRange Id="AssignedItem_CountMoreZero" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.AssignedItem" TargetPropertyName="Count" MinimumValue="1" MaximumValue="999999" TargetContextIDs="Save" IsNewNode="True" />
       <RuleCriteria Id="Character_OnlyOneInventory" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.Character" TargetCriteria="[Storages][]" TargetContextIDs="Save" Criteria="[Storages][[Local] = True].Count() = 1" IsNewNode="True" />
       <RuleCriteria Id="StorageOperation_CorrectDestinOperation" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" TargetContextIDs="Save" TargetCriteria="[OperationMode] = ##Enum#ZeeKer.DndTracker.Module.Types.OperationMode,WithAnotherStorage#" Criteria="[OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddGoldCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddSilverCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddCopperCoins#" IsNewNode="True" />
       <RuleCriteria Id="StorageOperation_DifferentStorages" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" TargetContextIDs="Save" Criteria="[StorageSource] &lt;&gt; [Storage]" TargetCriteria="[OperationMode] = ##Enum#ZeeKer.DndTracker.Module.Types.OperationMode,WithAnotherStorage#" IsNewNode="True" />

@@ -50,7 +50,7 @@
   </NavigationItems>
   <Validation>
     <Rules>
-      <RuleRange Id="@415080c0-cbc1-4d68-b2b8-cb6e1c54b6bd" CustomMessageTemplate="Количество не должно быть меньше 1" />
+      <RuleRange Id="AssignedItem_CountMoreZero" CustomMessageTemplate="Количество не должно быть меньше 1" />
       <RuleCriteria Id="Character_OnlyOneInventory" CustomMessageTemplate="У персонажа обязательно должен быть ровно 1 личный инвентарь" />
       <RuleCriteria Id="StorageOperation_CorrectDestinOperation" CustomMessageTemplate="Разрешены только положительные операции" />
       <RuleCriteria Id="StorageOperation_DifferentStorages" CustomMessageTemplate="Запрещено переводить монеты в то же хранилище" />
