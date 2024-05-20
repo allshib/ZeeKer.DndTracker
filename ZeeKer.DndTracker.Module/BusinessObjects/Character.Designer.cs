@@ -49,7 +49,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [ForeignKey(nameof(RaceId)), XafDisplayName("Раса")]
         public virtual Race Race { get; set; }
         [XafDisplayName("Максимальный вес"), NotMapped]
-        public virtual double MaxWeight => Stats?.Strength?? 1 * 15;
+        public virtual double MaxWeight => (Stats?.Strength?? 1) * 15.0;
 
         #endregion
 
