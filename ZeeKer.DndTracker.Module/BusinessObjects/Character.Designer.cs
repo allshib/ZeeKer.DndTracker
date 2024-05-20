@@ -1,0 +1,94 @@
+﻿using DevExpress.ExpressApp.DC;
+using DevExpress.Persistent.Validation;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ZeeKer.DndTracker.Module.BusinessObjects
+{
+    public partial class Character
+    {
+        #region Basic
+        [XafDisplayName("Имя"), StringLength(150)]
+        [RuleRequiredField(DefaultContexts.Save)]
+        public virtual string Name { get; set; }
+
+        [XafDisplayName("Уровень")]
+        public virtual int Level { get; set; }
+
+        [XafDisplayName("Создано")]
+        public virtual DateTimeOffset CreatedAt { get; set; }
+
+        [Browsable(false)]
+        public virtual Guid? StatsId { get; set; }
+
+        [XafDisplayName("Характеристики")]
+        public virtual CharacterStats? Stats { get; set; }
+
+        [Browsable(false)]
+        public virtual Guid? InfoId { get; set; }
+
+        [ForeignKey(nameof(InfoId)), XafDisplayName("Инфо")]
+        public virtual CharacterInfo Info { get; set; }
+
+        [Browsable(false)]
+        public virtual Guid? ClassId { get; set; }
+
+        [ForeignKey(nameof(ClassId)), XafDisplayName("Класс")]
+        public virtual CharacterClass Class { get; set; }
+        #endregion
+
+        #region Health
+        [XafDisplayName("КЗ")]
+        public virtual int Armor { get; set; }
+        [XafDisplayName("Очки здоровья")]
+        public virtual int Health { get; set; }
+        [XafDisplayName("Очки здоровья (max)")]
+        public virtual int HealthMax { get; set; }
+
+        [XafDisplayName("Очки здоровья (временные)")]
+        public virtual int HealthTemp { get; set; }
+        [XafDisplayName("Информация о здоровье")]
+        public virtual string HealthInfo => $"Здоровье: {Health}/{HealthMax}{(HealthTemp > 0 ? $" + {HealthTemp}" : "")} КЗ: {Armor}";
+        #endregion
+
+        #region Дополнительно
+        [Browsable(false)]
+        public virtual Guid? CampainId { get; set; }
+
+        [XafDisplayName("Кампейн")]
+        [ForeignKey(nameof(CampainId))]
+        [RuleRequiredField(DefaultContexts.Save)]
+        public virtual Campain? Campain { get; set; }
+
+        [Browsable(false)]
+        public virtual Guid? PersonId { get; set; }
+
+
+        [ForeignKey(nameof(PersonId))]
+        [XafDisplayName("Игрок")]
+        [RuleRequiredField(DefaultContexts.Save)]
+        public virtual Person? Person { get; set; }
+        #endregion
+
+        #region Storages And Operations
+        [Aggregated]
+        [XafDisplayName("Хранилища")]
+        public virtual IList<CharacterStorage> Storages { get; set; } = new ObservableCollection<CharacterStorage>();
+
+
+        [XafDisplayName("Преднастроенные операции"), NotMapped]
+        public virtual IEnumerable<MultipleTransaction> MultipleTransaction => new ObservableCollection<MultipleTransaction>(Storages?.SelectMany(storage => storage.MultipleTransactions)) ?? new ObservableCollection<MultipleTransaction>();
+
+
+        [XafDisplayName("Инвентарь")]
+        public CharacterStorage LocalStorage => Storages?.FirstOrDefault(storage => storage.Local);
+        #endregion
+    }
+}

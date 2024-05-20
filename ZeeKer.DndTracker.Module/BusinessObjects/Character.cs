@@ -24,90 +24,13 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
     // Register this entity in your DbContext (usually in the BusinessObjects folder of your project) with the "public DbSet<Character> Characters { get; set; }" syntax.
     [DefaultClassOptions]
     [XafDisplayName("Персонаж")]
-    public class Character : BaseObject
+    public partial class Character : BaseObject
     {
         public Character()
         {
-            // In the constructor, initialize collection properties, e.g.: 
-            // this.AssociatedEntities = new ObservableCollection<AssociatedEntityObject>();
+
         }
-
-        
-
-
-        [XafDisplayName("Имя"), StringLength(150)]
-        [RuleRequiredField(DefaultContexts.Save)]
-        public virtual string Name { get; set; }
-
-        [XafDisplayName("Очки здоровья")]
-        public virtual int Health { get; set; }
-        [XafDisplayName("Очки здоровья (max)")]
-        public virtual int HealthMax { get; set; }
-
-        [XafDisplayName("Очки здоровья (временные)")]
-        public virtual int HealthTemp { get; set; }
-        [XafDisplayName("Информация о здоровье")]
-        public virtual string HealthInfo => $"Здоровье: {Health}/{HealthMax}{(HealthTemp > 0? $" + {HealthTemp}" : "")} КЗ: {Armor}";
-
-        [XafDisplayName("Уровень")]
-        public virtual int Level { get; set; }
-
-        [Browsable(false)]
-        public virtual Guid? StatsId { get; set; }
-
-        [XafDisplayName("Характеристики")]
-        public virtual CharacterStats? Stats { get; set; }
-
-
-        [Browsable(false)]
-        public virtual Guid? CampainId { get; set; }
-
-        [XafDisplayName("Кампейн")]
-        [ForeignKey(nameof(CampainId))]
-        [RuleRequiredField(DefaultContexts.Save)]
-        public virtual Campain? Campain { get; set; }
-
-
-        [Browsable(false)]
-        public virtual Guid? PersonId { get; set; }
-
-
-        [ForeignKey(nameof(PersonId))]
-        [XafDisplayName("Игрок")]
-        [RuleRequiredField(DefaultContexts.Save)]
-        public virtual Person? Person { get; set; }
-
-        [Browsable(false)]
-        public virtual Guid? InfoId { get; set; }
-
-        [ForeignKey(nameof(InfoId)), XafDisplayName("Инфо")]
-        public virtual CharacterInfo Info { get; set; }
-
-        [Browsable(false)]
-        public virtual Guid? ClassId { get; set; }
-
-        [ForeignKey(nameof(ClassId)), XafDisplayName("Класс")]
-        public virtual CharacterClass Class { get; set; }
-
-        [Aggregated]
-        [XafDisplayName("Хранилища")]
-        public virtual IList<CharacterStorage> Storages { get; set; } = new ObservableCollection<CharacterStorage>();
-
-
-        [XafDisplayName("Преднастроенные операции"), NotMapped]
-        public virtual IEnumerable<MultipleTransaction> MultipleTransaction => new ObservableCollection<MultipleTransaction>(Storages?.SelectMany(storage => storage.MultipleTransactions)) ?? new ObservableCollection<MultipleTransaction>();
-
-
-        [XafDisplayName("Инвентарь")]
-        public CharacterStorage LocalStorage => Storages?.FirstOrDefault(storage=>storage.Local);
-
-        [XafDisplayName("Создано")]
-        public virtual DateTimeOffset CreatedAt { get; set; }
-
-
-        [XafDisplayName("КЗ")]
-        public virtual int Armor {  get; set; }
-
+        #region Events
         public override void OnCreated()
         {
             base.OnCreated();
@@ -132,10 +55,11 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         private void OnDeleting()
         {
             ObjectSpace.Delete(Info);
-            //Stats.CharacterId = null;
-            //ObjectSpace.Delete(Stats);
         }
 
+        #endregion
+
+        #region Methods
         private void CreateLocalStorage()
         {
             var storage = ObjectSpace.CreateObject<CharacterStorage>();
@@ -144,14 +68,6 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             storage.Character = this;
             
         }
-
-        // Collection property:
-        //public virtual IList<AssociatedEntityObject> AssociatedEntities { get; set; }
-
-        //[Action(Caption = "My UI Action", ConfirmationMessage = "Are you sure?", ImageName = "Attention", AutoCommit = true)]
-        //public void ActionMethod() {
-        //    // Trigger custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
-        //    this.PersistentProperty = "Paid";
-        //}
+        #endregion
     }
 }
