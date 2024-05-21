@@ -22,7 +22,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects;
 
         #region Fields
         [XafDisplayName("Хранилище")]
-        public string DefaultProperty => $"{Character?.Name} {Name}: {CoinsInfo}";
+        public string DefaultProperty => $"{Character?.Name} {Name}: {CoinsInfo} {ItemsString}";
 
         [XafDisplayName("Наименование"), StringLength(150)]
         public virtual string Name { get; set; }

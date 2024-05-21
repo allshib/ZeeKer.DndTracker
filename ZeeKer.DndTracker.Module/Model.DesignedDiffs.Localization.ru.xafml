@@ -32,7 +32,7 @@
           <Item Id="Classes" Caption="Классы" />
           <Item Id="Its" Caption="Предметы">
             <Items>
-              <Item Id="Items" Caption="Предметы" />
+              <Item Id="Items" Caption="Все Предметы" />
               <Item Id="Weapons" Caption="Оружие" />
             </Items>
           </Item>
