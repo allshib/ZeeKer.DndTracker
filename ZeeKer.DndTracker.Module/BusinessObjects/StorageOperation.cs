@@ -42,9 +42,14 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Режим")]
         public virtual OperationMode OperationMode { get; set; }
 
-        [XafDisplayName("Кол-во монет")]
+        [XafDisplayName("Кол-во")]
         [Column(TypeName = "decimal(18,2)")]
         public virtual decimal Coins { get; set; }
+
+        [Browsable(false)]
+        public virtual Guid? ItemId { get; set; }
+        [XafDisplayName("Предмет"), ForeignKey(nameof(ItemId))]
+        public virtual AssignedItem Item { get; set; }
 
         [Browsable(false)]
         public virtual Guid? StorageId { get; set; }
@@ -154,8 +159,13 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
                 case nameof(SourceCharacter):
                     StorageSource = SourceCharacter?.LocalStorage;
                     break;
+                case nameof(StorageSource) when this.OperationType == StorageOperationType.AddItems:
+                    Item = null;
+                    break;
             }
         }
+
+        public IObjectSpace GetObjectSpace() =>ObjectSpace;
 
         // Collection property:
         //public virtual IList<AssociatedEntityObject> AssociatedEntities { get; set; }

@@ -204,7 +204,6 @@
                   </LayoutGroup>
                 </LayoutGroup>
               </LayoutGroup>
-              <LayoutGroup Id="StorageOperation_col2" Caption="StorageOperation_col2" />
             </LayoutGroup>
           </LayoutGroup>
         </LayoutGroup>
