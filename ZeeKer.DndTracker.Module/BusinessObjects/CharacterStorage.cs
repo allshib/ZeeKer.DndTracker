@@ -17,7 +17,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects;
         {
         }
 
-        [XafDisplayName("Предметы")]
+        [XafDisplayName("Предметы"), Aggregated]
         public virtual IList<AssignedItem> Items { get; set; } = new ObservableCollection<AssignedItem>();
 
         #region Fields
@@ -69,7 +69,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects;
         [Aggregated]
         [XafDisplayName("Исходящие Операции")]
         public virtual IList<StorageOperation> OperationsFromThis { get; set; } = new ObservableCollection<StorageOperation>();
-        [XafDisplayName("Настройки мульти-транзакций")]
+        [XafDisplayName("Настройки мульти-транзакций"), Aggregated]
         public virtual IList<MultipleTransaction> MultipleTransactions { get; set; } = new ObservableCollection<MultipleTransaction>();
 
         #endregion
