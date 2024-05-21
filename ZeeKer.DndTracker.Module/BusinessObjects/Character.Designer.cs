@@ -106,6 +106,19 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         public virtual AssignedItem ShieldItem { get; set; }
 
 
+        [Browsable(false)]
+        public virtual Guid? HandRightId { get; set; }
+
+        [XafDisplayName("Правая рука"), ForeignKey(nameof(HandRightId))]
+        public virtual AssignedItem HandRight { get; set; }
+
+        [Browsable(false)]
+        public virtual Guid? HandLeftId { get; set; }
+
+        [XafDisplayName("Левая рука"), ForeignKey(nameof(HandLeftId))]
+        public virtual AssignedItem HandLeft { get; set; }
+
+
         [Aggregated]
         [XafDisplayName("Хранилища")]
         public virtual IList<CharacterStorage> Storages { get; set; } = new ObservableCollection<CharacterStorage>();
