@@ -32,6 +32,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [Browsable(false)]
         public virtual Guid? ItemId { get; set; }
+        [RuleRequiredField(DefaultContexts.Save)]
         [ForeignKey(nameof(ItemId)), XafDisplayName("Предмет")]
         public virtual Item Item { get; set; }
 
@@ -42,6 +43,25 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Наименование")]
         public virtual string Name => $"{Item?.DefaultProperty}";
 
+
+        //private string GetWeaponModif()
+        //{
+        //    if(Item is WeaponItem weaponItem)
+        //    {
+        //        if(weaponItem.Fencing)
+        //            return $" +{Math.Max(Storage?.Character?.Stats?.DexterityBonus??0, Storage?.Character?.Stats?.StrengthBonus??0)}";
+
+        //        switch (weaponItem.WeaponRangeType)
+        //        {
+        //            case Types.WeaponRangeType.Melee:
+        //                return $" +{(Storage?.Character?.Stats?.StrengthBonus ?? 0)}";
+        //            case Types.WeaponRangeType.Ranged:
+        //                return $" +{(Storage?.Character?.Stats?.DexterityBonus ?? 0)}";
+        //        }
+
+        //    }
+        //    return "";
+        //}
         public override void OnCreated()
         {
             base.OnCreated();

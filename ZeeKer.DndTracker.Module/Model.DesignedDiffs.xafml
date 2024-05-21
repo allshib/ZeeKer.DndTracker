@@ -1138,9 +1138,9 @@
               <LayoutGroup Id="WeaponItem_col1" RelativeSize="100">
                 <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="12.5" IsNewNode="True" />
                 <LayoutItem Id="MainDamageType" Index="1" RelativeSize="9.375" />
-                <LayoutItem Id="HandWeaponType" Index="2" RelativeSize="9.375" />
-                <LayoutItem Id="WeightWeaponType" Index="3" RelativeSize="9.375" />
-                <LayoutItem Id="WeaponRangeType" Index="4" RelativeSize="9.375" />
+                <LayoutItem Id="HitBonus" Index="2" RelativeSize="9.375" />
+                <LayoutItem Id="HandWeaponType" Index="3" RelativeSize="9.375" />
+                <LayoutItem Id="WeightWeaponType" Index="4" RelativeSize="9.375" />
                 <LayoutItem Id="Fencing" ViewItem="Fencing" Index="5" RelativeSize="9.375" IsNewNode="True" />
                 <LayoutItem Id="Throwing" ViewItem="Throwing" Index="6" RelativeSize="9.375" IsNewNode="True" />
                 <LayoutItem Id="Special" ViewItem="Special" Index="7" RelativeSize="9.375" IsNewNode="True" />

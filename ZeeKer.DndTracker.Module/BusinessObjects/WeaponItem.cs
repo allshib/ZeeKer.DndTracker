@@ -24,6 +24,12 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             // In the constructor, initialize collection properties, e.g.: 
             // this.AssociatedEntities = new ObservableCollection<AssociatedEntityObject>();
         }
+
+        public override string DefaultProperty => $"{Name} {(HitBonus > 0 ? $"(+{HitBonus})" : "")}";
+
+        [XafDisplayName("Бонус попадания")]
+        public virtual int HitBonus { get; set; }
+
         [XafDisplayName("Основной тип урона")]
         public virtual DamageType MainDamageType { get; set; }
 
