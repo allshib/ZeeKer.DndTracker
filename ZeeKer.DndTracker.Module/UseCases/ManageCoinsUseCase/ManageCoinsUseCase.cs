@@ -25,6 +25,28 @@ public class ManageCoinsUseCase : ShowViewUseCaseBase
         var os = application
             .CreateObjectSpace(typeof(StorageOperation));
 
+        var operation = CreateAndFillOperation(request, os);
+
+
+        if (request.FastOperation)
+            RunOperation(operation, os);
+        else
+        {
+            var detailView = this.CreateDetailView(operation, os);
+            this.OpenDetailView(detailView, () =>
+            {
+                if (ValidateOperation(operation))
+                    RunOperation(operation, os);
+                else
+                    throw new UserFriendlyException("Не все поля заданы");
+            });
+        }
+        
+
+    }
+
+    private StorageOperation CreateAndFillOperation(ManageCoinsCommand request, IObjectSpace os)
+    {
         var operation = os.CreateObject<StorageOperation>();
         operation.StorageId = request.StorageDestinationId;
         operation.OperationType = request.Type;
@@ -41,34 +63,20 @@ public class ManageCoinsUseCase : ShowViewUseCaseBase
             ? os.GetObjectByKey<Character>(request.SourceCharacterId)
             : operation.StorageSource?.Character;
 
-
-        if (request.FastOperation)
-            RunOperation(operation, os, request.FastOperation);
-        else
-        {
-            var detailView = this.CreateDetailView(operation, os);
-            this.OpenDetailView(detailView, () =>
-            {
-                if (
-                operation.Coins >= 1 && 
-                operation.Storage is not null && 
-                operation.StorageSource is not null && 
-                operation.StorageId != operation.SourceStorageId &&
-                (operation.OperationType == StorageOperationType.AddItems 
-                && operation.Item is not null
-                || operation.OperationType != StorageOperationType.AddItems))
-                    RunOperation(operation, os, request.FastOperation);
-                else
-                    throw new UserFriendlyException("Не все поля заданы");
-
-                
-            });
-        }
-        
-
+        return operation;
     }
 
-    private void RunOperation(StorageOperation operation, IObjectSpace os, bool fastOperation)
+    private bool ValidateOperation(StorageOperation operation)
+    => operation.Coins >= 1 &&
+                operation.Storage is not null &&
+                (operation.OperationMode == OperationMode.WithAnotherStorage && operation.StorageSource is not null 
+        || operation.OperationMode != OperationMode.WithAnotherStorage) &&
+                operation.StorageId != operation.SourceStorageId &&
+                (operation.OperationType == StorageOperationType.AddItems
+                && operation.Item is not null
+                || operation.OperationType != StorageOperationType.AddItems);
+
+    private void RunOperation(StorageOperation operation, IObjectSpace os)
     {
         if (operation.Executed)
             operation.RollbackOperation();
@@ -81,10 +89,11 @@ public class ManageCoinsUseCase : ShowViewUseCaseBase
         catch (Exception ex)
         {
             if (operation.Executed)
+            {
                 operation.RollbackOperation();
+            }
 
-            if (fastOperation)
-                throw;
+            throw;
         }
         AfterCommit?.Invoke(this, new AfterCommitEventArgs());
     }
