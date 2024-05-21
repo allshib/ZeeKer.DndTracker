@@ -59,6 +59,7 @@
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage" ImageName="Chest">
       <OwnMembers>
         <Member Name="CopperCoins" AllowEdit="False" />
+        <Member Name="ItemsString" RowCount="5" />
       </OwnMembers>
     </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Item" ImageName="Box" />
@@ -263,10 +264,10 @@
         <ColumnInfo Id="ID" Index="-1" />
         <ColumnInfo Id="Info" Index="-1" />
         <ColumnInfo Id="Level" Index="-1" />
+        <ColumnInfo Id="LocalStorage" Index="-1" />
         <ColumnInfo Id="Stats" Index="-1" />
         <ColumnInfo Id="Name" Index="0" />
         <ColumnInfo Id="Person" Index="1" />
-        <ColumnInfo Id="LocalStorage" Index="2" />
       </Columns>
     </ListView>
     <ListView Id="Campain_ListView" FreezeColumnIndices="True">
@@ -449,12 +450,12 @@
       <Columns>
         <ColumnInfo Id="ID" Index="-1" />
         <ColumnInfo Id="Info" Index="-1" />
+        <ColumnInfo Id="LocalStorage" Index="-1" />
         <ColumnInfo Id="Stats" Index="-1" />
         <ColumnInfo Id="Name" Index="0" />
         <ColumnInfo Id="Level" Index="1" />
         <ColumnInfo Id="Campain" Index="2" />
         <ColumnInfo Id="Person" Index="3" />
-        <ColumnInfo Id="LocalStorage" Index="4" />
       </Columns>
     </ListView>
     <ListView Id="Character_MultipleTransaction_ListView" FreezeColumnIndices="True">
@@ -745,10 +746,10 @@
     <ListView Id="MyCharacter_ListView" ClassName="ZeeKer.DndTracker.Module.BusinessObjects.Character" Criteria="IsCurrentUserId([Person.User.ID])" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="ID" PropertyName="ID" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="LocalStorage" PropertyName="LocalStorage" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="Person" PropertyName="Person" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="Name" PropertyName="Name" SortIndex="0" SortOrder="Ascending" Index="0" IsNewNode="True" />
         <ColumnInfo Id="Campain" PropertyName="Campain" Index="1" IsNewNode="True" />
-        <ColumnInfo Id="LocalStorage" PropertyName="LocalStorage" Index="2" IsNewNode="True" />
       </Columns>
     </ListView>
     <ListView Id="MyCharacterStorage_ListView" ClassName="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage" FreezeColumnIndices="True" Criteria="IsCurrentUserId([Character.Person.User.ID])" AutoExpandAllGroups="True" IsNewNode="True">
@@ -777,12 +778,30 @@
         <ColumnInfo Id="StorageSource.Character.Campain" PropertyName="StorageSource.Character.Campain" Index="4" SortOrder="Ascending" GroupIndex="0" IsNewNode="True" />
       </Columns>
     </ListView>
-    <ListView Id="Person_Characters_ListView">
+    <ListView Id="Person_Characters_ListView" FreezeColumnIndices="True">
       <Columns>
+        <ColumnInfo Id="Armor" Index="-1" />
+        <ColumnInfo Id="ArmorCalc" Index="-1" />
+        <ColumnInfo Id="ArmorItem" Index="-1" />
+        <ColumnInfo Id="Class" Index="-1" />
+        <ColumnInfo Id="CreatedAt" Index="-1" />
+        <ColumnInfo Id="HandLeft" Index="-1" />
+        <ColumnInfo Id="HandRight" Index="-1" />
+        <ColumnInfo Id="Health" Index="-1" />
+        <ColumnInfo Id="HealthInfo" Index="-1" />
+        <ColumnInfo Id="HealthMax" Index="-1" />
+        <ColumnInfo Id="HealthTemp" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
         <ColumnInfo Id="Info" Index="-1" />
+        <ColumnInfo Id="Level" Index="-1" />
+        <ColumnInfo Id="LocalStorage" Index="-1" />
+        <ColumnInfo Id="MaxWeight" Index="-1" />
+        <ColumnInfo Id="Person" Index="-1" />
+        <ColumnInfo Id="Race" Index="-1" />
+        <ColumnInfo Id="ShieldItem" Index="-1" />
         <ColumnInfo Id="Stats" Index="-1" />
-        <ColumnInfo Id="Campain" Index="2" />
-        <ColumnInfo Id="LocalStorage" Index="3" />
+        <ColumnInfo Id="Name" Index="0" />
+        <ColumnInfo Id="Campain" Index="1" />
       </Columns>
     </ListView>
     <DetailView Id="Person_DetailView">
@@ -827,21 +846,30 @@
         <ColumnInfo Id="User" Index="1" />
       </Columns>
     </ListView>
-    <ListView Id="Race_Characters_ListView">
+    <ListView Id="Race_Characters_ListView" FreezeColumnIndices="True">
       <Columns>
         <ColumnInfo Id="Armor" Index="-1" />
+        <ColumnInfo Id="ArmorCalc" Index="-1" />
+        <ColumnInfo Id="ArmorItem" Index="-1" />
+        <ColumnInfo Id="Class" Index="-1" />
         <ColumnInfo Id="CreatedAt" Index="-1" />
+        <ColumnInfo Id="HandLeft" Index="-1" />
+        <ColumnInfo Id="HandRight" Index="-1" />
         <ColumnInfo Id="Health" Index="-1" />
         <ColumnInfo Id="HealthInfo" Index="-1" />
         <ColumnInfo Id="HealthMax" Index="-1" />
         <ColumnInfo Id="HealthTemp" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
         <ColumnInfo Id="Info" Index="-1" />
         <ColumnInfo Id="Level" Index="-1" />
         <ColumnInfo Id="LocalStorage" Index="-1" />
+        <ColumnInfo Id="MaxWeight" Index="-1" />
         <ColumnInfo Id="Person" Index="-1" />
+        <ColumnInfo Id="Race" Index="-1" />
+        <ColumnInfo Id="ShieldItem" Index="-1" />
         <ColumnInfo Id="Stats" Index="-1" />
-        <ColumnInfo Id="Class" Index="1" />
-        <ColumnInfo Id="Campain" Index="2" />
+        <ColumnInfo Id="Name" Index="0" />
+        <ColumnInfo Id="Campain" Index="1" />
       </Columns>
     </ListView>
     <DetailView Id="ReportDataV2_DetailView">
@@ -1066,13 +1094,30 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="StorageOperation_ActiveCharacters_ListView" AllowDelete="False" AllowLink="False" AllowNew="False">
+    <ListView Id="StorageOperation_ActiveCharacters_ListView" AllowDelete="False" AllowLink="False" AllowNew="False" FreezeColumnIndices="True">
       <Columns>
+        <ColumnInfo Id="Armor" Index="-1" />
+        <ColumnInfo Id="ArmorCalc" Index="-1" />
+        <ColumnInfo Id="ArmorItem" Index="-1" />
+        <ColumnInfo Id="Class" Index="-1" />
+        <ColumnInfo Id="CreatedAt" Index="-1" />
+        <ColumnInfo Id="HandLeft" Index="-1" />
+        <ColumnInfo Id="HandRight" Index="-1" />
+        <ColumnInfo Id="Health" Index="-1" />
+        <ColumnInfo Id="HealthInfo" Index="-1" />
+        <ColumnInfo Id="HealthMax" Index="-1" />
+        <ColumnInfo Id="HealthTemp" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
         <ColumnInfo Id="Info" Index="-1" />
+        <ColumnInfo Id="Level" Index="-1" />
+        <ColumnInfo Id="LocalStorage" Index="-1" />
+        <ColumnInfo Id="MaxWeight" Index="-1" />
         <ColumnInfo Id="Person" Index="-1" />
+        <ColumnInfo Id="Race" Index="-1" />
+        <ColumnInfo Id="ShieldItem" Index="-1" />
         <ColumnInfo Id="Stats" Index="-1" />
-        <ColumnInfo Id="Campain" Index="2" />
-        <ColumnInfo Id="LocalStorage" Index="3" />
+        <ColumnInfo Id="Name" Index="0" />
+        <ColumnInfo Id="Campain" Index="1" />
       </Columns>
     </ListView>
     <DetailView Id="StorageOperation_DetailView" FreezeLayout="True">
