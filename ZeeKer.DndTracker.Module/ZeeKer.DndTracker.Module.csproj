@@ -9,6 +9,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Images\Adventure.svg" />
+    <None Remove="Images\Armor.svg" />
+    <None Remove="Images\Box.svg" />
+    <None Remove="Images\Chest.svg" />
+    <None Remove="Images\Crit.svg" />
+    <None Remove="Images\Gamepad.svg" />
+    <None Remove="Images\Medusa.svg" />
+    <None Remove="Images\ReadMe.txt" />
+    <None Remove="Images\Shield.svg" />
+    <None Remove="Images\Sword.svg" />
+    <None Remove="Images\Wizard.svg" />
     <None Remove="Model.DesignedDiffs.Localization.ru-RU.xafml" />
     <None Remove="Model.DesignedDiffs.Localization.ru.xafml" />
     <None Remove="Model.DesignedDiffs.xafml" />
@@ -17,6 +28,17 @@
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Images\Adventure.svg" />
+    <EmbeddedResource Include="Images\Armor.svg" />
+    <EmbeddedResource Include="Images\Box.svg" />
+    <EmbeddedResource Include="Images\Chest.svg" />
+    <EmbeddedResource Include="Images\Crit.svg" />
+    <EmbeddedResource Include="Images\Gamepad.svg" />
+    <EmbeddedResource Include="Images\Medusa.svg" />
+    <EmbeddedResource Include="Images\ReadMe.txt" />
+    <EmbeddedResource Include="Images\Shield.svg" />
+    <EmbeddedResource Include="Images\Sword.svg" />
+    <EmbeddedResource Include="Images\Wizard.svg" />
     <EmbeddedResource Include="Model.DesignedDiffs.Localization.ru-RU.xafml">
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
     </EmbeddedResource>
@@ -108,6 +130,9 @@
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
     </None>
     <None Update="UnusableNodes8.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes9.xml">
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
     </None>
     <None Update="UnusableNodes_ru.xml">

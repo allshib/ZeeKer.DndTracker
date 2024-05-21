@@ -29,13 +29,14 @@
   </ActionDesign>
   <BOModel>
     <Class Name="DevExpress.Persistent.BaseImpl.EF.PermissionPolicy.PermissionPolicyUser" Caption="Base User" />
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.ArmorItem" ImageName="Armor" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.AssignedItem">
       <OwnMembers>
         <Member Name="Item" LookupEditorMode="AllItemsWithSearch" />
       </OwnMembers>
     </Class>
-    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Campain" ImageName="BO_User" />
-    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Character" ImageName="BO_Employee">
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Campain" ImageName="Adventure" />
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Character" ImageName="Medusa">
       <OwnMembers>
         <Member Name="ArmorItem" DataSourceProperty="LocalStorage.Items" DataSourceCriteria="[Item.ItemType] = ##Enum#ZeeKer.DndTracker.Module.Types.ItemType,Armor#" />
         <Member Name="HandLeft" DataSourceProperty="LocalStorage.Items" />
@@ -55,11 +56,12 @@
         <Member Name="WisdomCalc" ImmediatePostData="True" />
       </OwnMembers>
     </Class>
-    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage" ImageName="ListSource">
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage" ImageName="Chest">
       <OwnMembers>
         <Member Name="CopperCoins" AllowEdit="False" />
       </OwnMembers>
     </Class>
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Item" ImageName="Box" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.MultipleTransaction" ImageName="Action_StateMachine">
       <AppearanceRules>
         <AppearanceRule Id="NewCreated" Visibility="Hide" TargetItems="ActiveCharacters,TransactionSettings" Criteria="IsNewObject([This])" IsNewNode="True" />
@@ -72,6 +74,7 @@
       </AppearanceRules>
     </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Person" ImageName="BO_Position_v92" />
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.ShieldItem" ImageName="Shield" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail">
       <AppearanceRules>
         <AppearanceRule Id="Bold" Criteria="[HasSkill] = True" FontStyle="Bold" TargetItems="*" IsNewNode="True" />
@@ -105,17 +108,18 @@
         <Member Name="StorageDestination" DataSourceProperty="DestinationCharacter.Storages" />
       </OwnMembers>
     </Class>
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.WeaponItem" ImageName="Sword" />
   </BOModel>
   <NavigationItems StartupNavigationItem="MyCharacter_ListView">
     <Items>
-      <Item Id="PlayerHub" Index="1" IsNewNode="True">
+      <Item Id="PlayerHub" Index="1" ImageName="Gamepad" IsNewNode="True">
         <Items IsNewNode="True">
           <Item Id="MyCharacter_ListView" ViewId="MyCharacter_ListView" IsNewNode="True" />
           <Item Id="MyCharacterStorage_ListView" ViewId="MyCharacterStorage_ListView" IsNewNode="True" />
           <Item Id="MyTransactions" ViewId="MyMultipleTransaction_ListView" IsNewNode="True" />
         </Items>
       </Item>
-      <Item Id="MasterZone" Index="2" IsNewNode="True">
+      <Item Id="MasterZone" Index="2" ImageName="Crit" IsNewNode="True">
         <Items IsNewNode="True">
           <Item Id="Campain_ListView" ObjectKey="" ViewId="Campain_ListView" IsNewNode="True" />
           <Item Id="Character_ListView" ObjectKey="" ViewId="Character_ListView" IsNewNode="True" />
@@ -272,7 +276,7 @@
         <ColumnInfo Id="GameMaster" Index="1" />
       </Columns>
     </ListView>
-    <DetailView Id="Character_DetailView">
+    <DetailView Id="Character_DetailView" FreezeLayout="True">
       <Items>
         <ActionContainerViewItem Id="AddGold" PaintStyle="Caption" ActionContainer="AddGoldCategory" IsNewNode="True" />
         <PropertyEditor Id="ArmorCalc" Removed="True" />
@@ -315,10 +319,10 @@
         <PropertyEditor Id="Stats.WisdomCalc" PropertyName="Stats.WisdomCalc" IsNewNode="True" />
         <PropertyEditor Id="Storages" PropertyName="Storages" View="Character_Storages_ListView" IsNewNode="True" Removed="True" />
       </Items>
-      <Layout>
-        <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="84.16230366492147">
-            <LayoutGroup Id="Character" ShowCaption="True" Index="0" RelativeSize="100" IsNewNode="True" Removed="True">
+      <Layout IsNewNode="True" Removed="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" RelativeSize="84.16230366492147" IsNewNode="True">
+            <LayoutGroup Id="Character" ShowCaption="True" Index="0" RelativeSize="100" IsNewNode="True">
               <LayoutGroup Id="Character_col2" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
                 <TabbedGroup Id="Item2" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
                   <LayoutGroup Id="MainInfo" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" ImageName="BO_Role" IsNewNode="True">
@@ -364,13 +368,13 @@
                       </LayoutGroup>
                     </LayoutGroup>
                   </LayoutGroup>
-                  <LayoutGroup Id="StatsInfo" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="1" RelativeSize="100" ImageName="ContextMenu_Show_Column" IsNewNode="True">
-                    <LayoutGroup Id="Autob9677bbb-9791-4d02-a4b0-a1c175dbc40c" ShowCaption="False" Direction="Vertical" Index="0" RelativeSize="100" IsNewNode="True">
-                      <LayoutGroup Id="Auto640ccf67-3b1d-4ace-ac61-b9bc7d842707" ShowCaption="False" Index="0" RelativeSize="100" Direction="Vertical" IsNewNode="True">
-                        <LayoutGroup Id="Autod95e2523-151e-4a3f-b2e4-8e4d1c7981bd" ShowCaption="False" Index="0" RelativeSize="100" Direction="Vertical" IsNewNode="True">
+                  <LayoutGroup Id="StatsInfo" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="100" ImageName="ContextMenu_Show_Column" IsNewNode="True">
+                    <LayoutGroup Id="Autob9677bbb-9791-4d02-a4b0-a1c175dbc40c" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
+                      <LayoutGroup Id="Auto640ccf67-3b1d-4ace-ac61-b9bc7d842707" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
+                        <LayoutGroup Id="Autod95e2523-151e-4a3f-b2e4-8e4d1c7981bd" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
                           <LayoutItem Id="Stats.Profiency" ViewItem="Stats.Profiency" CaptionLocation="Top" Index="0" RelativeSize="8.664259927797834" IsNewNode="True" />
                           <LayoutItem Id="Stats.Initiative" ViewItem="Stats.Initiative" Index="1" RelativeSize="7.2202166064981945" CaptionLocation="Top" IsNewNode="True" />
-                          <LayoutGroup Id="Auto981e8216-d6a4-4fe2-ac33-c6abb7de9855" ShowCaption="False" Direction="Vertical" Index="2" RelativeSize="84.11552346570397" IsNewNode="True">
+                          <LayoutGroup Id="Auto981e8216-d6a4-4fe2-ac33-c6abb7de9855" ShowCaption="False" Index="2" RelativeSize="84.11552346570397" IsNewNode="True">
                             <LayoutGroup Id="Item9" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
                               <LayoutItem Id="Stats.StrengthCalc" ViewItem="Stats.StrengthCalc" Index="0" RelativeSize="11.241217798594848" CaptionLocation="Top" IsNewNode="True" />
                               <LayoutItem Id="Stats.ConstitutionCalc" ViewItem="Stats.ConstitutionCalc" Index="1" RelativeSize="9.36768149882904" CaptionLocation="Top" IsNewNode="True" />
@@ -385,7 +389,7 @@
                       </LayoutGroup>
                     </LayoutGroup>
                   </LayoutGroup>
-                  <LayoutGroup Id="Equip" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="2" RelativeSize="100" ImageName="ProtectedContent" IsNewNode="True">
+                  <LayoutGroup Id="Equip" ShowCaption="True" CaptionLocation="Top" Index="2" RelativeSize="100" ImageName="Armor" IsNewNode="True">
                     <LayoutItem Id="ArmorItem" ViewItem="ArmorItem" Index="0" RelativeSize="5.776173285198556" IsNewNode="True" />
                     <LayoutItem Id="ShieldItem" ViewItem="ShieldItem" Index="1" RelativeSize="4.332129963898917" IsNewNode="True" />
                     <LayoutItem Id="HandLeft" ViewItem="HandLeft" Index="2" RelativeSize="4.332129963898917" IsNewNode="True" />
@@ -424,14 +428,14 @@
               </LayoutGroup>
             </LayoutGroup>
           </LayoutGroup>
-          <TabbedGroup Id="Tabs" CaptionLocation="Top" Index="1" RelativeSize="15.837696335078535" IsNewNode="True" Removed="True">
-            <LayoutGroup Id="Storages_Group" ShowCaption="True" Index="0" RelativeSize="100" Direction="Vertical" IsNewNode="True">
+          <TabbedGroup Id="Tabs" CaptionLocation="Top" Index="1" RelativeSize="15.837696335078535" IsNewNode="True">
+            <LayoutGroup Id="Storages_Group" ShowCaption="True" Index="0" RelativeSize="100" IsNewNode="True">
               <LayoutItem Id="Storages" ViewItem="Storages" Index="0" RelativeSize="100" IsNewNode="True" />
             </LayoutGroup>
-            <LayoutGroup Id="InventoryOperation_Group1" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="1" RelativeSize="100" ImageName="BO_StateMachine" IsNewNode="True">
+            <LayoutGroup Id="InventoryOperation_Group1" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="100" ImageName="BO_StateMachine" IsNewNode="True">
               <LayoutItem Id="LocalStorage.Operations" ViewItem="LocalStorage.Operations" Index="0" RelativeSize="100" IsNewNode="True" />
             </LayoutGroup>
-            <LayoutGroup Id="InventoryOperation_Group2" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="2" RelativeSize="100" ImageName="Action_StateMachine" IsNewNode="True">
+            <LayoutGroup Id="InventoryOperation_Group2" ShowCaption="True" CaptionLocation="Top" Index="2" RelativeSize="100" ImageName="Action_StateMachine" IsNewNode="True">
               <LayoutItem Id="LocalStorage.OperationsFromThis" ViewItem="LocalStorage.OperationsFromThis" Index="0" RelativeSize="100" IsNewNode="True" />
             </LayoutGroup>
             <LayoutGroup Id="MultipleTransaction_Group" ShowCaption="True" Index="3" RelativeSize="100" IsNewNode="True">

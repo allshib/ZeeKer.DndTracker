@@ -2,8 +2,8 @@
 <Application PreferredLanguage="ru-RU">
   <NavigationItems NavigationStyle="Accordion">
     <Items>
-      <Item Id="PlayerHub" ImageName="Sad" />
-      <Item Id="MasterZone" ImageName="State_ItemVisibility_Show" />
+      <Item Id="PlayerHub" ImageName="Gamepad" />
+      <Item Id="MasterZone" ImageName="Crit" />
       <Item Id="Security" ImageName="ProtectedContent">
         <Items>
           <Item Id="ApplicationUser_ListView" ObjectKey="" ViewId="ApplicationUser_ListView" IsNewNode="True" />

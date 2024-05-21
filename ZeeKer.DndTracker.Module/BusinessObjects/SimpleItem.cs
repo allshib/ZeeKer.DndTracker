@@ -1,4 +1,4 @@
-using DevExpress.Data.Filtering;
+п»їusing DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
@@ -16,7 +16,7 @@ using ZeeKer.DndTracker.Module.Types;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
-    [XafDisplayName("Предмет")]
+    [XafDisplayName("РџСЂРµРґРјРµС‚")]
     public class SimpleItem : Item
     {
         public SimpleItem()
@@ -27,7 +27,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         public override ItemType ItemType => ItemType.SimpleItem;
 
 
-        [XafDisplayName("Тестовое свойство")]
+        [XafDisplayName("РўРµСЃС‚РѕРІРѕРµ СЃРІРѕР№СЃС‚РІРѕ")]
         public virtual int Bonus {  get; set; }
     }
 }
