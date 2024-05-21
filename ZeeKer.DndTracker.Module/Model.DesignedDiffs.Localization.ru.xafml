@@ -32,7 +32,8 @@
           <Item Id="Classes" Caption="Классы" />
           <Item Id="Its" Caption="Предметы">
             <Items>
-              <Item Id="Items" Caption="Все Предметы" />
+              <Item Id="AllItems" Caption="Все Предметы" />
+              <Item Id="Items" Caption="Предметы" />
               <Item Id="Weapons" Caption="Оружие" />
             </Items>
           </Item>
@@ -182,6 +183,19 @@
             <LayoutGroup Id="Item">
               <LayoutGroup Id="Item_col2" Caption="Item_col2" />
               <LayoutGroup Id="Item_col1" Caption="Item_col1" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="SimpleItem_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="SimpleItem" Caption="Тестовое свойство" />
+            <LayoutGroup Id="Item">
+              <LayoutGroup Id="Item_col1" Caption="Item_col1" />
+              <LayoutGroup Id="Item_col2" Caption="Item_col2" />
             </LayoutGroup>
           </LayoutGroup>
         </LayoutGroup>

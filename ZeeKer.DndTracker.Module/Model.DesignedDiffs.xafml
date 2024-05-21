@@ -123,10 +123,11 @@
           <Item Id="Classes" ViewId="CharacterClass_ListView" IsNewNode="True" />
           <Item Id="Its" IsNewNode="True">
             <Items IsNewNode="True">
-              <Item Id="Armor" ViewId="ArmorItem_ListView" IsNewNode="True" />
-              <Item Id="Items" ViewId="Item_ListView" IsNewNode="True" />
-              <Item Id="Shields" ViewId="ShieldItem_ListView" IsNewNode="True" />
-              <Item Id="Weapons" ViewId="WeaponItem_ListView" IsNewNode="True" />
+              <Item Id="AllItems" ViewId="Item_ListView" Index="1" IsNewNode="True" />
+              <Item Id="Items" ViewId="SimpleItem_ListView" Index="2" IsNewNode="True" />
+              <Item Id="Weapons" ViewId="WeaponItem_ListView" Index="3" IsNewNode="True" />
+              <Item Id="Armor" ViewId="ArmorItem_ListView" Index="4" IsNewNode="True" />
+              <Item Id="Shields" ViewId="ShieldItem_ListView" Index="5" IsNewNode="True" />
             </Items>
           </Item>
           <Item Id="Person_ListView" ObjectKey="" ViewId="Person_ListView" IsNewNode="True" />
@@ -901,6 +902,44 @@
         <ColumnInfo Id="ACBonus" Index="1" />
       </Columns>
     </ListView>
+    <DetailView Id="SimpleItem_DetailView">
+      <Items>
+        <PropertyEditor Id="AssignedItems" Removed="True" />
+        <PropertyEditor Id="Bonus" Removed="True" />
+        <PropertyEditor Id="DefaultProperty" Removed="True" />
+        <PropertyEditor Id="ID" Removed="True" />
+        <PropertyEditor Id="ItemType" Removed="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="15.779816513761467">
+            <LayoutGroup Id="SimpleItem" RelativeSize="100">
+              <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="37.2093023255814" IsNewNode="True" />
+              <LayoutItem Id="Bonus" RelativeSize="48.38709677419355" Index="1" Removed="True" />
+              <LayoutItem Id="Rarity" ViewItem="Rarity" Index="1" RelativeSize="27.906976744186046" IsNewNode="True" />
+              <LayoutItem Id="Weight" ViewItem="Weight" Index="2" RelativeSize="34.883720930232556" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="Item" RelativeSize="33.84615384615385" Removed="True">
+              <LayoutGroup Id="Item_col1" RelativeSize="50">
+                <LayoutItem Id="DefaultProperty" RelativeSize="100" Index="0" Removed="True" />
+                <LayoutItem Id="ItemType" RelativeSize="50" Index="0" Removed="True" />
+                <LayoutItem Id="Name" RelativeSize="36.36363636363637" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Item_col2" RelativeSize="50">
+                <LayoutItem Id="Rarity" RelativeSize="100" Index="0" Removed="True" />
+                <LayoutItem Id="Weight" RelativeSize="50" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="84.22018348623853">
+            <LayoutItem Id="Description" CaptionLocation="Top" RelativeSize="100" />
+          </LayoutGroup>
+          <LayoutGroup Id="AssignedItems_Group" Direction="Vertical" RelativeSize="35.96330275229358" Removed="True">
+            <LayoutItem Id="AssignedItems" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <ListView Id="Skills_SkillDetails_ListView" AutoExpandAllGroups="True" FreezeColumnIndices="True" AllowDelete="False" AllowLink="False" AllowNew="False">
       <Columns>
         <ColumnInfo Id="HasSkill" Index="-1" />

@@ -16,5 +16,7 @@ namespace ZeeKer.DndTracker.Module.Types
         Weapon = 2,
         [XafDisplayName("Щит")]
         ShieldItem = 4,
+        [XafDisplayName("Предмет")]
+        SimpleItem
     }
 }

@@ -76,6 +76,7 @@ public class DndTrackerEFCoreDbContext : DbContext {
 
     public DbSet<AssignedItem> AssignedItems { get; set; }
 
+    public DbSet<SimpleItem> SimpleItems { get; set; }
 
 
 

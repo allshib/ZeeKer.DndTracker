@@ -17,7 +17,7 @@ using ZeeKer.DndTracker.Module.Types;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
-    [XafDisplayName("Предмет")]
+    [XafDisplayName("Предмет (Базовый)")]
     [XafDefaultProperty(nameof(DefaultProperty))]
     public abstract class Item : BaseObject
     {
