@@ -1,4 +1,4 @@
-using DevExpress.Data.Filtering;
+ï»¿using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
@@ -16,7 +16,7 @@ using ZeeKer.DndTracker.Module.Types;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
-    [XafDisplayName("Îðóæèå")]
+    [XafDisplayName("ÐžÑ€ÑƒÐ¶Ð¸Ðµ")]
     public class WeaponItem : Item
     {
         public WeaponItem()
@@ -27,28 +27,28 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         public override string DefaultProperty => $"{Name} {(HitBonus > 0 ? $"(+{HitBonus})" : "")}";
 
-        [XafDisplayName("Áîíóñ ïîïàäàíèÿ")]
+        [XafDisplayName("Ð‘Ð¾Ð½ÑƒÑ Ð¿Ð¾Ð¿Ð°Ð´Ð°Ð½Ð¸Ñ")]
         public virtual int HitBonus { get; set; }
 
-        [XafDisplayName("Îñíîâíîé òèï óðîíà")]
+        [XafDisplayName("ÐžÑÐ½Ð¾Ð²Ð½Ð¾Ð¹ Ñ‚Ð¸Ð¿ ÑƒÑ€Ð¾Ð½Ð°")]
         public virtual DamageType MainDamageType { get; set; }
 
-        [XafDisplayName("Òèï èñïîëüçîâàíèÿ")]
+        [XafDisplayName("Ð¢Ð¸Ð¿ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ñ")]
         public virtual HandWeaponType HandWeaponType {  get; set; }
 
-        [XafDisplayName("Òèï âåñà")]
+        [XafDisplayName("Ð¢Ð¸Ð¿ Ð²ÐµÑÐ°")]
         public virtual WeightWeaponType WeightWeaponType { get; set; }
 
-        [XafDisplayName("Òèï áîÿ")]
+        [XafDisplayName("Ð¢Ð¸Ð¿ Ð±Ð¾Ñ")]
         public virtual WeaponRangeType WeaponRangeType { get; set; }
 
-        [XafDisplayName("Ôåõòîâàëüíîå")]
+        [XafDisplayName("Ð¤ÐµÑ…Ñ‚Ð¾Ð²Ð°Ð»ÑŒÐ½Ð¾Ðµ")]
         public virtual bool Fencing { get; set; }
 
-        [XafDisplayName("Ìåòàòåëüíîå")]
+        [XafDisplayName("ÐœÐµÑ‚Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾Ðµ")]
         public virtual bool Throwing { get; set; }
 
-        [XafDisplayName("Îñîáîå")]
+        [XafDisplayName("ÐžÑÐ¾Ð±Ð¾Ðµ")]
         public virtual bool Special { get; set; }
 
         public override ItemType ItemType => ItemType.Weapon;
