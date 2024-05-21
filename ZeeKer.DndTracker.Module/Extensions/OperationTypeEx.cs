@@ -17,6 +17,7 @@ namespace ZeeKer.DndTracker.Module.Extensions
             StorageOperationType.RemoveSilverCoins => "Вычесть серебрянные монеты",
             StorageOperationType.AddCopperCoins => "Добавить медные монеты",
             StorageOperationType.RemoveCopperCoins => "Вычесть медные монеты",
+            StorageOperationType.AddItems => "Добавить предметы",
             _ => "Not Implemented"
         };
         

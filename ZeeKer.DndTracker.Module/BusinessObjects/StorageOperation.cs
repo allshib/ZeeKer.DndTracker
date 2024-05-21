@@ -42,6 +42,10 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Режим")]
         public virtual OperationMode OperationMode { get; set; }
 
+
+        /// <summary>
+        /// Это поле "Количество", изначально было неверно названо
+        /// </summary>
         [XafDisplayName("Кол-во")]
         [Column(TypeName = "decimal(18,2)")]
         public virtual decimal Coins { get; set; }
@@ -123,7 +127,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         }
 
         [NotMapped, XafDisplayName("Инфо")]
-        public virtual string ShortOperationInfo => $"{OperationType.GetEnumRuText()} ({Convert.ToInt32(Coins)}){(String.IsNullOrEmpty(Reason)? "":$" ({Reason})")}";
+        public virtual string ShortOperationInfo => $"{OperationType.GetEnumRuText()}{(OperationType == StorageOperationType.AddItems? $" \"{Item?.Item?.Name}\"":"")} ({Convert.ToInt32(Coins)}){(String.IsNullOrEmpty(Reason)? "":$" ({Reason})")}";
 
         [NotMapped, XafDisplayName("Инфо+Ист")]
         public virtual string ShortOperationInfoAndSource => $"{ShortOperationInfo}{(SourceStorageId is null? "": $" От \"{StorageSource.DefaultProperty}\"")}";
@@ -161,6 +165,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
                     break;
                 case nameof(StorageSource) when this.OperationType == StorageOperationType.AddItems:
                     Item = null;
+                    break;
+                case nameof(Item) when Item is not null:
+                    Coins = Item.Count;
                     break;
             }
         }

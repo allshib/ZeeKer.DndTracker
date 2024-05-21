@@ -49,7 +49,16 @@ public class ManageCoinsUseCase : ShowViewUseCaseBase
             var detailView = this.CreateDetailView(operation, os);
             this.OpenDetailView(detailView, () =>
             {
-                RunOperation(operation, os, request.FastOperation);
+                if (
+                operation.Coins >= 1 && 
+                operation.Storage is not null && 
+                operation.StorageSource is not null && 
+                operation.StorageId != operation.SourceStorageId)
+                    RunOperation(operation, os, request.FastOperation);
+                else
+                    throw new UserFriendlyException("Не все поля заданы");
+
+                
             });
         }
         

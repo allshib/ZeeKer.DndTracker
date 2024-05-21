@@ -85,7 +85,7 @@ namespace ZeeKer.DndTracker.Module.Extensions
 
             if (operation.Executed == false)
                 throw new UserFriendlyException("Отменить можно только примененную операцию");
-            if(operation.OperationType == StorageOperationType.AddItems || operation.OperationType == StorageOperationType.RemoveItems)
+            if(operation.OperationType == StorageOperationType.RemoveItems)
             {
                 throw new UserFriendlyException("Пока не умею откатывать операции с предметами");
             }
@@ -110,37 +110,36 @@ namespace ZeeKer.DndTracker.Module.Extensions
                     operation.Storage!.CopperCoins += operation.Coins;
                     break;
 
-                //case StorageOperationType.AddItems:
-                //    var item = operation.Storage.Items.FirstOrDefault(item => item.ItemId == operation.ItemId);
-                //    if (item.Count > operation.Coins)
-                //    {
-                //        item.Count -= Convert.ToInt32(operation.Coins);
+                case StorageOperationType.AddItems:
+                    //TODO
+                    var item = operation.Storage.Items.FirstOrDefault(item => item.ItemId == operation.ItemId);
+                    if (item.Count > operation.Coins)
+                    {
+                        item.Count -= Convert.ToInt32(operation.Coins);
 
 
-                //        operation.Item.Count += Convert.ToInt32(operation.Coins);
+                        operation.Item.Count += Convert.ToInt32(operation.Coins);
 
-                //        //else
-                //        //{
-                //        //    var assignedItem = operation.GetObjectSpace().CreateObject<AssignedItem>();
-                //        //    assignedItem.Item = operation.Item.Item;
-                //        //    assignedItem.Count = Convert.ToInt32(operation.Coins);
-                //        //    assignedItem.Storage = operation.Storage;
-                //        //}
-                //    }
-                //    else if (operation.Item.Count == operation.Coins)
-                //    {
-                //        operation.Item.Storage = null;
+                        operation.Item.Storage = operation.StorageSource;
+                    }
+                    else if (item.Count == operation.Coins)
+                    {
+                        item.Storage = null;
 
-                //        var item = operation.Storage.Items.FirstOrDefault(item => item.ItemId == operation.ItemId);
-                //        if (item is not null)
-                //            item.Count += Convert.ToInt32(operation.Coins);
-                //        else
-                //        {
-                //            operation.Item.Storage = operation.Storage;
-                //        }
+                        var sourceItem = operation.StorageSource.Items
+                            .FirstOrDefault(item => item.ItemId == operation.ItemId);
 
-                //    }
-                //    break;
+                        if (sourceItem is not null)
+                        {
+                            sourceItem.Count += Convert.ToInt32(operation.Coins);
+                        }
+                        else
+                        {
+                            item.Storage = operation.StorageSource;
+                        }
+
+                    }
+                    break;
                 default:
                     throw new NotImplementedException();
 

@@ -72,6 +72,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects;
         [XafDisplayName("Настройки мульти-транзакций"), Aggregated]
         public virtual IList<MultipleTransaction> MultipleTransactions { get; set; } = new ObservableCollection<MultipleTransaction>();
 
+    [XafDisplayName("Предметы (строка)"), NotMapped]
+    public virtual string ItemsString => String.Join(", ", Items.Select(x => $"{x.Item?.Name} {x.Count}шт"));
         #endregion
 
         private string TruncateCoins(decimal coins, string nominal, bool addZapit = false) =>
