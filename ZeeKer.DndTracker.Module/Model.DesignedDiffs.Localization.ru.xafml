@@ -120,6 +120,7 @@
                     </LayoutGroup>
                   </LayoutGroup>
                   <LayoutGroup Id="Equip" Caption="Экипировка" />
+                  <LayoutGroup Id="NotesGroup" Caption="Заметки" />
                   <LayoutGroup Id="About" Caption="О персонаже">
                     <LayoutGroup Id="Auto8ab736c5-b9a3-406a-a204-5a3ee18a7d70" Caption="Auto8ab736c5-b9a3-406a-a204-5a3ee18a7d70(34)">
                       <LayoutGroup Id="Autoaf90cbbb-d0b9-448f-a762-74e164cc2fd7" Caption="Autoaf90cbbb-d0b9-448f-a762-74e164cc2fd7(35)" />

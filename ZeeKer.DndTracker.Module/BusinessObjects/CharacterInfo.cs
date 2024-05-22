@@ -54,6 +54,11 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Волосы"), StringLength(50)]
         public virtual string Hair { get; set; }
 
+
+        [XafDisplayName("Заметки")]
+        [FieldSize(FieldSizeAttribute.Unlimited)]
+        public virtual string Notes {  get; set; }
+
         //[Action(Caption = "My UI Action", ConfirmationMessage = "Are you sure?", ImageName = "Attention", AutoCommit = true)]
         //public void ActionMethod() {
         //    // Trigger custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).

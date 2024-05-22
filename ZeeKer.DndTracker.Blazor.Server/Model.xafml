@@ -1,5 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application PreferredLanguage="ru-RU">
+  <BOModel>
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.CharacterInfo">
+      <OwnMembers>
+        <Member Name="Notes" PropertyEditorType="DevExpress.ExpressApp.Office.Blazor.Editors.RichTextPropertyEditor" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
   <NavigationItems NavigationStyle="Accordion">
     <Items>
       <Item Id="PlayerHub" ImageName="Gamepad" />
