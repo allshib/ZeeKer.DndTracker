@@ -71,6 +71,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         private int GetACValue()
         {
+            if(Armor > 0)
+                return Armor;
+
             var shieldBonus = ShieldItem?.Item is not null? ((ShieldItem)ShieldItem.Item).ACBonus : 0;
 
             if(ArmorItem?.Item is null)
