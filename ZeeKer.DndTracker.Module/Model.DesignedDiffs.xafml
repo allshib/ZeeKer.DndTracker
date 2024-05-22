@@ -37,6 +37,13 @@
     </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Campain" ImageName="Adventure" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Character" ImageName="Medusa">
+      <AppearanceRules>
+        <AppearanceRule Id="ArmorAppearence" TargetItems="Armor, ArmorCalc" BackColor="192, 255, 192" Context="DetailView" Criteria="[Armor] &gt; 0" IsNewNode="True" />
+        <AppearanceRule Id="ArmorItemApearenceGreen" Priority="0" Context="DetailView" BackColor="192, 255, 192" Criteria="[ArmorItem] Is Not Null And [Armor] &lt;= 0" TargetItems="ArmorItem" IsNewNode="True" />
+        <AppearanceRule Id="ArmorItemApearenceRed" Context="DetailView" BackColor="255, 128, 128" Criteria="[ArmorItem] Is Not Null And [Armor] &gt; 0" TargetItems="ArmorItem" IsNewNode="True" />
+        <AppearanceRule Id="ShieldItemApearenceGreen" Context="DetailView" BackColor="192, 255, 192" Criteria="[ShieldItem] Is Not Null And [Armor] &lt;= 0" TargetItems="ShieldItem" IsNewNode="True" />
+        <AppearanceRule Id="ShieldItemApearenceRed" Priority="0" Context="DetailView" BackColor="255, 128, 128" Criteria="[ShieldItem] Is Not Null And [Armor] &gt; 0" TargetItems="ShieldItem" IsNewNode="True" />
+      </AppearanceRules>
       <OwnMembers>
         <Member Name="ArmorItem" DataSourceProperty="LocalStorage.Items" DataSourceCriteria="[Item.ItemType] = ##Enum#ZeeKer.DndTracker.Module.Types.ItemType,Armor#" />
         <Member Name="HandLeft" DataSourceProperty="LocalStorage.Items" />
