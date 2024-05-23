@@ -40,7 +40,7 @@ namespace ZeeKer.DndTracker.Module.Extensions
                 case StorageOperationType.RemoveCopperCoins:
                     operation.Storage!.CopperCoins -= operation.Coins;
                     break;
-                case StorageOperationType.AddItems:
+                case StorageOperationType.AddItems when operation.OperationMode == OperationMode.WithAnotherStorage:
                     if (operation.Item.Count > operation.Coins)
                     {
                         operation.Item.Count -= Convert.ToInt32(operation.Coins);
@@ -71,6 +71,19 @@ namespace ZeeKer.DndTracker.Module.Extensions
                     else
                         throw new UserFriendlyException("Пошел нахуй");
                     break;
+                    case StorageOperationType.AddItems when operation.OperationMode == OperationMode.Default:
+                    var destinItem = operation.Storage.Items
+                        .FirstOrDefault(x => x.ItemId == operation.SelectedItem.ID);
+                    if(destinItem is null)
+                    {
+                        destinItem = operation.GetObjectSpace().CreateObject<AssignedItem>();
+                        destinItem.Item = operation.SelectedItem;
+                        destinItem.Storage = operation.Storage;
+                    }
+                    destinItem.Count += Convert.ToInt32(operation.Coins);
+                    operation.Item = destinItem;
+
+                        break;
                 default:
                     throw new NotImplementedException();
 
@@ -110,7 +123,7 @@ namespace ZeeKer.DndTracker.Module.Extensions
                     operation.Storage!.CopperCoins += operation.Coins;
                     break;
 
-                case StorageOperationType.AddItems:
+                case StorageOperationType.AddItems when operation.OperationMode == OperationMode.WithAnotherStorage:
                     //TODO
                     var item = operation.Storage.Items.FirstOrDefault(item => item.ItemId == operation.ItemId);
                     if (item.Count > operation.Coins)
@@ -139,6 +152,16 @@ namespace ZeeKer.DndTracker.Module.Extensions
                         }
 
                     }
+                    break;
+                case StorageOperationType.AddItems when operation.OperationMode == OperationMode.Default:
+                    var destinItem = operation.Storage.Items
+                        .FirstOrDefault(x => x.ItemId == operation.SelectedItem.ID);
+                    
+                    if (destinItem.Count == operation.Coins)
+                        destinItem.Storage = null;
+
+                    destinItem.Count -= Convert.ToInt32(operation.Coins);
+
                     break;
                 default:
                     throw new NotImplementedException();

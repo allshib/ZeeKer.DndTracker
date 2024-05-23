@@ -74,7 +74,8 @@ public class ManageCoinsUseCase : ShowViewUseCaseBase
                 operation.StorageId != operation.SourceStorageId &&
                 (operation.OperationType == StorageOperationType.AddItems
                 && operation.Item is not null
-                || operation.OperationType != StorageOperationType.AddItems);
+                || operation.OperationType != StorageOperationType.AddItems ||
+                operation.OperationType == StorageOperationType.AddItems && operation.SelectedItem is not null && operation.OperationMode == OperationMode.Default);
 
     private void RunOperation(StorageOperation operation, IObjectSpace os)
     {

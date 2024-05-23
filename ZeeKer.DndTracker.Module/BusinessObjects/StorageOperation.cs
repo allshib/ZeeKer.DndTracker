@@ -55,6 +55,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Предмет"), ForeignKey(nameof(ItemId))]
         public virtual AssignedItem Item { get; set; }
 
+        [XafDisplayName("Выбранный Предмет"), NotMapped]
+        public virtual Item SelectedItem { get; set; }
+
         [Browsable(false)]
         public virtual Guid? StorageId { get; set; }
 
