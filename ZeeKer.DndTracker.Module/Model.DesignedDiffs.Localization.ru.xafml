@@ -60,24 +60,13 @@
       <RuleCriteria Id="Character_OnlyOneInventory" CustomMessageTemplate="У персонажа обязательно должен быть ровно 1 личный инвентарь" />
       <RuleCriteria Id="Character_Profiency_ArmorItemHeavy" CustomMessageTemplate="Персонаж не умеет носить тяжелую броню, добавьте ему соответсвующее владение, если это не так" />
       <RuleCriteria Id="Character_Profiency_ArmorItemMedium" CustomMessageTemplate="Персонаж не умеет носить среднюю броню, добавьте ему соответсвующее владение, если это не так" />
+      <RuleCriteria Id="Character_Profiency_StrengthCondition" CustomMessageTemplate="У вашего персонажа должно быть {TargetObject.ArmorItemCalc.StrenghtCondition} силы, чтобы надеть эту броню" />
       <RuleCriteria Id="StorageOperation_CorrectDestinOperation" CustomMessageTemplate="Разрешены только положительные операции" />
       <RuleCriteria Id="StorageOperation_DifferentStorages" CustomMessageTemplate="Запрещено переводить монеты в то же хранилище" />
       <RuleCriteria Id="StorageOperationMoreZero" CustomMessageTemplate="При таком типе операции кол-во монет должно быть больше 0" />
     </Rules>
   </Validation>
   <Views>
-    <DetailView Id="ArmorItem_DetailView">
-      <Layout>
-        <LayoutGroup Id="Main">
-          <LayoutGroup Id="SimpleEditors">
-            <LayoutGroup Id="Item" Caption="Item">
-              <LayoutGroup Id="Item_col1" Caption="Item_col1" />
-              <LayoutGroup Id="Item_col2" Caption="Item_col2" />
-            </LayoutGroup>
-          </LayoutGroup>
-        </LayoutGroup>
-      </Layout>
-    </DetailView>
     <DetailView Id="Character_DetailView">
       <Items>
         <ActionContainerViewItem Id="AddGold" Caption="AddGold(32)" />

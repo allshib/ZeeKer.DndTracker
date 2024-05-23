@@ -29,6 +29,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("КЗ")]
         public virtual int AC {  get; set; }
 
+        [XafDisplayName("Требуемая сила")]
+        public virtual int StrenghtCondition { get; set; }
 
         [XafDisplayName("Класс брони")]
         public virtual ArmorType ArmorType { get; set; }

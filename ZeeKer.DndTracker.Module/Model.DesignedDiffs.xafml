@@ -198,6 +198,7 @@
       <RuleCriteria Id="Character_OnlyOneInventory" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.Character" TargetCriteria="[Storages][]" TargetContextIDs="Save" Criteria="[Storages][[Local] = True].Count() = 1" IsNewNode="True" />
       <RuleCriteria Id="Character_Profiency_ArmorItemHeavy" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.Character" TargetCriteria="[ArmorItemCalc.ArmorType] = ##Enum#ZeeKer.DndTracker.Module.Types.ArmorType,Heavy#" TargetContextIDs="Save" Criteria="[Profiencies][[Profiency.ProfiencyType] = ##Enum#ZeeKer.DndTracker.Module.Types.ProficiencyType,HeavyArmor#]" IsNewNode="True" />
       <RuleCriteria Id="Character_Profiency_ArmorItemMedium" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.Character" TargetCriteria="[ArmorItemCalc.ArmorType] = ##Enum#ZeeKer.DndTracker.Module.Types.ArmorType,Medium#" TargetContextIDs="Save" Criteria="[Profiencies][[Profiency.ProfiencyType] = ##Enum#ZeeKer.DndTracker.Module.Types.ProficiencyType,MediumArmor#]" IsNewNode="True" />
+      <RuleCriteria Id="Character_Profiency_StrengthCondition" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.Character" TargetCriteria="[ArmorItemCalc.StrenghtCondition] &gt; 0" TargetContextIDs="Save" Criteria="[ArmorItemCalc.StrenghtCondition] &lt;= [Stats.Strength]" IsNewNode="True" />
       <RuleCriteria Id="StorageOperation_CorrectDestinOperation" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" TargetContextIDs="Save" TargetCriteria="[OperationMode] = ##Enum#ZeeKer.DndTracker.Module.Types.OperationMode,WithAnotherStorage#" Criteria="[OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddGoldCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddSilverCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddCopperCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddItems#" IsNewNode="True" />
       <RuleCriteria Id="StorageOperation_DifferentStorages" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" TargetContextIDs="Save" Criteria="[StorageSource] &lt;&gt; [Storage]" TargetCriteria="[OperationMode] = ##Enum#ZeeKer.DndTracker.Module.Types.OperationMode,WithAnotherStorage#" IsNewNode="True" />
       <RuleCriteria Id="StorageOperationMoreZero" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" TargetContextIDs="Save" Criteria="[Coins] &gt;= 1" TargetCriteria="[OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddGoldCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,RemoveGoldCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddSilverCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,RemoveSilverCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddCopperCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,RemoveCopperCoins#" IsNewNode="True" />
@@ -205,39 +206,26 @@
   </Validation>
   <Views>
     <ListView Id="ApplicationUser_ListView" Caption="Users" />
-    <DetailView Id="ArmorItem_DetailView">
+    <DetailView Id="ArmorItem_DetailView" FreezeLayout="True">
       <Items>
         <PropertyEditor Id="AssignedItems" Removed="True" />
         <PropertyEditor Id="ID" Removed="True" />
         <PropertyEditor Id="Name" PropertyName="Name" IsNewNode="True" Removed="True" />
       </Items>
-      <Layout>
-        <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="18.367346938775512">
-            <LayoutGroup Id="ArmorItem" RelativeSize="100">
+      <Layout IsNewNode="True" Removed="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" RelativeSize="18.367346938775512" IsNewNode="True">
+            <LayoutGroup Id="ArmorItem" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
               <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="23.61111111111111" IsNewNode="True" />
-              <LayoutItem Id="ArmorType" RelativeSize="18.055555555555557" Index="1" />
-              <LayoutItem Id="AC" RelativeSize="18.055555555555557" Index="2" />
+              <LayoutItem Id="ArmorType" ViewItem="ArmorType" ShowCaption="" Index="1" RelativeSize="18.055555555555557" IsNewNode="True" />
+              <LayoutItem Id="StrenghtCondition" ViewItem="StrenghtCondition" ShowCaption="" Index="1" IsNewNode="True" />
+              <LayoutItem Id="AC" ViewItem="AC" ShowCaption="" Index="2" RelativeSize="18.055555555555557" IsNewNode="True" />
               <LayoutItem Id="Rarity" ViewItem="Rarity" Index="3" RelativeSize="18.055555555555557" IsNewNode="True" />
               <LayoutItem Id="Weight" ViewItem="Weight" Index="4" RelativeSize="22.22222222222222" IsNewNode="True" />
             </LayoutGroup>
-            <LayoutGroup Id="Item" RelativeSize="21.85430463576159" Removed="True">
-              <LayoutGroup Id="Item_col1" RelativeSize="49.947970863683665">
-                <LayoutItem Id="DefaultProperty" Index="0" RelativeSize="100" Removed="True" />
-                <LayoutItem Id="ItemType" Index="0" RelativeSize="50" Removed="True" />
-                <LayoutItem Id="Name" Removed="True" />
-              </LayoutGroup>
-              <LayoutGroup Id="Item_col2" RelativeSize="50.052029136316335">
-                <LayoutItem Id="Rarity" RelativeSize="100" Index="0" Removed="True" />
-                <LayoutItem Id="Weight" RelativeSize="50" Removed="True" />
-              </LayoutGroup>
-            </LayoutGroup>
           </LayoutGroup>
-          <LayoutGroup Id="SizeableEditors" RelativeSize="81.63265306122449">
-            <LayoutItem Id="Description" RelativeSize="100" CaptionLocation="Top" />
-          </LayoutGroup>
-          <LayoutGroup Id="AssignedItems_Group" Direction="Vertical" RelativeSize="38.658777120315584" Removed="True">
-            <LayoutItem Id="AssignedItems" RelativeSize="100" />
+          <LayoutGroup Id="SizeableEditors" Index="1" ShowCaption="False" RelativeSize="81.63265306122449" IsNewNode="True">
+            <LayoutItem Id="Description" ViewItem="Description" ShowCaption="" Index="0" RelativeSize="100" CaptionLocation="Top" IsNewNode="True" />
           </LayoutGroup>
         </LayoutGroup>
       </Layout>
