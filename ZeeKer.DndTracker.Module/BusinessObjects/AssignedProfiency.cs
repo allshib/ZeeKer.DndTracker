@@ -36,6 +36,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [ForeignKey(nameof(ItemId)), XafDisplayName("Предмет")]
         public virtual Item Item { get; set; }
 
+        [XafDisplayName("Выбранное владение")]
+        public virtual string DefaultProperty => $"{(Profiency is not null && Profiency.NeedSelectObject? $"{Item}":$"{Profiency?.Name}")}";
 
         public virtual Guid? CharacterId { get; set; }
 

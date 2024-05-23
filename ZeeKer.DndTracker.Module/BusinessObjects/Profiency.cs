@@ -36,5 +36,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [XafDisplayName("Требует выбор конкрентого предмета")]
         public virtual bool NeedSelectObject { get; set; }
+
+        [XafDisplayName("Группа умения")]
+        public virtual GroupProfiencyType GroupProfiencyType { get; set;}
     }
 }

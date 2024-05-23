@@ -55,8 +55,25 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Владение"), Aggregated]
         public virtual IList<AssignedProfiency> Profiencies { get; set; } = new ObservableCollection<AssignedProfiency>();
 
-        [XafDisplayName("Владения (строка)"), NotMapped]
-        public virtual string ProfienciesString => String.Join(", ", Profiencies.Select(x => $"{x.Profiency.Name}"));
+        [XafDisplayName("Языки"), NotMapped]
+        public virtual string Languages => String.Join(", ", Profiencies
+            .Where(p=>p.Profiency.GroupProfiencyType == Types.GroupProfiencyType.Languages)
+            .Select(x => $"{x.DefaultProperty}"));
+
+        [XafDisplayName("Владение броней"), NotMapped]
+        public virtual string ArmorProfiencies => String.Join(", ", Profiencies
+            .Where(p => p.Profiency.GroupProfiencyType == Types.GroupProfiencyType.Armors)
+            .Select(x => $"{x.DefaultProperty}"));
+
+        [XafDisplayName("Владение оружием"), NotMapped]
+        public virtual string WeaponProfiencies => String.Join(", ", Profiencies
+            .Where(p => p.Profiency.GroupProfiencyType == Types.GroupProfiencyType.Weapons)
+            .Select(x => $"{x.DefaultProperty}"));
+
+        [XafDisplayName("Владение инструментами"), NotMapped]
+        public virtual string ToolsProfiencies => String.Join(", ", Profiencies
+            .Where(p => p.Profiency.GroupProfiencyType == Types.GroupProfiencyType.Tools)
+            .Select(x => $"{x.DefaultProperty}"));
 
         #endregion
 
