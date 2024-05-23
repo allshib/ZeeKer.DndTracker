@@ -27,19 +27,19 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [Browsable(false)]
         public virtual Guid? ProfiencyId { get; set; }
 
-        [ForeignKey(nameof(ProfiencyId))]
+        [ForeignKey(nameof(ProfiencyId)), XafDisplayName("Владение")]
         public virtual Profiency Profiency { get; set; }
 
         [Browsable(false)]
         public virtual Guid? ItemId {get;set;}
 
-        [ForeignKey(nameof(ItemId))]
+        [ForeignKey(nameof(ItemId)), XafDisplayName("Предмет")]
         public virtual Item Item { get; set; }
 
 
         public virtual Guid? CharacterId { get; set; }
 
-        [ForeignKey(nameof(CharacterId))]
+        [ForeignKey(nameof(CharacterId)), XafDisplayName("Персонаж")]
         public virtual Character Character { get; set; }
         
     }

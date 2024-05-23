@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevExpress.Pdf.Native.BouncyCastle.Utilities;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
@@ -53,6 +54,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [XafDisplayName("Владение"), Aggregated]
         public virtual IList<AssignedProfiency> Profiencies { get; set; } = new ObservableCollection<AssignedProfiency>();
+
+        [XafDisplayName("Владения (строка)"), NotMapped]
+        public virtual string ProfienciesString => String.Join(", ", Profiencies.Select(x => $"{x.Profiency.Name}"));
 
         #endregion
 
@@ -101,6 +105,10 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [XafDisplayName("Броня"), ForeignKey(nameof(ArmorItemId))]
         public virtual AssignedItem ArmorItem { get; set; }
+
+        [XafDisplayName("Броня (Техническое поле)"), NotMapped]
+        public virtual ArmorItem ArmorItemCalc => 
+            ArmorItem?.Item is not null ? ArmorItem.Item as ArmorItem : null;
 
         [Browsable(false)]
         public virtual Guid? ShieldItemId { get; set; }
