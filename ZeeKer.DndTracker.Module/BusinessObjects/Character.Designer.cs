@@ -51,6 +51,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Максимальный вес"), NotMapped]
         public virtual double MaxWeight => (Stats?.Strength?? 1) * 15.0;
 
+        [XafDisplayName("Владение"), Aggregated]
+        public virtual IList<AssignedProfiency> Profiencies { get; set; } = new ObservableCollection<AssignedProfiency>();
+
         #endregion
 
         #region Health

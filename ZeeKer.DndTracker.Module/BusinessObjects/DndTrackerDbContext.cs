@@ -77,6 +77,8 @@ public class DndTrackerEFCoreDbContext : DbContext {
     public DbSet<AssignedItem> AssignedItems { get; set; }
 
     public DbSet<SimpleItem> SimpleItems { get; set; }
+    public DbSet<Profiency> Profiencies { get; set; }
+    public DbSet<AssignedProfiency> AssignedProfiencies { get; set; }
 
 
 
@@ -199,6 +201,10 @@ public class DndTrackerEFCoreDbContext : DbContext {
             .WithOne(ass=>ass.Storage)
             .OnDelete(DeleteBehavior.SetNull);
             
+        modelBuilder.Entity<Character>()
+            .HasMany(ch=>ch.Profiencies)
+            .WithOne(ch=>ch.Character)
+            .OnDelete(DeleteBehavior.Cascade);
 
         base.OnModelCreating(modelBuilder);
     }
