@@ -35,6 +35,11 @@
         <Member Name="Item" LookupEditorMode="AllItemsWithSearch" />
       </OwnMembers>
     </Class>
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.AssignedProfiency">
+      <AppearanceRules>
+        <AppearanceRule Id="HideItem" TargetItems="Item" Visibility="Hide" Criteria="[Profiency.NeedSelectObject] = False Or [Profiency] Is Null" IsNewNode="True" />
+      </AppearanceRules>
+    </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Campain" ImageName="Adventure" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Character" ImageName="Medusa">
       <AppearanceRules>

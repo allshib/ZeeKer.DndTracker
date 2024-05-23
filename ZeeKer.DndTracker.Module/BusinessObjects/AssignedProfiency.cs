@@ -43,6 +43,19 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [ForeignKey(nameof(CharacterId)), XafDisplayName("Персонаж")]
         public virtual Character Character { get; set; }
-        
+
+
+        protected override void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnPropertyChanged(sender, e);
+
+            switch (e.PropertyName)
+            {
+                case nameof(Profiency) when Item is not null:
+                    Item = null;
+                    break;
+            }
+        }
+
     }
 }

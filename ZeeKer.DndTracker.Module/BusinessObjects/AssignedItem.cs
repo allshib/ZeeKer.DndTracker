@@ -44,6 +44,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         public virtual string Name => $"{Item?.DefaultProperty}";
 
 
+        
+
         //private string GetWeaponModif()
         //{
         //    if(Item is WeaponItem weaponItem)
