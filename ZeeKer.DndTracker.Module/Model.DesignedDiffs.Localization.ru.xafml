@@ -67,6 +67,13 @@
     </Rules>
   </Validation>
   <Views>
+    <DetailView Id="ArmorItem_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SizeableEditors" Caption="Описание" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <DetailView Id="Character_DetailView">
       <Items>
         <ActionContainerViewItem Id="AddGold" Caption="AddGold(32)" />
@@ -192,6 +199,7 @@
               <LayoutGroup Id="Item_col2" Caption="Item_col2" />
             </LayoutGroup>
           </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" Caption="Описание" />
         </LayoutGroup>
       </Layout>
     </DetailView>

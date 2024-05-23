@@ -39,6 +39,9 @@
       <AppearanceRules>
         <AppearanceRule Id="HideItem" TargetItems="Item" Visibility="Hide" Criteria="[Profiency.NeedSelectObject] = False Or [Profiency] Is Null" IsNewNode="True" />
       </AppearanceRules>
+      <OwnMembers>
+        <Member Name="Item" DataSourceCriteriaProperty="" DataSourceProperty="Profiency.Items" />
+      </OwnMembers>
     </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Campain" ImageName="Adventure" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Character" ImageName="Medusa">
@@ -218,18 +221,19 @@
       </Items>
       <Layout IsNewNode="True" Removed="True">
         <LayoutGroup Id="Main" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
-          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" RelativeSize="18.367346938775512" IsNewNode="True">
+          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" RelativeSize="28.990825688073393" IsNewNode="True">
             <LayoutGroup Id="ArmorItem" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
-              <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="23.61111111111111" IsNewNode="True" />
-              <LayoutItem Id="ArmorType" ViewItem="ArmorType" ShowCaption="" Index="1" RelativeSize="18.055555555555557" IsNewNode="True" />
-              <LayoutItem Id="StrenghtCondition" ViewItem="StrenghtCondition" ShowCaption="" Index="1" IsNewNode="True" />
-              <LayoutItem Id="AC" ViewItem="AC" ShowCaption="" Index="2" RelativeSize="18.055555555555557" IsNewNode="True" />
-              <LayoutItem Id="Rarity" ViewItem="Rarity" Index="3" RelativeSize="18.055555555555557" IsNewNode="True" />
-              <LayoutItem Id="Weight" ViewItem="Weight" Index="4" RelativeSize="22.22222222222222" IsNewNode="True" />
+              <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="20.253164556962027" IsNewNode="True" />
+              <LayoutItem Id="ArmorType" ViewItem="ArmorType" ShowCaption="" Index="1" RelativeSize="15.189873417721518" IsNewNode="True" />
+              <LayoutItem Id="StrenghtCondition" ViewItem="StrenghtCondition" ShowCaption="" Index="2" RelativeSize="15.189873417721518" IsNewNode="True" />
+              <LayoutItem Id="AC" ViewItem="AC" ShowCaption="" Index="3" RelativeSize="15.189873417721518" IsNewNode="True" />
+              <LayoutItem Id="Rarity" ViewItem="Rarity" Index="4" RelativeSize="15.189873417721518" IsNewNode="True" />
+              <LayoutItem Id="Weight" ViewItem="Weight" Index="5" RelativeSize="18.9873417721519" IsNewNode="True" />
             </LayoutGroup>
           </LayoutGroup>
-          <LayoutGroup Id="SizeableEditors" Index="1" ShowCaption="False" RelativeSize="81.63265306122449" IsNewNode="True">
-            <LayoutItem Id="Description" ViewItem="Description" ShowCaption="" Index="0" RelativeSize="100" CaptionLocation="Top" IsNewNode="True" />
+          <LayoutGroup Id="SizeableEditors" Index="1" ShowCaption="False" RelativeSize="71.0091743119266" IsNewNode="True">
+            <LayoutItem Id="Profiency" ViewItem="Profiency" Index="0" RelativeSize="6.976744186046512" IsNewNode="True" />
+            <LayoutItem Id="Description" ViewItem="Description" ShowCaption="" Index="1" RelativeSize="93.02325581395348" CaptionLocation="Top" IsNewNode="True" />
           </LayoutGroup>
         </LayoutGroup>
       </Layout>
@@ -728,6 +732,11 @@
         <ColumnInfo Id="ItemType" Index="1" />
       </Columns>
     </ListView>
+    <ListView Id="Item_LookupListView" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="DefaultProperty" Index="0" />
+      </Columns>
+    </ListView>
     <ListView Id="MultipleTransaction_ActiveCharacters_ListView" FreezeColumnIndices="True">
       <Columns>
         <ColumnInfo Id="ID" Index="-1" />
@@ -909,6 +918,18 @@
         <ColumnInfo Id="User" Index="1" />
       </Columns>
     </ListView>
+    <ListView Id="Profiency_Items_ListView" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="Description" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="ItemType" Index="-1" />
+        <ColumnInfo Id="Name" Index="-1" />
+        <ColumnInfo Id="Profiency" Index="-1" />
+        <ColumnInfo Id="Rarity" Index="-1" />
+        <ColumnInfo Id="Weight" Index="-1" />
+        <ColumnInfo Id="DefaultProperty" Index="0" />
+      </Columns>
+    </ListView>
     <ListView Id="Profiency_ListView">
       <Columns>
         <ColumnInfo Id="NeedSelectObject" Index="-1" />
@@ -1032,7 +1053,8 @@
             </LayoutGroup>
           </LayoutGroup>
           <LayoutGroup Id="SizeableEditors" RelativeSize="84.22018348623853">
-            <LayoutItem Id="Description" CaptionLocation="Top" RelativeSize="100" />
+            <LayoutItem Id="Profiency" ViewItem="Profiency" Index="0" RelativeSize="5.882352941176471" IsNewNode="True" />
+            <LayoutItem Id="Description" CaptionLocation="Top" RelativeSize="94.11764705882354" Index="1" />
           </LayoutGroup>
           <LayoutGroup Id="AssignedItems_Group" Direction="Vertical" RelativeSize="35.96330275229358" Removed="True">
             <LayoutItem Id="AssignedItems" RelativeSize="100" />
@@ -1290,18 +1312,19 @@
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
           <LayoutGroup Id="SimpleEditors" RelativeSize="100">
-            <LayoutGroup Id="WeaponItem" RelativeSize="53.125" Direction="Vertical">
+            <LayoutGroup Id="WeaponItem" RelativeSize="57.43119266055046" Direction="Vertical">
               <LayoutGroup Id="WeaponItem_col1" RelativeSize="100">
-                <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="12.5" IsNewNode="True" />
-                <LayoutItem Id="MainDamageType" Index="1" RelativeSize="9.375" />
-                <LayoutItem Id="HitBonus" Index="2" RelativeSize="9.375" />
-                <LayoutItem Id="HandWeaponType" Index="3" RelativeSize="9.375" />
-                <LayoutItem Id="WeightWeaponType" Index="4" RelativeSize="9.375" />
-                <LayoutItem Id="Fencing" ViewItem="Fencing" Index="5" RelativeSize="9.375" IsNewNode="True" />
-                <LayoutItem Id="Throwing" ViewItem="Throwing" Index="6" RelativeSize="9.375" IsNewNode="True" />
-                <LayoutItem Id="Special" ViewItem="Special" Index="7" RelativeSize="9.375" IsNewNode="True" />
-                <LayoutItem Id="Rarity" ViewItem="Rarity" Index="8" RelativeSize="9.375" IsNewNode="True" />
-                <LayoutItem Id="Weight" ViewItem="Weight" Index="9" RelativeSize="12.5" IsNewNode="True" />
+                <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="11.428571428571429" IsNewNode="True" />
+                <LayoutItem Id="MainDamageType" Index="1" RelativeSize="8.571428571428571" />
+                <LayoutItem Id="HitBonus" Index="2" RelativeSize="8.571428571428571" />
+                <LayoutItem Id="HandWeaponType" Index="3" RelativeSize="8.571428571428571" />
+                <LayoutItem Id="WeightWeaponType" Index="4" RelativeSize="8.571428571428571" />
+                <LayoutItem Id="Fencing" ViewItem="Fencing" Index="5" RelativeSize="8.571428571428571" IsNewNode="True" />
+                <LayoutItem Id="Throwing" ViewItem="Throwing" Index="6" RelativeSize="8.571428571428571" IsNewNode="True" />
+                <LayoutItem Id="Special" ViewItem="Special" Index="7" RelativeSize="8.571428571428571" IsNewNode="True" />
+                <LayoutItem Id="Rarity" ViewItem="Rarity" Index="8" RelativeSize="8.571428571428571" IsNewNode="True" />
+                <LayoutItem Id="Weight" ViewItem="Weight" Index="9" RelativeSize="8.571428571428571" IsNewNode="True" />
+                <LayoutItem Id="Profiency" ViewItem="Profiency" Index="10" RelativeSize="11.428571428571429" IsNewNode="True" />
               </LayoutGroup>
               <LayoutGroup Id="WeaponItem_col2" RelativeSize="50" Removed="True">
                 <LayoutItem Id="Special" RelativeSize="100" Index="0" Removed="True" />
@@ -1309,7 +1332,7 @@
                 <LayoutItem Id="Fencing" RelativeSize="17.391304347826086" Removed="True" />
               </LayoutGroup>
             </LayoutGroup>
-            <LayoutItem Id="Description" ViewItem="Description" CaptionLocation="Top" Index="1" RelativeSize="46.875" IsNewNode="True" />
+            <LayoutItem Id="Description" ViewItem="Description" CaptionLocation="Top" Index="1" RelativeSize="42.56880733944954" IsNewNode="True" />
             <LayoutGroup Id="Item" RelativeSize="23.859649122807017" Removed="True">
               <LayoutGroup Id="Item_col1" RelativeSize="50">
                 <LayoutItem Id="DefaultProperty" Index="0" RelativeSize="100" Removed="True" />

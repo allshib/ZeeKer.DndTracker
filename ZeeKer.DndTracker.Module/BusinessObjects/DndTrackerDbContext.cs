@@ -206,6 +206,11 @@ public class DndTrackerEFCoreDbContext : DbContext {
             .WithOne(ch=>ch.Character)
             .OnDelete(DeleteBehavior.Cascade);
 
+        modelBuilder.Entity<Profiency>()
+            .HasMany(p=>p.Items)
+            .WithOne(i=>i.Profiency)
+            .OnDelete(DeleteBehavior.SetNull);
+
         base.OnModelCreating(modelBuilder);
     }
 

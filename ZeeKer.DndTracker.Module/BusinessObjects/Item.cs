@@ -9,7 +9,7 @@ using DevExpress.Persistent.Validation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using ZeeKer.DndTracker.Module.Types;
@@ -46,5 +46,12 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [XafDisplayName("Редкость")]
         public virtual ItemRarityType Rarity { get; set; }
+
+        [Browsable(false)]
+        public virtual Guid? ProfiencyId { get; set; }
+
+
+        [ForeignKey(nameof(ProfiencyId)), XafDisplayName("Требуемое владение")]
+        public virtual Profiency Profiency { get; set; }
     }
 }

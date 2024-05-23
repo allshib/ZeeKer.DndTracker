@@ -39,5 +39,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [XafDisplayName("Группа умения")]
         public virtual GroupProfiencyType GroupProfiencyType { get; set;}
+
+
+        [XafDisplayName("Предметы")]
+        public virtual IList<Item> Items { get; set; } = new ObservableCollection<Item>();
     }
 }
