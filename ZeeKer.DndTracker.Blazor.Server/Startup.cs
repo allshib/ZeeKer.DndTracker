@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Components.Server.Circuits;
 using Microsoft.EntityFrameworkCore;
 using ZeeKer.DndTracker.Blazor.Server.Services;
 using DevExpress.Persistent.BaseImpl.EF.PermissionPolicy;
+using ZeeKer.DndTracker.Module.BusinessObjects;
 
 namespace ZeeKer.DndTracker.Blazor.Server;
 
@@ -97,6 +98,14 @@ public class Startup {
             //app.UseHsts();
         }
         //app.UseHttpsRedirection();
+        using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+        {
+            var context = serviceScope.ServiceProvider.GetService<DndTrackerEFCoreDbContext>();
+            context.Database.Migrate();
+        }
+
+
+
         app.UseRequestLocalization();
         var supportedCultures = new string[] { "ru-Ru" };
         app.UseRequestLocalization(options =>
@@ -116,6 +125,8 @@ public class Startup {
             endpoints.MapFallbackToPage("/_Host");
             endpoints.MapControllers();
         });
+
+ 
     }
 
 
