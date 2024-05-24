@@ -58,7 +58,7 @@ namespace ZeeKer.DndTracker.Module.Extensions
                     else if (operation.Item.Count == operation.Coins)
                     {
                         operation.Item.Storage = null;
-
+                        operation.Item.SettingOnThis = false;
                         var item = operation.Storage.Items.FirstOrDefault(item => item.ItemId == operation.ItemId);
                         if (item is not null)
                             item.Count += Convert.ToInt32(operation.Coins);
