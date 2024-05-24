@@ -58,7 +58,8 @@ public class Startup {
                             {
                                 sqlOptions.EnableRetryOnFailure();
                                 sqlOptions.CommandTimeout(120); // Установка тайм-аута команды в 60 секунд
-                                sqlOptions.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);
+                                sqlOptions.UseQuerySplittingBehavior(QuerySplittingBehavior.SingleQuery);
+                                
                             });
 
                         options.UseChangeTrackingProxies();
@@ -83,6 +84,7 @@ public class Startup {
         });
         services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => {
             options.LoginPath = "/LoginPage";
+            options.ExpireTimeSpan = TimeSpan.FromDays(14);
         });
     }
 
