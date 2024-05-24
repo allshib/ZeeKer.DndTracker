@@ -1,4 +1,4 @@
-using DevExpress.Data.Filtering;
+п»їusing DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
@@ -17,7 +17,7 @@ using ZeeKer.DndTracker.Module.Types;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
-    [XafDisplayName("Владение")]
+    [XafDisplayName("Р’Р»Р°РґРµРЅРёРµ")]
     [XafDefaultProperty(nameof(Name))]
     public class Profiency : BaseObject
     {
@@ -28,20 +28,20 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         }
 
 
-        [XafDisplayName("Наименование"), StringLength(150)]
+        [XafDisplayName("РќР°РёРјРµРЅРѕРІР°РЅРёРµ"), StringLength(150)]
         public virtual string Name { get; set; }
 
-        [XafDisplayName("Владение")]
+        [XafDisplayName("Р’Р»Р°РґРµРЅРёРµ")]
         public virtual ProficiencyType ProfiencyType { get; set; }
 
-        [XafDisplayName("Требует выбор конкрентого предмета")]
+        [XafDisplayName("РўСЂРµР±СѓРµС‚ РІС‹Р±РѕСЂ РєРѕРЅРєСЂРµРЅС‚РѕРіРѕ РїСЂРµРґРјРµС‚Р°")]
         public virtual bool NeedSelectObject { get; set; }
 
-        [XafDisplayName("Группа умения")]
+        [XafDisplayName("Р“СЂСѓРїРїР° СѓРјРµРЅРёСЏ")]
         public virtual GroupProfiencyType GroupProfiencyType { get; set;}
 
 
-        [XafDisplayName("Предметы")]
+        [XafDisplayName("РџСЂРµРґРјРµС‚С‹")]
         public virtual IList<Item> Items { get; set; } = new ObservableCollection<Item>();
     }
 }

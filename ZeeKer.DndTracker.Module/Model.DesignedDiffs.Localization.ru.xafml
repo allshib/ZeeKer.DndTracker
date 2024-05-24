@@ -58,8 +58,9 @@
     <Rules>
       <RuleRange Id="AssignedItem_CountMoreZero" CustomMessageTemplate="Количество не должно быть меньше 1" />
       <RuleCriteria Id="Character_OnlyOneInventory" CustomMessageTemplate="У персонажа обязательно должен быть ровно 1 личный инвентарь" />
-      <RuleCriteria Id="Character_Profiency_ArmorItemHeavy" CustomMessageTemplate="Персонаж не умеет носить тяжелую броню, добавьте ему соответсвующее владение, если это не так" />
-      <RuleCriteria Id="Character_Profiency_ArmorItemMedium" CustomMessageTemplate="Персонаж не умеет носить среднюю броню, добавьте ему соответсвующее владение, если это не так" />
+      <RuleCriteria Id="Character_Profiency_ArmorItemHeavy" CustomMessageTemplate="Персонаж не умеет носить тяжелую броню, если это не так, то игнорируйте предупреждение или добавьте владение" />
+      <RuleCriteria Id="Character_Profiency_ArmorItemLight" CustomMessageTemplate="Персонаж не умеет носить легкую броню, если это не так, то игнорируйте предупреждение или добавьте владение" />
+      <RuleCriteria Id="Character_Profiency_ArmorItemMedium" CustomMessageTemplate="Персонаж не умеет носить среднюю броню, если это не так, то игнорируйте предупреждение или добавьте владение" />
       <RuleCriteria Id="Character_Profiency_StrengthCondition" CustomMessageTemplate="У вашего персонажа должно быть {TargetObject.ArmorItemCalc.StrenghtCondition} силы, чтобы надеть эту броню" />
       <RuleCriteria Id="CharacterStorage_MaxSettingRule" CustomMessageTemplate="Превышено максимальное число настроек" />
       <RuleCriteria Id="CharacterStorage_SettingInNotInventory" CustomMessageTemplate="Настраиваться можно только на предметы в инвентаре" />

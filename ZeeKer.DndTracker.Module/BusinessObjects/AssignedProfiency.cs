@@ -1,4 +1,4 @@
-using DevExpress.Data.Filtering;
+п»їusing DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
@@ -16,7 +16,7 @@ using System.Text;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
-    [XafDisplayName("Владение персонажа")]
+    [XafDisplayName("Р’Р»Р°РґРµРЅРёРµ РїРµСЂСЃРѕРЅР°Р¶Р°")]
     public class AssignedProfiency : BaseObject
     {
         public AssignedProfiency()
@@ -27,21 +27,21 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [Browsable(false)]
         public virtual Guid? ProfiencyId { get; set; }
 
-        [ForeignKey(nameof(ProfiencyId)), XafDisplayName("Владение")]
+        [ForeignKey(nameof(ProfiencyId)), XafDisplayName("Р’Р»Р°РґРµРЅРёРµ")]
         public virtual Profiency Profiency { get; set; }
 
         [Browsable(false)]
         public virtual Guid? ItemId {get;set;}
 
-        [ForeignKey(nameof(ItemId)), XafDisplayName("Предмет")]
+        [ForeignKey(nameof(ItemId)), XafDisplayName("РџСЂРµРґРјРµС‚")]
         public virtual Item Item { get; set; }
 
-        [XafDisplayName("Выбранное владение")]
+        [XafDisplayName("Р’С‹Р±СЂР°РЅРЅРѕРµ РІР»Р°РґРµРЅРёРµ")]
         public virtual string DefaultProperty => $"{(Profiency is not null && Profiency.NeedSelectObject? $"{Item}":$"{Profiency?.Name}")}";
 
         public virtual Guid? CharacterId { get; set; }
 
-        [ForeignKey(nameof(CharacterId)), XafDisplayName("Персонаж")]
+        [ForeignKey(nameof(CharacterId)), XafDisplayName("РџРµСЂСЃРѕРЅР°Р¶")]
         public virtual Character Character { get; set; }
 
 
