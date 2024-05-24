@@ -124,6 +124,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Игрок")]
         [RuleRequiredField(DefaultContexts.Save)]
         public virtual Person? Person { get; set; }
+
+        [XafDisplayName("Блокировка удаления")]
+        public virtual bool Block { get; set; }
         #endregion
 
         #region Storages And Operations

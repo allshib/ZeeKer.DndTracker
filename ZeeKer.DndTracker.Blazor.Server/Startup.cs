@@ -100,11 +100,11 @@ public class Startup {
             //app.UseHsts();
         }
         //app.UseHttpsRedirection();
-        //using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
-        //{
-        //    var context = serviceScope.ServiceProvider.GetService<DndTrackerEFCoreDbContext>();
-        //    context.Database.Migrate();
-        //}
+        using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+        {
+            var context = serviceScope.ServiceProvider.GetService<DndTrackerEFCoreDbContext>();
+            context.Database.Migrate();
+        }
 
 
 

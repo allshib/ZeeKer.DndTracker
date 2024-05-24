@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application PreferredLanguage="ru-RU">
   <BOModel>
-    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.CharacterInfo">
-      <OwnMembers>
-        <Member Name="Notes" PropertyEditorType="DevExpress.ExpressApp.Office.Blazor.Editors.RichTextPropertyEditor" />
-      </OwnMembers>
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Character">
+      <AppearanceRules>
+        <AppearanceRule Id="SaveCharacter" TargetItems="Name" BackColor="192, 255, 192" Criteria="[Block] = True" IsNewNode="True" />
+      </AppearanceRules>
     </Class>
   </BOModel>
   <NavigationItems NavigationStyle="Accordion">

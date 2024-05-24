@@ -215,6 +215,7 @@
   <Validation>
     <Rules>
       <RuleRange Id="AssignedItem_CountMoreZero" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.AssignedItem" TargetPropertyName="Count" MinimumValue="1" MaximumValue="999999" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleCriteria Id="Character_Block" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.Character" TargetCriteria="" TargetContextIDs="Delete" Criteria="[Block] = False" IsNewNode="True" />
       <RuleCriteria Id="Character_OnlyOneInventory" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.Character" TargetCriteria="[Storages][]" TargetContextIDs="Save" Criteria="[Storages][[Local] = True].Count() = 1" IsNewNode="True" />
       <RuleCriteria Id="Character_Profiency_ArmorItemHeavy" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.Character" TargetCriteria="[ArmorItemCalc.ArmorType] = ##Enum#ZeeKer.DndTracker.Module.Types.ArmorType,Heavy#" TargetContextIDs="Save" Criteria="[Profiencies][[Profiency.ProfiencyType] = ##Enum#ZeeKer.DndTracker.Module.Types.ProficiencyType,HeavyArmor#]" ResultType="Warning" IsNewNode="True" />
       <RuleCriteria Id="Character_Profiency_ArmorItemLight" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.Character" TargetCriteria="[ArmorItemCalc.ArmorType] = ##Enum#ZeeKer.DndTracker.Module.Types.ArmorType,Light#" TargetContextIDs="Save" Criteria="[Profiencies][[Profiency.ProfiencyType] = ##Enum#ZeeKer.DndTracker.Module.Types.ProficiencyType,LightArmor#]" ResultType="Warning" IsNewNode="True" />
@@ -354,7 +355,6 @@
         <PropertyEditor Id="Info.Hair" PropertyName="Info.Hair" IsNewNode="True" />
         <PropertyEditor Id="Info.Height" PropertyName="Info.Height" IsNewNode="True" />
         <PropertyEditor Id="Info.Ideals" PropertyName="Info.Ideals" IsNewNode="True" />
-        <PropertyEditor Id="Info.Notes" PropertyName="Info.Notes" IsNewNode="True" />
         <PropertyEditor Id="Info.Personality" PropertyName="Info.Personality" IsNewNode="True" />
         <PropertyEditor Id="Info.Weight" PropertyName="Info.Weight" IsNewNode="True" />
         <PropertyEditor Id="LocalStorage" Removed="True" />
@@ -406,8 +406,8 @@
                           <LayoutItem Id="AddGold" ViewItem="AddGold" Index="0" RelativeSize="34" IsNewNode="True" />
                           <LayoutItem Id="RemoveGoldCategory" ViewItem="RemoveGoldCategory" Index="1" RelativeSize="26" IsNewNode="True" />
                           <LayoutGroup Id="Autodfbe3f29-6047-425f-9c10-756a27249c8a" ShowCaption="False" Direction="Horizontal" Index="2" RelativeSize="40" IsNewNode="True">
-                            <LayoutItem Id="SimpleTransferGold" ViewItem="SimpleTransferGold" Index="0" RelativeSize="22.93762575452716" IsNewNode="True" />
-                            <LayoutItem Id="SendGold" ViewItem="SendGold" Index="1" RelativeSize="77.06237424547284" IsNewNode="True" />
+                            <LayoutItem Id="SimpleTransferGold" ViewItem="SimpleTransferGold" Index="0" RelativeSize="22.352941176470587" IsNewNode="True" />
+                            <LayoutItem Id="SendGold" ViewItem="SendGold" Index="1" RelativeSize="77.6470588235294" IsNewNode="True" />
                           </LayoutGroup>
                         </LayoutGroup>
                         <LayoutGroup Id="Profiency" ShowCaption="True" CaptionLocation="Top" Index="12" RelativeSize="4.95575221238938" IsCollapsibleGroup="True" IsGroupCollapsed="True" IsNewNode="True">
@@ -474,31 +474,31 @@
                     <LayoutGroup Id="Auto8ab736c5-b9a3-406a-a204-5a3ee18a7d70" ShowCaption="False" Direction="Vertical" Index="1" RelativeSize="31.504424778761063" IsNewNode="True">
                       <LayoutItem Id="Languages" ViewItem="Languages" Index="0" RelativeSize="25.84269662921348" CaptionLocation="Top" IsNewNode="True" />
                       <LayoutGroup Id="Autoa5936706-c376-4ea9-bceb-658df5bd9337" ShowCaption="False" Direction="Horizontal" Index="1" RelativeSize="74.15730337078652" IsNewNode="True">
-                        <LayoutGroup Id="Autoaf90cbbb-d0b9-448f-a762-74e164cc2fd7" ShowCaption="False" Index="0" RelativeSize="48.05194805194805" IsNewNode="True">
+                        <LayoutGroup Id="Autoaf90cbbb-d0b9-448f-a762-74e164cc2fd7" ShowCaption="False" Index="0" RelativeSize="48.007246376811594" IsNewNode="True">
                           <LayoutItem Id="Info.Height" ViewItem="Info.Height" CaptionLocation="Top" Index="0" RelativeSize="34.84848484848485" IsNewNode="True" />
                           <LayoutItem Id="Info.Age" ViewItem="Info.Age" CaptionLocation="Top" Index="1" RelativeSize="65.15151515151516" IsNewNode="True" />
                         </LayoutGroup>
-                        <LayoutGroup Id="Auto00091fed-9288-46c7-871f-e3f5db99503e" ShowCaption="False" Index="1" RelativeSize="51.94805194805195" IsNewNode="True">
+                        <LayoutGroup Id="Auto00091fed-9288-46c7-871f-e3f5db99503e" ShowCaption="False" Index="1" RelativeSize="51.992753623188406" IsNewNode="True">
                           <LayoutItem Id="Info.Weight" ViewItem="Info.Weight" CaptionLocation="Top" Index="0" RelativeSize="34.84848484848485" IsNewNode="True" />
                           <LayoutItem Id="Info.Eyes" ViewItem="Info.Eyes" CaptionLocation="Top" Index="1" RelativeSize="30.303030303030305" IsNewNode="True" />
                           <LayoutItem Id="Info.Hair" ViewItem="Info.Hair" CaptionLocation="Top" Index="2" RelativeSize="34.84848484848485" IsNewNode="True" />
                         </LayoutGroup>
                       </LayoutGroup>
                     </LayoutGroup>
-                    <LayoutItem Id="Info.Background" ViewItem="Info.Background" CaptionLocation="Top" Index="2" RelativeSize="14.690265486725664" IsNewNode="True" />
-                    <LayoutItem Id="Info.Personality" ViewItem="Info.Personality" CaptionLocation="Top" Index="3" RelativeSize="14.690265486725664" IsNewNode="True" />
+                    <LayoutItem Id="Info.Background" ViewItem="Info.Background" CaptionLocation="Top" Index="2" RelativeSize="14.513274336283185" IsNewNode="True" />
+                    <LayoutItem Id="Info.Personality" ViewItem="Info.Personality" CaptionLocation="Top" Index="3" RelativeSize="14.513274336283185" IsNewNode="True" />
                     <LayoutItem Id="Info.Ideals" ViewItem="Info.Ideals" CaptionLocation="Top" Index="4" RelativeSize="14.867256637168142" IsNewNode="True" />
-                    <LayoutItem Id="Info.Flaws" ViewItem="Info.Flaws" CaptionLocation="Top" Index="5" RelativeSize="12.743362831858407" IsNewNode="True" />
-                    <LayoutItem Id="Item11" Index="6" RelativeSize="3.0088495575221237" IsNewNode="True" />
+                    <LayoutItem Id="Info.Flaws" ViewItem="Info.Flaws" CaptionLocation="Top" Index="5" RelativeSize="12.56637168141593" IsNewNode="True" />
+                    <LayoutItem Id="Item11" Index="6" RelativeSize="3.5398230088495577" IsNewNode="True" />
                   </LayoutGroup>
                   <LayoutGroup Id="Additional" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="5" RelativeSize="100" ImageName="Action_CreateDashboard" IsNewNode="True">
-                    <LayoutGroup Id="Auto608fd3c9-8619-46e5-b138-ba85d4b6f5fa" ShowCaption="False" Index="0" RelativeSize="51.57699443413729" IsNewNode="True">
+                    <LayoutGroup Id="Auto608fd3c9-8619-46e5-b138-ba85d4b6f5fa" ShowCaption="False" Index="0" RelativeSize="51.630434782608695" IsNewNode="True">
                       <LayoutItem Id="Campain" ViewItem="Campain" Index="0" RelativeSize="5.663716814159292" IsNewNode="True" />
-                      <LayoutItem Id="Person" ViewItem="Person" Index="1" RelativeSize="94.33628318584071" IsNewNode="True" />
+                      <LayoutItem Id="Person" ViewItem="Person" Index="1" RelativeSize="4.247787610619469" IsNewNode="True" />
+                      <LayoutItem Id="Block" ViewItem="Block" Index="2" RelativeSize="90.08849557522124" IsNewNode="True" />
                     </LayoutGroup>
-                    <LayoutGroup Id="Auto61d99964-231a-4e56-bb07-8779dffa36be" ShowCaption="False" Index="1" RelativeSize="48.42300556586271" IsNewNode="True">
-                      <LayoutItem Id="Item5" Index="0" RelativeSize="53.27433628318584" IsNewNode="True" />
-                      <LayoutItem Id="Item4" Index="1" RelativeSize="46.72566371681416" IsNewNode="True" />
+                    <LayoutGroup Id="Auto61d99964-231a-4e56-bb07-8779dffa36be" ShowCaption="False" Index="1" RelativeSize="48.369565217391305" IsNewNode="True">
+                      <LayoutItem Id="Item4" Index="0" RelativeSize="100" IsNewNode="True" />
                     </LayoutGroup>
                   </LayoutGroup>
                 </TabbedGroup>
@@ -619,18 +619,21 @@
       </Columns>
     </ListView>
     <DetailView Id="CharacterStorage_DetailView">
+      <Items>
+        <PropertyEditor Id="Character" PropertyName="Character" IsNewNode="True" />
+      </Items>
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="37.97250859106529">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="45.66115702479339">
             <TabbedGroup Id="Item1" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
               <LayoutGroup Id="CharacterStorage" ShowCaption="True" Direction="Horizontal" Index="0" RelativeSize="100" IsNewNode="True">
-                <LayoutGroup Id="CharacterStorage_col1" ShowCaption="False" Index="0" RelativeSize="49.92435703479576" IsNewNode="True">
+                <LayoutGroup Id="CharacterStorage_col1" ShowCaption="False" Index="0" RelativeSize="49.746192893401016" IsNewNode="True">
                   <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="27.272727272727273" CaptionLocation="Top" IsNewNode="True" />
                   <LayoutItem Id="CoinsInfo" ViewItem="CoinsInfo" Index="1" RelativeSize="22.727272727272727" CaptionLocation="Top" IsNewNode="True" />
                   <LayoutItem Id="Local" ViewItem="Local" Index="2" RelativeSize="22.727272727272727" CaptionLocation="Top" IsNewNode="True" />
                   <LayoutItem Id="Item3" Index="3" RelativeSize="27.272727272727273" IsNewNode="True" />
                 </LayoutGroup>
-                <LayoutGroup Id="CharacterStorage_col2" ShowCaption="False" Index="1" RelativeSize="50.07564296520424" IsNewNode="True">
+                <LayoutGroup Id="CharacterStorage_col2" ShowCaption="False" Index="1" RelativeSize="50.253807106598984" IsNewNode="True">
                   <LayoutItem Id="PlatinumCoins" ViewItem="PlatinumCoins" Index="0" RelativeSize="27.272727272727273" CaptionLocation="Top" IsNewNode="True" />
                   <LayoutItem Id="GoldCoins" ViewItem="GoldCoins" Index="1" RelativeSize="22.727272727272727" CaptionLocation="Top" IsNewNode="True" />
                   <LayoutItem Id="SilverCoins" ViewItem="SilverCoins" Index="2" RelativeSize="22.727272727272727" CaptionLocation="Top" IsNewNode="True" />
@@ -638,12 +641,16 @@
                 </LayoutGroup>
               </LayoutGroup>
               <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="1" RelativeSize="100" IsNewNode="True">
-                <LayoutItem Id="Description" ViewItem="Description" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True" />
+                <LayoutItem Id="Character" ViewItem="Character" Index="0" RelativeSize="27.272727272727273" CaptionLocation="Top" IsNewNode="True" />
+                <LayoutItem Id="Description" ViewItem="Description" CaptionLocation="Top" Index="1" RelativeSize="72.72727272727273" IsNewNode="True" />
               </LayoutGroup>
             </TabbedGroup>
             <LayoutGroup Id="CharacterStorage" RelativeSize="100" Removed="True" />
           </LayoutGroup>
-          <TabbedGroup Id="Tabs" Index="1" RelativeSize="62.02749140893471">
+          <TabbedGroup Id="Tabs" Index="1" RelativeSize="54.33884297520661">
+            <LayoutGroup Id="Items" RelativeSize="100">
+              <LayoutItem Id="Items" RelativeSize="100" />
+            </LayoutGroup>
             <LayoutGroup Id="Operations" RelativeSize="100">
               <LayoutItem Id="Operations" RelativeSize="100" />
             </LayoutGroup>

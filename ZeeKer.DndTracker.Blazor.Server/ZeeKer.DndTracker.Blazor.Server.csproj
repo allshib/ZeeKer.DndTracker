@@ -596,4 +596,9 @@
   <ItemGroup>
     <ProjectReference Include="..\ZeeKer.DndTracker.Module\ZeeKer.DndTracker.Module.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="UnusableNodes3.xml">
+      <DependentUpon>Model.xafml</DependentUpon>
+    </None>
+  </ItemGroup>
 </Project>

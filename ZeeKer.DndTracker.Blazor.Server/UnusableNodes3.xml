@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <BOModel Id="BOModel">
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.CharacterInfo">
+      <OwnMembers Id="OwnMembers">
+        <Member Name="Notes" PropertyEditorType="DevExpress.ExpressApp.Office.Blazor.Editors.RichTextPropertyEditor" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+</Application>

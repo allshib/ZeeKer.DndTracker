@@ -57,6 +57,7 @@
   <Validation>
     <Rules>
       <RuleRange Id="AssignedItem_CountMoreZero" CustomMessageTemplate="Количество не должно быть меньше 1" />
+      <RuleCriteria Id="Character_Block" CustomMessageTemplate="Разблокируйте персонажа, чтобы удалить" />
       <RuleCriteria Id="Character_OnlyOneInventory" CustomMessageTemplate="У персонажа обязательно должен быть ровно 1 личный инвентарь" />
       <RuleCriteria Id="Character_Profiency_ArmorItemHeavy" CustomMessageTemplate="Персонаж не умеет носить тяжелую броню, если это не так, то игнорируйте предупреждение или добавьте владение" />
       <RuleCriteria Id="Character_Profiency_ArmorItemLight" CustomMessageTemplate="Персонаж не умеет носить легкую броню, если это не так, то игнорируйте предупреждение или добавьте владение" />
