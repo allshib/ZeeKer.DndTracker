@@ -47,24 +47,13 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         public virtual bool SettingOnThis { get; set; }
 
 
-        //private string GetWeaponModif()
-        //{
-        //    if(Item is WeaponItem weaponItem)
-        //    {
-        //        if(weaponItem.Fencing)
-        //            return $" +{Math.Max(Storage?.Character?.Stats?.DexterityBonus??0, Storage?.Character?.Stats?.StrengthBonus??0)}";
+        public override void OnSaving()
+        {
+            base.OnSaving();
 
-        //        switch (weaponItem.WeaponRangeType)
-        //        {
-        //            case Types.WeaponRangeType.Melee:
-        //                return $" +{(Storage?.Character?.Stats?.StrengthBonus ?? 0)}";
-        //            case Types.WeaponRangeType.Ranged:
-        //                return $" +{(Storage?.Character?.Stats?.DexterityBonus ?? 0)}";
-        //        }
-
-        //    }
-        //    return "";
-        //}
+            if(Storage is null || Storage.Local == false)
+                SettingOnThis = false;
+        }
         public override void OnCreated()
         {
             base.OnCreated();
