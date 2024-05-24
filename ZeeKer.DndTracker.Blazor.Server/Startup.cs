@@ -48,8 +48,8 @@ public class Startup {
                 .Add<Module.DndTrackerModule>()
             	.Add<DndTrackerBlazorModule>();
             builder.ObjectSpaceProviders
-                .AddSecuredEFCore(options => options.PreFetchReferenceProperties())
-                    .WithDbContext<Module.BusinessObjects.DndTrackerEFCoreDbContext>((serviceProvider, options) => {
+                .AddEFCore(options => options.PreFetchReferenceProperties())
+                    .WithDbContext<DndTrackerEFCoreDbContext>((serviceProvider, options) => {
                         var connectionString = GetConnectionString();
 
                         options.UseSqlServer(
@@ -57,8 +57,8 @@ public class Startup {
                             sqlOptions => 
                             {
                                 sqlOptions.EnableRetryOnFailure();
-                                sqlOptions.CommandTimeout(60); // Установка тайм-аута команды в 60 секунд
-                                sqlOptions.UseQuerySplittingBehavior(QuerySplittingBehavior.SingleQuery);
+                                sqlOptions.CommandTimeout(120); // Установка тайм-аута команды в 60 секунд
+                                sqlOptions.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);
                             });
 
                         options.UseChangeTrackingProxies();
@@ -66,12 +66,12 @@ public class Startup {
                         options.UseLazyLoadingProxies();
                     })
                 .AddNonPersistent();
-            builder.Security
+            builder.Security     
                 .UseIntegratedMode(options => {
                     options.Lockout.Enabled = true;
                     options.RoleType = typeof(PermissionPolicyRole); 
-                    options.UserType = typeof(Module.BusinessObjects.ApplicationUser);
-                    options.UserLoginInfoType = typeof(Module.BusinessObjects.ApplicationUserLoginInfo);
+                    options.UserType = typeof(ApplicationUser);
+                    options.UserLoginInfoType = typeof(ApplicationUserLoginInfo);
                     options.Events.OnSecurityStrategyCreated += securityStrategy => {
                         var strategy = (SecurityStrategy)securityStrategy;
                         strategy.PermissionsReloadMode = PermissionsReloadMode.CacheOnFirstAccess;
@@ -98,11 +98,11 @@ public class Startup {
             //app.UseHsts();
         }
         //app.UseHttpsRedirection();
-        using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
-        {
-            var context = serviceScope.ServiceProvider.GetService<DndTrackerEFCoreDbContext>();
-            context.Database.Migrate();
-        }
+        //using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+        //{
+        //    var context = serviceScope.ServiceProvider.GetService<DndTrackerEFCoreDbContext>();
+        //    context.Database.Migrate();
+        //}
 
 
 
