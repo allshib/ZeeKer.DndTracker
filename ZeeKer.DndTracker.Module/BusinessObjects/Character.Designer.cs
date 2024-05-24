@@ -75,6 +75,17 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             .Where(p => p.Profiency.GroupProfiencyType == Types.GroupProfiencyType.Tools)
             .Select(x => $"{x.DefaultProperty}"));
 
+        [XafDisplayName("Максимальное число настроек")]
+        public virtual int MaxSettingCount {  get; set; }
+
+        [XafDisplayName("Занято слотов настроек"), NotMapped]
+        public virtual int EnabledSettingCount => Storages?
+            .Where(s=>s.Local)?
+            .FirstOrDefault()?
+            .Items
+            .Where(i=>i.SettingOnThis)
+            .Count()?? 0;
+
         #endregion
 
         #region Health

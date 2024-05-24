@@ -56,6 +56,21 @@ public class Updater : ModuleUpdater {
         {
             CreateDefaultRaces();
         }
+
+        if (CurrentDBVersion < new Version("0.3.1"))
+        {
+            SetMaxSettingCount();
+        }
+    }
+
+    private void SetMaxSettingCount()
+    {
+        var characters = ObjectSpace.GetObjects<Character>();
+        foreach (Character character in characters)
+        {
+            character.MaxSettingCount = 3;
+        }
+        ObjectSpace.CommitChanges();
     }
 
     private void CreateDefaultRaces()

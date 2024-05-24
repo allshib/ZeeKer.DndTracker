@@ -53,5 +53,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [ForeignKey(nameof(ProfiencyId)), XafDisplayName("Требуемое владение")]
         public virtual Profiency Profiency { get; set; }
+
+
+        [XafDisplayName("Нужна настройка")]
+        public virtual bool NeedSetting { get;set; }
     }
 }

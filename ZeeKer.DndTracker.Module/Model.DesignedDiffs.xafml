@@ -31,6 +31,10 @@
     <Class Name="DevExpress.Persistent.BaseImpl.EF.PermissionPolicy.PermissionPolicyUser" Caption="Base User" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.ArmorItem" ImageName="Armor" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.AssignedItem">
+      <AppearanceRules>
+        <AppearanceRule Id="BlueSetting" BackColor="192, 255, 255" TargetItems="*" Criteria="[SettingOnThis] = True" IsNewNode="True" />
+        <AppearanceRule Id="HideSetting" TargetItems="SettingOnThis" Visibility="Hide" Criteria="[Item] Is Null Or [Item.NeedSetting] = False" IsNewNode="True" />
+      </AppearanceRules>
       <OwnMembers>
         <Member Name="Item" LookupEditorMode="AllItemsWithSearch" />
       </OwnMembers>
@@ -79,7 +83,11 @@
         <Member Name="ItemsString" RowCount="5" />
       </OwnMembers>
     </Class>
-    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Item" ImageName="Box" />
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Item" ImageName="Box">
+      <OwnMembers>
+        <Member Name="Description" RowCount="6" />
+      </OwnMembers>
+    </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.MultipleTransaction" ImageName="Action_StateMachine">
       <AppearanceRules>
         <AppearanceRule Id="NewCreated" Visibility="Hide" TargetItems="ActiveCharacters,TransactionSettings" Criteria="IsNewObject([This])" IsNewNode="True" />
@@ -211,6 +219,7 @@
       <RuleCriteria Id="Character_Profiency_ArmorItemHeavy" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.Character" TargetCriteria="[ArmorItemCalc.ArmorType] = ##Enum#ZeeKer.DndTracker.Module.Types.ArmorType,Heavy#" TargetContextIDs="Save" Criteria="[Profiencies][[Profiency.ProfiencyType] = ##Enum#ZeeKer.DndTracker.Module.Types.ProficiencyType,HeavyArmor#]" IsNewNode="True" />
       <RuleCriteria Id="Character_Profiency_ArmorItemMedium" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.Character" TargetCriteria="[ArmorItemCalc.ArmorType] = ##Enum#ZeeKer.DndTracker.Module.Types.ArmorType,Medium#" TargetContextIDs="Save" Criteria="[Profiencies][[Profiency.ProfiencyType] = ##Enum#ZeeKer.DndTracker.Module.Types.ProficiencyType,MediumArmor#]" IsNewNode="True" />
       <RuleCriteria Id="Character_Profiency_StrengthCondition" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.Character" TargetCriteria="[ArmorItemCalc.StrenghtCondition] &gt; 0" TargetContextIDs="Save" Criteria="[ArmorItemCalc.StrenghtCondition] &lt;= [Stats.Strength]" IsNewNode="True" />
+      <RuleCriteria Id="CharacterStorage_MaxSettingRule" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.CharacterStorage" TargetContextIDs="Save" TargetCriteria="[Local] = True" Criteria="[Items][[SettingOnThis] = True].Count() &lt;= [Character.MaxSettingCount]" IsNewNode="True" />
       <RuleCriteria Id="StorageOperation_CorrectDestinOperation" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" TargetContextIDs="Save" TargetCriteria="[OperationMode] = ##Enum#ZeeKer.DndTracker.Module.Types.OperationMode,WithAnotherStorage#" Criteria="[OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddGoldCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddSilverCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddCopperCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddItems#" IsNewNode="True" />
       <RuleCriteria Id="StorageOperation_DifferentStorages" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" TargetContextIDs="Save" Criteria="[StorageSource] &lt;&gt; [Storage]" TargetCriteria="[OperationMode] = ##Enum#ZeeKer.DndTracker.Module.Types.OperationMode,WithAnotherStorage#" IsNewNode="True" />
       <RuleCriteria Id="StorageOperationMoreZero" TargetType="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" TargetContextIDs="Save" Criteria="[Coins] &gt;= 1" TargetCriteria="[OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddGoldCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,RemoveGoldCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddSilverCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,RemoveSilverCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,AddCopperCoins# Or [OperationType] = ##Enum#ZeeKer.DndTracker.Module.Types.StorageOperationType,RemoveCopperCoins#" IsNewNode="True" />
@@ -226,19 +235,20 @@
       </Items>
       <Layout IsNewNode="True" Removed="True">
         <LayoutGroup Id="Main" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
-          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" RelativeSize="28.990825688073393" IsNewNode="True">
+          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" RelativeSize="33.09090909090909" IsNewNode="True">
             <LayoutGroup Id="ArmorItem" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
-              <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="20.253164556962027" IsNewNode="True" />
-              <LayoutItem Id="ArmorType" ViewItem="ArmorType" ShowCaption="" Index="1" RelativeSize="15.189873417721518" IsNewNode="True" />
-              <LayoutItem Id="StrenghtCondition" ViewItem="StrenghtCondition" ShowCaption="" Index="2" RelativeSize="15.189873417721518" IsNewNode="True" />
-              <LayoutItem Id="AC" ViewItem="AC" ShowCaption="" Index="3" RelativeSize="15.189873417721518" IsNewNode="True" />
-              <LayoutItem Id="Rarity" ViewItem="Rarity" Index="4" RelativeSize="15.189873417721518" IsNewNode="True" />
-              <LayoutItem Id="Weight" ViewItem="Weight" Index="5" RelativeSize="18.9873417721519" IsNewNode="True" />
+              <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="17.582417582417584" IsNewNode="True" />
+              <LayoutItem Id="ArmorType" ViewItem="ArmorType" ShowCaption="" Index="1" RelativeSize="13.186813186813186" IsNewNode="True" />
+              <LayoutItem Id="StrenghtCondition" ViewItem="StrenghtCondition" ShowCaption="" Index="2" RelativeSize="13.186813186813186" IsNewNode="True" />
+              <LayoutItem Id="AC" ViewItem="AC" ShowCaption="" Index="3" RelativeSize="13.186813186813186" IsNewNode="True" />
+              <LayoutItem Id="NeedSetting" ViewItem="NeedSetting" Index="4" RelativeSize="13.186813186813186" IsNewNode="True" />
+              <LayoutItem Id="Rarity" ViewItem="Rarity" Index="5" RelativeSize="13.186813186813186" IsNewNode="True" />
+              <LayoutItem Id="Weight" ViewItem="Weight" Index="6" RelativeSize="16.483516483516482" IsNewNode="True" />
             </LayoutGroup>
           </LayoutGroup>
-          <LayoutGroup Id="SizeableEditors" Index="1" ShowCaption="False" RelativeSize="71.0091743119266" IsNewNode="True">
-            <LayoutItem Id="Profiency" ViewItem="Profiency" Index="0" RelativeSize="6.976744186046512" IsNewNode="True" />
-            <LayoutItem Id="Description" ViewItem="Description" ShowCaption="" Index="1" RelativeSize="93.02325581395348" CaptionLocation="Top" IsNewNode="True" />
+          <LayoutGroup Id="SizeableEditors" Index="1" ShowCaption="False" RelativeSize="66.9090909090909" IsNewNode="True">
+            <LayoutItem Id="Profiency" ViewItem="Profiency" Index="0" RelativeSize="7.336956521739131" IsNewNode="True" />
+            <LayoutItem Id="Description" ViewItem="Description" ShowCaption="" Index="1" RelativeSize="92.66304347826087" CaptionLocation="Top" IsNewNode="True" />
           </LayoutGroup>
         </LayoutGroup>
       </Layout>
@@ -394,8 +404,8 @@
                           <LayoutItem Id="AddGold" ViewItem="AddGold" Index="0" RelativeSize="34" IsNewNode="True" />
                           <LayoutItem Id="RemoveGoldCategory" ViewItem="RemoveGoldCategory" Index="1" RelativeSize="26" IsNewNode="True" />
                           <LayoutGroup Id="Autodfbe3f29-6047-425f-9c10-756a27249c8a" ShowCaption="False" Direction="Horizontal" Index="2" RelativeSize="40" IsNewNode="True">
-                            <LayoutItem Id="SimpleTransferGold" ViewItem="SimpleTransferGold" Index="0" RelativeSize="19.322033898305083" IsNewNode="True" />
-                            <LayoutItem Id="SendGold" ViewItem="SendGold" Index="1" RelativeSize="80.67796610169492" IsNewNode="True" />
+                            <LayoutItem Id="SimpleTransferGold" ViewItem="SimpleTransferGold" Index="0" RelativeSize="22.93762575452716" IsNewNode="True" />
+                            <LayoutItem Id="SendGold" ViewItem="SendGold" Index="1" RelativeSize="77.06237424547284" IsNewNode="True" />
                           </LayoutGroup>
                         </LayoutGroup>
                         <LayoutGroup Id="Profiency" ShowCaption="True" CaptionLocation="Top" Index="12" RelativeSize="4.95575221238938" IsCollapsibleGroup="True" IsGroupCollapsed="True" IsNewNode="True">
@@ -450,7 +460,9 @@
                     <LayoutItem Id="ArmorItem" ViewItem="ArmorItem" Index="0" RelativeSize="5.663716814159292" IsNewNode="True" />
                     <LayoutItem Id="ShieldItem" ViewItem="ShieldItem" Index="1" RelativeSize="4.247787610619469" IsNewNode="True" />
                     <LayoutItem Id="HandLeft" ViewItem="HandLeft" Index="2" RelativeSize="4.247787610619469" IsNewNode="True" />
-                    <LayoutItem Id="HandRight" ViewItem="HandRight" Index="3" RelativeSize="85.84070796460178" IsNewNode="True" />
+                    <LayoutItem Id="HandRight" ViewItem="HandRight" Index="3" RelativeSize="4.247787610619469" IsNewNode="True" />
+                    <LayoutItem Id="MaxSettingCount" ViewItem="MaxSettingCount" Index="4" RelativeSize="4.247787610619469" IsNewNode="True" />
+                    <LayoutItem Id="EnabledSettingCount" ViewItem="EnabledSettingCount" Index="5" RelativeSize="77.34513274336283" IsNewNode="True" />
                   </LayoutGroup>
                   <LayoutGroup Id="NotesGroup" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="3" RelativeSize="100" ImageName="textAlignment1" IsNewNode="True">
                     <LayoutItem Id="Info.Notes" ViewItem="Info.Notes" Index="0" RelativeSize="100" CaptionLocation="Top" ShowCaption="False" IsNewNode="True" />
@@ -460,29 +472,29 @@
                     <LayoutGroup Id="Auto8ab736c5-b9a3-406a-a204-5a3ee18a7d70" ShowCaption="False" Direction="Vertical" Index="1" RelativeSize="31.504424778761063" IsNewNode="True">
                       <LayoutItem Id="Languages" ViewItem="Languages" Index="0" RelativeSize="25.84269662921348" CaptionLocation="Top" IsNewNode="True" />
                       <LayoutGroup Id="Autoa5936706-c376-4ea9-bceb-658df5bd9337" ShowCaption="False" Direction="Horizontal" Index="1" RelativeSize="74.15730337078652" IsNewNode="True">
-                        <LayoutGroup Id="Autoaf90cbbb-d0b9-448f-a762-74e164cc2fd7" ShowCaption="False" Index="0" RelativeSize="48.10126582278481" IsNewNode="True">
+                        <LayoutGroup Id="Autoaf90cbbb-d0b9-448f-a762-74e164cc2fd7" ShowCaption="False" Index="0" RelativeSize="48.05194805194805" IsNewNode="True">
                           <LayoutItem Id="Info.Height" ViewItem="Info.Height" CaptionLocation="Top" Index="0" RelativeSize="34.84848484848485" IsNewNode="True" />
                           <LayoutItem Id="Info.Age" ViewItem="Info.Age" CaptionLocation="Top" Index="1" RelativeSize="65.15151515151516" IsNewNode="True" />
                         </LayoutGroup>
-                        <LayoutGroup Id="Auto00091fed-9288-46c7-871f-e3f5db99503e" ShowCaption="False" Index="1" RelativeSize="51.89873417721519" IsNewNode="True">
+                        <LayoutGroup Id="Auto00091fed-9288-46c7-871f-e3f5db99503e" ShowCaption="False" Index="1" RelativeSize="51.94805194805195" IsNewNode="True">
                           <LayoutItem Id="Info.Weight" ViewItem="Info.Weight" CaptionLocation="Top" Index="0" RelativeSize="34.84848484848485" IsNewNode="True" />
                           <LayoutItem Id="Info.Eyes" ViewItem="Info.Eyes" CaptionLocation="Top" Index="1" RelativeSize="30.303030303030305" IsNewNode="True" />
                           <LayoutItem Id="Info.Hair" ViewItem="Info.Hair" CaptionLocation="Top" Index="2" RelativeSize="34.84848484848485" IsNewNode="True" />
                         </LayoutGroup>
                       </LayoutGroup>
                     </LayoutGroup>
-                    <LayoutItem Id="Info.Background" ViewItem="Info.Background" CaptionLocation="Top" Index="2" RelativeSize="15.044247787610619" IsNewNode="True" />
-                    <LayoutItem Id="Info.Personality" ViewItem="Info.Personality" CaptionLocation="Top" Index="3" RelativeSize="15.044247787610619" IsNewNode="True" />
-                    <LayoutItem Id="Info.Ideals" ViewItem="Info.Ideals" CaptionLocation="Top" Index="4" RelativeSize="15.221238938053098" IsNewNode="True" />
+                    <LayoutItem Id="Info.Background" ViewItem="Info.Background" CaptionLocation="Top" Index="2" RelativeSize="14.690265486725664" IsNewNode="True" />
+                    <LayoutItem Id="Info.Personality" ViewItem="Info.Personality" CaptionLocation="Top" Index="3" RelativeSize="14.690265486725664" IsNewNode="True" />
+                    <LayoutItem Id="Info.Ideals" ViewItem="Info.Ideals" CaptionLocation="Top" Index="4" RelativeSize="14.867256637168142" IsNewNode="True" />
                     <LayoutItem Id="Info.Flaws" ViewItem="Info.Flaws" CaptionLocation="Top" Index="5" RelativeSize="12.743362831858407" IsNewNode="True" />
-                    <LayoutItem Id="Item11" Index="6" RelativeSize="1.9469026548672566" IsNewNode="True" />
+                    <LayoutItem Id="Item11" Index="6" RelativeSize="3.0088495575221237" IsNewNode="True" />
                   </LayoutGroup>
                   <LayoutGroup Id="Additional" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="5" RelativeSize="100" ImageName="Action_CreateDashboard" IsNewNode="True">
-                    <LayoutGroup Id="Auto608fd3c9-8619-46e5-b138-ba85d4b6f5fa" ShowCaption="False" Index="0" RelativeSize="47.31012658227848" IsNewNode="True">
+                    <LayoutGroup Id="Auto608fd3c9-8619-46e5-b138-ba85d4b6f5fa" ShowCaption="False" Index="0" RelativeSize="51.57699443413729" IsNewNode="True">
                       <LayoutItem Id="Campain" ViewItem="Campain" Index="0" RelativeSize="5.663716814159292" IsNewNode="True" />
                       <LayoutItem Id="Person" ViewItem="Person" Index="1" RelativeSize="94.33628318584071" IsNewNode="True" />
                     </LayoutGroup>
-                    <LayoutGroup Id="Auto61d99964-231a-4e56-bb07-8779dffa36be" ShowCaption="False" Index="1" RelativeSize="52.68987341772152" IsNewNode="True">
+                    <LayoutGroup Id="Auto61d99964-231a-4e56-bb07-8779dffa36be" ShowCaption="False" Index="1" RelativeSize="48.42300556586271" IsNewNode="True">
                       <LayoutItem Id="Item5" Index="0" RelativeSize="53.27433628318584" IsNewNode="True" />
                       <LayoutItem Id="Item4" Index="1" RelativeSize="46.72566371681416" IsNewNode="True" />
                     </LayoutGroup>
@@ -988,12 +1000,13 @@
       </Items>
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="12.992545260915868">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="24.363636363636363">
             <LayoutGroup Id="ShieldItem" RelativeSize="100">
-              <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="29.508196721311474" IsNewNode="True" />
-              <LayoutItem Id="ACBonus" RelativeSize="21.311475409836067" Index="1" />
-              <LayoutItem Id="Weight" ViewItem="Weight" Index="2" RelativeSize="21.311475409836067" IsNewNode="True" />
-              <LayoutItem Id="Rarity" ViewItem="Rarity" Index="3" RelativeSize="27.868852459016395" IsNewNode="True" />
+              <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="23.880597014925375" IsNewNode="True" />
+              <LayoutItem Id="ACBonus" RelativeSize="17.91044776119403" Index="1" />
+              <LayoutItem Id="NeedSetting" ViewItem="NeedSetting" Index="2" RelativeSize="17.91044776119403" IsNewNode="True" />
+              <LayoutItem Id="Weight" ViewItem="Weight" Index="3" RelativeSize="17.91044776119403" IsNewNode="True" />
+              <LayoutItem Id="Rarity" ViewItem="Rarity" Index="4" RelativeSize="22.388059701492537" IsNewNode="True" />
             </LayoutGroup>
             <LayoutGroup Id="Item" RelativeSize="28.91566265060241" Direction="Vertical" Removed="True">
               <LayoutGroup Id="Item_col2" RelativeSize="100" Index="0">
@@ -1007,7 +1020,7 @@
               </LayoutGroup>
             </LayoutGroup>
           </LayoutGroup>
-          <LayoutGroup Id="SizeableEditors" RelativeSize="87.00745473908414">
+          <LayoutGroup Id="SizeableEditors" RelativeSize="75.63636363636364">
             <LayoutItem Id="Description" CaptionLocation="Top" RelativeSize="100" />
           </LayoutGroup>
           <LayoutGroup Id="AssignedItems_Group" Direction="Vertical" RelativeSize="44.26020408163265" Removed="True">
@@ -1038,12 +1051,13 @@
       </Items>
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="15.779816513761467">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="20">
             <LayoutGroup Id="SimpleItem" RelativeSize="100">
-              <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="37.2093023255814" IsNewNode="True" />
+              <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="29.09090909090909" IsNewNode="True" />
               <LayoutItem Id="Bonus" RelativeSize="48.38709677419355" Index="1" Removed="True" />
-              <LayoutItem Id="Rarity" ViewItem="Rarity" Index="1" RelativeSize="27.906976744186046" IsNewNode="True" />
-              <LayoutItem Id="Weight" ViewItem="Weight" Index="2" RelativeSize="34.883720930232556" IsNewNode="True" />
+              <LayoutItem Id="Rarity" ViewItem="Rarity" Index="1" RelativeSize="21.818181818181817" IsNewNode="True" />
+              <LayoutItem Id="NeedSetting" ViewItem="NeedSetting" Index="2" RelativeSize="21.818181818181817" IsNewNode="True" />
+              <LayoutItem Id="Weight" ViewItem="Weight" Index="3" RelativeSize="27.272727272727273" IsNewNode="True" />
             </LayoutGroup>
             <LayoutGroup Id="Item" RelativeSize="33.84615384615385" Removed="True">
               <LayoutGroup Id="Item_col1" RelativeSize="50">
@@ -1057,9 +1071,9 @@
               </LayoutGroup>
             </LayoutGroup>
           </LayoutGroup>
-          <LayoutGroup Id="SizeableEditors" RelativeSize="84.22018348623853">
-            <LayoutItem Id="Profiency" ViewItem="Profiency" Index="0" RelativeSize="5.882352941176471" IsNewNode="True" />
-            <LayoutItem Id="Description" CaptionLocation="Top" RelativeSize="94.11764705882354" Index="1" />
+          <LayoutGroup Id="SizeableEditors" RelativeSize="80">
+            <LayoutItem Id="Profiency" ViewItem="Profiency" Index="0" RelativeSize="6.136363636363637" IsNewNode="True" />
+            <LayoutItem Id="Description" CaptionLocation="Top" RelativeSize="93.86363636363636" Index="1" />
           </LayoutGroup>
           <LayoutGroup Id="AssignedItems_Group" Direction="Vertical" RelativeSize="35.96330275229358" Removed="True">
             <LayoutItem Id="AssignedItems" RelativeSize="100" />
@@ -1318,19 +1332,20 @@
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
           <LayoutGroup Id="SimpleEditors" RelativeSize="100">
-            <LayoutGroup Id="WeaponItem" RelativeSize="57.43119266055046" Direction="Vertical">
+            <LayoutGroup Id="WeaponItem" RelativeSize="61.27272727272727" Direction="Vertical">
               <LayoutGroup Id="WeaponItem_col1" RelativeSize="100">
-                <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="11.428571428571429" IsNewNode="True" />
-                <LayoutItem Id="MainDamageType" Index="1" RelativeSize="8.571428571428571" />
-                <LayoutItem Id="HitBonus" Index="2" RelativeSize="8.571428571428571" />
-                <LayoutItem Id="HandWeaponType" Index="3" RelativeSize="8.571428571428571" />
-                <LayoutItem Id="WeightWeaponType" Index="4" RelativeSize="8.571428571428571" />
-                <LayoutItem Id="Fencing" ViewItem="Fencing" Index="5" RelativeSize="8.571428571428571" IsNewNode="True" />
-                <LayoutItem Id="Throwing" ViewItem="Throwing" Index="6" RelativeSize="8.571428571428571" IsNewNode="True" />
-                <LayoutItem Id="Special" ViewItem="Special" Index="7" RelativeSize="8.571428571428571" IsNewNode="True" />
-                <LayoutItem Id="Rarity" ViewItem="Rarity" Index="8" RelativeSize="8.571428571428571" IsNewNode="True" />
-                <LayoutItem Id="Weight" ViewItem="Weight" Index="9" RelativeSize="8.571428571428571" IsNewNode="True" />
-                <LayoutItem Id="Profiency" ViewItem="Profiency" Index="10" RelativeSize="11.428571428571429" IsNewNode="True" />
+                <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="10.526315789473685" IsNewNode="True" />
+                <LayoutItem Id="MainDamageType" Index="1" RelativeSize="7.894736842105263" />
+                <LayoutItem Id="NeedSetting" ViewItem="NeedSetting" Index="2" RelativeSize="7.894736842105263" IsNewNode="True" />
+                <LayoutItem Id="HitBonus" Index="3" RelativeSize="7.894736842105263" />
+                <LayoutItem Id="HandWeaponType" Index="4" RelativeSize="7.894736842105263" />
+                <LayoutItem Id="WeightWeaponType" Index="5" RelativeSize="7.894736842105263" />
+                <LayoutItem Id="Fencing" ViewItem="Fencing" Index="6" RelativeSize="7.894736842105263" IsNewNode="True" />
+                <LayoutItem Id="Throwing" ViewItem="Throwing" Index="7" RelativeSize="7.894736842105263" IsNewNode="True" />
+                <LayoutItem Id="Special" ViewItem="Special" Index="8" RelativeSize="7.894736842105263" IsNewNode="True" />
+                <LayoutItem Id="Rarity" ViewItem="Rarity" Index="9" RelativeSize="7.894736842105263" IsNewNode="True" />
+                <LayoutItem Id="Weight" ViewItem="Weight" Index="10" RelativeSize="7.894736842105263" IsNewNode="True" />
+                <LayoutItem Id="Profiency" ViewItem="Profiency" Index="11" RelativeSize="10.526315789473685" IsNewNode="True" />
               </LayoutGroup>
               <LayoutGroup Id="WeaponItem_col2" RelativeSize="50" Removed="True">
                 <LayoutItem Id="Special" RelativeSize="100" Index="0" Removed="True" />
@@ -1338,7 +1353,7 @@
                 <LayoutItem Id="Fencing" RelativeSize="17.391304347826086" Removed="True" />
               </LayoutGroup>
             </LayoutGroup>
-            <LayoutItem Id="Description" ViewItem="Description" CaptionLocation="Top" Index="1" RelativeSize="42.56880733944954" IsNewNode="True" />
+            <LayoutItem Id="Description" ViewItem="Description" CaptionLocation="Top" Index="1" RelativeSize="38.72727272727273" IsNewNode="True" />
             <LayoutGroup Id="Item" RelativeSize="23.859649122807017" Removed="True">
               <LayoutGroup Id="Item_col1" RelativeSize="50">
                 <LayoutItem Id="DefaultProperty" Index="0" RelativeSize="100" Removed="True" />

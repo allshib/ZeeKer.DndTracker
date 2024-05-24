@@ -43,8 +43,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Наименование")]
         public virtual string Name => $"{Item?.DefaultProperty}";
 
+        [XafDisplayName("Настроиться на предмет")]
+        public virtual bool SettingOnThis { get; set; }
 
-        
 
         //private string GetWeaponModif()
         //{

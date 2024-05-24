@@ -41,6 +41,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             Stats = ObjectSpace.CreateObject<CharacterStats>();
             Level = 1;
             CreatedAt = DateTimeOffset.Now;
+            MaxSettingCount = 3;
         }
 
         public override void OnSaving()
