@@ -11,11 +11,15 @@ namespace ZeeKer.DndTracker.Module.Types
     {
         [XafDisplayName("Не задано")]
         None,
+        [XafDisplayName("Ткань")]
+        Cloth = 1,
         [XafDisplayName("Лёгкая броня")]
-        Light,
+        Light=2,
         [XafDisplayName("Средняя броня")]
-        Medium,
+        Medium=3,
         [XafDisplayName("Тяжёлая броня")]
-        Heavy
+        Heavy=4,
+        
+        
     }
 }

@@ -61,6 +61,33 @@ public class Updater : ModuleUpdater {
         {
             SetMaxSettingCount();
         }
+
+        if (CurrentDBVersion < new Version("0.3.2"))
+        {
+            FixArmorType();
+        }
+    }
+
+    private void FixArmorType()
+    {
+        var armors = ObjectSpace.GetObjects<ArmorItem>();
+        
+        foreach(ArmorItem armor in armors)
+        {
+            switch (armor.ArmorType)
+            {
+                case ArmorType.Cloth:
+                    armor.ArmorType = ArmorType.Light;
+                    break;
+                case ArmorType.Light:
+                    armor.ArmorType = ArmorType.Medium;
+                    break;
+                case ArmorType.Medium:
+                    armor.ArmorType = ArmorType.Heavy;
+                    break;
+            }
+        }
+        ObjectSpace.CommitChanges();
     }
 
     private void SetMaxSettingCount()
