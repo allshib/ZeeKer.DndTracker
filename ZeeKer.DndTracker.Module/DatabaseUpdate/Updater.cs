@@ -202,24 +202,24 @@ public class Updater : ModuleUpdater {
 
     private void CreateDefaultClasses()
     {
-        CreateClass("Бард", CharacterClassType.Bard, DiceRollType.K8);
-        CreateClass("Варвар", CharacterClassType.Barbarian, DiceRollType.K12);
-        CreateClass("Воин", CharacterClassType.Fighter, DiceRollType.K10);
-        CreateClass("Волшебник", CharacterClassType.Wizard, DiceRollType.K6);
-        CreateClass("Друид", CharacterClassType.Druid, DiceRollType.K8);
-        CreateClass("Жрец", CharacterClassType.Cleric, DiceRollType.K8);
-        CreateClass("Изобретатель", CharacterClassType.Artificer, DiceRollType.K8);
-        CreateClass("Колдун", CharacterClassType.Warlock, DiceRollType.K8);
-        CreateClass("Монах", CharacterClassType.Monk, DiceRollType.K8);
-        CreateClass("Паладин", CharacterClassType.Paladin, DiceRollType.K10);
-        CreateClass("Плут", CharacterClassType.Rogue, DiceRollType.K8);
-        CreateClass("Следопыт", CharacterClassType.Ranger, DiceRollType.K10);
-        CreateClass("Чародей", CharacterClassType.Sorcerer, DiceRollType.K6);
+        CreateClass("Бард", CharacterClassType.Bard, DiceHitType.D8);
+        CreateClass("Варвар", CharacterClassType.Barbarian, DiceHitType.D12);
+        CreateClass("Воин", CharacterClassType.Fighter, DiceHitType.D10);
+        CreateClass("Волшебник", CharacterClassType.Wizard, DiceHitType.D6);
+        CreateClass("Друид", CharacterClassType.Druid, DiceHitType.D8);
+        CreateClass("Жрец", CharacterClassType.Cleric, DiceHitType.D8);
+        CreateClass("Изобретатель", CharacterClassType.Artificer, DiceHitType.D8);
+        CreateClass("Колдун", CharacterClassType.Warlock, DiceHitType.D8);
+        CreateClass("Монах", CharacterClassType.Monk, DiceHitType.D8);
+        CreateClass("Паладин", CharacterClassType.Paladin, DiceHitType.D10);
+        CreateClass("Плут", CharacterClassType.Rogue, DiceHitType.D8);
+        CreateClass("Следопыт", CharacterClassType.Ranger, DiceHitType.D10);
+        CreateClass("Чародей", CharacterClassType.Sorcerer, DiceHitType.D6);
         ObjectSpace.CommitChanges();
     }
 
 
-    private void CreateClass(string name, CharacterClassType type, DiceRollType helthDice)
+    private void CreateClass(string name, CharacterClassType type, DiceHitType helthDice)
     {
         var characterClass = ObjectSpace.CreateObject<CharacterClass>();
 

@@ -30,7 +30,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         public virtual string Name { get; set; }
 
         [XafDisplayName("Кость хитов")]
-        public virtual DiceRollType HealthDice { get; set; }
+        public virtual DiceHitType HealthDice { get; set; }
 
         [XafDisplayName("Тип")]
         public virtual CharacterClassType ClassType { get; set; }

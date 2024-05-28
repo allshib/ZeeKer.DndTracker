@@ -175,8 +175,6 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             }
         }
 
-        public IObjectSpace GetObjectSpace() =>ObjectSpace;
-
         // Collection property:
         //public virtual IList<AssociatedEntityObject> AssociatedEntities { get; set; }
 
