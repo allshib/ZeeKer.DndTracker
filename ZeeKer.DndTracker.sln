@@ -18,6 +18,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeeKer.DndTracker.LongStory
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zeeker.DndTracker.Win", "Zeeker.DndTracker.Win\Zeeker.DndTracker.Win.csproj", "{7EC8FCCC-6359-47FD-86E3-7D3997CA8F75}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeeker.DndTracker.Tests", "Zeeker.DndTracker.Tests\Zeeker.DndTracker.Tests.csproj", "{A7452422-02C6-4253-B754-73AC25BE8AE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,12 @@ Global
 		{7EC8FCCC-6359-47FD-86E3-7D3997CA8F75}.EasyTest|Any CPU.Build.0 = EasyTest|Any CPU
 		{7EC8FCCC-6359-47FD-86E3-7D3997CA8F75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EC8FCCC-6359-47FD-86E3-7D3997CA8F75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7452422-02C6-4253-B754-73AC25BE8AE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7452422-02C6-4253-B754-73AC25BE8AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7452422-02C6-4253-B754-73AC25BE8AE6}.EasyTest|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7452422-02C6-4253-B754-73AC25BE8AE6}.EasyTest|Any CPU.Build.0 = Debug|Any CPU
+		{A7452422-02C6-4253-B754-73AC25BE8AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7452422-02C6-4253-B754-73AC25BE8AE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
