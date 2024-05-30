@@ -13,6 +13,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using ZeeKer.DndTracker.Module.Types;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
@@ -28,5 +29,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [StringLength(100)]
         [XafDisplayName("Название")]
         public virtual string Name { get; set; }
+
+        [XafDisplayName("Тип")]
+        public virtual BonusType Type { get; set; }
     }
 }

@@ -26,6 +26,11 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [XafDisplayName("Группы бонусов"), Aggregated]
         public virtual IList<StatBonusGroup> BonusGroups { get; set; } = new ObservableCollection<StatBonusGroup>();
-        
+        public override void OnCreated()
+        {
+            base.OnCreated();
+
+            Type = Types.BonusType.Stat;
+        }
     }
 }
