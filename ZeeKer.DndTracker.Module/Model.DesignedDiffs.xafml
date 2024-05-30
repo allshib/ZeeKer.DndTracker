@@ -155,6 +155,7 @@
           <Item Id="Character_ListView" ObjectKey="" ViewId="Character_ListView" IsNewNode="True" />
           <Item Id="CharacterStorage_ListView" ObjectKey="" ViewId="CharacterStorage_ListView" IsNewNode="True" />
           <Item Id="Classes" ViewId="CharacterClass_ListView" IsNewNode="True" />
+          <Item Id="Feats" ViewId="Feat_ListView" IsNewNode="True" />
           <Item Id="Its" IsNewNode="True">
             <Items IsNewNode="True">
               <Item Id="AllItems" ViewId="Item_ListView" Index="1" IsNewNode="True" />

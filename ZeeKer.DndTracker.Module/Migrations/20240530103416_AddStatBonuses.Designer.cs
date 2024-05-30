@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ZeeKer.DndTracker.Module.BusinessObjects;
 
@@ -11,9 +12,11 @@ using ZeeKer.DndTracker.Module.BusinessObjects;
 namespace ZeeKer.DndTracker.Module.Migrations
 {
     [DbContext(typeof(DndTrackerEFCoreDbContext))]
-    partial class DndTrackerEFCoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240530103416_AddStatBonuses")]
+    partial class AddStatBonuses
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

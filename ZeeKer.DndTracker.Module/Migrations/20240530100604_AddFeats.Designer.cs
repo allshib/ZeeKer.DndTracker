@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ZeeKer.DndTracker.Module.BusinessObjects;
 
@@ -11,9 +12,11 @@ using ZeeKer.DndTracker.Module.BusinessObjects;
 namespace ZeeKer.DndTracker.Module.Migrations
 {
     [DbContext(typeof(DndTrackerEFCoreDbContext))]
-    partial class DndTrackerEFCoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240530100604_AddFeats")]
+    partial class AddFeats
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -711,11 +714,6 @@ namespace ZeeKer.DndTracker.Module.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasMaxLength(13)
-                        .HasColumnType("nvarchar(13)");
-
                     b.Property<string>("Name")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
@@ -723,10 +721,6 @@ namespace ZeeKer.DndTracker.Module.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Bonuses");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("BonusBase");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.Campain", b =>
@@ -1060,28 +1054,6 @@ namespace ZeeKer.DndTracker.Module.Migrations
                     b.ToTable("MultipleTransaction");
                 });
 
-            modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.OneStatBonus", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("BonusType")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StatBonus")
-                        .HasColumnType("int");
-
-                    b.Property<Guid?>("StatBonusGroupId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("StatBonusGroupId");
-
-                    b.ToTable("OneStatBonuses");
-                });
-
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.Person", b =>
                 {
                     b.Property<Guid>("ID")
@@ -1186,26 +1158,6 @@ namespace ZeeKer.DndTracker.Module.Migrations
                         .HasFilter("[StatsId] IS NOT NULL");
 
                     b.ToTable("Skills");
-                });
-
-            modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.StatBonusGroup", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("GroupName")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<Guid?>("StatBonusId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("StatBonusId");
-
-                    b.ToTable("StatBonusGroups");
                 });
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation", b =>
@@ -1319,13 +1271,6 @@ namespace ZeeKer.DndTracker.Module.Migrations
                         .HasFilter("[PersonId] IS NOT NULL");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
-                });
-
-            modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.StatBonus", b =>
-                {
-                    b.HasBaseType("ZeeKer.DndTracker.Module.BusinessObjects.BonusBase");
-
-                    b.HasDiscriminator().HasValue("StatBonus");
                 });
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.ArmorItem", b =>
@@ -1706,16 +1651,6 @@ namespace ZeeKer.DndTracker.Module.Migrations
                     b.Navigation("StorageSource");
                 });
 
-            modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.OneStatBonus", b =>
-                {
-                    b.HasOne("ZeeKer.DndTracker.Module.BusinessObjects.StatBonusGroup", "Group")
-                        .WithMany("StatBonuses")
-                        .HasForeignKey("StatBonusGroupId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("Group");
-                });
-
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail", b =>
                 {
                     b.HasOne("ZeeKer.DndTracker.Module.BusinessObjects.Skills", "Skills")
@@ -1734,16 +1669,6 @@ namespace ZeeKer.DndTracker.Module.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Stats");
-                });
-
-            modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.StatBonusGroup", b =>
-                {
-                    b.HasOne("ZeeKer.DndTracker.Module.BusinessObjects.StatBonus", "Bonus")
-                        .WithMany("BonusGroups")
-                        .HasForeignKey("StatBonusId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("Bonus");
                 });
 
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation", b =>
@@ -1922,19 +1847,9 @@ namespace ZeeKer.DndTracker.Module.Migrations
                     b.Navigation("SkillDetails");
                 });
 
-            modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.StatBonusGroup", b =>
-                {
-                    b.Navigation("StatBonuses");
-                });
-
             modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.ApplicationUser", b =>
                 {
                     b.Navigation("UserLogins");
-                });
-
-            modelBuilder.Entity("ZeeKer.DndTracker.Module.BusinessObjects.StatBonus", b =>
-                {
-                    b.Navigation("BonusGroups");
                 });
 #pragma warning restore 612, 618
         }

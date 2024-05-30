@@ -79,6 +79,12 @@ public class DndTrackerEFCoreDbContext : DbContext {
     public DbSet<SimpleItem> SimpleItems { get; set; }
     public DbSet<Profiency> Profiencies { get; set; }
     public DbSet<AssignedProfiency> AssignedProfiencies { get; set; }
+    public DbSet<Feat> Feats { get; set; }
+    public DbSet<BonusBase> Bonuses { get; set; }
+    public DbSet<StatBonus> StatBonuses { get; set; }
+    public DbSet<AssignedFeatBonus> AssignedFeatBonuses { get; set; }
+    public DbSet<StatBonusGroup> StatBonusGroups { get; set; }
+    public DbSet<OneStatBonus> OneStatBonuses { get; set; }
 
 
 
@@ -210,6 +216,20 @@ public class DndTrackerEFCoreDbContext : DbContext {
             .HasMany(p=>p.Items)
             .WithOne(i=>i.Profiency)
             .OnDelete(DeleteBehavior.SetNull);
+
+        modelBuilder.Entity<Feat>()
+            .HasMany(f => f.Bonuses)
+            .WithOne(ab => ab.Feat)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<StatBonus>()
+            .HasMany(sb => sb.BonusGroups)
+            .WithOne(g => g.Bonus)
+            .OnDelete(DeleteBehavior.Cascade);
+        modelBuilder.Entity<StatBonusGroup>()
+            .HasMany(g => g.StatBonuses)
+            .WithOne(sb => sb.Group)
+            .OnDelete(DeleteBehavior.Cascade);
 
         base.OnModelCreating(modelBuilder);
     }

@@ -30,6 +30,7 @@
           <Item Id="Character_ListView" Caption="Персонаж" />
           <Item Id="CharacterStorage_ListView" Caption="Хранилище" />
           <Item Id="Classes" Caption="Классы" />
+          <Item Id="Feats" Caption="Черты" />
           <Item Id="Its" Caption="Предметы">
             <Items>
               <Item Id="AllItems" Caption="Все Предметы" />
