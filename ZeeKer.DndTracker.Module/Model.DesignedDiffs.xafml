@@ -34,6 +34,7 @@
       <AppearanceRules>
         <AppearanceRule Id="BlueSetting" BackColor="192, 255, 255" TargetItems="*" Criteria="[SettingOnThis] = True" IsNewNode="True" />
         <AppearanceRule Id="HideSetting" TargetItems="SettingOnThis" Visibility="Hide" Criteria="[Item] Is Null Or [Item.NeedSetting] = False Or [Storage.Local] = False" IsNewNode="True" />
+        <AppearanceRule Id="OrangeSetting" Priority="0" BackColor="255, 224, 192" TargetItems="*" Criteria="[SettingOnThis] = False And [Item.NeedSetting] = True" IsNewNode="True" />
       </AppearanceRules>
       <OwnMembers>
         <Member Name="Item" LookupEditorMode="AllItemsWithSearch" />
