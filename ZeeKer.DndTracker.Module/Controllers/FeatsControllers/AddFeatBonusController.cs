@@ -35,7 +35,7 @@ namespace ZeeKer.DndTracker.Module.Controllers.FeatsControllers
             {
                 Caption = "Добавить бонус"
             };
-            addFeatBonusAction.Items.Add(new ChoiceActionItem("Бонус характеристик", BonusType.Stat));
+            addFeatBonusAction.Items.Add(new ChoiceActionItem("Добавить Бонус характеристик", BonusType.Stat));
 
             addFeatBonusAction.Execute += AddFeatBonusAction_Execute;
         }
@@ -44,8 +44,12 @@ namespace ZeeKer.DndTracker.Module.Controllers.FeatsControllers
         {
             if (e.SelectedChoiceActionItem is null)
                 return;
+            var feat = View.CurrentObject as Feat;
 
-            switch((BonusType)e.SelectedChoiceActionItem.Data)
+            if (feat.Bonuses.Where(x => x.Bonus?.Type == BonusType.Stat).FirstOrDefault() is not null)
+                throw new UserFriendlyException("Бонус характеристик уже добавлен");
+
+            switch ((BonusType)e.SelectedChoiceActionItem.Data)
             {
                 case BonusType.Stat:
                     var useCase = new ShowBonusViewUseCase(Application);
@@ -53,7 +57,7 @@ namespace ZeeKer.DndTracker.Module.Controllers.FeatsControllers
                     useCase.Show(nested, () =>
                     {
                         var aBonus = ObjectSpace.CreateObject<AssignedFeatBonus>();
-                        aBonus.Feat = View.CurrentObject as Feat;
+                        aBonus.Feat = feat;
 
                         nested.CommitChanges();
 

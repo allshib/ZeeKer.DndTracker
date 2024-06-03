@@ -2,6 +2,7 @@
 <Application Title="ZeeKer.DndTracker" PreferredLanguage="ru-RU">
   <ActionDesign>
     <Actions>
+      <Action Id="AddFeatBonusAction" ImageName="Action_CreateDashboard" PaintStyle="CaptionAndImage" SelectionDependencyType="RequireSingleObject" ImageMode="UseItemImage" />
       <Action Id="MultipleTransaction.Execute" TargetObjectsCriteria="IsNewObject([This]) = False And [StorageSource] Is Not Null And [TransactionSettings][].Count() &gt; 0" ImageName="InsertField" />
       <Action Id="SkillDetail.SetSkillOwn" PaintStyle="Image" ImageName="State_Validation_Valid" />
       <Action Id="SwapStorages" PaintStyle="Image" ImageName="BO_StateMachine" />
@@ -734,6 +735,13 @@
         <ColumnInfo Id="OperationDate" Index="1" SortIndex="0" SortOrder="Descending" />
       </Columns>
     </ListView>
+    <ListView Id="Feat_Bonuses_ListView" FreezeColumnIndices="True" AllowNew="False">
+      <Columns>
+        <ColumnInfo Id="Feat" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="Bonus" Index="0" />
+      </Columns>
+    </ListView>
     <ListView Id="Item_AssignedItems_ListView">
       <Columns>
         <ColumnInfo Id="Name" Index="-1" />
@@ -878,6 +886,13 @@
         <ColumnInfo Id="StorageSource" PropertyName="StorageSource" Index="2" SortOrder="Ascending" GroupIndex="2" IsNewNode="True" />
         <ColumnInfo Id="StorageSource.Character" PropertyName="StorageSource.Character" Index="3" SortOrder="Ascending" GroupIndex="1" IsNewNode="True" />
         <ColumnInfo Id="StorageSource.Character.Campain" PropertyName="StorageSource.Character.Campain" Index="4" SortOrder="Ascending" GroupIndex="0" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="OneStatBonus_ListView">
+      <Columns>
+        <ColumnInfo Id="BonusType" Index="-1" />
+        <ColumnInfo Id="Group" Index="-1" />
+        <ColumnInfo Id="StatBonus" Index="-1" />
       </Columns>
     </ListView>
     <ListView Id="Person_Characters_ListView" FreezeColumnIndices="True">
@@ -1103,6 +1118,29 @@
         <ColumnInfo Id="Value" Index="-1" />
         <ColumnInfo Id="DefaultProperty" Index="0" />
         <ColumnInfo Id="Dependency" Index="1" SortOrder="Ascending" GroupIndex="0" />
+      </Columns>
+    </ListView>
+    <ListView Id="StatBonus_BonusGroups_ListView" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="Bonus" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="GroupName" Index="0" />
+      </Columns>
+    </ListView>
+    <ListView Id="StatBonusGroup_ListView" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="Bonus" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="GroupName" Index="0" />
+      </Columns>
+    </ListView>
+    <ListView Id="StatBonusGroup_StatBonuses_ListView" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="BonusType" Index="-1" />
+        <ColumnInfo Id="Group" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="StatBonus" Index="-1" />
+        <ColumnInfo Id="DefaultProperty" Index="0" />
       </Columns>
     </ListView>
     <DetailView Id="StateMachine_DetailView">

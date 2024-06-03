@@ -26,8 +26,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             // In the constructor, initialize collection properties, e.g.: 
             // this.AssociatedEntities = new ObservableCollection<AssociatedEntityObject>();
         }
-        [StringLength(100), XafDisplayName("Наименование группы")]
-        public virtual string GroupName { get; set; }
+        [StringLength(100), XafDisplayName("Наименование группы"), NotMapped]
+        public virtual string GroupName => $"{String.Join(", ", StatBonuses.Select(x=>x.DefaultProperty))}";
 
         [Browsable(false)]
         public virtual Guid? StatBonusId {  get; set; }
@@ -38,5 +38,26 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [XafDisplayName("Бонусы характеристик группы"), Aggregated]
         public virtual IList<OneStatBonus> StatBonuses { get; set; } = new ObservableCollection<OneStatBonus>();
+
+        public override void OnSaving()
+        {
+            base.OnSaving();
+
+            if(Bonus is not null)
+                Bonus.Name = $"{String.Join("или ", Bonus.BonusGroups.Select(x=>x.GroupName))}";
+        }
+
+        //protected override void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        //{
+        //    base.OnPropertyChanged(sender, e);
+
+        //    switch(e.PropertyName)
+        //    {
+        //        case nameof(StatBonuses):
+        //            if (Bonus is not null)
+        //                Bonus.Name = $"{String.Join("или ", Bonus.BonusGroups.Select(x => x.GroupName))}";
+        //            break;
+        //    }
+        //}
     }
 }
