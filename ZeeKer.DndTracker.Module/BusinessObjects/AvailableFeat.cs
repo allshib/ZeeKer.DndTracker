@@ -14,6 +14,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using ZeeKer.DndTracker.Module.BusinessObjects.NonPersistent;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
@@ -46,6 +47,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [XafDisplayName("Уровень присвоения")]
         public virtual int LevelAdded { get; set; }
+
+        [XafDisplayName("Примененные бонусы")]
+        public virtual AvailableFeatJson SelectedBonuses { get; set; }
 
     }
 }

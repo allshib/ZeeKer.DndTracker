@@ -12,6 +12,10 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using IConfiguration = Microsoft.Extensions.Configuration.IConfiguration;
 using System.Reflection.Emit;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using ZeeKer.DndTracker.Module.BusinessObjects.NonPersistent;
+
 namespace ZeeKer.DndTracker.Module.BusinessObjects;
 
 // This code allows our Model Editor to get relevant EF Core metadata at design time.
@@ -237,6 +241,17 @@ public class DndTrackerEFCoreDbContext : DbContext {
             .HasMany(g => g.AvailableFeats)
             .WithOne(sb => sb.Character)
             .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<AvailableFeat>()
+            .Property(f=>f.SelectedBonuses)
+            .HasConversion(
+                v => JsonSerializer
+                    .Serialize(v, new JsonSerializerOptions
+                        { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull }),
+                v => JsonSerializer
+                    .Deserialize<AvailableFeatJson>(v, new JsonSerializerOptions
+                        { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull })
+            );
 
         base.OnModelCreating(modelBuilder);
     }
