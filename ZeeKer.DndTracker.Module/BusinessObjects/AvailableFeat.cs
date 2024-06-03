@@ -43,5 +43,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Описание"), StringLength(1500)]
         public virtual string Description { get; set; }
 
+
+        [XafDisplayName("Уровень присвоения")]
+        public virtual int LevelAdded { get; set; }
+
     }
 }

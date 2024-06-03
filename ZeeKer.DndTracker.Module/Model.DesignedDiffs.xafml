@@ -140,6 +140,11 @@
       </OwnMembers>
     </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.WeaponItem" ImageName="Sword" />
+    <Class Name="ZeeKer.DndTracker.Module.UseCases.SelectFeatUseCase.SelectFeatViewModel">
+      <OwnMembers>
+        <Member Name="Feat" DataSourceProperty="Feats" />
+      </OwnMembers>
+    </Class>
   </BOModel>
   <NavigationItems StartupNavigationItem="MyCharacter_ListView">
     <Items>
@@ -342,6 +347,15 @@
         <ColumnInfo Id="ID" Index="-1" />
         <ColumnInfo Id="Name" Index="0" />
         <ColumnInfo Id="GameMaster" Index="1" />
+      </Columns>
+    </ListView>
+    <ListView Id="Character_AvailableFeats_ListView" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="Character" Index="-1" />
+        <ColumnInfo Id="Description" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="Name" Index="0" />
+        <ColumnInfo Id="LevelAdded" Index="1" />
       </Columns>
     </ListView>
     <DetailView Id="Character_DetailView" FreezeLayout="True">
@@ -1020,6 +1034,18 @@
               <LayoutItem Id="IsInplaceReport" Index="3" ViewItem="IsInplaceReport" />
             </LayoutGroup>
           </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="SelectFeatViewModel_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="SelectFeatViewModel" RelativeSize="100">
+              <LayoutItem Id="Feat" RelativeSize="100" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Feats_Group" Removed="True" />
         </LayoutGroup>
       </Layout>
     </DetailView>

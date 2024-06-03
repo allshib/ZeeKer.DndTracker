@@ -15,10 +15,10 @@ namespace ZeeKer.DndTracker.Module.Extensions
 
         public static IObjectSpace GetObjectSpace(this BaseObject baseObject)
         {
-            var type = typeof(BaseObject);
+            var type = typeof(IObjectSpaceLink);
 
             var property = type
-                .GetProperty("ObjectSpace", BindingFlags.NonPublic | BindingFlags.Instance);
+                .GetProperty("ObjectSpace");
 
             if(property is not null )
                 return property.GetValue(baseObject) as IObjectSpace;
