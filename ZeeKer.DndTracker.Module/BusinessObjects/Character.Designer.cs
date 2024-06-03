@@ -88,6 +88,12 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         #endregion
 
+        #region Feats
+        [Aggregated, XafDisplayName("Активные черты")]
+        public virtual IList<AvailableFeat> AvailableFeats { get; set; } = new ObservableCollection<AvailableFeat>();
+
+        #endregion
+
         #region Health
         [XafDisplayName("КЗ")]
         public virtual int Armor { get; set; }

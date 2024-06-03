@@ -471,10 +471,13 @@
                     <LayoutItem Id="MaxSettingCount" ViewItem="MaxSettingCount" Index="4" RelativeSize="4.247787610619469" IsNewNode="True" />
                     <LayoutItem Id="EnabledSettingCount" ViewItem="EnabledSettingCount" Index="5" RelativeSize="77.34513274336283" IsNewNode="True" />
                   </LayoutGroup>
-                  <LayoutGroup Id="NotesGroup" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="3" RelativeSize="100" ImageName="textAlignment1" IsNewNode="True">
+                  <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="3" RelativeSize="100" IsNewNode="True">
+                    <LayoutItem Id="AvailableFeats" ViewItem="AvailableFeats" Index="0" RelativeSize="100" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="NotesGroup" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="4" RelativeSize="100" ImageName="textAlignment1" IsNewNode="True">
                     <LayoutItem Id="Info.Notes" ViewItem="Info.Notes" Index="0" RelativeSize="100" CaptionLocation="Top" ShowCaption="False" IsNewNode="True" />
                   </LayoutGroup>
-                  <LayoutGroup Id="About" ShowCaption="True" CaptionLocation="Top" Index="4" RelativeSize="100" ImageName="BO_Note" IsNewNode="True">
+                  <LayoutGroup Id="About" ShowCaption="True" CaptionLocation="Top" Index="5" RelativeSize="100" ImageName="BO_Note" IsNewNode="True">
                     <LayoutItem Id="Info.Aligment" ViewItem="Info.Aligment" CaptionLocation="Top" Index="0" RelativeSize="8.495575221238939" IsNewNode="True" />
                     <LayoutGroup Id="Auto8ab736c5-b9a3-406a-a204-5a3ee18a7d70" ShowCaption="False" Direction="Vertical" Index="1" RelativeSize="31.504424778761063" IsNewNode="True">
                       <LayoutItem Id="Languages" ViewItem="Languages" Index="0" RelativeSize="25.84269662921348" CaptionLocation="Top" IsNewNode="True" />
@@ -490,13 +493,13 @@
                         </LayoutGroup>
                       </LayoutGroup>
                     </LayoutGroup>
-                    <LayoutItem Id="Info.Background" ViewItem="Info.Background" CaptionLocation="Top" Index="2" RelativeSize="14.513274336283185" IsNewNode="True" />
-                    <LayoutItem Id="Info.Personality" ViewItem="Info.Personality" CaptionLocation="Top" Index="3" RelativeSize="14.513274336283185" IsNewNode="True" />
-                    <LayoutItem Id="Info.Ideals" ViewItem="Info.Ideals" CaptionLocation="Top" Index="4" RelativeSize="14.867256637168142" IsNewNode="True" />
+                    <LayoutItem Id="Info.Background" ViewItem="Info.Background" CaptionLocation="Top" Index="2" RelativeSize="15.044247787610619" IsNewNode="True" />
+                    <LayoutItem Id="Info.Personality" ViewItem="Info.Personality" CaptionLocation="Top" Index="3" RelativeSize="15.044247787610619" IsNewNode="True" />
+                    <LayoutItem Id="Info.Ideals" ViewItem="Info.Ideals" CaptionLocation="Top" Index="4" RelativeSize="15.575221238938052" IsNewNode="True" />
                     <LayoutItem Id="Info.Flaws" ViewItem="Info.Flaws" CaptionLocation="Top" Index="5" RelativeSize="12.56637168141593" IsNewNode="True" />
-                    <LayoutItem Id="Item11" Index="6" RelativeSize="3.5398230088495577" IsNewNode="True" />
+                    <LayoutItem Id="Item11" Index="6" RelativeSize="1.7699115044247788" IsNewNode="True" />
                   </LayoutGroup>
-                  <LayoutGroup Id="Additional" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="5" RelativeSize="100" ImageName="Action_CreateDashboard" IsNewNode="True">
+                  <LayoutGroup Id="Additional" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="6" RelativeSize="100" ImageName="Action_CreateDashboard" IsNewNode="True">
                     <LayoutGroup Id="Auto608fd3c9-8619-46e5-b138-ba85d4b6f5fa" ShowCaption="False" Index="0" RelativeSize="51.630434782608695" IsNewNode="True">
                       <LayoutItem Id="Campain" ViewItem="Campain" Index="0" RelativeSize="5.663716814159292" IsNewNode="True" />
                       <LayoutItem Id="Person" ViewItem="Person" Index="1" RelativeSize="4.247787610619469" IsNewNode="True" />
