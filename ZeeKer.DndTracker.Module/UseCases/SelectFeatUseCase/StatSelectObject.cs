@@ -9,79 +9,61 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Security.AccessControl;
 using System.Text;
-using ZeeKer.DndTracker.Module.BusinessObjects;
-using ZeeKer.DndTracker.Module.Extensions;
+using ZeeKer.DndTracker.Module.Types;
 
 namespace ZeeKer.DndTracker.Module.UseCases.SelectFeatUseCase
 {
     [DomainComponent]
-    public class SelectFeatViewModel : IXafEntityObject, INotifyPropertyChanged, IObjectSpaceLink
+    [XafDisplayName("Выбор бонуса характеристик")]
+    public class StatSelectObject : IXafEntityObject/*, IObjectSpaceLink*/, INotifyPropertyChanged
     {
-        private IObjectSpace objectSpace;
+        //private IObjectSpace objectSpace;
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public SelectFeatViewModel()
+        public StatSelectObject()
         {
             Oid = Guid.NewGuid();
         }
-
-        
 
         [DevExpress.ExpressApp.Data.Key]
         [Browsable(false)]
         public Guid Oid { get; set; }
 
-        private Feat feat;
-        [XafDisplayName("Черта")]
-        [RuleRequiredField(DefaultContexts.Save)]
-        public Feat Feat
+        private int bonus;
+        [XafDisplayName("Бонус")]
+        public int Bonus
         {
-            get { return feat; }
+            get { return bonus; }
             set
             {
-                if (feat != value)
+                if (bonus != value)
                 {
-                    feat = value;
+                    bonus = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        
+
+        private StatBonusType bonusType;
+        [XafDisplayName("Тип бонуса")]
+        public StatBonusType BonusType
+        {
+            get { return bonusType; }
+            set
+            {
+                if (bonusType != value)
+                {
+                    bonusType = value;
                     OnPropertyChanged();
                 }
             }
         }
 
-        [XafDisplayName("Описание")]
-        public string Description => Feat?.Description;
 
-        public IEnumerable<Feat> Feats { get; set; }
-
-        public List<StatSelectObject> StatSelectObjects { get; set; } = new List<StatSelectObject>();
-
-
-        [XafDisplayName("Бонус характеристик")]
-        public StatBonus StatBonus => Feat is not null && Feat.Bonuses.Any(x=>x.Bonus?.Type == Types.BonusType.Stat)
-            ? Feat.Bonuses.Select(b=>b.Bonus).FirstOrDefault(x=>x.Type == Types.BonusType.Stat) as StatBonus
-            : null;
-
-
-        private StatBonusGroup statBonusGroup;
-        [XafDisplayName("Группа бонусов характеристик")]
-        public  StatBonusGroup StattBonusGroup
-        {
-            get { return statBonusGroup; }
-            set
-            {
-                if (statBonusGroup != value)
-                {
-                    statBonusGroup = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        [XafDisplayName("Список групп характеристик")]
-        public IEnumerable<StatBonusGroup> GroupsList => StatBonus?.BonusGroups;
         #region IXafEntityObject
         void IXafEntityObject.OnCreated()
         {
@@ -100,17 +82,16 @@ namespace ZeeKer.DndTracker.Module.UseCases.SelectFeatUseCase
         #endregion
 
         #region IObjectSpaceLink members
-       
-        IObjectSpace IObjectSpaceLink.ObjectSpace
-        {
-            get { return objectSpace; }
-            set { objectSpace = value; }
-        }
+        // If you implement this interface, handle the NonPersistentObjectSpace.ObjectGetting event and find or create a copy of the source object in the current Object Space.
+        // Use the Object Space to access other entities (see https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113707.aspx).
+        //IObjectSpace IObjectSpaceLink.ObjectSpace {
+        //    get { return objectSpace; }
+        //    set { objectSpace = value; }
+        //}
         #endregion
 
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         #endregion
-
     }
 }

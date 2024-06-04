@@ -28,5 +28,18 @@ namespace ZeeKer.DndTracker.Module.Extensions
             feat.Character = null;
             feat.Delete();
         }
+
+        public static void EnableBonusesFromJson(this AvailableFeat aFeat)
+        {
+            if (aFeat.SelectedBonuses?.StatBonus is not null)
+            {
+                aFeat.Character.Stats.Strength += aFeat.SelectedBonuses.StatBonus.Strength;
+                aFeat.Character.Stats.Dexterity += aFeat.SelectedBonuses.StatBonus.Dexterity;
+                aFeat.Character.Stats.Constitution += aFeat.SelectedBonuses.StatBonus.Constitution;
+                aFeat.Character.Stats.Intelegence += aFeat.SelectedBonuses.StatBonus.Intelligence;
+                aFeat.Character.Stats.Wisdom += aFeat.SelectedBonuses.StatBonus.Wisdom;
+                aFeat.Character.Stats.Charisma += aFeat.SelectedBonuses.StatBonus.Charisma;
+            }
+        }
     }
 }

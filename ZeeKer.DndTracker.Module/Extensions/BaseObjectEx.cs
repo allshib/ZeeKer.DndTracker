@@ -33,5 +33,12 @@ namespace ZeeKer.DndTracker.Module.Extensions
 
             os.Delete(baseObject);
         }
+
+        public static void Reload(this BaseObject baseObject)
+        {
+            var os = GetObjectSpace(baseObject);
+
+            os.ReloadObject(baseObject);
+        }
     }
 }

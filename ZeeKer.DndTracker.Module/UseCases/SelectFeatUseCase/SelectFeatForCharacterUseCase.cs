@@ -23,18 +23,21 @@ namespace ZeeKer.DndTracker.Module.UseCases.SelectFeatUseCase
         public void Execute(Character character)
         {
             var characterObjectSpace = character.GetObjectSpace();
-            var entity = new SelectFeatViewModel(characterObjectSpace.GetObjects<Feat>());
             var os = application.CreateObjectSpace(typeof(SelectFeatViewModel));
+            var entity = os.CreateObject<SelectFeatViewModel>();
+            entity.Feats = characterObjectSpace.GetObjects<Feat>();
+            
             var dv = CreateDetailView(entity, os);
 
-            this.OpenDetailView(dv, () => {
+            this.OpenDetailView(dv, () =>
+            {
 
                 if (entity.Feat is null || character.AvailableFeats.Any(x => x.FeatId == entity.Feat.ID))
                 {
                     dv.Close();
                     return;
                 }
-                    
+
 
 
 
@@ -46,56 +49,107 @@ namespace ZeeKer.DndTracker.Module.UseCases.SelectFeatUseCase
                 feat.LevelAdded = character.Level;
 
                 if (entity.Feat.Bonuses.Any())
-                    EnableBonuses(entity.Feat, feat);
+                    EnableStatBonuses(entity, feat);
 
-                
+
                 //characterObjectSpace.CommitChanges();
 
-                
+
             });
 
         }
 
-        private void EnableBonuses(Feat feat, AvailableFeat aFeat)
+        private void EnableStatBonuses(SelectFeatViewModel viewModel, AvailableFeat aFeat)
         {
-            if(feat.Bonuses.Where(x=>x.Bonus?.Type == BonusType.Stat).Any())
+            if (viewModel.StatBonus is null)
+                return;
+
+            if (viewModel.StattBonusGroup is null)
             {
-                var statBonusonus = feat.Bonuses.First(b => b.Bonus.Type == BonusType.Stat).Bonus as StatBonus;
-
-                if (statBonusonus.BonusGroups.Count() == 1)
-                {
-                    var statsBonusList = statBonusonus.BonusGroups.First().StatBonuses;
-
-                    if (statsBonusList.Where(b => b.BonusType == StatBonusType.Any).Any() == false)
-                    {
-                        aFeat.SelectedBonuses = new AvailableFeatJson
-                        {
-                            StatBonus = new StatBonusJson
-                            {
-                                Strength = statsBonusList.Where(b => b.BonusType == StatBonusType.Strength).Sum(b => b.StatBonus),
-                                Dexterity = statsBonusList.Where(b => b.BonusType == StatBonusType.Dexterity).Sum(b => b.StatBonus),
-                                Constitution = statsBonusList.Where(b => b.BonusType == StatBonusType.Constitution).Sum(b => b.StatBonus),
-                                Intelligence = statsBonusList.Where(b => b.BonusType == StatBonusType.Intelligence).Sum(b => b.StatBonus),
-                                Wisdom = statsBonusList.Where(b => b.BonusType == StatBonusType.Wisdom).Sum(b => b.StatBonus),
-                                Charisma = statsBonusList.Where(b => b.BonusType == StatBonusType.Charisma).Sum(b => b.StatBonus)
-                            }
-
-
-                        };
-                    }
-                }
-
-
-                if(aFeat.SelectedBonuses?.StatBonus is not null)
-                {
-                    aFeat.Character.Stats.Strength += aFeat.SelectedBonuses.StatBonus.Strength;
-                    aFeat.Character.Stats.Dexterity += aFeat.SelectedBonuses.StatBonus.Dexterity;
-                    aFeat.Character.Stats.Constitution += aFeat.SelectedBonuses.StatBonus.Constitution;
-                    aFeat.Character.Stats.Intelegence += aFeat.SelectedBonuses.StatBonus.Intelligence;
-                    aFeat.Character.Stats.Wisdom += aFeat.SelectedBonuses.StatBonus.Wisdom;
-                    aFeat.Character.Stats.Charisma += aFeat.SelectedBonuses.StatBonus.Charisma;
-                }
+                aFeat.Delete();
+                throw new UserFriendlyException("Не выбрана группа бонусов характеристик");
             }
+
+            FillStatBonusJson(viewModel, aFeat);
+
+            aFeat.EnableBonusesFromJson();
+        }
+
+        private void FillStatBonusJson(SelectFeatViewModel viewModel, AvailableFeat aFeat)
+        {
+            var statBonus = viewModel.Feat.Bonuses
+                .First(b => b.Bonus.Type == BonusType.Stat).Bonus as StatBonus;
+
+            var selectedBonuses = viewModel.StatSelectObjects;
+
+            if (selectedBonuses.Any(x => x.BonusType == StatBonusType.Any))
+            {
+                aFeat.Delete();
+                throw new UserFriendlyException("Не выбран бонус");
+            }
+
+            
+            FillSimpleVariant(statBonus, aFeat, selectedBonuses);
+            
+
+        }
+
+        private void FillSimpleVariant(StatBonus statBonusonus, AvailableFeat aFeat, List<StatSelectObject> selectStats)
+        {
+            var statsBonusList = statBonusonus.BonusGroups.First().StatBonuses;
+
+
+            aFeat.SelectedBonuses = new AvailableFeatJson
+            {
+                StatBonus = new StatBonusJson
+                {
+                    Strength = 
+                        statsBonusList
+                            .Where(b => b.BonusType == StatBonusType.Strength)
+                            .Sum(b => b.StatBonus) + 
+                        selectStats
+                            .Where(b=>b.BonusType == StatBonusType.Strength)
+                            .Sum(b=>b.Bonus),
+                    Dexterity = 
+                        statsBonusList
+                            .Where(b => b.BonusType == StatBonusType.Dexterity)
+                            .Sum(b => b.StatBonus) +
+                        selectStats
+                            .Where(b => b.BonusType == StatBonusType.Dexterity)
+                            .Sum(b => b.Bonus),
+                    Constitution =
+                        statsBonusList
+                            .Where(b => b.BonusType == StatBonusType.Constitution)
+                            .Sum(b => b.StatBonus) +
+                        selectStats
+                            .Where(b => b.BonusType == StatBonusType.Constitution)
+                            .Sum(b => b.Bonus),
+                    Intelligence =
+                        statsBonusList
+                            .Where(b => b.BonusType == StatBonusType.Intelligence)
+                            .Sum(b => b.StatBonus) +
+                        selectStats
+                            .Where(b => b.BonusType == StatBonusType.Intelligence)
+                            .Sum(b => b.Bonus),
+                    Wisdom =
+                        statsBonusList
+                            .Where(b => b.BonusType == StatBonusType.Wisdom)
+                            .Sum(b => b.StatBonus) +
+                        selectStats
+                            .Where(b => b.BonusType == StatBonusType.Wisdom)
+                            .Sum(b => b.Bonus),
+                    Charisma =
+                        statsBonusList
+                            .Where(b => b.BonusType == StatBonusType.Charisma)
+                            .Sum(b => b.StatBonus) +
+                        selectStats
+                            .Where(b => b.BonusType == StatBonusType.Charisma)
+                            .Sum(b => b.Bonus)
+                }
+
+
+            };
+            
         }
     }
 }
