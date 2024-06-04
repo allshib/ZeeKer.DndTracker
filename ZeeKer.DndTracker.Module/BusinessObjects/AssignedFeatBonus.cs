@@ -1,4 +1,4 @@
-using DevExpress.Data.Filtering;
+п»їusing DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
@@ -16,7 +16,7 @@ using System.Text;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
-    [XafDisplayName("Назначенный бонус черты")]
+    [XafDisplayName("РќР°Р·РЅР°С‡РµРЅРЅС‹Р№ Р±РѕРЅСѓСЃ С‡РµСЂС‚С‹")]
     [XafDefaultProperty(nameof(Bonus))]
     public class AssignedFeatBonus : BaseObject
     {
@@ -30,7 +30,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
 
         [ForeignKey(nameof(FeatId))]
-        [XafDisplayName("Черта")]
+        [XafDisplayName("Р§РµСЂС‚Р°")]
         public virtual Feat Feat { get; set; }
 
         [Browsable(false)]
@@ -38,7 +38,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
 
         [ForeignKey(nameof(BonusId))]
-        [XafDisplayName("Бонус")]
+        [XafDisplayName("Р‘РѕРЅСѓСЃ")]
         public virtual BonusBase Bonus { get; set; }
 
         public override void OnSaving()

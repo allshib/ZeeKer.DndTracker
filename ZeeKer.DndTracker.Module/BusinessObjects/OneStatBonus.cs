@@ -1,4 +1,4 @@
-using DevExpress.Data.Filtering;
+п»їusing DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
@@ -18,7 +18,7 @@ using ZeeKer.DndTracker.Module.Types;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
-    [XafDisplayName("Бонус характеристики")]
+    [XafDisplayName("Р‘РѕРЅСѓСЃ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё")]
     [XafDefaultProperty(nameof(DefaultProperty))]
     public class OneStatBonus : BaseObject
     {
@@ -28,20 +28,20 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             // this.AssociatedEntities = new ObservableCollection<AssociatedEntityObject>();
         }
 
-        [XafDisplayName("Характеристика")]
+        [XafDisplayName("РҐР°СЂР°РєС‚РµСЂРёСЃС‚РёРєР°")]
         public virtual string DefaultProperty => $"{CaptionHelper.GetDisplayText(BonusType)} {(StatBonus > 0 ? "+" : "")}{StatBonus}";
 
 
-        [XafDisplayName("Бонус")]
+        [XafDisplayName("Р‘РѕРЅСѓСЃ")]
         public virtual int StatBonus { get; set; }
 
-        [XafDisplayName("Тип характеристики")]
+        [XafDisplayName("РўРёРї С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё")]
         public virtual StatBonusType BonusType { get; set; }
 
         [Browsable(false)]
         public virtual Guid? StatBonusGroupId { get; set; }
 
-        [ForeignKey(nameof(StatBonusGroupId)), XafDisplayName("Группа")]
+        [ForeignKey(nameof(StatBonusGroupId)), XafDisplayName("Р“СЂСѓРїРїР°")]
         public virtual StatBonusGroup Group { get; set; }
 
         //protected override void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -54,7 +54,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         //        case nameof(BonusType):
         //        case nameof(StatBonus):
         //            if (Group?.Bonus is not null)
-        //                Group.Bonus.Name = $"{String.Join("или ", Group.Bonus.BonusGroups.Select(x => x.GroupName))}";
+        //                Group.Bonus.Name = $"{String.Join("РёР»Рё ", Group.Bonus.BonusGroups.Select(x => x.GroupName))}";
         //            break;
         //    }
         //}

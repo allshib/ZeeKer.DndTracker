@@ -1,4 +1,4 @@
-using DevExpress.Data.Filtering;
+п»їusing DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Editors;
@@ -19,7 +19,7 @@ using System.Text;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
-    [XafDisplayName("Черта")]
+    [XafDisplayName("Р§РµСЂС‚Р°")]
     [XafDefaultProperty(nameof(Name))]
     public class Feat : BaseObject
     {
@@ -29,25 +29,25 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             // this.AssociatedEntities = new ObservableCollection<AssociatedEntityObject>();
         }
         [StringLength(100)]
-        [XafDisplayName("Название")]
+        [XafDisplayName("РќР°Р·РІР°РЅРёРµ")]
         public virtual string Name { get; set; }
 
         [StringLength(1500)]
-        [XafDisplayName("Описание")]
+        [XafDisplayName("РћРїРёСЃР°РЅРёРµ")]
         public virtual string Description { get; set; }
 
         [Browsable(false), NotMapped]
         public virtual Type CharacterType => typeof(Character);
 
         [StringLength(700)]
-        [XafDisplayName("Условие"), CriteriaOptions(nameof(CharacterType))]
+        [XafDisplayName("РЈСЃР»РѕРІРёРµ"), CriteriaOptions(nameof(CharacterType))]
         [EditorAlias(EditorAliases.PopupCriteriaPropertyEditor)]
         public virtual string Condition { get; set; }
 
-        [XafDisplayName("Текст условия"),StringLength(300)]
+        [XafDisplayName("РўРµРєСЃС‚ СѓСЃР»РѕРІРёСЏ"),StringLength(300)]
         public virtual string ConditionText { get; set; }
 
-        [XafDisplayName("Бонусы"), Aggregated]
+        [XafDisplayName("Р‘РѕРЅСѓСЃС‹"), Aggregated]
         public virtual IList<AssignedFeatBonus> Bonuses { get; set; } = new ObservableCollection<AssignedFeatBonus>();
     }
 }

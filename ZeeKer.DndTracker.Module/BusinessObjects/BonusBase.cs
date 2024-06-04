@@ -1,4 +1,4 @@
-using DevExpress.Data.Filtering;
+п»їusing DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
@@ -17,7 +17,7 @@ using ZeeKer.DndTracker.Module.Types;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
-    [XafDisplayName("Бонус")]
+    [XafDisplayName("Р‘РѕРЅСѓСЃ")]
     [XafDefaultProperty(nameof(Name))]
     public abstract class BonusBase : BaseObject
     {
@@ -27,10 +27,10 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         }
 
         [StringLength(100)]
-        [XafDisplayName("Название")]
+        [XafDisplayName("РќР°Р·РІР°РЅРёРµ")]
         public virtual string Name { get; set; }
 
-        [XafDisplayName("Тип")]
+        [XafDisplayName("РўРёРї")]
         public virtual BonusType Type { get; set; }
     }
 }

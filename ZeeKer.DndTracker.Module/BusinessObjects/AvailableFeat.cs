@@ -1,4 +1,4 @@
-using DevExpress.Data.Filtering;
+п»їusing DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
@@ -20,7 +20,7 @@ using ZeeKer.DndTracker.Module.Extensions;
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
 
-    [XafDisplayName("Доступная черта")]
+    [XafDisplayName("Р”РѕСЃС‚СѓРїРЅР°СЏ С‡РµСЂС‚Р°")]
     [XafDefaultProperty(nameof(Name))]
     public class AvailableFeat : BaseObject
     {
@@ -35,25 +35,25 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [Browsable(false)]
         public virtual Guid? CharacterId { get; set; }
 
-        [ForeignKey(nameof(CharacterId)), XafDisplayName("Персонаж")]
+        [ForeignKey(nameof(CharacterId)), XafDisplayName("РџРµСЂСЃРѕРЅР°Р¶")]
         public virtual Character Character { get; set; }
 
 
-        [XafDisplayName("Название"), StringLength(100)]
+        [XafDisplayName("РќР°Р·РІР°РЅРёРµ"), StringLength(100)]
         public virtual string Name { get; set; }
 
-        [XafDisplayName("Описание"), StringLength(1500)]
+        [XafDisplayName("РћРїРёСЃР°РЅРёРµ"), StringLength(1500)]
         public virtual string Description { get; set; }
 
 
-        [XafDisplayName("Уровень присвоения")]
+        [XafDisplayName("РЈСЂРѕРІРµРЅСЊ РїСЂРёСЃРІРѕРµРЅРёСЏ")]
         public virtual int LevelAdded { get; set; }
 
-        [XafDisplayName("Примененные бонусы")]
+        [XafDisplayName("РџСЂРёРјРµРЅРµРЅРЅС‹Рµ Р±РѕРЅСѓСЃС‹")]
         public virtual AvailableFeatJson SelectedBonuses { get; set; }
 
 
-        [Action(Caption = "Убрать черту", ConfirmationMessage = "Вы уверены?", SelectionDependencyType = MethodActionSelectionDependencyType.RequireSingleObject)]
+        [Action(Caption = "РЈР±СЂР°С‚СЊ С‡РµСЂС‚Сѓ", ConfirmationMessage = "Р’С‹ СѓРІРµСЂРµРЅС‹?", SelectionDependencyType = MethodActionSelectionDependencyType.RequireSingleObject)]
         public void RollbackFeat()
         {
             this.Rollback();

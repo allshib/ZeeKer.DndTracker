@@ -1,4 +1,4 @@
-using DevExpress.Data.Filtering;
+п»їusing DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
@@ -16,7 +16,7 @@ using System.Text;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
-    [XafDisplayName("Бонус характеристик")]
+    [XafDisplayName("Р‘РѕРЅСѓСЃ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРє")]
     public class StatBonus : BonusBase
     {
         public StatBonus()
@@ -26,10 +26,10 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         }
 
         [NotMapped]
-        public override string Name => $"{String.Join(" или ", BonusGroups.Select(x => x.GroupName))}";
+        public override string Name => $"{String.Join(" РёР»Рё ", BonusGroups.Select(x => x.GroupName))}";
 
 
-        [XafDisplayName("Группы бонусов"), Aggregated]
+        [XafDisplayName("Р“СЂСѓРїРїС‹ Р±РѕРЅСѓСЃРѕРІ"), Aggregated]
         public virtual IList<StatBonusGroup> BonusGroups { get; set; } = new ObservableCollection<StatBonusGroup>();
         public override void OnCreated()
         {

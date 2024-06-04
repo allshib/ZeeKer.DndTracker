@@ -1,4 +1,4 @@
-using DevExpress.Data.Filtering;
+п»їusing DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
@@ -17,7 +17,7 @@ using System.Text;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
-    [XafDisplayName("Группа бонусов")]
+    [XafDisplayName("Р“СЂСѓРїРїР° Р±РѕРЅСѓСЃРѕРІ")]
     [XafDefaultProperty(nameof(GroupName))]
     public class StatBonusGroup : BaseObject
     {
@@ -26,17 +26,17 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             // In the constructor, initialize collection properties, e.g.: 
             // this.AssociatedEntities = new ObservableCollection<AssociatedEntityObject>();
         }
-        [StringLength(100), XafDisplayName("Наименование группы"), NotMapped]
+        [StringLength(100), XafDisplayName("РќР°РёРјРµРЅРѕРІР°РЅРёРµ РіСЂСѓРїРїС‹"), NotMapped]
         public virtual string GroupName => $"{String.Join(", ", StatBonuses.Select(x=>x.DefaultProperty))}";
 
         [Browsable(false)]
         public virtual Guid? StatBonusId {  get; set; }
 
-        [ForeignKey(nameof(StatBonusId)), XafDisplayName("Бонус")]
+        [ForeignKey(nameof(StatBonusId)), XafDisplayName("Р‘РѕРЅСѓСЃ")]
         public virtual StatBonus Bonus { get; set; }
 
 
-        [XafDisplayName("Бонусы характеристик группы"), Aggregated]
+        [XafDisplayName("Р‘РѕРЅСѓСЃС‹ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРє РіСЂСѓРїРїС‹"), Aggregated]
         public virtual IList<OneStatBonus> StatBonuses { get; set; } = new ObservableCollection<OneStatBonus>();
 
         public override void OnSaving()
@@ -44,7 +44,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             base.OnSaving();
 
             if(Bonus is not null)
-                Bonus.Name = $"{String.Join("или ", Bonus.BonusGroups.Select(x=>x.GroupName))}";
+                Bonus.Name = $"{String.Join("РёР»Рё ", Bonus.BonusGroups.Select(x=>x.GroupName))}";
         }
 
         //protected override void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -55,7 +55,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         //    {
         //        case nameof(StatBonuses):
         //            if (Bonus is not null)
-        //                Bonus.Name = $"{String.Join("или ", Bonus.BonusGroups.Select(x => x.GroupName))}";
+        //                Bonus.Name = $"{String.Join("РёР»Рё ", Bonus.BonusGroups.Select(x => x.GroupName))}";
         //            break;
         //    }
         //}
