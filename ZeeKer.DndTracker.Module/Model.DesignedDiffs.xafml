@@ -12,6 +12,7 @@
   <BOModel>
     <Class Name="DevExpress.Persistent.BaseImpl.EF.PermissionPolicy.PermissionPolicyUser" Caption="Base User" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.ArmorItem" ImageName="Armor" />
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.AssignedFeatBonus" ImageName="Skill" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.AssignedItem">
       <AppearanceRules>
         <AppearanceRule Id="BlueSetting" BackColor="192, 255, 255" TargetItems="*" Criteria="[SettingOnThis] = True" IsNewNode="True" />
@@ -22,7 +23,7 @@
         <Member Name="Item" LookupEditorMode="AllItemsWithSearch" />
       </OwnMembers>
     </Class>
-    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.AssignedProfiency">
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.AssignedProfiency" ImageName="Profiency">
       <AppearanceRules>
         <AppearanceRule Id="HideItem" TargetItems="Item" Visibility="Hide" Criteria="[Profiency.NeedSelectObject] = False Or [Profiency] Is Null" IsNewNode="True" />
       </AppearanceRules>
@@ -30,6 +31,7 @@
         <Member Name="Item" DataSourceCriteriaProperty="" DataSourceProperty="Profiency.Items" />
       </OwnMembers>
     </Class>
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.AvailableFeat" ImageName="Skill" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Campain" ImageName="Adventure" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Character" ImageName="Medusa">
       <AppearanceRules>
@@ -66,6 +68,7 @@
         <Member Name="ItemsString" RowCount="5" />
       </OwnMembers>
     </Class>
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Feat" ImageName="Skill" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Item" ImageName="Box">
       <OwnMembers>
         <Member Name="Description" RowCount="6" />
@@ -83,6 +86,7 @@
       </AppearanceRules>
     </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Person" ImageName="BO_Position_v92" />
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Profiency" ImageName="Profiency" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.ShieldItem" ImageName="Shield" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.SkillDetail">
       <AppearanceRules>
@@ -131,6 +135,11 @@
         <Member Name="Feat" DataSourceProperty="Feats" />
         <Member Name="Oid" DataSourceProperty="GroupsList" />
         <Member Name="StattBonusGroup" DataSourceProperty="GroupsList" />
+      </OwnMembers>
+    </Class>
+    <Class Name="ZeeKer.DndTracker.Module.UseCases.SelectFeatUseCase.StatSelectObject">
+      <OwnMembers>
+        <Member Name="Bonus" AllowEdit="False" />
       </OwnMembers>
     </Class>
   </BOModel>
@@ -1044,7 +1053,7 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="SelectFeatViewModel_StatSelectObjects_ListView" AllowEdit="True" AllowDelete="False" AllowLink="False" AllowNew="False" AllowUnlink="False">
+    <ListView Id="SelectFeatViewModel_StatSelectObjects_ListView" AllowEdit="True" AllowDelete="False" AllowLink="False" AllowNew="False" AllowUnlink="False" MasterDetailView="" DetailViewID="">
       <Columns>
         <ColumnInfo Id="Bonus" AllowEdit="False" />
       </Columns>

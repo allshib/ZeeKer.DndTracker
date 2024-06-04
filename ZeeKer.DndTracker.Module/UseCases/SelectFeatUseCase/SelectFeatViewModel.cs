@@ -17,6 +17,7 @@ using ZeeKer.DndTracker.Module.Extensions;
 namespace ZeeKer.DndTracker.Module.UseCases.SelectFeatUseCase
 {
     [DomainComponent]
+    [XafDisplayName("Выбор черты")]
     public class SelectFeatViewModel : IXafEntityObject, INotifyPropertyChanged, IObjectSpaceLink
     {
         private IObjectSpace objectSpace;

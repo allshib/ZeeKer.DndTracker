@@ -34,24 +34,24 @@ namespace ZeeKer.DndTracker.Module.Controllers
             TargetObjectType = typeof(Character);
 
             #region InitActions
-            CreateSimpleAction("+1з", "AddOneGold", ActionCategories.AddGoldCategory, AddGold1Gold_Execute);
-            CreateSimpleAction("+10з", "AddTenGold", ActionCategories.AddGoldCategory, AddGold10Gold_Execute);
-            CreateSimpleAction("+50з", "Add50Gold", ActionCategories.AddGoldCategory, AddGold50Gold_Execute);
-            CreateSimpleAction("+100з", "Add100Gold", ActionCategories.AddGoldCategory, AddGold100Gold_Execute);
-            CreateSimpleAction("+250з", "Add250Gold", ActionCategories.AddGoldCategory, AddGold250Gold_Execute);
-            CreateSimpleAction("+500з", "Add500Gold", ActionCategories.AddGoldCategory, AddGold500Gold_Execute);
+            CreateSimpleAction("AddOneGold", "+1з",  ActionCategories.AddGoldCategory, AddGold1Gold_Execute);
+            CreateSimpleAction("AddTenGold", "+10з",  ActionCategories.AddGoldCategory, AddGold10Gold_Execute);
+            CreateSimpleAction("Add50Gold", "+50з", ActionCategories.AddGoldCategory, AddGold50Gold_Execute);
+            CreateSimpleAction("Add100Gold", "+100з", ActionCategories.AddGoldCategory, AddGold100Gold_Execute);
+            CreateSimpleAction("Add250Gold", "+250з", ActionCategories.AddGoldCategory, AddGold250Gold_Execute);
+            CreateSimpleAction("Add500Gold", "+500з", ActionCategories.AddGoldCategory, AddGold500Gold_Execute);
 
-            CreateSimpleAction("-1з", "Remove1Gold", ActionCategories.RemoveGoldCategory, RemoveGold1Gold_Execute);
-            CreateSimpleAction("-2з", "Remove2Gold", ActionCategories.RemoveGoldCategory, RemoveGold2Gold_Execute);
-            CreateSimpleAction("-3з", "Remove3Gold", ActionCategories.RemoveGoldCategory, RemoveGold3Gold_Execute);
-            CreateSimpleAction("-5з", "Remove5Gold", ActionCategories.RemoveGoldCategory, RemoveGold5Gold_Execute);
-            CreateSimpleAction("-10з", "RemoveTenGold", ActionCategories.RemoveGoldCategory, RemoveGold10Gold_Execute);
-            CreateSimpleAction("-100з", "Remove100Gold", ActionCategories.RemoveGoldCategory, RemoveGold100Gold_Execute);
-            CreateSimpleAction("-250з", "Remove250Gold", ActionCategories.RemoveGoldCategory, RemoveGold250Gold_Execute);
-            CreateSimpleAction("-500з", "Remove500Gold", ActionCategories.RemoveGoldCategory, RemoveGold500Gold_Execute);
+            CreateSimpleAction("Remove1Gold", "-1з",  ActionCategories.RemoveGoldCategory, RemoveGold1Gold_Execute);
+            CreateSimpleAction("Remove2Gold", "-2з", ActionCategories.RemoveGoldCategory, RemoveGold2Gold_Execute);
+            CreateSimpleAction("Remove3Gold", "-3з", ActionCategories.RemoveGoldCategory, RemoveGold3Gold_Execute);
+            CreateSimpleAction("Remove5Gold", "-5з", ActionCategories.RemoveGoldCategory, RemoveGold5Gold_Execute);
+            CreateSimpleAction("RemoveTenGold", "-10з", ActionCategories.RemoveGoldCategory, RemoveGold10Gold_Execute);
+            CreateSimpleAction("Remove100Gold", "-100з", ActionCategories.RemoveGoldCategory, RemoveGold100Gold_Execute);
+            CreateSimpleAction("Remove250Gold", "-250з", ActionCategories.RemoveGoldCategory, RemoveGold250Gold_Execute);
+            CreateSimpleAction("Remove500Gold", "-500з", ActionCategories.RemoveGoldCategory, RemoveGold500Gold_Execute);
 
-            CreateSimpleAction("Между своими", "SimpleTransferGold", ActionCategories.SimpleTransferGoldCategory, SimpleTransferGold_Execute);
-            CreateSimpleAction("Отправить", "SendGold", ActionCategories.SimpleTransferGoldCategory, SendGold_Execute);
+            CreateSimpleAction("SimpleTransferGold", "Между своими", ActionCategories.SimpleTransferGoldCategory, SimpleTransferGold_Execute);
+            CreateSimpleAction("SendGold", "Отправить", ActionCategories.SimpleTransferGoldCategory, SendGold_Execute);
             #endregion
         }
         #region Events

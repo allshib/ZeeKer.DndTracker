@@ -16,8 +16,10 @@
     <None Remove="Images\Crit.svg" />
     <None Remove="Images\Gamepad.svg" />
     <None Remove="Images\Medusa.svg" />
+    <None Remove="Images\Profiency.svg" />
     <None Remove="Images\ReadMe.txt" />
     <None Remove="Images\Shield.svg" />
+    <None Remove="Images\Skill.svg" />
     <None Remove="Images\Sword.svg" />
     <None Remove="Images\Wizard.svg" />
     <None Remove="Model.DesignedDiffs.Localization.ru-RU.xafml" />
@@ -35,8 +37,10 @@
     <EmbeddedResource Include="Images\Crit.svg" />
     <EmbeddedResource Include="Images\Gamepad.svg" />
     <EmbeddedResource Include="Images\Medusa.svg" />
+    <EmbeddedResource Include="Images\Profiency.svg" />
     <EmbeddedResource Include="Images\ReadMe.txt" />
     <EmbeddedResource Include="Images\Shield.svg" />
+    <EmbeddedResource Include="Images\Skill.svg" />
     <EmbeddedResource Include="Images\Sword.svg" />
     <EmbeddedResource Include="Images\Wizard.svg" />
     <EmbeddedResource Include="Model.DesignedDiffs.Localization.ru-RU.xafml">
