@@ -44,6 +44,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [EditorAlias(EditorAliases.PopupCriteriaPropertyEditor)]
         public virtual string Condition { get; set; }
 
+        [XafDisplayName("Текст условия"),StringLength(300)]
+        public virtual string ConditionText { get; set; }
+
         [XafDisplayName("Бонусы"), Aggregated]
         public virtual IList<AssignedFeatBonus> Bonuses { get; set; } = new ObservableCollection<AssignedFeatBonus>();
     }

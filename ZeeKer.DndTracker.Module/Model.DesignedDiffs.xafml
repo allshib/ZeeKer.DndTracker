@@ -123,11 +123,11 @@
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.WeaponItem" ImageName="Sword" />
     <Class Name="ZeeKer.DndTracker.Module.UseCases.SelectFeatUseCase.SelectFeatViewModel">
       <AppearanceRules>
+        <AppearanceRule Id="HideCondition" TargetItems="Feat.ConditionText" Visibility="Hide" Criteria="IsNullOrEmpty([Feat.ConditionText])" IsNewNode="True" />
         <AppearanceRule Id="HideSelectionStat" Priority="0" TargetItems="StatSelectObjects" Visibility="Hide" Criteria="[StattBonusGroup] Is Null And False = [StattBonusGroup.StatBonuses][[BonusType] = ##Enum#ZeeKer.DndTracker.Module.Types.StatBonusType,Any#]" IsNewNode="True" />
-        <AppearanceRule Id="HideStattBonusGroup" TargetItems="StattBonusGroup" Visibility="Hide" Criteria="[StatBonus] Is Null And [StatBonus.BonusGroups][].Count() = 1" IsNewNode="True" />
+        <AppearanceRule Id="HideStattBonusGroup" TargetItems="StattBonusGroup" Visibility="Hide" Criteria="[StatBonus] Is Null Or [StatBonus.BonusGroups][].Count() = 1" IsNewNode="True" />
       </AppearanceRules>
       <OwnMembers>
-        <Member Name="Description" RowCount="5" />
         <Member Name="Feat" DataSourceProperty="Feats" />
         <Member Name="Oid" DataSourceProperty="GroupsList" />
         <Member Name="StattBonusGroup" DataSourceProperty="GroupsList" />
@@ -1026,14 +1026,19 @@
       </Layout>
     </DetailView>
     <DetailView Id="SelectFeatViewModel_DetailView" EnableLayoutGroupImages="True" FreezeLayout="True">
+      <Items>
+        <PropertyEditor Id="Feat.ConditionText" PropertyName="Feat.ConditionText" IsNewNode="True" />
+        <PropertyEditor Id="Feat.Description" PropertyName="Feat.Description" IsNewNode="True" />
+      </Items>
       <Layout IsNewNode="True" Removed="True">
         <LayoutGroup Id="Main" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
           <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
             <LayoutGroup Id="SelectFeatViewModel" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
-              <LayoutItem Id="Feat" ViewItem="Feat" ShowCaption="" Index="0" RelativeSize="8.23327615780446" CaptionLocation="Top" IsNewNode="True" />
-              <LayoutItem Id="Description" ViewItem="Description" ShowCaption="" Index="1" CaptionLocation="Top" RelativeSize="59.519725557461406" IsNewNode="True" />
-              <LayoutItem Id="StattBonusGroup" ViewItem="StattBonusGroup" Index="2" RelativeSize="6.861063464837049" CaptionLocation="Top" IsNewNode="True" />
-              <LayoutItem Id="StatSelectObjects" ViewItem="StatSelectObjects" Index="3" RelativeSize="25.385934819897084" IsNewNode="True" />
+              <LayoutItem Id="Feat" ViewItem="Feat" ShowCaption="" Index="0" RelativeSize="8.24742268041237" CaptionLocation="Top" IsNewNode="True" />
+              <LayoutItem Id="Feat.ConditionText" ViewItem="Feat.ConditionText" Index="1" RelativeSize="12.027491408934708" CaptionLocation="Top" IsNewNode="True" />
+              <LayoutItem Id="Feat.Description" ViewItem="Feat.Description" Index="2" RelativeSize="12.027491408934708" CaptionLocation="Top" IsNewNode="True" />
+              <LayoutItem Id="StattBonusGroup" ViewItem="StattBonusGroup" Index="3" RelativeSize="6.8728522336769755" CaptionLocation="Top" IsNewNode="True" />
+              <LayoutItem Id="StatSelectObjects" ViewItem="StatSelectObjects" Index="4" RelativeSize="60.824742268041234" IsNewNode="True" />
             </LayoutGroup>
           </LayoutGroup>
         </LayoutGroup>

@@ -51,8 +51,9 @@ namespace ZeeKer.DndTracker.Module.UseCases.SelectFeatUseCase
             }
         }
 
-        [XafDisplayName("Описание")]
-        public string Description => Feat?.Description;
+        //[XafDisplayName("Описание")]
+        //public string Description => Feat?.Description;
+
 
         public IEnumerable<Feat> Feats { get; set; }
 

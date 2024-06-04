@@ -1,6 +1,8 @@
-﻿using DevExpress.ExpressApp;
+﻿using DevExpress.Data.Filtering;
+using DevExpress.ExpressApp;
 using DevExpress.Persistent.BaseImpl.EF;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Remote.Linq.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +41,13 @@ namespace ZeeKer.DndTracker.Module.Extensions
             var os = GetObjectSpace(baseObject);
 
             os.ReloadObject(baseObject);
+        }
+
+        public static bool IsMatchedFor(this BaseObject baseObject, string criteria)
+        {
+            var os = baseObject.GetObjectSpace();
+            var result = os.IsObjectFitForCriteria(baseObject, CriteriaOperator.Parse(criteria));
+            return result?? false;
         }
     }
 }

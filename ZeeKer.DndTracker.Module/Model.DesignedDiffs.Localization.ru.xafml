@@ -182,6 +182,11 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <DetailView Id="SelectFeatViewModel_DetailView">
+      <Items>
+        <PropertyEditor Id="Feat.ConditionText" Caption="Условие" />
+      </Items>
+    </DetailView>
     <DetailView Id="ShieldItem_DetailView">
       <Layout>
         <LayoutGroup Id="Main">

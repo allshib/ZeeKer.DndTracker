@@ -31,14 +31,18 @@ namespace ZeeKer.DndTracker.Module.UseCases.SelectFeatUseCase
 
             this.OpenDetailView(dv, () =>
             {
-
+                
                 if (entity.Feat is null || character.AvailableFeats.Any(x => x.FeatId == entity.Feat.ID))
                 {
                     dv.Close();
                     return;
                 }
 
-
+                if(String.IsNullOrEmpty(entity.Feat.Condition) == false && 
+                character.IsMatchedFor(entity.Feat.Condition) == false)
+                {
+                    throw new UserFriendlyException("Персонаж не соответствует условию черты");
+                }
 
 
                 var feat = characterObjectSpace.CreateObject<AvailableFeat>();
