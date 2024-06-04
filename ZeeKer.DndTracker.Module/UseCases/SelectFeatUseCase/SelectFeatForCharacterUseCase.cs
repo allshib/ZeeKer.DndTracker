@@ -81,8 +81,7 @@ namespace ZeeKer.DndTracker.Module.UseCases.SelectFeatUseCase
 
         private void FillStatBonusJson(SelectFeatViewModel viewModel, AvailableFeat aFeat)
         {
-            var statBonus = viewModel.Feat.Bonuses
-                .First(b => b.Bonus.Type == BonusType.Stat).Bonus as StatBonus;
+            var statBonus = viewModel.StatBonus;
 
             var selectedBonuses = viewModel.StatSelectObjects;
 
@@ -93,14 +92,14 @@ namespace ZeeKer.DndTracker.Module.UseCases.SelectFeatUseCase
             }
 
             
-            FillSimpleVariant(statBonus, aFeat, selectedBonuses);
+            FillSimpleVariant(viewModel.StattBonusGroup, aFeat, selectedBonuses);
             
 
         }
 
-        private void FillSimpleVariant(StatBonus statBonusonus, AvailableFeat aFeat, List<StatSelectObject> selectStats)
+        private void FillSimpleVariant(StatBonusGroup group, AvailableFeat aFeat, List<StatSelectObject> selectStats)
         {
-            var statsBonusList = statBonusonus.BonusGroups.First().StatBonuses;
+            var statsBonusList = group.StatBonuses;
 
 
             aFeat.SelectedBonuses = new AvailableFeatJson
