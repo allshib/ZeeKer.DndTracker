@@ -3,30 +3,11 @@
   <ActionDesign>
     <Actions>
       <Action Id="AddFeatBonusAction" ImageName="Action_CreateDashboard" PaintStyle="CaptionAndImage" SelectionDependencyType="RequireSingleObject" ImageMode="UseItemImage" />
+      <Action Id="AvailableFeat.RollbackFeat" ImageName="Action_Delete" />
       <Action Id="MultipleTransaction.Execute" TargetObjectsCriteria="IsNewObject([This]) = False And [StorageSource] Is Not Null And [TransactionSettings][].Count() &gt; 0" ImageName="InsertField" />
       <Action Id="SkillDetail.SetSkillOwn" PaintStyle="Image" ImageName="State_Validation_Valid" />
       <Action Id="SwapStorages" PaintStyle="Image" ImageName="BO_StateMachine" />
     </Actions>
-    <ActionToContainerMapping>
-      <ActionContainer Id="AddGoldCategory">
-        <ActionLink ActionId="AddOneGold" Index="1" />
-        <ActionLink ActionId="AddTenGold" Index="2" />
-        <ActionLink ActionId="Add50Gold" Index="3" />
-        <ActionLink ActionId="Add100Gold" Index="4" />
-        <ActionLink ActionId="Add250Gold" Index="5" />
-        <ActionLink ActionId="Add500Gold" Index="6" />
-      </ActionContainer>
-      <ActionContainer Id="RemoveGoldCategory">
-        <ActionLink ActionId="Remove1Gold" Index="1" />
-        <ActionLink ActionId="Remove2Gold" Index="2" />
-        <ActionLink ActionId="Remove3Gold" Index="3" />
-        <ActionLink ActionId="Remove5Gold" Index="4" />
-        <ActionLink ActionId="RemoveTenGold" Index="5" />
-        <ActionLink ActionId="Remove100Gold" Index="6" />
-        <ActionLink ActionId="Remove250Gold" Index="7" />
-        <ActionLink ActionId="Remove500Gold" Index="8" />
-      </ActionContainer>
-    </ActionToContainerMapping>
   </ActionDesign>
   <BOModel>
     <Class Name="DevExpress.Persistent.BaseImpl.EF.PermissionPolicy.PermissionPolicyUser" Caption="Base User" />
@@ -142,6 +123,7 @@
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.WeaponItem" ImageName="Sword" />
     <Class Name="ZeeKer.DndTracker.Module.UseCases.SelectFeatUseCase.SelectFeatViewModel">
       <OwnMembers>
+        <Member Name="Description" RowCount="5" />
         <Member Name="Feat" DataSourceProperty="Feats" />
       </OwnMembers>
     </Class>
@@ -349,7 +331,7 @@
         <ColumnInfo Id="GameMaster" Index="1" />
       </Columns>
     </ListView>
-    <ListView Id="Character_AvailableFeats_ListView" FreezeColumnIndices="True">
+    <ListView Id="Character_AvailableFeats_ListView" FreezeColumnIndices="True" AllowDelete="False" AllowLink="False" AllowNew="False">
       <Columns>
         <ColumnInfo Id="Character" Index="-1" />
         <ColumnInfo Id="Description" Index="-1" />
@@ -1042,7 +1024,8 @@
         <LayoutGroup Id="Main" RelativeSize="100">
           <LayoutGroup Id="SimpleEditors" RelativeSize="100">
             <LayoutGroup Id="SelectFeatViewModel" RelativeSize="100">
-              <LayoutItem Id="Feat" RelativeSize="100" />
+              <LayoutItem Id="Feat" RelativeSize="5.850091407678245" />
+              <LayoutItem Id="Description" CaptionLocation="Top" RelativeSize="94.14990859232175" />
             </LayoutGroup>
           </LayoutGroup>
           <LayoutGroup Id="Feats_Group" Removed="True" />

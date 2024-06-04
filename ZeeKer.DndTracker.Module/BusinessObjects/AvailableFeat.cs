@@ -15,6 +15,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using ZeeKer.DndTracker.Module.BusinessObjects.NonPersistent;
+using ZeeKer.DndTracker.Module.Extensions;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
@@ -51,5 +52,11 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Примененные бонусы")]
         public virtual AvailableFeatJson SelectedBonuses { get; set; }
 
+
+        [Action(Caption = "Убрать черту", ConfirmationMessage = "Вы уверены?", SelectionDependencyType = MethodActionSelectionDependencyType.RequireSingleObject)]
+        public void RollbackFeat()
+        {
+            this.Rollback();
+        }
     }
 }

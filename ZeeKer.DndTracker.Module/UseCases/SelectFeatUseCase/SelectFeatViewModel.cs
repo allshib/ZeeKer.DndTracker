@@ -48,7 +48,13 @@ namespace ZeeKer.DndTracker.Module.UseCases.SelectFeatUseCase
             }
         }
 
-       public IEnumerable<Feat> Feats { get; init; }
+        [XafDisplayName("Описание")]
+        public string Description => Feat?.Description;
+
+        public IEnumerable<Feat> Feats { get; init; }
+
+
+       
 
         #region IXafEntityObject
         void IXafEntityObject.OnCreated()
