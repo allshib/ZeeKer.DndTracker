@@ -136,8 +136,9 @@
     </Class>
     <Class Name="ZeeKer.DndTracker.Module.UseCases.SelectFeatUseCase.SelectFeatViewModel">
       <AppearanceRules>
+        <AppearanceRule Id="DisableFeatFields" Enabled="False" TargetItems="Feat.ConditionText,Feat.Description, Feat.Name" IsNewNode="True" />
         <AppearanceRule Id="HideCondition" TargetItems="Feat.ConditionText" Visibility="Hide" Criteria="IsNullOrEmpty([Feat.ConditionText])" IsNewNode="True" />
-        <AppearanceRule Id="HideSelectionStat" Priority="0" TargetItems="StatSelectObjects" Visibility="Hide" Criteria="[StattBonusGroup] Is Null And False = [StattBonusGroup.StatBonuses][[BonusType] = ##Enum#ZeeKer.DndTracker.Module.Types.StatBonusType,Any#]" IsNewNode="True" />
+        <AppearanceRule Id="HideSelectionStat" Priority="0" TargetItems="StatSelectObjects" Visibility="Hide" Criteria="[StattBonusGroup] Is Null Or False = [StattBonusGroup.StatBonuses][[BonusType] = ##Enum#ZeeKer.DndTracker.Module.Types.StatBonusType,Any#]" IsNewNode="True" />
         <AppearanceRule Id="HideStattBonusGroup" TargetItems="StattBonusGroup" Visibility="Hide" Criteria="[StatBonus] Is Null Or [StatBonus.BonusGroups][].Count() = 1" IsNewNode="True" />
       </AppearanceRules>
       <OwnMembers>
