@@ -16,6 +16,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using ZeeKer.DndTracker.Module.Types;
 using ZeeKer.DndTracker.Module.UseCases.FastAddFeatStatBonusUseCase;
 using ZeeKer.DndTracker.Module.UseCases.OpenDocumentationUseCase;
 
@@ -52,7 +53,12 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         public virtual IList<AssignedFeatBonus> Bonuses { get; set; } = new ObservableCollection<AssignedFeatBonus>();
 
 
+        [XafDisplayName("Источник")]
+        public virtual SourceType Source { get; set; }
+
         [NotMapped, XafDisplayName("Быстрое добавление бонуса характеристик")]
         public virtual FastAddFeatBonusViewModel FastAddStatBonusObject { get; set; }
+
+
     }
 }

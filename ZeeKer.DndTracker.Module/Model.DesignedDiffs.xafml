@@ -785,25 +785,25 @@
         <ColumnInfo Id="Bonus" Index="0" />
       </Columns>
     </ListView>
-    <DetailView Id="Feat_DetailView">
-      <Layout>
-        <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="11.25">
-            <LayoutGroup Id="Feat" RelativeSize="100">
-              <LayoutItem Id="Name" RelativeSize="100" CaptionLocation="Top" />
-              <LayoutItem Id="FastAddStatBonusObject" Removed="True" />
+    <DetailView Id="Feat_DetailView" FreezeLayout="True">
+      <Layout IsNewNode="True" Removed="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" RelativeSize="15.878378378378379" IsNewNode="True">
+            <LayoutGroup Id="Feat" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+              <LayoutItem Id="Name" ViewItem="Name" ShowCaption="" Index="0" RelativeSize="51.06382978723404" CaptionLocation="Top" IsNewNode="True" />
+              <LayoutItem Id="Source" ViewItem="Source" ShowCaption="" Index="1" CaptionLocation="Top" RelativeSize="48.93617021276596" IsNewNode="True" />
             </LayoutGroup>
           </LayoutGroup>
-          <LayoutGroup Id="SizeableEditors" RelativeSize="45.625">
-            <LayoutItem Id="Description" RelativeSize="33.333333333333336" CaptionLocation="Top" />
-            <LayoutItem Id="Condition" RelativeSize="31.963470319634702" CaptionLocation="Top" />
-            <LayoutItem Id="ConditionText" RelativeSize="34.70319634703196" CaptionLocation="Top" />
+          <LayoutGroup Id="SizeableEditors" Index="1" ShowCaption="False" RelativeSize="45.270270270270274" IsNewNode="True">
+            <LayoutItem Id="Description" ViewItem="Description" ShowCaption="" Index="0" RelativeSize="45.149253731343286" CaptionLocation="Top" IsNewNode="True" />
+            <LayoutItem Id="Condition" ViewItem="Condition" ShowCaption="" Index="1" RelativeSize="26.119402985074625" CaptionLocation="Top" IsNewNode="True" />
+            <LayoutItem Id="ConditionText" ViewItem="ConditionText" ShowCaption="" Index="2" RelativeSize="28.73134328358209" CaptionLocation="Top" IsNewNode="True" />
           </LayoutGroup>
-          <LayoutGroup Id="FastAddStat" ShowCaption="True" CaptionLocation="Top" Index="2" RelativeSize="13.541666666666666" IsCollapsibleGroup="True" ImageName="BO_Department" IsNewNode="True">
+          <LayoutGroup Id="FastAddStat" ShowCaption="True" CaptionLocation="Top" Index="2" RelativeSize="10.97972972972973" IsCollapsibleGroup="True" ImageName="BO_Department" IsNewNode="True">
             <LayoutItem Id="FastAddStatBonusObject" ShowCaption="False" ViewItem="FastAddStatBonusObject" Index="0" RelativeSize="100" IsNewNode="True" />
           </LayoutGroup>
-          <LayoutGroup Id="Bonuses_Group" Direction="Vertical" Index="3" RelativeSize="29.583333333333332">
-            <LayoutItem Id="Bonuses" RelativeSize="100" />
+          <LayoutGroup Id="Bonuses_Group" Index="3" ShowCaption="True" RelativeSize="27.87162162162162" IsNewNode="True">
+            <LayoutItem Id="Bonuses" ViewItem="Bonuses" ShowCaption="" Index="0" RelativeSize="100" IsNewNode="True" />
           </LayoutGroup>
         </LayoutGroup>
       </Layout>
