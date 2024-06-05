@@ -176,6 +176,7 @@
       <Item Id="MyZone" Index="4" IsNewNode="True" />
       <Item Id="Additional" Index="5" IsNewNode="True">
         <Items IsNewNode="True">
+          <Item Id="Documentation Info" ViewId="DocumentationInfo_ListView" IsNewNode="True" />
           <Item Id="Event_ListView" ViewId="Event_ListView" ObjectKey="" IsNewNode="True" />
           <Item Id="Reports" Visible="True" IsNewNode="True">
             <Items IsNewNode="True">
@@ -1053,7 +1054,7 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="SelectFeatViewModel_StatSelectObjects_ListView" AllowEdit="True" AllowDelete="False" AllowLink="False" AllowNew="False" AllowUnlink="False" MasterDetailView="" DetailViewID="">
+    <ListView Id="SelectFeatViewModel_StatSelectObjects_ListView" AllowEdit="True" AllowDelete="False" AllowLink="False" AllowNew="False" AllowUnlink="False" DetailViewID="" MasterDetailView="">
       <Columns>
         <ColumnInfo Id="Bonus" AllowEdit="False" />
       </Columns>

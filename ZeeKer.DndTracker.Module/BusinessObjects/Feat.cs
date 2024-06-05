@@ -16,12 +16,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using ZeeKer.DndTracker.Module.UseCases.OpenDocumentationUseCase;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
     [XafDisplayName("Черта")]
     [XafDefaultProperty(nameof(Name))]
-    public class Feat : BaseObject
+    public class Feat : BaseObject,IOpenDoc
     {
         public Feat()
         {

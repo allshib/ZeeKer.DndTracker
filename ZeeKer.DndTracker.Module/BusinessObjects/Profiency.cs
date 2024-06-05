@@ -14,12 +14,13 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using ZeeKer.DndTracker.Module.Types;
+using ZeeKer.DndTracker.Module.UseCases.OpenDocumentationUseCase;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
     [XafDisplayName("Владение")]
     [XafDefaultProperty(nameof(Name))]
-    public class Profiency : BaseObject
+    public class Profiency : BaseObject, IOpenDoc
     {
         public Profiency()
         {

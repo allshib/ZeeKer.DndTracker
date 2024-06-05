@@ -6,12 +6,13 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using ZeeKer.DndTracker.Module.UseCases.OpenDocumentationUseCase;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects;
     [DefaultClassOptions]
     [XafDisplayName("Хранилище")]
     [XafDefaultProperty(nameof(DefaultProperty))]
-    public class CharacterStorage : BaseObject
+    public class CharacterStorage : BaseObject, IOpenDoc
     {
         public CharacterStorage()
         {

@@ -90,6 +90,7 @@ public class DndTrackerEFCoreDbContext : DbContext {
     public DbSet<StatBonusGroup> StatBonusGroups { get; set; }
     public DbSet<OneStatBonus> OneStatBonuses { get; set; }
     public DbSet<AvailableFeat> AvailableFeats { get; set; }
+    public DbSet<DocumentationInfo> DocumentationInfo { get; set; }
 
 
 

@@ -18,13 +18,14 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using ZeeKer.DndTracker.Module.UseCases.OpenDocumentationUseCase;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
     // Register this entity in your DbContext (usually in the BusinessObjects folder of your project) with the "public DbSet<Character> Characters { get; set; }" syntax.
     [DefaultClassOptions]
     [XafDisplayName("Персонаж")]
-    public partial class Character : BaseObject
+    public partial class Character : BaseObject, IOpenDoc
     {
         public Character()
         {
