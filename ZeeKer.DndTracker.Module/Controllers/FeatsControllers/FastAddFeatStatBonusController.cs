@@ -35,11 +35,59 @@ namespace ZeeKer.DndTracker.Module.Controllers.FeatsControllers
                 Caption = "Добавить"
             };
             fastadd.Execute += Fastadd_Execute;
+
+
+            var fastRemove = new SimpleAction(this, "FastRemoveFeatStatBonusAction", ActionCategories.FastAddBonusStat)
+            {
+                Caption = "Удалить"
+            };
+            fastRemove.Execute += FastRemove_Execute;
+        }
+
+        private void FastRemove_Execute(object sender, SimpleActionExecuteEventArgs e)
+        {
+            var entity = View.CurrentObject as FastAddFeatBonusViewModel;
+            var feat = entity.Feat;
+            var os = feat.GetObjectSpace();
+
+            var statBonus = feat.Bonuses
+                .FirstOrDefault(x => x.Bonus.Type == BonusType.Stat).Bonus as StatBonus;
+
+            if (statBonus is null)
+                throw new UserFriendlyException("Такой бонус не найден");
+
+            var group = entity.Group?? statBonus.BonusGroups
+                .FirstOrDefault(x=>x.StatBonuses
+                .Any(s => s.BonusType == entity.StatBonusType && s.StatBonus == entity.Value));
+            
+            if (group is null)
+                throw new UserFriendlyException("Такой бонус не найден");
+
+            if (group.StatBonuses.Count == 1)
+                group.Delete();
+            else
+            {
+               var bonus = group.StatBonuses
+                    .FirstOrDefault(x => x.BonusType == entity.StatBonusType && x.StatBonus == entity.Value);
+                if (bonus is not null)
+                    bonus.Delete();
+                else throw new UserFriendlyException("Такой бонус не найден");
+            }
+
+
+
+            os.CommitChanges();
+            View.RefreshDataSource();
         }
 
         private void Fastadd_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
             var entity = View.CurrentObject as FastAddFeatBonusViewModel;
+
+            if (entity.Value == 0)
+                throw new UserFriendlyException("Нельзя добавлять нулевые бонусы");
+
+
             var feat = entity.Feat;
             var os = feat.GetObjectSpace();
 
@@ -58,10 +106,24 @@ namespace ZeeKer.DndTracker.Module.Controllers.FeatsControllers
 
             var group = entity.Group?? os.CreateObject<StatBonusGroup>();
             group.Bonus = statBonus;
-            var oneStatBonus = os.CreateObject<OneStatBonus>();
-            oneStatBonus.Group = group;
-            oneStatBonus.BonusType = entity.StatBonusType;
-            oneStatBonus.StatBonus = entity.Value;
+
+            
+
+
+            var oneStatBonus = group.StatBonuses
+                .FirstOrDefault(x=>x.BonusType == entity.StatBonusType);
+
+            if (oneStatBonus is null)
+            {
+                oneStatBonus = os.CreateObject<OneStatBonus>();
+                oneStatBonus.Group = group;
+                oneStatBonus.BonusType = entity.StatBonusType;
+                oneStatBonus.StatBonus = entity.Value;
+            }
+            else
+                oneStatBonus.StatBonus += entity.Value;
+
+            
 
             os.CommitChanges();
             View.RefreshDataSource();
