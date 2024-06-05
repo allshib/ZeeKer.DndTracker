@@ -750,6 +750,24 @@
         <ColumnInfo Id="OperationDate" Index="1" SortIndex="0" SortOrder="Descending" />
       </Columns>
     </ListView>
+    <DetailView Id="FastAddFeatBonusViewModel_DetailView">
+      <Items>
+        <ActionContainerViewItem Id="FastAddBonusStat" ActionContainer="FastAddBonusStat" PaintStyle="Caption" IsNewNode="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="FastAddFeatBonusViewModel" RelativeSize="100" Direction="Horizontal">
+              <LayoutItem Id="StatBonusType" Index="0" RelativeSize="20.863309352517987" ShowCaption="False" />
+              <LayoutItem Id="Value" Index="1" RelativeSize="8.633093525179856" ShowCaption="False" />
+              <LayoutItem Id="FastAddBonusStat" ViewItem="FastAddBonusStat" Index="2" RelativeSize="15.251798561151078" IsNewNode="True" />
+              <LayoutItem Id="Item1" Index="3" RelativeSize="55.25179856115108" IsNewNode="True" />
+              <LayoutItem Id="Feat" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <ListView Id="Feat_Bonuses_ListView" FreezeColumnIndices="True" AllowNew="False">
       <Columns>
         <ColumnInfo Id="Feat" Index="-1" />
@@ -757,6 +775,29 @@
         <ColumnInfo Id="Bonus" Index="0" />
       </Columns>
     </ListView>
+    <DetailView Id="Feat_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="11.25">
+            <LayoutGroup Id="Feat" RelativeSize="100">
+              <LayoutItem Id="Name" RelativeSize="100" CaptionLocation="Top" />
+              <LayoutItem Id="FastAddStatBonusObject" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="45.625">
+            <LayoutItem Id="Description" RelativeSize="33.333333333333336" CaptionLocation="Top" />
+            <LayoutItem Id="Condition" RelativeSize="31.963470319634702" CaptionLocation="Top" />
+            <LayoutItem Id="ConditionText" RelativeSize="34.70319634703196" CaptionLocation="Top" />
+          </LayoutGroup>
+          <LayoutGroup Id="FastAddStat" ShowCaption="True" CaptionLocation="Top" Index="2" RelativeSize="13.541666666666666" IsCollapsibleGroup="True" ImageName="BO_Department" IsNewNode="True">
+            <LayoutItem Id="FastAddStatBonusObject" ShowCaption="False" ViewItem="FastAddStatBonusObject" Index="0" RelativeSize="100" IsNewNode="True" />
+          </LayoutGroup>
+          <LayoutGroup Id="Bonuses_Group" Direction="Vertical" Index="3" RelativeSize="29.583333333333332">
+            <LayoutItem Id="Bonuses" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <ListView Id="Item_AssignedItems_ListView">
       <Columns>
         <ColumnInfo Id="Name" Index="-1" />

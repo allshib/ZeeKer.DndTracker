@@ -16,18 +16,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using ZeeKer.DndTracker.Module.UseCases.FastAddFeatStatBonusUseCase;
 using ZeeKer.DndTracker.Module.UseCases.OpenDocumentationUseCase;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
     [XafDisplayName("Черта")]
     [XafDefaultProperty(nameof(Name))]
-    public class Feat : BaseObject,IOpenDoc
+    public class Feat : BaseObject, IOpenDoc
     {
         public Feat()
         {
-            // In the constructor, initialize collection properties, e.g.: 
-            // this.AssociatedEntities = new ObservableCollection<AssociatedEntityObject>();
+            FastAddStatBonusObject = new FastAddFeatBonusViewModel(this);
         }
         [StringLength(100)]
         [XafDisplayName("Название")]
@@ -50,5 +50,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [XafDisplayName("Бонусы"), Aggregated]
         public virtual IList<AssignedFeatBonus> Bonuses { get; set; } = new ObservableCollection<AssignedFeatBonus>();
+
+
+        [NotMapped, XafDisplayName("Быстрое добавление бонуса характеристик")]
+        public virtual FastAddFeatBonusViewModel FastAddStatBonusObject { get; set; }
     }
 }

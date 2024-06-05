@@ -9,5 +9,7 @@ public static class ActionCategories
     public const string SendGoldCategory = nameof(SendGoldCategory);
     public const string CreateTransactionCategory = nameof(CreateTransactionCategory);
 
+    public const string FastAddBonusStat = nameof(FastAddBonusStat);
+
 
 }

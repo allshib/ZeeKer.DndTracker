@@ -173,6 +173,21 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <DetailView Id="FastAddFeatBonusViewModel_DetailView">
+      <Items>
+        <ActionContainerViewItem Id="FastAddBonusStat" Caption="FastAddBonusStat(7)" />
+      </Items>
+    </DetailView>
+    <DetailView Id="Feat_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Feat" Caption="Feat" />
+          </LayoutGroup>
+          <LayoutGroup Id="FastAddStat" Caption="Быстрое добавление бонуса характеристик" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <DetailView Id="Person_DetailView">
       <Layout>
         <LayoutGroup Id="Main">

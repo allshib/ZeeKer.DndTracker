@@ -31,5 +31,11 @@
     <SchemaModule Name="SchedulerModuleBase" Version="23.2.6.0" IsNewNode="True" />
     <SchemaModule Name="SystemModule" Version="23.2.6.0" IsNewNode="True" />
   </SchemaModules>
-  <Views DefaultListEditor="DevExpress.ExpressApp.Blazor.Editors.DxGridListEditor" />
+  <Views DefaultListEditor="DevExpress.ExpressApp.Blazor.Editors.DxGridListEditor">
+    <DetailView Id="Feat_DetailView">
+      <Items>
+        <PropertyEditor Id="FastAddStatBonusObject" PropertyEditorType="DevExpress.ExpressApp.Editors.DetailPropertyEditor" View="FastAddFeatBonusViewModel_DetailView" />
+      </Items>
+    </DetailView>
+  </Views>
 </Application>
