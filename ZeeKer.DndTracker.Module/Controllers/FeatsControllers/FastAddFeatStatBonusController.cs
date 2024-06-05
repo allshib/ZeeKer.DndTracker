@@ -56,7 +56,7 @@ namespace ZeeKer.DndTracker.Module.Controllers.FeatsControllers
                 statBonus = feat.Bonuses.First(x => x.Bonus.Type == BonusType.Stat).Bonus as StatBonus;
             }
 
-            var group = os.CreateObject<StatBonusGroup>();
+            var group = entity.Group?? os.CreateObject<StatBonusGroup>();
             group.Bonus = statBonus;
             var oneStatBonus = os.CreateObject<OneStatBonus>();
             oneStatBonus.Group = group;
@@ -64,6 +64,7 @@ namespace ZeeKer.DndTracker.Module.Controllers.FeatsControllers
             oneStatBonus.StatBonus = entity.Value;
 
             os.CommitChanges();
+            View.RefreshDataSource();
         }
 
         protected override void OnActivated()

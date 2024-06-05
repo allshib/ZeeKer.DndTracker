@@ -166,6 +166,12 @@
     <None Update="UnusableNodes31.xml">
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
     </None>
+    <None Update="UnusableNodes32.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes33.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
     <None Update="UnusableNodes4.xml">
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
     </None>

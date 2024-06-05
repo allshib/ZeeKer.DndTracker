@@ -30,6 +30,29 @@ namespace ZeeKer.DndTracker.Module.UseCases.FastAddFeatStatBonusUseCase
             this.Feat = feat;
         }
 
+        [XafDisplayName("Бонус характеристик")]
+        public StatBonus StatBonus => Feat is not null && Feat.Bonuses.Any(x => x.Bonus.Type == BonusType.Stat)
+            ? Feat.Bonuses.First(x => x.Bonus.Type == BonusType.Stat).Bonus as StatBonus
+            : null;
+
+
+        private StatBonusGroup group;
+        [XafDisplayName("К какой группе добавить"), ToolTip("Если не указана группа, то будет создана новая")]
+
+        public StatBonusGroup Group
+        {
+            get { return group; }
+            set
+            {
+                if (group != value)
+                {
+                    group = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+
         private Feat feat;
         [XafDisplayName("Черта")]
 

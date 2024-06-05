@@ -177,6 +177,13 @@
       <Items>
         <ActionContainerViewItem Id="FastAddBonusStat" Caption="FastAddBonusStat(7)" />
       </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors" Caption="SimpleEditors">
+            <LayoutGroup Id="Auto50c0f66d-adaf-4018-837e-320e93b0076a" Caption="" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
     </DetailView>
     <DetailView Id="Feat_DetailView">
       <Layout>

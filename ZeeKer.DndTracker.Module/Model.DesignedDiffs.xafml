@@ -125,6 +125,11 @@
       </OwnMembers>
     </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.WeaponItem" ImageName="Sword" />
+    <Class Name="ZeeKer.DndTracker.Module.UseCases.FastAddFeatStatBonusUseCase.FastAddFeatBonusViewModel">
+      <OwnMembers>
+        <Member Name="Group" DataSourceProperty="StatBonus.BonusGroups" />
+      </OwnMembers>
+    </Class>
     <Class Name="ZeeKer.DndTracker.Module.UseCases.SelectFeatUseCase.SelectFeatViewModel">
       <AppearanceRules>
         <AppearanceRule Id="HideCondition" TargetItems="Feat.ConditionText" Visibility="Hide" Criteria="IsNullOrEmpty([Feat.ConditionText])" IsNewNode="True" />
@@ -750,19 +755,19 @@
         <ColumnInfo Id="OperationDate" Index="1" SortIndex="0" SortOrder="Descending" />
       </Columns>
     </ListView>
-    <DetailView Id="FastAddFeatBonusViewModel_DetailView">
+    <DetailView Id="FastAddFeatBonusViewModel_DetailView" FreezeLayout="True">
       <Items>
         <ActionContainerViewItem Id="FastAddBonusStat" ActionContainer="FastAddBonusStat" PaintStyle="Caption" IsNewNode="True" />
       </Items>
-      <Layout>
-        <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
-            <LayoutGroup Id="FastAddFeatBonusViewModel" RelativeSize="100" Direction="Horizontal">
-              <LayoutItem Id="StatBonusType" Index="0" RelativeSize="20.863309352517987" ShowCaption="False" />
-              <LayoutItem Id="Value" Index="1" RelativeSize="8.633093525179856" ShowCaption="False" />
-              <LayoutItem Id="FastAddBonusStat" ViewItem="FastAddBonusStat" Index="2" RelativeSize="15.251798561151078" IsNewNode="True" />
-              <LayoutItem Id="Item1" Index="3" RelativeSize="55.25179856115108" IsNewNode="True" />
-              <LayoutItem Id="Feat" Removed="True" />
+      <Layout IsNewNode="True" Removed="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+            <LayoutItem Id="Group" ViewItem="Group" CaptionLocation="Top" Index="0" RelativeSize="8.108108108108109" IsNewNode="True" />
+            <LayoutGroup Id="Auto50c0f66d-adaf-4018-837e-320e93b0076a" ShowCaption="False" Direction="Horizontal" Index="1" RelativeSize="91.89189189189189" IsNewNode="True">
+              <LayoutItem Id="StatBonusType" ShowCaption="False" ViewItem="StatBonusType" Index="0" RelativeSize="11.637931034482758" IsNewNode="True" />
+              <LayoutItem Id="Value" ShowCaption="False" ViewItem="Value" Index="1" RelativeSize="8.620689655172415" IsNewNode="True" />
+              <LayoutItem Id="FastAddBonusStat" ViewItem="FastAddBonusStat" Index="2" RelativeSize="15.229885057471265" IsNewNode="True" />
+              <LayoutItem Id="Item3" Index="3" RelativeSize="64.51149425287356" IsNewNode="True" />
             </LayoutGroup>
           </LayoutGroup>
         </LayoutGroup>
@@ -1214,6 +1219,7 @@
         <ColumnInfo Id="GroupName" Index="0" />
       </Columns>
     </ListView>
+    <ListView Id="StatBonusGroup_LookupListView" AllowNew="False" AllowLink="False" />
     <ListView Id="StatBonusGroup_StatBonuses_ListView" FreezeColumnIndices="True">
       <Columns>
         <ColumnInfo Id="BonusType" Index="-1" />
