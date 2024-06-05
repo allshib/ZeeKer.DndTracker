@@ -68,7 +68,11 @@
         <Member Name="ItemsString" RowCount="5" />
       </OwnMembers>
     </Class>
-    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Feat" ImageName="Skill" />
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Feat" ImageName="Skill">
+      <OwnMembers>
+        <Member Name="Description" RowCount="6" />
+      </OwnMembers>
+    </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Item" ImageName="Box">
       <OwnMembers>
         <Member Name="Description" RowCount="6" />
@@ -803,6 +807,16 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="Feat_ListView" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="Condition" Index="-1" />
+        <ColumnInfo Id="ConditionText" Index="-1" />
+        <ColumnInfo Id="Description" Index="-1" />
+        <ColumnInfo Id="FastAddStatBonusObject" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="Name" Index="0" />
+      </Columns>
+    </ListView>
     <ListView Id="Item_AssignedItems_ListView">
       <Columns>
         <ColumnInfo Id="Name" Index="-1" />

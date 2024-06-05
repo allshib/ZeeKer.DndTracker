@@ -26,7 +26,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             
         }
 
-        [StringLength(100)]
+        [StringLength(250)]
         [XafDisplayName("Название")]
         public virtual string Name { get; set; }
 
