@@ -1,4 +1,4 @@
-using DevExpress.Data.Filtering;
+п»їusing DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
@@ -19,7 +19,7 @@ using ZeeKer.DndTracker.Module.Types;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
-    [XafDisplayName("Заклинание")]
+    [XafDisplayName("Р—Р°РєР»РёРЅР°РЅРёРµ")]
     [XafDefaultProperty(nameof(FullName))]
     public class Spell : BaseObject
     {
@@ -27,45 +27,45 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         {
 
         }
-        [NotMapped, XafDisplayName("Полное наименование")]
-        public virtual string FullName => $"{Name} ({(SpellLevel == 0? "Заговор":$"{SpellLevel} уровень")}, {CaptionHelper.GetDisplayText(MagicSchool)})";
+        [NotMapped, XafDisplayName("РџРѕР»РЅРѕРµ РЅР°РёРјРµРЅРѕРІР°РЅРёРµ")]
+        public virtual string FullName => $"{Name} ({(SpellLevel == 0? "Р—Р°РіРѕРІРѕСЂ":$"{SpellLevel} СѓСЂРѕРІРµРЅСЊ")}, {CaptionHelper.GetDisplayText(MagicSchool)})";
 
-        [XafDisplayName("Наименование"), StringLength(170)]
+        [XafDisplayName("РќР°РёРјРµРЅРѕРІР°РЅРёРµ"), StringLength(170)]
         public virtual string Name { get; set; }
 
-        [XafDisplayName("Школа")]
+        [XafDisplayName("РЁРєРѕР»Р°")]
         public virtual MagicSchoolType MagicSchool { get; set; }
 
 
-        [XafDisplayName("Уровень заклинания")]
+        [XafDisplayName("РЈСЂРѕРІРµРЅСЊ Р·Р°РєР»РёРЅР°РЅРёСЏ")]
         public virtual int SpellLevel { get; set; }
 
 
-        [XafDisplayName("Описание"), StringLength(1700)]
+        [XafDisplayName("РћРїРёСЃР°РЅРёРµ"), StringLength(1700)]
         public virtual string Descripton { get; set; }
 
-        [XafDisplayName("Компоненты"), StringLength(300)]
+        [XafDisplayName("РљРѕРјРїРѕРЅРµРЅС‚С‹"), StringLength(300)]
         public virtual string Components { get; set; }
 
-        [XafDisplayName("Длительность"), StringLength(150)]
+        [XafDisplayName("Р”Р»РёС‚РµР»СЊРЅРѕСЃС‚СЊ"), StringLength(150)]
         public virtual string Duration { get; set; }
 
-        [XafDisplayName("Дистанция"), StringLength(100)]
+        [XafDisplayName("Р”РёСЃС‚Р°РЅС†РёСЏ"), StringLength(100)]
         public virtual string Distance { get; set; }
 
-        [XafDisplayName("Время накладывания"), StringLength(150)]
+        [XafDisplayName("Р’СЂРµРјСЏ РЅР°РєР»Р°РґС‹РІР°РЅРёСЏ"), StringLength(150)]
         public virtual string SpellCastingTime { get; set; }
 
-        [XafDisplayName("Концентрация")]
+        [XafDisplayName("РљРѕРЅС†РµРЅС‚СЂР°С†РёСЏ")]
         public virtual bool NeedConcentration { get; set; }
 
-        [XafDisplayName("Источник")]
+        [XafDisplayName("РСЃС‚РѕС‡РЅРёРє")]
         public virtual SourceType Source { get; set; }
 
-        [XafDisplayName("Классы")]
+        [XafDisplayName("РљР»Р°СЃСЃС‹")]
         public virtual string Classes => String.Join(", ", ClassForSpells.Select(x => $"{x.Class?.Name}"));
 
-        [XafDisplayName("Связанные классы"), Aggregated]
+        [XafDisplayName("РЎРІСЏР·Р°РЅРЅС‹Рµ РєР»Р°СЃСЃС‹"), Aggregated]
         public virtual IList<ClassForSpell> ClassForSpells { get; set; } = new ObservableCollection<ClassForSpell>();
     }
 }

@@ -1,4 +1,4 @@
-using DevExpress.Data.Filtering;
+п»їusing DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
@@ -16,7 +16,7 @@ using System.Text;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
-    [XafDisplayName("Доступное заклинание")]
+    [XafDisplayName("Р”РѕСЃС‚СѓРїРЅРѕРµ Р·Р°РєР»РёРЅР°РЅРёРµ")]
     [XafDefaultProperty(nameof(Spell))]
     public class AvailableSpell : BaseObject
     {
@@ -28,7 +28,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         public virtual Guid? SpellId { get; set; }
 
 
-        [ForeignKey(nameof(SpellId)), XafDisplayName("Заклинание")]
+        [ForeignKey(nameof(SpellId)), XafDisplayName("Р—Р°РєР»РёРЅР°РЅРёРµ")]
         public virtual Spell Spell { get; set; }
 
 
@@ -36,7 +36,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         public virtual Guid? CharacterId { get; set; }
 
 
-        [ForeignKey(nameof(CharacterId)), XafDisplayName("Персонаж")]
+        [ForeignKey(nameof(CharacterId)), XafDisplayName("РџРµСЂСЃРѕРЅР°Р¶")]
         public virtual Character Character { get; set; }
     }
 }
