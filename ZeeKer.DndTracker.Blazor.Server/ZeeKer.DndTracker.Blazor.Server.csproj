@@ -601,4 +601,7 @@
       <DependentUpon>Model.xafml</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Editors\HyperLinkEditor\" />
+  </ItemGroup>
 </Project>
