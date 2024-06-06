@@ -32,7 +32,10 @@
       </OwnMembers>
     </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.AvailableFeat" ImageName="Skill" />
-    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.AvailableSpell">
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.AvailableSpell" ImageName="WandBlue">
+      <AppearanceRules>
+        <AppearanceRule Id="NeedConcentration" Priority="0" TargetItems="*" Context="ListView" BackColor="255, 224, 192" Criteria="[Spell.NeedConcentration] = True" IsNewNode="True" />
+      </AppearanceRules>
       <OwnMembers>
         <Member Name="Spell" LookupEditorMode="AllItemsWithSearch" />
       </OwnMembers>
@@ -73,6 +76,7 @@
         <Member Name="ItemsString" RowCount="5" />
       </OwnMembers>
     </Class>
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.ClassForSpell" ImageName="WandYellow" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Feat" ImageName="Skill">
       <OwnMembers>
         <Member Name="Description" RowCount="6" />
@@ -102,7 +106,7 @@
         <AppearanceRule Id="Bold" Criteria="[HasSkill] = True" FontStyle="Bold" TargetItems="*" IsNewNode="True" />
       </AppearanceRules>
     </Class>
-    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Spell">
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Spell" ImageName="WandRed">
       <AppearanceRules>
         <AppearanceRule Id="NeedConcentration" Criteria="[NeedConcentration] = True" BackColor="255, 224, 192" TargetItems="*" Context="ListView" IsNewNode="True" />
       </AppearanceRules>
@@ -500,7 +504,7 @@
                       </LayoutGroup>
                     </LayoutGroup>
                   </LayoutGroup>
-                  <LayoutGroup Id="Item5" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="2" RelativeSize="100" IsNewNode="True">
+                  <LayoutGroup Id="AvailableSpells" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="2" RelativeSize="100" IsNewNode="True">
                     <LayoutItem Id="AvailableSpells" ViewItem="AvailableSpells" Index="0" RelativeSize="100" IsNewNode="True" />
                   </LayoutGroup>
                   <LayoutGroup Id="Equip" ShowCaption="True" CaptionLocation="Top" Index="3" RelativeSize="100" ImageName="Armor" IsNewNode="True">
@@ -511,7 +515,7 @@
                     <LayoutItem Id="MaxSettingCount" ViewItem="MaxSettingCount" Index="4" RelativeSize="4.247787610619469" IsNewNode="True" />
                     <LayoutItem Id="EnabledSettingCount" ViewItem="EnabledSettingCount" Index="5" RelativeSize="77.34513274336283" IsNewNode="True" />
                   </LayoutGroup>
-                  <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="4" RelativeSize="100" IsNewNode="True">
+                  <LayoutGroup Id="ActiveFeats" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="4" RelativeSize="100" ImageName="Profiency" IsNewNode="True">
                     <LayoutItem Id="AvailableFeats" ViewItem="AvailableFeats" Index="0" RelativeSize="100" IsNewNode="True" />
                   </LayoutGroup>
                   <LayoutGroup Id="NotesGroup" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="5" RelativeSize="100" ImageName="textAlignment1" IsNewNode="True">

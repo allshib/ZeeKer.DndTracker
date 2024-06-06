@@ -21,6 +21,11 @@
     <None Remove="Images\Shield.svg" />
     <None Remove="Images\Skill.svg" />
     <None Remove="Images\Sword.svg" />
+    <None Remove="Images\Vodoo.svg" />
+    <None Remove="Images\WandBlue.svg" />
+    <None Remove="Images\WandRed.svg" />
+    <None Remove="Images\WandYellow.svg" />
+    <None Remove="Images\WarlockBook.svg" />
     <None Remove="Images\Wizard.svg" />
     <None Remove="Model.DesignedDiffs.Localization.ru-RU.xafml" />
     <None Remove="Model.DesignedDiffs.Localization.ru.xafml" />
@@ -42,6 +47,11 @@
     <EmbeddedResource Include="Images\Shield.svg" />
     <EmbeddedResource Include="Images\Skill.svg" />
     <EmbeddedResource Include="Images\Sword.svg" />
+    <EmbeddedResource Include="Images\Vodoo.svg" />
+    <EmbeddedResource Include="Images\WandBlue.svg" />
+    <EmbeddedResource Include="Images\WandRed.svg" />
+    <EmbeddedResource Include="Images\WandYellow.svg" />
+    <EmbeddedResource Include="Images\WarlockBook.svg" />
     <EmbeddedResource Include="Images\Wizard.svg" />
     <EmbeddedResource Include="Model.DesignedDiffs.Localization.ru-RU.xafml">
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
