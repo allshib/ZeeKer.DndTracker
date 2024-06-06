@@ -28,7 +28,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         }
         [NotMapped, XafDisplayName("Полное наименование")]
-        public virtual string FullName => $"{Name} ({(SpellLevel == 0? "Заговор":$"{SpellLevel} уровень")}, {CaptionHelper.GetDisplayText(MagicSchool)})";
+        public virtual string FullName => $"{Name} ({(SpellLevel == 0? "Заговор":$"{SpellLevel} уровень")}, {CaptionHelper.GetDisplayText(MagicSchool)}{(IsRitual?" (Ритуал)":"")})";
 
         [XafDisplayName("Наименование"), StringLength(170)]
         public virtual string Name { get; set; }
@@ -58,6 +58,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [XafDisplayName("Концентрация")]
         public virtual bool NeedConcentration { get; set; }
+
+        [XafDisplayName("Ритуал")]
+        public virtual bool IsRitual { get; set; }
 
         [XafDisplayName("Источник")]
         public virtual SourceType Source { get; set; }
