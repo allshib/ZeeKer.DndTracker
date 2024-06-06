@@ -86,6 +86,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             .Where(i=>i.SettingOnThis)
             .Count()?? 0;
 
+        [XafDisplayName("Доступные заклинания"), Aggregated]
+        public virtual IList<AvailableSpell> AvailableSpells {  get; set; } = new ObservableCollection<AvailableSpell>();
+
         #endregion
 
         #region Feats

@@ -125,6 +125,7 @@
                       </LayoutGroup>
                     </LayoutGroup>
                   </LayoutGroup>
+                  <LayoutGroup Id="Item5" Caption="Доступные заклинания" />
                   <LayoutGroup Id="Equip" Caption="Экипировка" />
                   <LayoutGroup Id="Item1" Caption="Активные черты" />
                   <LayoutGroup Id="NotesGroup" Caption="Заметки" />

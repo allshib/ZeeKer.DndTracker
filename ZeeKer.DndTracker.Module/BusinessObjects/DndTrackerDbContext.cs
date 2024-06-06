@@ -93,6 +93,7 @@ public class DndTrackerEFCoreDbContext : DbContext {
     public DbSet<DocumentationInfo> DocumentationInfo { get; set; }
     public DbSet<Spell> Spells { get; set; }
     public DbSet<ClassForSpell> ClassForSpell { get; set; }
+    public DbSet<AvailableSpell> AvailableSpell { get; set; }
 
 
 
@@ -265,6 +266,11 @@ public class DndTrackerEFCoreDbContext : DbContext {
         modelBuilder.Entity<CharacterClass>()
             .HasMany(s => s.ClassForSpells)
             .WithOne(cs => cs.Class)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<Character>()
+            .HasMany(ch => ch.AvailableSpells)
+            .WithOne(s => s.Character)
             .OnDelete(DeleteBehavior.Cascade);
 
         base.OnModelCreating(modelBuilder);
