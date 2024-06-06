@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -25,7 +26,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             // this.AssociatedEntities = new ObservableCollection<AssociatedEntityObject>();
         }
 
-        public override string DefaultProperty => $"{Name} {(HitBonus > 0 ? $"(+{HitBonus})" : "")}";
+        public override string DefaultProperty => $"{Name} {(HitBonus > 0 ? $"(+{HitBonus})" : "")} {Damage}";
 
         [XafDisplayName("Бонус попадания")]
         public virtual int HitBonus { get; set; }
@@ -50,6 +51,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [XafDisplayName("Особое")]
         public virtual bool Special { get; set; }
+
+        [XafDisplayName("Урон"), StringLength(20)]
+        public virtual string Damage {  get; set; }
 
         public override ItemType ItemType => ItemType.Weapon;
 

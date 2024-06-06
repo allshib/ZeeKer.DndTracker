@@ -293,15 +293,8 @@
       <Layout>
         <LayoutGroup Id="Main">
           <LayoutGroup Id="SimpleEditors">
-            <LayoutGroup Id="WeaponItem" Caption="Оружие">
-              <LayoutGroup Id="WeaponItem_col2" Caption="WeaponItem_col2" />
-            </LayoutGroup>
-            <LayoutGroup Id="Item">
-              <LayoutGroup Id="Item_col1" Caption="Item_col1" />
-              <LayoutGroup Id="Item_col2" Caption="Item_col2" />
-            </LayoutGroup>
+            <LayoutGroup Id="WeaponItem" Caption="Оружие" />
           </LayoutGroup>
-          <LayoutGroup Id="SizeableEditors" Caption="Описание" />
         </LayoutGroup>
       </Layout>
     </DetailView>

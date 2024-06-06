@@ -1572,63 +1572,51 @@
         <ColumnInfo Id="StorageDestination" Index="2" />
       </Columns>
     </ListView>
-    <DetailView Id="WeaponItem_DetailView">
-      <Layout>
-        <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
-            <LayoutGroup Id="WeaponItem" RelativeSize="61.27272727272727" Direction="Vertical">
-              <LayoutGroup Id="WeaponItem_col1" RelativeSize="100">
-                <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="10.526315789473685" IsNewNode="True" />
-                <LayoutItem Id="MainDamageType" Index="1" RelativeSize="7.894736842105263" />
-                <LayoutItem Id="NeedSetting" ViewItem="NeedSetting" Index="2" RelativeSize="7.894736842105263" IsNewNode="True" />
-                <LayoutItem Id="HitBonus" Index="3" RelativeSize="7.894736842105263" />
-                <LayoutItem Id="HandWeaponType" Index="4" RelativeSize="7.894736842105263" />
-                <LayoutItem Id="WeightWeaponType" Index="5" RelativeSize="7.894736842105263" />
-                <LayoutItem Id="Fencing" ViewItem="Fencing" Index="6" RelativeSize="7.894736842105263" IsNewNode="True" />
-                <LayoutItem Id="Throwing" ViewItem="Throwing" Index="7" RelativeSize="7.894736842105263" IsNewNode="True" />
-                <LayoutItem Id="Special" ViewItem="Special" Index="8" RelativeSize="7.894736842105263" IsNewNode="True" />
-                <LayoutItem Id="Rarity" ViewItem="Rarity" Index="9" RelativeSize="7.894736842105263" IsNewNode="True" />
-                <LayoutItem Id="Weight" ViewItem="Weight" Index="10" RelativeSize="7.894736842105263" IsNewNode="True" />
-                <LayoutItem Id="Profiency" ViewItem="Profiency" Index="11" RelativeSize="10.526315789473685" IsNewNode="True" />
-              </LayoutGroup>
-              <LayoutGroup Id="WeaponItem_col2" RelativeSize="50" Removed="True">
-                <LayoutItem Id="Special" RelativeSize="100" Index="0" Removed="True" />
-                <LayoutItem Id="Throwing" RelativeSize="15.384615384615385" Index="0" Removed="True" />
-                <LayoutItem Id="Fencing" RelativeSize="17.391304347826086" Removed="True" />
+    <DetailView Id="WeaponItem_DetailView" FreezeLayout="True">
+      <Layout IsNewNode="True" Removed="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+            <LayoutGroup Id="WeaponItem" Index="0" ShowCaption="True" Caption="Weapon Item" RelativeSize="65.03378378378379" IsNewNode="True">
+              <LayoutGroup Id="WeaponItem_col1" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+                <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="9.090909090909092" IsNewNode="True" />
+                <LayoutItem Id="MainDamageType" ViewItem="MainDamageType" ShowCaption="" Index="1" RelativeSize="6.818181818181818" IsNewNode="True" />
+                <LayoutItem Id="Damage" ViewItem="Damage" Index="2" RelativeSize="6.818181818181818" IsNewNode="True" />
+                <LayoutItem Id="HitBonus" ViewItem="HitBonus" ShowCaption="" Index="3" RelativeSize="6.818181818181818" IsNewNode="True" />
+                <LayoutItem Id="HandWeaponType" ViewItem="HandWeaponType" ShowCaption="" Index="4" RelativeSize="6.818181818181818" IsNewNode="True" />
+                <LayoutItem Id="WeaponRangeType" ViewItem="WeaponRangeType" ShowCaption="" Index="5" RelativeSize="6.818181818181818" IsNewNode="True" />
+                <LayoutItem Id="WeightWeaponType" ViewItem="WeightWeaponType" ShowCaption="" Index="6" RelativeSize="6.818181818181818" IsNewNode="True" />
+                <LayoutItem Id="Rarity" ViewItem="Rarity" Index="7" RelativeSize="6.818181818181818" IsNewNode="True" />
+                <LayoutItem Id="Weight" ViewItem="Weight" Index="8" RelativeSize="6.818181818181818" IsNewNode="True" />
+                <LayoutItem Id="Profiency" ViewItem="Profiency" Index="9" RelativeSize="6.818181818181818" IsNewNode="True" />
+                <LayoutItem Id="NeedSetting" ViewItem="NeedSetting" Index="10" RelativeSize="6.818181818181818" IsNewNode="True" />
+                <LayoutItem Id="Fencing" ViewItem="Fencing" Index="11" RelativeSize="6.818181818181818" IsNewNode="True" />
+                <LayoutItem Id="Throwing" ViewItem="Throwing" Index="12" RelativeSize="6.818181818181818" IsNewNode="True" />
+                <LayoutItem Id="Special" ViewItem="Special" Index="13" RelativeSize="9.090909090909092" IsNewNode="True" />
               </LayoutGroup>
             </LayoutGroup>
-            <LayoutItem Id="Description" ViewItem="Description" CaptionLocation="Top" Index="1" RelativeSize="38.72727272727273" IsNewNode="True" />
-            <LayoutGroup Id="Item" RelativeSize="23.859649122807017" Removed="True">
-              <LayoutGroup Id="Item_col1" RelativeSize="50">
-                <LayoutItem Id="DefaultProperty" Index="0" RelativeSize="100" Removed="True" />
-                <LayoutItem Id="ItemType" Index="0" RelativeSize="50" Removed="True" />
-                <LayoutItem Id="Name" Removed="True" />
-              </LayoutGroup>
-              <LayoutGroup Id="Item_col2" RelativeSize="50">
-                <LayoutItem Id="Rarity" RelativeSize="100" Index="0" Removed="True" />
-                <LayoutItem Id="Weight" RelativeSize="50" Removed="True" />
-              </LayoutGroup>
-            </LayoutGroup>
-          </LayoutGroup>
-          <LayoutGroup Id="AssignedItems_Group" Direction="Vertical" RelativeSize="32.720588235294116" Removed="True">
-            <LayoutItem Id="AssignedItems" RelativeSize="100" />
-          </LayoutGroup>
-          <LayoutGroup Id="SizeableEditors" RelativeSize="46.13970588235294" Removed="True">
-            <LayoutItem Id="Description" RelativeSize="100" CaptionLocation="Top" Removed="True" />
+            <LayoutItem Id="Description" ViewItem="Description" CaptionLocation="Top" Index="1" RelativeSize="34.96621621621622" IsNewNode="True" />
           </LayoutGroup>
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="WeaponItem_ListView">
+    <ListView Id="WeaponItem_ListView" FreezeColumnIndices="True">
       <Columns>
+        <ColumnInfo Id="Damage" Index="-1" />
+        <ColumnInfo Id="Description" Index="-1" />
         <ColumnInfo Id="Fencing" Index="-1" />
         <ColumnInfo Id="HandWeaponType" Index="-1" />
         <ColumnInfo Id="HitBonus" Index="-1" SortIndex="0" SortOrder="Ascending" />
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="ItemType" Index="-1" />
+        <ColumnInfo Id="Name" Index="-1" />
+        <ColumnInfo Id="NeedSetting" Index="-1" />
+        <ColumnInfo Id="Profiency" Index="-1" />
+        <ColumnInfo Id="Rarity" Index="-1" />
         <ColumnInfo Id="Special" Index="-1" />
         <ColumnInfo Id="Throwing" Index="-1" />
         <ColumnInfo Id="WeaponRangeType" Index="-1" />
         <ColumnInfo Id="WeightWeaponType" Index="-1" />
-        <ColumnInfo Id="DefaultProperty" Width="396" SortIndex="-1" SortOrder="None" />
+        <ColumnInfo Id="DefaultProperty" Width="396" SortIndex="-1" SortOrder="None" Index="0" />
         <ColumnInfo Id="MainDamageType" Index="1" />
         <ColumnInfo Id="Weight" Index="2" />
       </Columns>
