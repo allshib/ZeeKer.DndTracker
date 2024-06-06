@@ -27,10 +27,7 @@
       <Item Id="MasterZone" Caption="Уголок мастера">
         <Items>
           <Item Id="Campain_ListView" Caption="Кампейн" />
-          <Item Id="Character_ListView" Caption="Персонаж" />
-          <Item Id="CharacterStorage_ListView" Caption="Хранилище" />
-          <Item Id="Classes" Caption="Классы" />
-          <Item Id="Feats" Caption="Черты" />
+          <Item Id="Character_ListView" Caption="Персонажи" />
           <Item Id="Its" Caption="Предметы">
             <Items>
               <Item Id="AllItems" Caption="Все Предметы" />
@@ -38,7 +35,12 @@
               <Item Id="Weapons" Caption="Оружие" />
             </Items>
           </Item>
-          <Item Id="Person_ListView" Caption="Игрок" />
+          <Item Id="Spells" Caption="Заклинания" />
+          <Item Id="Classes" Caption="Классы" />
+          <Item Id="Profiencies" Caption="Владения" />
+          <Item Id="Feats" Caption="Черты" />
+          <Item Id="Person_ListView" Caption="Игроки" />
+          <Item Id="CharacterStorage_ListView" Caption="Хранилище" />
         </Items>
       </Item>
       <Item Id="Security" Caption="Безопасность" />
@@ -230,6 +232,26 @@
             </LayoutGroup>
           </LayoutGroup>
           <LayoutGroup Id="SizeableEditors" Caption="Описание" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Spell_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Spell" Caption="Заклинание">
+              <LayoutGroup Id="Spell_col1">
+                <LayoutGroup Id="Autod11b71cb-9323-4b25-a990-68d5ccbb06fc" Caption="Autod11b71cb-9323-4b25-a990-68d5ccbb06fc(6)">
+                  <LayoutGroup Id="Auto92493f6f-2196-4a5d-ab9a-d0eddff95270" Caption="">
+                    <LayoutGroup Id="Autoaa4fe54a-8d1c-4c49-9a19-186cff921c24" Caption="" />
+                    <LayoutGroup Id="AdditionalInfo" Caption="Дополнительная информация">
+                      <LayoutGroup Id="Auto204797ad-8ab3-4ff3-baf6-7ec07a7a152d" Caption="Auto204797ad-8ab3-4ff3-baf6-7ec07a7a152d(11)" />
+                    </LayoutGroup>
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
         </LayoutGroup>
       </Layout>
     </DetailView>

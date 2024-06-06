@@ -97,6 +97,15 @@
         <AppearanceRule Id="Bold" Criteria="[HasSkill] = True" FontStyle="Bold" TargetItems="*" IsNewNode="True" />
       </AppearanceRules>
     </Class>
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Spell">
+      <AppearanceRules>
+        <AppearanceRule Id="NeedConcentration" Criteria="[NeedConcentration] = True" BackColor="255, 224, 192" TargetItems="*" Context="ListView" IsNewNode="True" />
+      </AppearanceRules>
+      <OwnMembers>
+        <Member Name="Components" RowCount="1" />
+        <Member Name="Descripton" RowCount="13" />
+      </OwnMembers>
+    </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" ImageName="BO_StateMachine">
       <AppearanceRules>
         <AppearanceRule Id="BlockOperationEdit" Context="DetailView" TargetItems="*;Reason" Criteria="IsNewObject([This]) = False" Enabled="False" IsNewNode="True" />
@@ -164,12 +173,9 @@
       </Item>
       <Item Id="MasterZone" Index="2" ImageName="Crit" IsNewNode="True">
         <Items IsNewNode="True">
-          <Item Id="Campain_ListView" ObjectKey="" ViewId="Campain_ListView" IsNewNode="True" />
-          <Item Id="Character_ListView" ObjectKey="" ViewId="Character_ListView" IsNewNode="True" />
-          <Item Id="CharacterStorage_ListView" ObjectKey="" ViewId="CharacterStorage_ListView" IsNewNode="True" />
-          <Item Id="Classes" ViewId="CharacterClass_ListView" IsNewNode="True" />
-          <Item Id="Feats" ViewId="Feat_ListView" IsNewNode="True" />
-          <Item Id="Its" IsNewNode="True">
+          <Item Id="Campain_ListView" ObjectKey="" ViewId="Campain_ListView" Index="1" IsNewNode="True" />
+          <Item Id="Character_ListView" ObjectKey="" ViewId="Character_ListView" Index="2" IsNewNode="True" />
+          <Item Id="Its" Index="3" IsNewNode="True">
             <Items IsNewNode="True">
               <Item Id="AllItems" ViewId="Item_ListView" Index="1" IsNewNode="True" />
               <Item Id="Items" ViewId="SimpleItem_ListView" Index="2" IsNewNode="True" />
@@ -178,8 +184,12 @@
               <Item Id="Shields" ViewId="ShieldItem_ListView" Index="5" IsNewNode="True" />
             </Items>
           </Item>
-          <Item Id="Person_ListView" ObjectKey="" ViewId="Person_ListView" IsNewNode="True" />
-          <Item Id="Profiencies" ViewId="Profiency_ListView" IsNewNode="True" />
+          <Item Id="Spells" ViewId="Spell_ListView" Index="4" IsNewNode="True" />
+          <Item Id="Classes" ViewId="CharacterClass_ListView" Index="5" IsNewNode="True" />
+          <Item Id="Profiencies" ViewId="Profiency_ListView" Index="6" IsNewNode="True" />
+          <Item Id="Feats" ViewId="Feat_ListView" Index="7" IsNewNode="True" />
+          <Item Id="Person_ListView" ObjectKey="" ViewId="Person_ListView" Index="8" IsNewNode="True" />
+          <Item Id="CharacterStorage_ListView" ObjectKey="" ViewId="CharacterStorage_ListView" Index="9" IsNewNode="True" />
         </Items>
       </Item>
       <Item Id="Security" Index="3" IsNewNode="True" />
@@ -1218,6 +1228,52 @@
         <ColumnInfo Id="Value" Index="-1" />
         <ColumnInfo Id="DefaultProperty" Index="0" />
         <ColumnInfo Id="Dependency" Index="1" SortOrder="Ascending" GroupIndex="0" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Spell_DetailView" FreezeLayout="True">
+      <Layout IsNewNode="True" Removed="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+            <LayoutGroup Id="Spell" Index="0" ShowCaption="True" RelativeSize="100" IsNewNode="True">
+              <LayoutGroup Id="Spell_col1" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+                <LayoutGroup Id="Autod11b71cb-9323-4b25-a990-68d5ccbb06fc" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="42.72727272727273" IsNewNode="True">
+                  <LayoutGroup Id="Auto92493f6f-2196-4a5d-ab9a-d0eddff95270" ShowCaption="False" Index="0" RelativeSize="56.148148148148145" IsNewNode="True">
+                    <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="13.617021276595745" IsNewNode="True" />
+                    <LayoutGroup Id="Autoaa4fe54a-8d1c-4c49-9a19-186cff921c24" ShowCaption="False" Direction="Horizontal" Index="1" RelativeSize="10.212765957446809" IsNewNode="True">
+                      <LayoutItem Id="SpellLevel" ViewItem="SpellLevel" Index="0" RelativeSize="49.340369393139845" IsNewNode="True" />
+                      <LayoutItem Id="MagicSchool" ShowCaption="False" ViewItem="MagicSchool" Index="1" RelativeSize="50.659630606860155" IsNewNode="True" />
+                    </LayoutGroup>
+                    <LayoutGroup Id="AdditionalInfo" ShowCaption="True" CaptionLocation="Top" IsCollapsibleGroup="True" Index="2" RelativeSize="76.17021276595744" IsNewNode="True">
+                      <LayoutItem Id="SpellCastingTime" ViewItem="SpellCastingTime" Index="0" RelativeSize="21.62162162162162" IsNewNode="True" />
+                      <LayoutItem Id="Distance" ViewItem="Distance" Index="1" RelativeSize="16.216216216216218" IsNewNode="True" />
+                      <LayoutGroup Id="Auto204797ad-8ab3-4ff3-baf6-7ec07a7a152d" ShowCaption="False" Direction="Horizontal" Index="2" RelativeSize="24.324324324324323" IsNewNode="True">
+                        <LayoutItem Id="Duration" ViewItem="Duration" Index="0" RelativeSize="50" IsNewNode="True" />
+                        <LayoutItem Id="NeedConcentration" ViewItem="NeedConcentration" Index="1" RelativeSize="50" IsNewNode="True" />
+                      </LayoutGroup>
+                      <LayoutItem Id="Components" ViewItem="Components" Index="3" RelativeSize="16.216216216216218" IsNewNode="True" />
+                      <LayoutItem Id="Source" ViewItem="Source" Index="4" RelativeSize="21.62162162162162" IsNewNode="True" />
+                    </LayoutGroup>
+                  </LayoutGroup>
+                  <LayoutItem Id="Item2" Index="1" RelativeSize="43.851851851851855" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="Descripton" ViewItem="Descripton" CaptionLocation="Top" Index="1" RelativeSize="57.27272727272727" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Spell_ListView" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="Components" Index="-1" />
+        <ColumnInfo Id="Descripton" Index="-1" />
+        <ColumnInfo Id="Duration" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="MagicSchool" Index="-1" />
+        <ColumnInfo Id="Name" Index="-1" />
+        <ColumnInfo Id="SpellLevel" Index="-1" />
+        <ColumnInfo Id="FullName" Index="0" />
+        <ColumnInfo Id="Source" Index="1" />
       </Columns>
     </ListView>
     <ListView Id="StatBonus_BonusGroups_ListView" FreezeColumnIndices="True">

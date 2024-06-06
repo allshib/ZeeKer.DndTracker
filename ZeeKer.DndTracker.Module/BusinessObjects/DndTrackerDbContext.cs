@@ -91,6 +91,7 @@ public class DndTrackerEFCoreDbContext : DbContext {
     public DbSet<OneStatBonus> OneStatBonuses { get; set; }
     public DbSet<AvailableFeat> AvailableFeats { get; set; }
     public DbSet<DocumentationInfo> DocumentationInfo { get; set; }
+    public DbSet<Spell> Spells { get; set; }
 
 
 
