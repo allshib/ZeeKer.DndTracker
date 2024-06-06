@@ -1,4 +1,4 @@
-using DevExpress.Data.Filtering;
+п»їusing DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
@@ -16,20 +16,20 @@ using ZeeKer.DndTracker.Module.Types;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
-    [XafDisplayName("Раса")]
+    [XafDisplayName("Р Р°СЃР°")]
     public class Race : BaseObject
     {
         public Race()
         {
           
         }
-        [XafDisplayName("Наименование")]
+        [XafDisplayName("РќР°РёРјРµРЅРѕРІР°РЅРёРµ")]
         public virtual string Name { get; set; }
 
-        [XafDisplayName("Стандартная раса")]
+        [XafDisplayName("РЎС‚Р°РЅРґР°СЂС‚РЅР°СЏ СЂР°СЃР°")]
         public virtual RaceType RaceType { get; set; }
 
-        [XafDisplayName("Персонажи")]
+        [XafDisplayName("РџРµСЂСЃРѕРЅР°Р¶Рё")]
         public virtual IList<Character> Characters { get; set; } = new ObservableCollection<Character>();
 
     }

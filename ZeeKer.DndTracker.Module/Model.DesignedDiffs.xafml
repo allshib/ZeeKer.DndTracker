@@ -725,9 +725,9 @@
     <ListView Id="CharacterStorage_Items_ListView" FreezeColumnIndices="True" AllowLink="False" AllowUnlink="False">
       <Columns>
         <ColumnInfo Id="ID" Index="-1" />
-        <ColumnInfo Id="Item" Index="-1" />
+        <ColumnInfo Id="Name" Index="-1" />
         <ColumnInfo Id="Storage" Index="-1" />
-        <ColumnInfo Id="Name" Index="0" />
+        <ColumnInfo Id="Item" Index="0" />
         <ColumnInfo Id="Count" Index="1" />
       </Columns>
     </ListView>
@@ -855,11 +855,14 @@
         <ColumnInfo Id="Name" Index="0" />
       </Columns>
     </ListView>
-    <ListView Id="Item_AssignedItems_ListView">
+    <ListView Id="Item_AssignedItems_ListView" FreezeColumnIndices="True">
       <Columns>
+        <ColumnInfo Id="ID" Index="-1" />
         <ColumnInfo Id="Name" Index="-1" />
-        <ColumnInfo Id="Storage" Index="0" />
-        <ColumnInfo Id="Count" Index="1" />
+        <ColumnInfo Id="SettingOnThis" Index="-1" />
+        <ColumnInfo Id="Item" Index="0" />
+        <ColumnInfo Id="Storage" Index="1" />
+        <ColumnInfo Id="Count" Index="2" />
       </Columns>
     </ListView>
     <DetailView Id="Item_DetailView">
