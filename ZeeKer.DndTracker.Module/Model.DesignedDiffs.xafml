@@ -770,6 +770,18 @@
         <ColumnInfo Id="OperationDate" Index="1" SortIndex="0" SortOrder="Descending" />
       </Columns>
     </ListView>
+    <DetailView Id="ClassForSpell_DetailView">
+      <Items>
+        <PropertyEditor Id="Class" PropertyName="Class" IsNewNode="True" />
+        <PropertyEditor Id="Spell" PropertyName="Spell" IsNewNode="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="6.9216757741347905">
+          <LayoutItem Id="Spell" ViewItem="Spell" Index="0" RelativeSize="100" IsNewNode="True" />
+        </LayoutGroup>
+        <LayoutItem Id="Class" ViewItem="Class" Index="1" RelativeSize="93.0783242258652" IsNewNode="True" />
+      </Layout>
+    </DetailView>
     <DetailView Id="FastAddFeatBonusViewModel_DetailView" FreezeLayout="True">
       <Items>
         <ActionContainerViewItem Id="FastAddBonusStat" ActionContainer="FastAddBonusStat" PaintStyle="Caption" IsNewNode="True" />
@@ -1234,31 +1246,37 @@
       <Layout IsNewNode="True" Removed="True">
         <LayoutGroup Id="Main" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
           <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
-            <LayoutGroup Id="Spell" Index="0" ShowCaption="True" RelativeSize="100" IsNewNode="True">
-              <LayoutGroup Id="Spell_col1" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
-                <LayoutGroup Id="Autod11b71cb-9323-4b25-a990-68d5ccbb06fc" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="42.72727272727273" IsNewNode="True">
-                  <LayoutGroup Id="Auto92493f6f-2196-4a5d-ab9a-d0eddff95270" ShowCaption="False" Index="0" RelativeSize="56.148148148148145" IsNewNode="True">
-                    <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="13.617021276595745" IsNewNode="True" />
-                    <LayoutGroup Id="Autoaa4fe54a-8d1c-4c49-9a19-186cff921c24" ShowCaption="False" Direction="Horizontal" Index="1" RelativeSize="10.212765957446809" IsNewNode="True">
-                      <LayoutItem Id="SpellLevel" ViewItem="SpellLevel" Index="0" RelativeSize="49.340369393139845" IsNewNode="True" />
-                      <LayoutItem Id="MagicSchool" ShowCaption="False" ViewItem="MagicSchool" Index="1" RelativeSize="50.659630606860155" IsNewNode="True" />
-                    </LayoutGroup>
-                    <LayoutGroup Id="AdditionalInfo" ShowCaption="True" CaptionLocation="Top" IsCollapsibleGroup="True" Index="2" RelativeSize="76.17021276595744" IsNewNode="True">
-                      <LayoutItem Id="SpellCastingTime" ViewItem="SpellCastingTime" Index="0" RelativeSize="21.62162162162162" IsNewNode="True" />
-                      <LayoutItem Id="Distance" ViewItem="Distance" Index="1" RelativeSize="16.216216216216218" IsNewNode="True" />
-                      <LayoutGroup Id="Auto204797ad-8ab3-4ff3-baf6-7ec07a7a152d" ShowCaption="False" Direction="Horizontal" Index="2" RelativeSize="24.324324324324323" IsNewNode="True">
-                        <LayoutItem Id="Duration" ViewItem="Duration" Index="0" RelativeSize="50" IsNewNode="True" />
-                        <LayoutItem Id="NeedConcentration" ViewItem="NeedConcentration" Index="1" RelativeSize="50" IsNewNode="True" />
+            <TabbedGroup Id="Item1" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+              <LayoutGroup Id="Spell" ShowCaption="True" Index="0" RelativeSize="100" IsNewNode="True">
+                <LayoutGroup Id="Spell_col1" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
+                  <LayoutGroup Id="Autod11b71cb-9323-4b25-a990-68d5ccbb06fc" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="49.72477064220183" IsNewNode="True">
+                    <LayoutGroup Id="Auto92493f6f-2196-4a5d-ab9a-d0eddff95270" ShowCaption="False" Index="0" RelativeSize="56.148148148148145" IsNewNode="True">
+                      <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="11.808118081180812" IsNewNode="True" />
+                      <LayoutGroup Id="Autoaa4fe54a-8d1c-4c49-9a19-186cff921c24" ShowCaption="False" Direction="Horizontal" Index="1" RelativeSize="13.284132841328413" IsNewNode="True">
+                        <LayoutItem Id="SpellLevel" ViewItem="SpellLevel" Index="0" RelativeSize="48.812664907651715" IsNewNode="True" />
+                        <LayoutItem Id="MagicSchool" ShowCaption="False" ViewItem="MagicSchool" Index="1" RelativeSize="51.187335092348285" IsNewNode="True" />
                       </LayoutGroup>
-                      <LayoutItem Id="Components" ViewItem="Components" Index="3" RelativeSize="16.216216216216218" IsNewNode="True" />
-                      <LayoutItem Id="Source" ViewItem="Source" Index="4" RelativeSize="21.62162162162162" IsNewNode="True" />
+                      <LayoutGroup Id="AdditionalInfo" ShowCaption="True" CaptionLocation="Top" IsCollapsibleGroup="True" Index="2" RelativeSize="74.90774907749078" IsNewNode="True">
+                        <LayoutItem Id="SpellCastingTime" ViewItem="SpellCastingTime" Index="0" RelativeSize="18.6046511627907" IsNewNode="True" />
+                        <LayoutItem Id="Distance" ViewItem="Distance" Index="1" RelativeSize="13.953488372093023" IsNewNode="True" />
+                        <LayoutGroup Id="Auto204797ad-8ab3-4ff3-baf6-7ec07a7a152d" ShowCaption="False" Direction="Horizontal" Index="2" RelativeSize="20.930232558139537" IsNewNode="True">
+                          <LayoutItem Id="Duration" ViewItem="Duration" Index="0" RelativeSize="50" IsNewNode="True" />
+                          <LayoutItem Id="NeedConcentration" ViewItem="NeedConcentration" Index="1" RelativeSize="50" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutItem Id="Classes" ViewItem="Classes" Index="3" RelativeSize="13.953488372093023" IsNewNode="True" />
+                        <LayoutItem Id="Components" ViewItem="Components" Index="4" RelativeSize="13.953488372093023" IsNewNode="True" />
+                        <LayoutItem Id="Source" ViewItem="Source" Index="5" RelativeSize="18.6046511627907" IsNewNode="True" />
+                      </LayoutGroup>
                     </LayoutGroup>
+                    <LayoutItem Id="Item2" Index="1" RelativeSize="43.851851851851855" IsNewNode="True" />
                   </LayoutGroup>
-                  <LayoutItem Id="Item2" Index="1" RelativeSize="43.851851851851855" IsNewNode="True" />
+                  <LayoutItem Id="Descripton" ViewItem="Descripton" CaptionLocation="Top" Index="1" RelativeSize="50.27522935779817" IsNewNode="True" />
                 </LayoutGroup>
-                <LayoutItem Id="Descripton" ViewItem="Descripton" CaptionLocation="Top" Index="1" RelativeSize="57.27272727272727" IsNewNode="True" />
               </LayoutGroup>
-            </LayoutGroup>
+              <LayoutGroup Id="Item3" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="1" RelativeSize="100" IsNewNode="True">
+                <LayoutItem Id="ClassForSpells" ViewItem="ClassForSpells" Index="0" RelativeSize="100" IsNewNode="True" />
+              </LayoutGroup>
+            </TabbedGroup>
           </LayoutGroup>
         </LayoutGroup>
       </Layout>

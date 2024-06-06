@@ -92,6 +92,7 @@ public class DndTrackerEFCoreDbContext : DbContext {
     public DbSet<AvailableFeat> AvailableFeats { get; set; }
     public DbSet<DocumentationInfo> DocumentationInfo { get; set; }
     public DbSet<Spell> Spells { get; set; }
+    public DbSet<ClassForSpell> ClassForSpell { get; set; }
 
 
 
@@ -254,6 +255,17 @@ public class DndTrackerEFCoreDbContext : DbContext {
                     .Deserialize<AvailableFeatJson>(v, new JsonSerializerOptions
                         { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull })
             );
+
+
+        modelBuilder.Entity<Spell>()
+            .HasMany(s => s.ClassForSpells)
+            .WithOne(cs => cs.Spell)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<CharacterClass>()
+            .HasMany(s => s.ClassForSpells)
+            .WithOne(cs => cs.Class)
+            .OnDelete(DeleteBehavior.Cascade);
 
         base.OnModelCreating(modelBuilder);
     }

@@ -38,10 +38,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Персонажи")]
         public virtual IList<Character> Characters { get; set; } = new ObservableCollection<Character>();
 
-        //[Action(Caption = "My UI Action", ConfirmationMessage = "Are you sure?", ImageName = "Attention", AutoCommit = true)]
-        //public void ActionMethod() {
-        //    // Trigger custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
-        //    this.PersistentProperty = "Paid";
-        //}
+        [XafDisplayName("Заклинания"), Aggregated]
+        public virtual IList<ClassForSpell> ClassForSpells { get; set; } = new ObservableCollection<ClassForSpell>();
     }
 }

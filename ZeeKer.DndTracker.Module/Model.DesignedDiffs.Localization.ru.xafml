@@ -175,6 +175,11 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <DetailView Id="ClassForSpell_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" Caption="Main" />
+      </Layout>
+    </DetailView>
     <DetailView Id="FastAddFeatBonusViewModel_DetailView">
       <Items>
         <ActionContainerViewItem Id="FastAddBonusStat" Caption="FastAddBonusStat(7)" />
@@ -239,18 +244,21 @@
       <Layout>
         <LayoutGroup Id="Main">
           <LayoutGroup Id="SimpleEditors">
-            <LayoutGroup Id="Spell" Caption="Заклинание">
-              <LayoutGroup Id="Spell_col1">
-                <LayoutGroup Id="Autod11b71cb-9323-4b25-a990-68d5ccbb06fc" Caption="Autod11b71cb-9323-4b25-a990-68d5ccbb06fc(6)">
-                  <LayoutGroup Id="Auto92493f6f-2196-4a5d-ab9a-d0eddff95270" Caption="">
-                    <LayoutGroup Id="Autoaa4fe54a-8d1c-4c49-9a19-186cff921c24" Caption="" />
-                    <LayoutGroup Id="AdditionalInfo" Caption="Дополнительная информация">
-                      <LayoutGroup Id="Auto204797ad-8ab3-4ff3-baf6-7ec07a7a152d" Caption="Auto204797ad-8ab3-4ff3-baf6-7ec07a7a152d(11)" />
+            <TabbedGroup Id="Item1">
+              <LayoutGroup Id="Spell" Caption="Заклинание">
+                <LayoutGroup Id="Spell_col1">
+                  <LayoutGroup Id="Autod11b71cb-9323-4b25-a990-68d5ccbb06fc" Caption="Autod11b71cb-9323-4b25-a990-68d5ccbb06fc(6)">
+                    <LayoutGroup Id="Auto92493f6f-2196-4a5d-ab9a-d0eddff95270" Caption="Auto92493f6f-2196-4a5d-ab9a-d0eddff95270(6)">
+                      <LayoutGroup Id="Autoaa4fe54a-8d1c-4c49-9a19-186cff921c24" Caption="Autoaa4fe54a-8d1c-4c49-9a19-186cff921c24(8)" />
+                      <LayoutGroup Id="AdditionalInfo" Caption="Дополнительная информация">
+                        <LayoutGroup Id="Auto204797ad-8ab3-4ff3-baf6-7ec07a7a152d" Caption="Auto204797ad-8ab3-4ff3-baf6-7ec07a7a152d(11)" />
+                      </LayoutGroup>
                     </LayoutGroup>
                   </LayoutGroup>
                 </LayoutGroup>
               </LayoutGroup>
-            </LayoutGroup>
+              <LayoutGroup Id="Item3" Caption="Классы" />
+            </TabbedGroup>
           </LayoutGroup>
         </LayoutGroup>
       </Layout>
