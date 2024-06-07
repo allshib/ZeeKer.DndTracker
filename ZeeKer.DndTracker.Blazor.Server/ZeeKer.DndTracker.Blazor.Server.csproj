@@ -603,5 +603,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Editors\HyperLinkEditor\" />
+    <Folder Include="Editors\MultiValuesEnumEditor\" />
   </ItemGroup>
 </Project>
