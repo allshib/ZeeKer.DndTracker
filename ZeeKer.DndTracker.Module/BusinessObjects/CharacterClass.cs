@@ -44,7 +44,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Заклинания")]
         public virtual IList<Spell> Spells { get; set; } = new ObservableCollection<Spell>();
 
+        [XafDisplayName("Источник")]
+        public virtual SourceType Source { get; set; }
 
-        
     }
 }

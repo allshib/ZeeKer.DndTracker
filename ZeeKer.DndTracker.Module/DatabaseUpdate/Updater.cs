@@ -66,6 +66,37 @@ public class Updater : ModuleUpdater {
         {
             FixArmorType();
         }
+
+
+        if (CurrentDBVersion < new Version("0.3.7"))
+        {
+            AddSourceToClasses();
+        }
+
+        if (CurrentDBVersion < new Version("0.3.7.1"))
+        {
+            AddSourceToRace();
+        }
+    }
+
+    private void AddSourceToRace()
+    {
+        var races = ObjectSpace.GetObjects<ZeeKer.DndTracker.Module.BusinessObjects.Race>();
+        foreach (var c in races)
+        {
+            c.Source = SourceType.PHB;
+        }
+        ObjectSpace.CommitChanges();
+    }
+
+    private void AddSourceToClasses()
+    {
+        var classes = ObjectSpace.GetObjects<CharacterClass>();
+        foreach (var c in classes)
+        {
+            c.Source = SourceType.PHB;
+        }
+        ObjectSpace.CommitChanges();
     }
 
     private void FixArmorType()

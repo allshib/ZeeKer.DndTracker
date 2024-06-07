@@ -37,6 +37,7 @@
           </Item>
           <Item Id="Spells" Caption="Заклинания" />
           <Item Id="Classes" Caption="Классы" />
+          <Item Id="Races" Caption="Расы" />
           <Item Id="Profiencies" Caption="Владения" />
           <Item Id="Feats" Caption="Черты" />
           <Item Id="Person_ListView" Caption="Игроки" />

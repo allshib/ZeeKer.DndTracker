@@ -32,5 +32,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Персонажи")]
         public virtual IList<Character> Characters { get; set; } = new ObservableCollection<Character>();
 
+
+        [XafDisplayName("Источник")]
+        public virtual SourceType Source { get; set; }
     }
 }
