@@ -65,10 +65,13 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Источник")]
         public virtual SourceType Source { get; set; }
 
-        [XafDisplayName("Классы")]
-        public virtual string Classes => String.Join(", ", ClassForSpells.Select(x => $"{x.Class?.Name}"));
+        //[XafDisplayName("Классы")]
+        //public virtual string Classes => String.Join(", ", ClassForSpells.Select(x => $"{x.Class?.Name}"));
 
-        [XafDisplayName("Связанные классы"), Aggregated]
+        [XafDisplayName("Связанные классы (явная связь)"), Aggregated]
         public virtual IList<ClassForSpell> ClassForSpells { get; set; } = new ObservableCollection<ClassForSpell>();
+
+        [XafDisplayName("Связанные классы")]
+        public virtual IList<CharacterClass> ClassObjects { get; set; } = new ObservableCollection<CharacterClass>();
     }
 }

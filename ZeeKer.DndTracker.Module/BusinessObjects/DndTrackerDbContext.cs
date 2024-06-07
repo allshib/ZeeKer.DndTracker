@@ -273,6 +273,11 @@ public class DndTrackerEFCoreDbContext : DbContext {
             .WithOne(s => s.Character)
             .OnDelete(DeleteBehavior.Cascade);
 
+        modelBuilder.Entity<CharacterClass>()
+            .HasMany(c => c.Spells)
+            .WithMany(s => s.ClassObjects)
+            .UsingEntity<ClassForSpell>();
+
         base.OnModelCreating(modelBuilder);
     }
 

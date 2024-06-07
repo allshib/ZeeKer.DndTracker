@@ -17,6 +17,7 @@ using System.Text;
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
     [XafDisplayName("Класс заклинания")]
+    //[XafDefaultProperty(nameof(Class))]
     public class ClassForSpell : BaseObject
     {
         public ClassForSpell()

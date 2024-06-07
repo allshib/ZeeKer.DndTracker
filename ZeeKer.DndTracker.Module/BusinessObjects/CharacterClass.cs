@@ -38,7 +38,10 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Персонажи")]
         public virtual IList<Character> Characters { get; set; } = new ObservableCollection<Character>();
 
-        [XafDisplayName("Заклинания"), Aggregated]
+        [XafDisplayName("Заклинания (явная связь)"), Aggregated]
         public virtual IList<ClassForSpell> ClassForSpells { get; set; } = new ObservableCollection<ClassForSpell>();
+
+        [XafDisplayName("Заклинания")]
+        public virtual IList<Spell> Spells { get; set; } = new ObservableCollection<Spell>();
     }
 }
