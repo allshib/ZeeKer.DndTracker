@@ -46,6 +46,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Настроиться на предмет")]
         public virtual bool SettingOnThis { get; set; }
 
+        [XafDisplayName("Текущее число зарядов")]
+        public virtual int CurrentNumberOfUses { get; set; }
 
         public override void OnSaving()
         {

@@ -16,6 +16,7 @@
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.AssignedItem">
       <AppearanceRules>
         <AppearanceRule Id="BlueSetting" BackColor="192, 255, 255" TargetItems="*" Criteria="[SettingOnThis] = True" IsNewNode="True" />
+        <AppearanceRule Id="HideCountUses" Priority="0" TargetItems="SettingOnThis" Visibility="Hide" Criteria="[Item.MaxNumbersOfUses] = 0 Or [Count] &lt;&gt; 1" IsNewNode="True" />
         <AppearanceRule Id="HideSetting" TargetItems="SettingOnThis" Visibility="Hide" Criteria="[Item] Is Null Or [Item.NeedSetting] = False Or [Storage.Local] = False" IsNewNode="True" />
         <AppearanceRule Id="OrangeSetting" Priority="0" BackColor="255, 224, 192" TargetItems="*" Criteria="[SettingOnThis] = False And [Item.NeedSetting] = True" IsNewNode="True" />
       </AppearanceRules>
@@ -300,9 +301,15 @@
         <LayoutGroup Id="Main" RelativeSize="100">
           <LayoutGroup Id="SimpleEditors" RelativeSize="100">
             <LayoutGroup Id="AssignedItem" RelativeSize="100">
-              <LayoutItem Id="Item" Index="0" RelativeSize="6.31163708086785" />
-              <LayoutItem Id="Count" Index="1" RelativeSize="93.68836291913215" />
-              <LayoutItem Id="Name" Index="2" RelativeSize="88.95463510848126" Removed="True" />
+              <LayoutGroup Id="AssignedItem_col1" RelativeSize="49.925925925925924">
+                <LayoutItem Id="Item" RelativeSize="5.807622504537205" />
+                <LayoutItem Id="Count" RelativeSize="94.1923774954628" />
+                <LayoutItem Id="Name" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="AssignedItem_col2" RelativeSize="50.074074074074076">
+                <LayoutItem Id="SettingOnThis" RelativeSize="5.807622504537205" />
+                <LayoutItem Id="CurrentNumberOfUses" RelativeSize="94.1923774954628" />
+              </LayoutGroup>
             </LayoutGroup>
           </LayoutGroup>
         </LayoutGroup>

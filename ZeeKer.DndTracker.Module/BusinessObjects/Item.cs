@@ -57,5 +57,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [XafDisplayName("Нужна настройка")]
         public virtual bool NeedSetting { get;set; }
+
+
+        [XafDisplayName("Число зарядов")]
+        public virtual int MaxNumbersOfUses { get; set; }
     }
 }
