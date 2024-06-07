@@ -197,6 +197,7 @@
               <Item Id="Shields" ViewId="ShieldItem_ListView" Index="5" IsNewNode="True" />
             </Items>
           </Item>
+          <Item Id="Spell_ListView_MasterView" ViewId="Spell_ListView_MasterView" Index="4" IsNewNode="True" />
           <Item Id="Spells" ViewId="Spell_ListView" Index="4" IsNewNode="True" />
           <Item Id="Classes" ViewId="CharacterClass_ListView" Index="5" IsNewNode="True" />
           <Item Id="Races" ViewId="Race_ListView" Index="5" IsNewNode="True" />
@@ -1347,7 +1348,7 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="Spell_ListView" FreezeColumnIndices="True">
+    <ListView Id="Spell_ListView" FreezeColumnIndices="True" IsGroupPanelVisible="True">
       <Columns>
         <ColumnInfo Id="Components" Index="-1" />
         <ColumnInfo Id="Descripton" Index="-1" />
@@ -1355,9 +1356,26 @@
         <ColumnInfo Id="ID" Index="-1" />
         <ColumnInfo Id="MagicSchool" Index="-1" />
         <ColumnInfo Id="Name" Index="-1" />
-        <ColumnInfo Id="SpellLevel" Index="-1" />
         <ColumnInfo Id="FullName" Index="0" />
         <ColumnInfo Id="Source" Index="1" />
+        <ColumnInfo Id="SpellLevel" Index="2" SortOrder="Ascending" GroupIndex="0" />
+      </Columns>
+    </ListView>
+    <ListView Id="Spell_ListView_MasterView" ClassName="ZeeKer.DndTracker.Module.BusinessObjects.Spell" FreezeColumnIndices="True" MasterDetailMode="ListViewAndDetailView" IsGroupPanelVisible="True" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="Components" PropertyName="Components" IsNewNode="True" />
+        <ColumnInfo Id="Descripton" PropertyName="Descripton" IsNewNode="True" />
+        <ColumnInfo Id="Distance" PropertyName="Distance" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Duration" PropertyName="Duration" IsNewNode="True" />
+        <ColumnInfo Id="ID" PropertyName="ID" IsNewNode="True" />
+        <ColumnInfo Id="IsRitual" PropertyName="IsRitual" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="MagicSchool" PropertyName="MagicSchool" IsNewNode="True" />
+        <ColumnInfo Id="Name" PropertyName="Name" IsNewNode="True" />
+        <ColumnInfo Id="NeedConcentration" PropertyName="NeedConcentration" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="SpellCastingTime" PropertyName="SpellCastingTime" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="FullName" PropertyName="FullName" SortIndex="0" SortOrder="Ascending" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="Source" PropertyName="Source" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="SpellLevel" PropertyName="SpellLevel" Index="2" SortOrder="Ascending" GroupIndex="0" IsNewNode="True" />
       </Columns>
     </ListView>
     <ListView Id="StatBonus_BonusGroups_ListView" FreezeColumnIndices="True">

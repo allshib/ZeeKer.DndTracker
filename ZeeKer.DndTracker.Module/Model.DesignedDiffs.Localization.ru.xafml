@@ -35,6 +35,7 @@
               <Item Id="Weapons" Caption="Оружие" />
             </Items>
           </Item>
+          <Item Id="Spell_ListView_MasterView" Caption="Заклинания (Detailed)" />
           <Item Id="Spells" Caption="Заклинания" />
           <Item Id="Classes" Caption="Классы" />
           <Item Id="Races" Caption="Расы" />
