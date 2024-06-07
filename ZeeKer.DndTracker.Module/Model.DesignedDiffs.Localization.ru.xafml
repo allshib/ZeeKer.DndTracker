@@ -69,6 +69,7 @@
       <RuleCriteria Id="Character_Profiency_StrengthCondition" CustomMessageTemplate="У вашего персонажа должно быть {TargetObject.ArmorItemCalc.StrenghtCondition} силы, чтобы надеть эту броню" />
       <RuleCriteria Id="CharacterStorage_MaxSettingRule" CustomMessageTemplate="Превышено максимальное число настроек" />
       <RuleCriteria Id="CharacterStorage_SettingInNotInventory" CustomMessageTemplate="Настраиваться можно только на предметы в инвентаре" />
+      <RuleUniqueValue Id="Spell_UniqueName" CustomMessageTemplate="Такое заклинание уже существует" />
       <RuleCriteria Id="StorageOperation_CorrectDestinOperation" CustomMessageTemplate="Разрешены только положительные операции" />
       <RuleCriteria Id="StorageOperation_DifferentStorages" CustomMessageTemplate="Запрещено переводить монеты в то же хранилище" />
       <RuleCriteria Id="StorageOperationMoreZero" CustomMessageTemplate="При таком типе операции кол-во монет должно быть больше 0" />
