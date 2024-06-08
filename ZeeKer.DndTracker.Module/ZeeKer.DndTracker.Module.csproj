@@ -9,6 +9,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Helpers\**" />
+    <EmbeddedResource Remove="Helpers\**" />
+    <None Remove="Helpers\**" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Images\Adventure.svg" />
     <None Remove="Images\Armor.svg" />
     <None Remove="Images\Box.svg" />
@@ -215,8 +220,5 @@
     <None Update="UnusableNodes_ru.xml">
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Helpers\" />
   </ItemGroup>
 </Project>

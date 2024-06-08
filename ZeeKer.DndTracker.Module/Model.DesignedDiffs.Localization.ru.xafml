@@ -122,6 +122,7 @@
                       <LayoutGroup Id="Auto640ccf67-3b1d-4ace-ac61-b9bc7d842707" Caption="Auto640ccf67-3b1d-4ace-ac61-b9bc7d842707(52)">
                         <LayoutGroup Id="Autod95e2523-151e-4a3f-b2e4-8e4d1c7981bd" Caption="Autod95e2523-151e-4a3f-b2e4-8e4d1c7981bd(60)">
                           <LayoutGroup Id="Auto981e8216-d6a4-4fe2-ac33-c6abb7de9855" Caption="Auto981e8216-d6a4-4fe2-ac33-c6abb7de9855(54)">
+                            <LayoutGroup Id="Item1" Caption="Боевые подсказки" />
                             <LayoutGroup Id="Item9" Caption="Характеристики" />
                           </LayoutGroup>
                         </LayoutGroup>

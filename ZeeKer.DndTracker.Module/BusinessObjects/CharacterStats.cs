@@ -13,7 +13,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using DevExpress.XtraReports.Parameters;
 using ZeeKer.DndTracker.Module.Extensions;
+using ZeeKer.DndTracker.Module.Types;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
@@ -31,7 +33,36 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             // this.AssociatedEntities = new ObservableCollection<AssociatedEntityObject>();
         }
 
-        
+        #region CalculationMainStatRules
+        [XafDisplayName("Основная характеристика")]
+        public virtual SkillDependencyType MainStat { get; set; }
+
+
+        [XafDisplayName("Дополнительный бонус попадания")]
+        public virtual int AdditionalAttackBonus { get; set; }
+
+        [XafDisplayName("Бонус попадания от основной характеристики")]
+        public virtual int MainAttackBonus => MainStat switch
+        {
+            SkillDependencyType.Strength => StrengthBonus + Profiency + AdditionalAttackBonus,
+            SkillDependencyType.Dexterity => DexterityBonus + Profiency + AdditionalAttackBonus,
+            SkillDependencyType.Charisma => CharismaBonus + Profiency + AdditionalAttackBonus,
+            SkillDependencyType.Constitution => ConstitutionBonus + Profiency + AdditionalAttackBonus,
+            SkillDependencyType.Wisdom => WisdomBonus + Profiency + AdditionalAttackBonus,
+            SkillDependencyType.Intelligence => IntelegenceBonus + Profiency + AdditionalAttackBonus,
+            _ => throw new NotImplementedException()
+        };
+
+        [XafDisplayName("Бонус попадания дальнобойним/фехтовальным оружием (от ловкости)")]
+        public virtual int LongerRangeWeaponsBonus => DexterityBonus + Profiency + AdditionalAttackBonus;
+
+        [XafDisplayName("Бонус попадания оружием бб (от силы)")]
+        public virtual int MelleeBonus => DexterityBonus + Profiency + AdditionalAttackBonus;
+
+        #endregion
+
+
+
 
         [XafDisplayName("Сила")]
         public virtual int Strength { get; set; }
