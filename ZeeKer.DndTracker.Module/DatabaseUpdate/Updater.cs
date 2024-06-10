@@ -77,6 +77,43 @@ public class Updater : ModuleUpdater {
         {
             AddSourceToRace();
         }
+
+        if (CurrentDBVersion < new Version("0.3.7.2"))
+        {
+            CreateSpasProfiencies();
+        }
+    }
+
+    private void CreateSpasProfiencies()
+    {
+        // Спасбросок силы
+        CreateProfiency(GroupProfiencyType.SavingThrow, ProficiencyType.StrengthSavingThrow, "Спасбросок силы");
+
+        // Спасбросок ловкости
+        CreateProfiency(GroupProfiencyType.SavingThrow, ProficiencyType.DexteritySavingThrow, "Спасбросок ловкости");
+
+        // Спасбросок телосложения
+        CreateProfiency(GroupProfiencyType.SavingThrow, ProficiencyType.ConstitutionSavingThrow, "Спасбросок телосложения");
+
+        // Спасбросок интеллекта
+        CreateProfiency(GroupProfiencyType.SavingThrow, ProficiencyType.IntelligenceSavingThrow, "Спасбросок интеллекта");
+
+        // Спасбросок мудрости
+        CreateProfiency(GroupProfiencyType.SavingThrow, ProficiencyType.WisdomSavingThrow, "Спасбросок мудрости");
+
+        // Спасбросок харизмы
+        CreateProfiency(GroupProfiencyType.SavingThrow, ProficiencyType.CharismaSavingThrow, "Спасбросок харизмы");
+
+
+        ObjectSpace.CommitChanges();
+    }
+
+    private void CreateProfiency(GroupProfiencyType group, ProficiencyType profiencyType, string name)
+    {
+        var prof = ObjectSpace.CreateObject<Profiency>();
+        prof.GroupProfiencyType = group;
+        prof.ProfiencyType = profiencyType;
+        prof.Name = name;
     }
 
     private void AddSourceToRace()

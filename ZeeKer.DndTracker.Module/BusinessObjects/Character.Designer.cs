@@ -75,6 +75,12 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             .Where(p => p.Profiency.GroupProfiencyType == Types.GroupProfiencyType.Tools)
             .Select(x => $"{x.DefaultProperty}"));
 
+        [XafDisplayName("Спасброски"), NotMapped]
+        public virtual string SavingThrows => String.Join(", ", Profiencies
+            .Where(p => p.Profiency.GroupProfiencyType == Types.GroupProfiencyType.SavingThrow)
+            .Select(x => $"{x.DefaultProperty}"));
+
+
         [XafDisplayName("Максимальное число настроек")]
         public virtual int MaxSettingCount {  get; set; }
 

@@ -278,6 +278,8 @@ public class DndTrackerEFCoreDbContext : DbContext {
             .WithMany(s => s.ClassObjects)
             .UsingEntity<ClassForSpell>();
 
+
+
         base.OnModelCreating(modelBuilder);
     }
 

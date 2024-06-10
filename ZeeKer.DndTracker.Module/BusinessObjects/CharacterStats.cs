@@ -71,7 +71,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         public virtual string StrengthCalc {
             get
             {
-                return $"{Strength} ({(Strength >= 10 ? "+" : "")}{StrengthBonus})";
+                return CalcStatInfo(Strength, StrengthBonus, ProficiencyType.StrengthSavingThrow);
             }
             set
             {
@@ -94,7 +94,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         {
             get
             {
-                return $"{Constitution} ({(Constitution >= 10 ? "+" : "")}{ConstitutionBonus})";
+                return CalcStatInfo(Constitution, ConstitutionBonus, ProficiencyType.ConstitutionSavingThrow);
             }
             set
             {
@@ -115,7 +115,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         {
             get
             {
-                return $"{Intelegence} ({(Intelegence >= 10 ? "+" : "")}{IntelegenceBonus})";
+                return CalcStatInfo(Intelegence, IntelegenceBonus, ProficiencyType.IntelligenceSavingThrow);
             }
             set
             {
@@ -136,7 +136,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         {
             get
             {
-                return $"{Charisma} ({(Charisma >= 10 ? "+" : "")}{CharismaBonus})";
+                return CalcStatInfo(Charisma, CharismaBonus, ProficiencyType.CharismaSavingThrow);
             }
             set
             {
@@ -159,7 +159,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         {
             get
             {
-                return $"{Dexterity} ({(Dexterity >= 10 ? "+" : "")}{DexterityBonus})";
+                return CalcStatInfo(Dexterity, DexterityBonus, ProficiencyType.DexteritySavingThrow);
             }
             set
             {
@@ -181,7 +181,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         {
             get
             {
-                return $"{Wisdom} ({(Wisdom >= 10 ? "+" : "")}{WisdomBonus})";
+                return CalcStatInfo(Wisdom, WisdomBonus, ProficiencyType.WisdomSavingThrow);
             }
             set
             {
@@ -227,6 +227,16 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             return 6;
 
         }
+
+        private string CalcStatInfo(int stat, int bonus, ProficiencyType spasType )
+        {
+            var spas = Character?.Profiencies?.Any(x => x.Profiency.ProfiencyType == spasType) == true 
+                ? Profiency + bonus
+                : bonus;
+
+            return $"{stat} ({(stat >= 10 ? "+" : "")}{bonus}, Спас: {(spas > 0 ? "+" : "")}{spas})";
+        }
+
         public override void OnCreated()
         {
             base.OnCreated();

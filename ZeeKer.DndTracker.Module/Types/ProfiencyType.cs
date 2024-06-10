@@ -33,6 +33,23 @@ namespace ZeeKer.DndTracker.Module.Types
         [XafDisplayName("Владение музыкальными инструментами")]
         MusicalInstruments,
         [XafDisplayName("Кастомный язык")]
-        CustomLanguage
+        CustomLanguage,
+        [XafDisplayName("Спасбросок Силы")]
+        StrengthSavingThrow,
+
+        [XafDisplayName("Спасбросок Ловкости")]
+        DexteritySavingThrow,
+
+        [XafDisplayName("Спасбросок Телосложения")]
+        ConstitutionSavingThrow,
+
+        [XafDisplayName("Спасбросок Интеллекта")]
+        IntelligenceSavingThrow,
+
+        [XafDisplayName("Спасбросок Мудрости")]
+        WisdomSavingThrow,
+
+        [XafDisplayName("Спасбросок Харизмы")]
+        CharismaSavingThrow
     }
 }

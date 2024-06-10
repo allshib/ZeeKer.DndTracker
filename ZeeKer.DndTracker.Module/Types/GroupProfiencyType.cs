@@ -18,6 +18,9 @@ namespace ZeeKer.DndTracker.Module.Types
         [XafDisplayName("Инструменты")]
         Tools = 3,
         [XafDisplayName("Языки")]
-        Languages = 4
+        Languages = 4,
+        [XafDisplayName("Спасбросок")]
+        SavingThrow = 5
+
     }
 }
