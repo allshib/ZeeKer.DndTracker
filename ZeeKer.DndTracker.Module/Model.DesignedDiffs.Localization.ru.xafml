@@ -166,6 +166,7 @@
       <Items>
         <ActionContainerViewItem Id="AddGold" Caption="AddGold(32)" />
         <ActionContainerViewItem Id="RemoveGoldCategory" Caption="RemoveGoldCategory(35)" />
+        <StaticText Id="RuleText" Text="КД персонажа без доспеха: 10 + модификатор Ловкости&#xD;&#xA;&#xD;&#xA;Безоружный удар: 1к20 + бонус мастерства + модификатор Силы&#xD;&#xA;&#xD;&#xA;Урон безоружного удара: 1 + модификатор Силы&#xD;&#xA;&#xD;&#xA;Рукопашная атака оружием: 1к20 + бонус мастерства + модификатор Силы (Для фехтовального оружия может использоваться Ловкость)&#xD;&#xA;&#xD;&#xA;Урон рукопашной атаки оружием: Кость оружия + модификатор Силы (Для фехтовального оружия может использоваться Ловкость)&#xD;&#xA;&#xD;&#xA;Дальнобойная атака оружием: 1к20 + бонус мастерства + модификатор Ловкости (Для рукопашного оружия со свойством метательное используется тот же модификатор, что и для рукопашной атаки)&#xD;&#xA;&#xD;&#xA;Урон дальнобойной атаки оружием: Кость оружия + модификатор Ловкости (Для рукопашного оружия со свойством метательное используется тот же модификатор, что и для рукопашной атаки)&#xD;&#xA;&#xD;&#xA;Атака заклинанием: 1к20 + бонус мастерства + модификатор базовой характеристики заклинателя&#xD;&#xA;&#xD;&#xA;Урон заклинания: индивидуален для каждого заклинания&#xD;&#xA;&#xD;&#xA;Сложность спасброска от заклинания: 8 + модификатор базовой характеристики заклинания + бонус мастерства&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Порядок ходов в бою: 1к20 + Инициатива (модификатор Ловкости)&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Спасбросок: 1к20 + модификатор характеристики + бонус мастерства (если у вас есть владение спасброском)&#xD;&#xA;&#xD;&#xA;Пассивное Восприятие: 10 + модификатор Мудрости (Восприятие)&#xD;&#xA;&#xD;&#xA;Стабилизация умирающего: 1к20 + модификатор Мудрости (Медицина) Сл 10&#xD;&#xA;&#xD;&#xA;Применение инструментов: 1к20 + модификатор характеристики (скажет Мастер) + бонус мастерства (если есть владение инструментом)" Caption="RuleText(118)" />
         <ActionContainerViewItem Id="SendGold" Caption="SendGold(40)" />
         <ActionContainerViewItem Id="SimpleTransferGold" Caption="SimpleTransferGold(39)" />
       </Items>
@@ -179,21 +180,30 @@
                     <LayoutGroup Id="Auto59f86a82-ced4-4138-aef9-b854ecbbff0e" Caption="Auto59f86a82-ced4-4138-aef9-b854ecbbff0e(9)">
                       <LayoutGroup Id="Auto3978ed44-1b31-4fe5-bee3-d08d037c8806" Caption="Auto3978ed44-1b31-4fe5-bee3-d08d037c8806(7)">
                         <LayoutGroup Id="Autoc9cac961-e5ba-4755-a58b-cb3209c04f3f" Caption="Autoc9cac961-e5ba-4755-a58b-cb3209c04f3f(9)">
-                          <LayoutGroup Id="MainPanel" Caption="Основное" />
+                          <LayoutGroup Id="MainPanel" Caption="Основное">
+                            <LayoutGroup Id="HealthDopInfo" Caption="Информация о здоровье" />
+                          </LayoutGroup>
                           <LayoutGroup Id="Auto09b0a364-ac62-45b8-813b-98705e17e217" Caption="Auto09b0a364-ac62-45b8-813b-98705e17e217(23)">
-                            <LayoutGroup Id="StatPanel" Caption="Характеристики" />
+                            <LayoutGroup Id="StatPanel" Caption="Характеристики">
+                              <LayoutGroup Id="Auto61012211-3c52-4276-9d6e-328e512a9dc1" Caption="Auto61012211-3c52-4276-9d6e-328e512a9dc1(26)" />
+                              <LayoutGroup Id="Auto6a6e3770-6ce3-47b8-b78c-e01e83fe5a23" Caption="Auto6a6e3770-6ce3-47b8-b78c-e01e83fe5a23(29)">
+                                <LayoutGroup Id="Auto6c8eacb4-ec37-4de4-9e13-9a466d7af670" Caption="Auto6c8eacb4-ec37-4de4-9e13-9a466d7af670(32)" />
+                                <LayoutGroup Id="Autocb00f9a0-6575-4d46-994e-f9737e90baae" Caption="Autocb00f9a0-6575-4d46-994e-f9737e90baae(35)">
+                                  <LayoutGroup Id="Autoa3ea9e05-e230-471c-a76a-7a6cb41ec92b" Caption="Autoa3ea9e05-e230-471c-a76a-7a6cb41ec92b(37)" />
+                                </LayoutGroup>
+                              </LayoutGroup>
+                            </LayoutGroup>
                             <LayoutGroup Id="Spells" Caption="Заклинания" />
                           </LayoutGroup>
                           <LayoutGroup Id="Autob3a43492-95e9-47c1-b677-e17bbdc35683" Caption="Autob3a43492-95e9-47c1-b677-e17bbdc35683(35)">
                             <LayoutGroup Id="Skills" Caption="Навыки" />
-                            <LayoutGroup Id="FightInfo" Caption="Боевые подсказки" />
                           </LayoutGroup>
                         </LayoutGroup>
+                        <LayoutGroup Id="FightInfo" Caption="Боевые подсказки" />
                         <LayoutGroup Id="Operations" Caption="Операции">
                           <LayoutGroup Id="Autodfbe3f29-6047-425f-9c10-756a27249c8a" Caption="Autodfbe3f29-6047-425f-9c10-756a27249c8a(19)" />
                         </LayoutGroup>
                         <LayoutGroup Id="Profiency" Caption="Владения" />
-                        <LayoutGroup Id="HealthDopInfo" Caption="Информация о здоровье" />
                         <LayoutGroup Id="CoinsB2">
                           <LayoutGroup Id="CoinsB">
                             <LayoutGroup Id="Coins" Caption="Монеты">
