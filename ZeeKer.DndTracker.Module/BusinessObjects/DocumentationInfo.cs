@@ -1,4 +1,4 @@
-using DevExpress.Data.Filtering;
+п»їusing DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
@@ -17,7 +17,7 @@ using System.Text;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
-    [XafDisplayName("Документация")]
+    [XafDisplayName("Р”РѕРєСѓРјРµРЅС‚Р°С†РёСЏ")]
     [XafDefaultProperty(nameof(Name))]
     public class DocumentationInfo : BaseObject
     {
@@ -31,7 +31,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             }
         }
 
-        [XafDisplayName("Наименование"), StringLength(150)]
+        [XafDisplayName("РќР°РёРјРµРЅРѕРІР°РЅРёРµ"), StringLength(150)]
         public virtual string Name { get; set; }
 
         [StringLength(300)]
@@ -45,7 +45,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             }
         }
         private Type objectType;
-        [NotMapped, ImmediatePostData, XafDisplayName("Тип объекта")]
+        [NotMapped, ImmediatePostData, XafDisplayName("РўРёРї РѕР±СЉРµРєС‚Р°")]
         public Type ObjectType
         {
             get { return objectType; }
@@ -58,10 +58,10 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         }
 
 
-        [XafDisplayName("Ссылка на документацию"), StringLength(250)]
+        [XafDisplayName("РЎСЃС‹Р»РєР° РЅР° РґРѕРєСѓРјРµРЅС‚Р°С†РёСЋ"), StringLength(250)]
         public virtual string Link { get; set; }
 
-        [XafDisplayName("Активно")]
+        [XafDisplayName("РђРєС‚РёРІРЅРѕ")]
         public virtual bool Active { get; set; }
 
     }
