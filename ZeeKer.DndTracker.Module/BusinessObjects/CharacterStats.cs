@@ -37,11 +37,12 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Основная характеристика")]
         public virtual SkillDependencyType MainStat { get; set; }
 
-
-        [XafDisplayName("Дополнительный бонус попадания")]
+        [ModelDefault("DisplayFormat", "{0:+0;-0;0}")]
+        [XafDisplayName("Бонус попадания (добавить)")]
         public virtual int AdditionalAttackBonus { get; set; }
 
-        [XafDisplayName("Бонус попадания от основной характеристики")]
+        [ModelDefault("DisplayFormat", "{0:+0;-0;0}")]
+        [XafDisplayName("Бонус попадания (основная хар-ка)")]
         public virtual int MainAttackBonus => MainStat switch
         {
             SkillDependencyType.Strength => StrengthBonus + Profiency + AdditionalAttackBonus,
@@ -53,11 +54,13 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             _ => throw new NotImplementedException()
         };
 
-        [XafDisplayName("Бонус попадания дальнобойним/фехтовальным оружием (от ловкости)")]
+        [ModelDefault("DisplayFormat", "{0:+0;-0;0}")]
+        [XafDisplayName("Бонус попадания (ловкость)")]
         public virtual int LongerRangeWeaponsBonus => DexterityBonus + Profiency + AdditionalAttackBonus;
 
-        [XafDisplayName("Бонус попадания оружием бб (от силы)")]
-        public virtual int MelleeBonus => DexterityBonus + Profiency + AdditionalAttackBonus;
+        [ModelDefault("DisplayFormat", "{0:+0;-0;0}")]
+        [XafDisplayName("Бонус попадания (сила)")]
+        public virtual int MelleeBonus => StrengthBonus + Profiency + AdditionalAttackBonus;
 
         #endregion
 
@@ -83,6 +86,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             }
         }
 
+        [ModelDefault("DisplayFormat", "{0:+0;-0;0}")]
         [XafDisplayName("Сила Бонус"), NotMapped]
         public virtual int StrengthBonus => Strength.CalcStatsBonus();
 
@@ -107,6 +111,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         }
 
         [XafDisplayName("Телосложение Бонус"), NotMapped]
+        [ModelDefault("DisplayFormat", "{0:+0;-0;0}")]
         public virtual int ConstitutionBonus => Constitution.CalcStatsBonus();
         [XafDisplayName("Интеллект")]
         public virtual int Intelegence { get; set; }
@@ -127,6 +132,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             }
         }
         [XafDisplayName("Интеллект Бонус"), NotMapped]
+        [ModelDefault("DisplayFormat", "{0:+0;-0;0}")]
         public virtual int IntelegenceBonus => Intelegence.CalcStatsBonus();
 
         [XafDisplayName("Харизма")]
@@ -149,6 +155,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         }
 
         [XafDisplayName("Харизма Бонус"), NotMapped]
+        [ModelDefault("DisplayFormat", "{0:+0;-0;0}")]
         public virtual int CharismaBonus => Charisma.CalcStatsBonus();
 
         [XafDisplayName("Ловкость")]
@@ -172,6 +179,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         }
 
         [XafDisplayName("Ловкость Бонус"), NotMapped]
+        [ModelDefault("DisplayFormat", "{0:+0;-0;0}")]
         public virtual int DexterityBonus => Dexterity.CalcStatsBonus();
 
         [XafDisplayName("Мудрость")]
@@ -194,6 +202,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         }
 
         [XafDisplayName("Мудрость Бонус"), NotMapped]
+        [ModelDefault("DisplayFormat", "{0:+0;-0;0}")]
         public virtual int WisdomBonus =>  Wisdom.CalcStatsBonus();
 
         [Browsable(false)]
@@ -204,9 +213,11 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
 
         [XafDisplayName("Бонус мастерства"), NotMapped]
+        [ModelDefault("DisplayFormat", "{0:+0;-0;0}")]
         public virtual int Profiency => CalculateProfiency();
 
         [XafDisplayName("Инициатива"), NotMapped]
+        [ModelDefault("DisplayFormat", "{0:+0;-0;0}")]
         public virtual int Initiative => DexterityBonus;
 
         //[XafDisplayName("Скорость")]

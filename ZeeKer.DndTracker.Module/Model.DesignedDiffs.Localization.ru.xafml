@@ -27,6 +27,7 @@
       <Item Id="MasterZone" Caption="Уголок мастера">
         <Items>
           <Item Id="Campain_ListView" Caption="Кампейн" />
+          <Item Id="Character_DetailView_Desktop" Caption="Персонажи (Desktop)" />
           <Item Id="Character_ListView" Caption="Персонажи" />
           <Item Id="Its" Caption="Предметы">
             <Items>
@@ -56,11 +57,7 @@
           <Item Id="Person_ListView" Caption="Игрок" />
         </Items>
       </Item>
-      <Item Id="Testing" Caption="Вспомогательные сущности (для тестирования)">
-        <Items>
-          <Item Id="Character_DetailView_Test" Caption="Персонажи (Desktop)" />
-        </Items>
-      </Item>
+      <Item Id="Testing" Caption="Вспомогательные сущности (для тестирования)" />
     </Items>
   </NavigationItems>
   <Validation>
@@ -162,7 +159,7 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <DetailView Id="Character_DetailView_Test" CaptionColon=":" RequiredFieldMark="*">
+    <DetailView Id="Character_DetailView_Desktop" CaptionColon=":" RequiredFieldMark="*">
       <Items>
         <ActionContainerViewItem Id="AddGold" Caption="AddGold(32)" />
         <ActionContainerViewItem Id="RemoveGoldCategory" Caption="RemoveGoldCategory(35)" />
@@ -181,15 +178,24 @@
                       <LayoutGroup Id="Auto3978ed44-1b31-4fe5-bee3-d08d037c8806" Caption="Auto3978ed44-1b31-4fe5-bee3-d08d037c8806(7)">
                         <LayoutGroup Id="Autoc9cac961-e5ba-4755-a58b-cb3209c04f3f" Caption="Autoc9cac961-e5ba-4755-a58b-cb3209c04f3f(9)">
                           <LayoutGroup Id="MainPanel" Caption="Основное">
+                            <LayoutGroup Id="Auto727793d8-98a4-4252-ba9c-80fc56bc6b1f" Caption="">
+                              <LayoutGroup Id="Auto2b63beb5-b742-474e-a7f1-8d889d7b3e33" Caption="" />
+                              <LayoutGroup Id="Autoec7bd90f-2a0a-4d9e-94ba-0dc8b061eac1" Caption="" />
+                            </LayoutGroup>
                             <LayoutGroup Id="HealthDopInfo" Caption="Информация о здоровье" />
+                            <LayoutGroup Id="Profiency" Caption="Владения" />
                           </LayoutGroup>
                           <LayoutGroup Id="Auto09b0a364-ac62-45b8-813b-98705e17e217" Caption="Auto09b0a364-ac62-45b8-813b-98705e17e217(23)">
                             <LayoutGroup Id="StatPanel" Caption="Характеристики">
-                              <LayoutGroup Id="Auto61012211-3c52-4276-9d6e-328e512a9dc1" Caption="Auto61012211-3c52-4276-9d6e-328e512a9dc1(26)" />
-                              <LayoutGroup Id="Auto6a6e3770-6ce3-47b8-b78c-e01e83fe5a23" Caption="Auto6a6e3770-6ce3-47b8-b78c-e01e83fe5a23(29)">
-                                <LayoutGroup Id="Auto6c8eacb4-ec37-4de4-9e13-9a466d7af670" Caption="Auto6c8eacb4-ec37-4de4-9e13-9a466d7af670(32)" />
-                                <LayoutGroup Id="Autocb00f9a0-6575-4d46-994e-f9737e90baae" Caption="Autocb00f9a0-6575-4d46-994e-f9737e90baae(35)">
-                                  <LayoutGroup Id="Autoa3ea9e05-e230-471c-a76a-7a6cb41ec92b" Caption="Autoa3ea9e05-e230-471c-a76a-7a6cb41ec92b(37)" />
+                              <LayoutGroup Id="Autofad88662-751e-4ef0-82c5-c8a6939b1e63" Caption="" />
+                              <LayoutGroup Id="Autoc0d99422-4232-4dc6-b0b6-273cea0bd6e8" Caption="">
+                                <LayoutGroup Id="Auto61012211-3c52-4276-9d6e-328e512a9dc1" Caption="Auto61012211-3c52-4276-9d6e-328e512a9dc1(26)" />
+                                <LayoutGroup Id="Auto6a6e3770-6ce3-47b8-b78c-e01e83fe5a23" Caption="Auto6a6e3770-6ce3-47b8-b78c-e01e83fe5a23(29)">
+                                  <LayoutGroup Id="Auto6c8eacb4-ec37-4de4-9e13-9a466d7af670" Caption="Auto6c8eacb4-ec37-4de4-9e13-9a466d7af670(32)" />
+                                </LayoutGroup>
+                                <LayoutGroup Id="Auto239e7f48-903d-4b76-b9bf-f74fe8ba5d09" Caption="">
+                                  <LayoutGroup Id="Auto64c6d6da-2be3-4c79-992e-35a90233bf2e" Caption="" />
+                                  <LayoutGroup Id="Auto8966e6ca-50f6-43e5-9334-2e6aa10a1a8d" Caption="" />
                                 </LayoutGroup>
                               </LayoutGroup>
                             </LayoutGroup>
@@ -203,7 +209,6 @@
                         <LayoutGroup Id="Operations" Caption="Операции">
                           <LayoutGroup Id="Autodfbe3f29-6047-425f-9c10-756a27249c8a" Caption="Autodfbe3f29-6047-425f-9c10-756a27249c8a(19)" />
                         </LayoutGroup>
-                        <LayoutGroup Id="Profiency" Caption="Владения" />
                         <LayoutGroup Id="CoinsB2">
                           <LayoutGroup Id="CoinsB">
                             <LayoutGroup Id="Coins" Caption="Монеты">

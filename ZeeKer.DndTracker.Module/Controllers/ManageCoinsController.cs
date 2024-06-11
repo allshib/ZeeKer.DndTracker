@@ -50,8 +50,8 @@ namespace ZeeKer.DndTracker.Module.Controllers
             CreateSimpleAction("Remove250Gold", "-250з", ActionCategories.RemoveGoldCategory, RemoveGold250Gold_Execute);
             CreateSimpleAction("Remove500Gold", "-500з", ActionCategories.RemoveGoldCategory, RemoveGold500Gold_Execute);
 
-            CreateSimpleAction("SimpleTransferGold", "Между своими", ActionCategories.SimpleTransferGoldCategory, SimpleTransferGold_Execute);
-            CreateSimpleAction("SendGold", "Отправить", ActionCategories.SimpleTransferGoldCategory, SendGold_Execute);
+            CreateSimpleAction("SimpleTransferGold", "Между своими", ActionCategories.SendGoldCategory, SimpleTransferGold_Execute);
+            CreateSimpleAction("SendGold", "Отправить", ActionCategories.SendGoldCategory, SendGold_Execute);
             #endregion
         }
         #region Events
