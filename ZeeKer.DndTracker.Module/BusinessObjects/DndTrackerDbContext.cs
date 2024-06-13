@@ -94,6 +94,8 @@ public class DndTrackerEFCoreDbContext : DbContext {
     public DbSet<Spell> Spells { get; set; }
     public DbSet<ClassForSpell> ClassForSpell { get; set; }
     public DbSet<AvailableSpell> AvailableSpell { get; set; }
+    public DbSet<HyperlinkObject> Hyperlinks { get; set; }
+    public DbSet<CampainHyperLink> CampainHyperLinks { get; set; }
 
 
 
@@ -278,6 +280,11 @@ public class DndTrackerEFCoreDbContext : DbContext {
             .WithMany(s => s.ClassObjects)
             .UsingEntity<ClassForSpell>();
 
+
+        modelBuilder.Entity<Campain>()
+            .HasMany(c => c.HyperLinks)
+            .WithOne(h => h.Campain)
+            .OnDelete(DeleteBehavior.Cascade);
 
 
         base.OnModelCreating(modelBuilder);

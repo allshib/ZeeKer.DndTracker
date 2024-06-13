@@ -84,6 +84,11 @@
         <Member Name="Description" RowCount="6" />
       </OwnMembers>
     </Class>
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.HyperlinkObject">
+      <AppearanceRules>
+        <AppearanceRule Id="ColorHyperLink" TargetItems="HyperLink" FontColor="128, 128, 255" FontStyle="Underline" IsNewNode="True" />
+      </AppearanceRules>
+    </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Item" ImageName="Box">
       <OwnMembers>
         <Member Name="Description" RowCount="6" />
@@ -383,11 +388,39 @@
         <ColumnInfo Id="Person" Index="1" />
       </Columns>
     </ListView>
+    <ListView Id="Campain_HyperLinks_ListView" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="Campain" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="InputLink" Index="-1" />
+        <ColumnInfo Id="HyperLink" Index="0" />
+      </Columns>
+    </ListView>
     <ListView Id="Campain_ListView" FreezeColumnIndices="True">
       <Columns>
         <ColumnInfo Id="ID" Index="-1" />
         <ColumnInfo Id="Name" Index="0" />
         <ColumnInfo Id="GameMaster" Index="1" />
+      </Columns>
+    </ListView>
+    <DetailView Id="CampainHyperLink_DetailView" FreezeLayout="True">
+      <Layout IsNewNode="True" Removed="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" IsNewNode="True">
+          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" IsNewNode="True">
+            <LayoutGroup Id="HyperlinkObject" Index="1" ShowCaption="False" IsNewNode="True">
+              <LayoutItem Id="HyperLink" ViewItem="HyperLink" ShowCaption="" Index="0" IsNewNode="True" />
+              <LayoutItem Id="InputLink" ViewItem="InputLink" ShowCaption="" Index="1" IsNewNode="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="CampainHyperLink_ListView" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="Campain" Index="-1" />
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="InputLink" Index="-1" />
+        <ColumnInfo Id="HyperLink" Index="0" />
       </Columns>
     </ListView>
     <ListView Id="Character_AvailableFeats_ListView" FreezeColumnIndices="True" AllowDelete="False" AllowLink="False" AllowNew="False">
@@ -1179,6 +1212,13 @@
         <ColumnInfo Id="FastAddStatBonusObject" Index="-1" />
         <ColumnInfo Id="ID" Index="-1" />
         <ColumnInfo Id="Name" Index="0" />
+      </Columns>
+    </ListView>
+    <ListView Id="HyperlinkObject_ListView" FreezeColumnIndices="True">
+      <Columns>
+        <ColumnInfo Id="ID" Index="-1" />
+        <ColumnInfo Id="InputLink" Index="-1" />
+        <ColumnInfo Id="HyperLink" Index="0" />
       </Columns>
     </ListView>
     <ListView Id="Item_AssignedItems_ListView" FreezeColumnIndices="True">

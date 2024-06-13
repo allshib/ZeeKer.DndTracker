@@ -6,6 +6,11 @@
         <AppearanceRule Id="SaveCharacter" TargetItems="Name" BackColor="192, 255, 192" Criteria="[Block] = True" IsNewNode="True" />
       </AppearanceRules>
     </Class>
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.HyperlinkObject">
+      <OwnMembers>
+        <Member Name="HyperLink" PropertyEditorType="HyperLinkEditor.Blazor.Server.Editors.HyperLinkProperyEditor.HyperLinkPropertyEditor" />
+      </OwnMembers>
+    </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Spell">
       <OwnMembers>
         <Member Name="ClassObjects" PropertyEditorType="ZeeKer.DndTracker.Blazor.Editors.TagBoxPropertyEditor" />

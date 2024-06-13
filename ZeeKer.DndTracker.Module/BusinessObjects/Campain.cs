@@ -46,6 +46,10 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Персонажи")]
         public virtual IList<Character> Characters { get; set; } = new ObservableCollection<Character>();
 
+        [Aggregated]
+        [XafDisplayName("Ссылки")]
+        public virtual IList<CampainHyperLink> HyperLinks { get; set; } = new ObservableCollection<CampainHyperLink>();
+
 
 
         // Alternatively, specify more UI options:

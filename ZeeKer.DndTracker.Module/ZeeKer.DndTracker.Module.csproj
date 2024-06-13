@@ -103,6 +103,11 @@
     <ProjectReference Include="..\ZeeKer.DndTracker.LongStoryShort\ZeeKer.DndTracker.LongStoryShort.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.ExpressApp.Blazor.v23.2">
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 23.2\Components\Offline Packages\devexpress.expressapp.blazor\23.2.6\lib\net6.0\DevExpress.ExpressApp.Blazor.v23.2.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
     <None Update="UnusableNodes.xml">
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
     </None>

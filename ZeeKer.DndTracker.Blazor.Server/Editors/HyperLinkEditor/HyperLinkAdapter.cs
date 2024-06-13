@@ -25,15 +25,14 @@ namespace HyperLinkEditor.Blazor.Server.Editors.HyperLinkProperyEditor {
             return Regex.IsMatch(url, UrlEmailMask);
         }
         public override void SetValue(object value) {
-            ComponentModel.DisplayValue = value.ToString();
-            string url = Convert.ToString(value);
-            string result = "";
-            if (url.Contains("@") && IsValidUrl(url)) {
-                result = string.Format("mailto:{0}", url);
-            } else if (!url.Contains("://")) {
-                result = string.Format("https://{0}", url);
+
+            if (value is null) { 
+                ComponentModel.Value = "";
+                return;
             }
-            ComponentModel.Value = result;
+
+            ComponentModel.DisplayValue = value.ToString();
+            ComponentModel.Value = value.ToString();
         }
         protected override RenderFragment CreateComponent() {
             return ComponentModelObserver.Create(ComponentModel, HyperLinkRenderer.Create(ComponentModel));
