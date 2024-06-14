@@ -42,7 +42,7 @@ namespace ZeeKer.DndTracker.Module.Controllers.DocumentationControllers
         {
             var doc = ObjectSpace.FindObject<DocumentationInfo>(criteria);
 
-            doc.Link.OpenAsLink();
+            doc.HyperLink?.HyperLink.OpenAsLink();
         }
 
         protected override void OnActivated()

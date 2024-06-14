@@ -1,2 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Application Company="ZeeKer" />
+<Application Company="ZeeKer">
+  <Views>
+    <DetailView Id="DocumentationInfo_DetailView">
+      <Items>
+        <PropertyEditor Id="HyperLink.InputLink" Caption="Ссылка (ввод)" />
+      </Items>
+    </DetailView>
+  </Views>
+</Application>

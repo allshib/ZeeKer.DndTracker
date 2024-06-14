@@ -1158,6 +1158,25 @@
         <LayoutItem Id="Class" ViewItem="Class" Index="1" RelativeSize="93.0783242258652" IsNewNode="True" />
       </Layout>
     </DetailView>
+    <DetailView Id="DocumentationInfo_DetailView" FreezeLayout="True">
+      <Items>
+        <PropertyEditor Id="HyperLink.HyperLink" PropertyName="HyperLink.HyperLink" IsNewNode="True" />
+        <PropertyEditor Id="HyperLink.InputLink" PropertyName="HyperLink.InputLink" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True" Removed="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+            <LayoutGroup Id="DocumentationInfo" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+              <LayoutItem Id="Name" ViewItem="Name" ShowCaption="" Index="0" RelativeSize="4.790419161676646" IsNewNode="True" />
+              <LayoutItem Id="ObjectType" ViewItem="ObjectType" ShowCaption="" Index="1" RelativeSize="3.592814371257485" IsNewNode="True" />
+              <LayoutItem Id="HyperLink.HyperLink" ViewItem="HyperLink.HyperLink" Index="2" RelativeSize="3.592814371257485" IsNewNode="True" />
+              <LayoutItem Id="HyperLink.InputLink" ViewItem="HyperLink.InputLink" Index="3" RelativeSize="3.592814371257485" IsNewNode="True" />
+              <LayoutItem Id="Active" ViewItem="Active" ShowCaption="" Index="4" RelativeSize="84.4311377245509" IsNewNode="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <DetailView Id="FastAddFeatBonusViewModel_DetailView" FreezeLayout="True">
       <Items>
         <ActionContainerViewItem Id="FastAddBonusStat" ActionContainer="FastAddBonusStat" PaintStyle="Caption" IsNewNode="True" />

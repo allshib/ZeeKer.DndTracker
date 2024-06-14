@@ -58,11 +58,18 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         }
 
 
-        [XafDisplayName("Ссылка на документацию"), StringLength(250)]
-        public virtual string Link { get; set; }
+        [XafDisplayName("Ссылка на документацию")]
+        public virtual DocumentationHyperLink HyperLink { get; set; }
 
         [XafDisplayName("Активно")]
         public virtual bool Active { get; set; }
 
+
+        public override void OnCreated()
+        {
+            base.OnCreated();
+
+            HyperLink = ObjectSpace.CreateObject<DocumentationHyperLink>();
+        }
     }
 }
