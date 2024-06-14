@@ -16,7 +16,7 @@
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.AssignedItem">
       <AppearanceRules>
         <AppearanceRule Id="BlueSetting" BackColor="192, 255, 255" TargetItems="*" Criteria="[SettingOnThis] = True" IsNewNode="True" />
-        <AppearanceRule Id="HideCountUses" Priority="0" TargetItems="SettingOnThis" Visibility="Hide" Criteria="[Item.MaxNumbersOfUses] = 0 Or [Count] &lt;&gt; 1" IsNewNode="True" />
+        <AppearanceRule Id="HideCountUses" Priority="0" TargetItems="CurrentNumberOfUses" Visibility="Hide" Criteria="[Item.MaxNumbersOfUses] = 0 Or [Count] &lt;&gt; 1" IsNewNode="True" />
         <AppearanceRule Id="HideSetting" TargetItems="SettingOnThis" Visibility="Hide" Criteria="[Item] Is Null Or [Item.NeedSetting] = False Or [Storage.Local] = False" IsNewNode="True" />
         <AppearanceRule Id="OrangeSetting" Priority="0" BackColor="255, 224, 192" TargetItems="*" Criteria="[SettingOnThis] = False And [Item.NeedSetting] = True" IsNewNode="True" />
       </AppearanceRules>
@@ -394,6 +394,7 @@
         <ColumnInfo Id="ID" Index="-1" />
         <ColumnInfo Id="InputLink" Index="-1" />
         <ColumnInfo Id="HyperLink" Index="0" />
+        <ColumnInfo Id="Category" Index="1" />
       </Columns>
     </ListView>
     <ListView Id="Campain_ListView" FreezeColumnIndices="True">
@@ -405,11 +406,12 @@
     </ListView>
     <DetailView Id="CampainHyperLink_DetailView" FreezeLayout="True">
       <Layout IsNewNode="True" Removed="True">
-        <LayoutGroup Id="Main" Index="0" ShowCaption="False" IsNewNode="True">
-          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" IsNewNode="True">
-            <LayoutGroup Id="HyperlinkObject" Index="1" ShowCaption="False" IsNewNode="True">
-              <LayoutItem Id="HyperLink" ViewItem="HyperLink" ShowCaption="" Index="0" IsNewNode="True" />
-              <LayoutItem Id="InputLink" ViewItem="InputLink" ShowCaption="" Index="1" IsNewNode="True" />
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+            <LayoutGroup Id="HyperlinkObject" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+              <LayoutItem Id="HyperLink" ViewItem="HyperLink" ShowCaption="" Index="0" RelativeSize="4.783258594917788" IsNewNode="True" />
+              <LayoutItem Id="Category" ViewItem="Category" Index="1" RelativeSize="3.587443946188341" IsNewNode="True" />
+              <LayoutItem Id="InputLink" ViewItem="InputLink" ShowCaption="" Index="2" RelativeSize="91.62929745889387" IsNewNode="True" />
             </LayoutGroup>
           </LayoutGroup>
         </LayoutGroup>

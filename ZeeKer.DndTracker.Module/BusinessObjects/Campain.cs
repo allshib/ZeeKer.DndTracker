@@ -51,6 +51,12 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         public virtual IList<CampainHyperLink> HyperLinks { get; set; } = new ObservableCollection<CampainHyperLink>();
 
 
+        [XafDisplayName("Mind Map"), NotMapped]
+        public virtual string MindMapLink => HyperLinks
+            .Where(x => x.Category == Types.HyperlinkCategoryType.MindMap)
+            .FirstOrDefault()?.HyperLink;
+
+
 
         // Alternatively, specify more UI options:
         //[XafDisplayName("My display name"), ToolTip("My hint message")]

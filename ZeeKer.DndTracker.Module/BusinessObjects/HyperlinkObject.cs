@@ -16,6 +16,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Policy;
 using System.Text;
+using ZeeKer.DndTracker.Module.Types;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
@@ -30,6 +31,10 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [XafDisplayName("Гиперссылка"), StringLength(200)]
         public virtual string HyperLink { get; set; }
+
+
+        [XafDisplayName("Категория")]
+        public virtual HyperlinkCategoryType Category { get; set; }
 
 
         [NotMapped, XafDisplayName("Ввод")]
