@@ -58,7 +58,7 @@ namespace ZeeKer.DndTracker.Module.Types
         Centaur = 22,
         [XafDisplayName("Кобольд")]
         Kobold = 23,
-        [XafDisplayName("Варфорджд")]
+        [XafDisplayName("Кованый")]
         Warforged = 24,
         [XafDisplayName("Леонин")]
         Leonin = 25,
