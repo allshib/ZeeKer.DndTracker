@@ -1,4 +1,4 @@
-using DevExpress.Data.Filtering;
+п»їusing DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
@@ -20,7 +20,7 @@ using ZeeKer.DndTracker.Module.Types;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
-    [XafDisplayName("Гиперссылка")]
+    [XafDisplayName("Р“РёРїРµСЂСЃСЃС‹Р»РєР°")]
     [XafDefaultProperty(nameof(HyperLink))]
     public class HyperlinkObject : BaseObject
     {
@@ -29,22 +29,22 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             
         }
 
-        [XafDisplayName("Гиперссылка"), StringLength(200)]
+        [XafDisplayName("Р“РёРїРµСЂСЃСЃС‹Р»РєР°"), StringLength(200)]
         public virtual string HyperLink { get; set; }
 
 
-        [XafDisplayName("Категория")]
+        [XafDisplayName("РљР°С‚РµРіРѕСЂРёСЏ")]
         public virtual HyperlinkCategoryType Category { get; set; }
 
 
-        [NotMapped, XafDisplayName("Ввод")]
+        [NotMapped, XafDisplayName("Р’РІРѕРґ")]
         public virtual string InputLink {
             get { return HyperLink; }
             set { HyperLink = value; }
         }
 
 
-        [Action(Caption = "Перейти", SelectionDependencyType = MethodActionSelectionDependencyType.RequireSingleObject)]
+        [Action(Caption = "РџРµСЂРµР№С‚Рё", SelectionDependencyType = MethodActionSelectionDependencyType.RequireSingleObject)]
         public void OpenLink()
         {
             try
@@ -58,7 +58,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             }
             catch 
             {
-                throw new UserFriendlyException("Не удалось открыть гиперссылку");
+                throw new UserFriendlyException("РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ РіРёРїРµСЂСЃСЃС‹Р»РєСѓ");
             }
         }
     }

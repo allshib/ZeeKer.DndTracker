@@ -1,4 +1,4 @@
-using DevExpress.Data.Filtering;
+п»їusing DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
@@ -16,7 +16,7 @@ using System.Text;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
-    [XafDisplayName("Гиперссылка камппейна")]
+    [XafDisplayName("Р“РёРїРµСЂСЃСЃС‹Р»РєР° РєР°РјРїРїРµР№РЅР°")]
     public class CampainHyperLink : HyperlinkObject
     {
         public CampainHyperLink()
@@ -27,7 +27,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [Browsable(false)]
         public virtual Guid? CampainId { get; set; }
 
-        [XafDisplayName("Кампейн"), ForeignKey(nameof(CampainId))]
+        [XafDisplayName("РљР°РјРїРµР№РЅ"), ForeignKey(nameof(CampainId))]
         public virtual Campain Campain { get; set; }
         
     }
