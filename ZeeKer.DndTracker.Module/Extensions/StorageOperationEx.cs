@@ -79,8 +79,13 @@ namespace ZeeKer.DndTracker.Module.Extensions
                         destinItem = operation.GetObjectSpace().CreateObject<AssignedItem>();
                         destinItem.Item = operation.SelectedItem;
                         destinItem.Storage = operation.Storage;
+                        destinItem.Count = Convert.ToInt32(operation.Coins);
                     }
-                    destinItem.Count += Convert.ToInt32(operation.Coins);
+                    else
+                    {
+                        destinItem.Count += Convert.ToInt32(operation.Coins);
+                    }
+                    
                     operation.Item = destinItem;
 
                         break;

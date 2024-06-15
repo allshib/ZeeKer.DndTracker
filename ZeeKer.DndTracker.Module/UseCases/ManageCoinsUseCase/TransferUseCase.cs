@@ -9,26 +9,28 @@ using Azure;
 using Microsoft.Identity.Client.Extensions.Msal;
 using ZeeKer.DndTracker.Module.Extensions;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.Design;
 
 namespace ZeeKer.DndTracker.Module.UseCases.ManageCoinsUseCase;
 
-public class ManageCoinsUseCase : ShowViewUseCaseBase
+public class TransferUseCase : ShowViewUseCaseBase
 {
-    public ManageCoinsUseCase(XafApplication application) : base(application)
+    public TransferUseCase(XafApplication application) : base(application)
     {
     }
     public delegate void AfterCommitEventHandler(object? sender, AfterCommitEventArgs e);
 
     public event AfterCommitEventHandler AfterCommit;
-    public void Execute(ManageCoinsCommand request)
+    public void Execute(TransferCommandBase request)
     {
         var os = application
             .CreateObjectSpace(typeof(StorageOperation));
 
         var operation = CreateAndFillOperation(request, os);
 
+        var isFastOperation = request is TransferMoneyStandartCommand standartCommand? standartCommand.FastOperation : false;
 
-        if (request.FastOperation)
+        if (isFastOperation)
             RunOperation(operation, os);
         else
         {
@@ -45,23 +47,56 @@ public class ManageCoinsUseCase : ShowViewUseCaseBase
 
     }
 
-    private StorageOperation CreateAndFillOperation(ManageCoinsCommand request, IObjectSpace os)
+    //private StorageOperation CreateAndFillOperation(ManageCoinsCommand request, IObjectSpace os)
+    //{
+    //    var operation = os.CreateObject<StorageOperation>();
+    //    operation.StorageId = request.StorageDestinationId;
+    //    operation.OperationType = request.Type;
+    //    operation.Coins = request.Coins;
+    //    operation.OperationMode = request.Mode;
+    //    operation.SourceStorageId = request.StorageSourceId;
+    //    operation.CampainId = request.CampainId;
+
+    //    operation.DestinationCharacter = request.DestinationCharacterId is not null
+    //        ? os.GetObjectByKey<Character>(request.DestinationCharacterId)
+    //        : operation.Storage?.Character;
+
+    //    operation.SourceCharacter = request.SourceCharacterId is not null
+    //        ? os.GetObjectByKey<Character>(request.SourceCharacterId)
+    //        : operation.StorageSource?.Character;
+
+    //    return operation;
+    //}
+
+    private StorageOperation CreateAndFillOperation(TransferCommandBase request, IObjectSpace os)
     {
         var operation = os.CreateObject<StorageOperation>();
-        operation.StorageId = request.StorageDestinationId;
-        operation.OperationType = request.Type;
-        operation.Coins = request.Coins;
+
+        operation.OperationType = request.General.Type;
+        operation.Coins = request.General.Count;
         operation.OperationMode = request.Mode;
-        operation.SourceStorageId = request.StorageSourceId;
-        operation.CampainId = request.CampainId;
+        operation.CampainId = request.General.CampainId;
 
-        operation.DestinationCharacter = request.DestinationCharacterId is not null
-            ? os.GetObjectByKey<Character>(request.DestinationCharacterId)
-            : operation.Storage?.Character;
 
-        operation.SourceCharacter = request.SourceCharacterId is not null
-            ? os.GetObjectByKey<Character>(request.SourceCharacterId)
-            : operation.StorageSource?.Character;
+        switch (request)
+        {
+            case TransferStandartCommand standartCommand:
+                operation.StorageId = standartCommand.StorageDestinationId;
+                
+                break;
+            case TransferSendCommand sendCommand:
+                operation.StorageId = sendCommand.StoragesInfo.StorageDestinationId;
+                operation.SourceStorageId = sendCommand.StoragesInfo.StorageSourceId;
+                operation.DestinationCharacter = sendCommand.StoragesInfo.DestinationCharacterId is not null
+                    ? os.GetObjectByKey<Character>(sendCommand.StoragesInfo.DestinationCharacterId)
+                    : operation.Storage?.Character;
+
+                operation.SourceCharacter = sendCommand.StoragesInfo.SourceCharacterId is not null
+                    ? os.GetObjectByKey<Character>(sendCommand.StoragesInfo.SourceCharacterId)
+                    : operation.StorageSource?.Character;
+
+                break;
+        }
 
         return operation;
     }

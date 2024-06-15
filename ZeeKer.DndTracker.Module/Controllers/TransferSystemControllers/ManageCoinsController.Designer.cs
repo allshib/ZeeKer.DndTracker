@@ -1,6 +1,6 @@
-﻿namespace ZeeKer.DndTracker.Module.Controllers
+﻿namespace ZeeKer.DndTracker.Module.Controllers.TransferSystemControllers
 {
-    partial class MultipeTransactionExecuteController
+    partial class TransferCoinsController
     {
         /// <summary>
         /// Required designer variable.

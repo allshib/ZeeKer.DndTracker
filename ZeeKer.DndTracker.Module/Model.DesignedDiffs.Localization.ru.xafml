@@ -91,6 +91,7 @@
         <ActionContainerViewItem Id="RemoveGoldCategory" Caption="RemoveGoldCategory(35)" />
         <ActionContainerViewItem Id="SendGold" Caption="SendGold(40)" />
         <ActionContainerViewItem Id="SimpleTransferGold" Caption="SimpleTransferGold(39)" />
+        <ActionContainerViewItem Id="TransferItems" Caption="TransferItems(113)" />
       </Items>
       <Layout>
         <LayoutGroup Id="Main">
@@ -166,6 +167,7 @@
         <StaticText Id="RuleText" Text="КД персонажа без доспеха: 10 + модификатор Ловкости&#xD;&#xA;&#xD;&#xA;Безоружный удар: 1к20 + бонус мастерства + модификатор Силы&#xD;&#xA;&#xD;&#xA;Урон безоружного удара: 1 + модификатор Силы&#xD;&#xA;&#xD;&#xA;Рукопашная атака оружием: 1к20 + бонус мастерства + модификатор Силы (Для фехтовального оружия может использоваться Ловкость)&#xD;&#xA;&#xD;&#xA;Урон рукопашной атаки оружием: Кость оружия + модификатор Силы (Для фехтовального оружия может использоваться Ловкость)&#xD;&#xA;&#xD;&#xA;Дальнобойная атака оружием: 1к20 + бонус мастерства + модификатор Ловкости (Для рукопашного оружия со свойством метательное используется тот же модификатор, что и для рукопашной атаки)&#xD;&#xA;&#xD;&#xA;Урон дальнобойной атаки оружием: Кость оружия + модификатор Ловкости (Для рукопашного оружия со свойством метательное используется тот же модификатор, что и для рукопашной атаки)&#xD;&#xA;&#xD;&#xA;Атака заклинанием: 1к20 + бонус мастерства + модификатор базовой характеристики заклинателя&#xD;&#xA;&#xD;&#xA;Урон заклинания: индивидуален для каждого заклинания&#xD;&#xA;&#xD;&#xA;Сложность спасброска от заклинания: 8 + модификатор базовой характеристики заклинания + бонус мастерства&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Порядок ходов в бою: 1к20 + Инициатива (модификатор Ловкости)&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Спасбросок: 1к20 + модификатор характеристики + бонус мастерства (если у вас есть владение спасброском)&#xD;&#xA;&#xD;&#xA;Пассивное Восприятие: 10 + модификатор Мудрости (Восприятие)&#xD;&#xA;&#xD;&#xA;Стабилизация умирающего: 1к20 + модификатор Мудрости (Медицина) Сл 10&#xD;&#xA;&#xD;&#xA;Применение инструментов: 1к20 + модификатор характеристики (скажет Мастер) + бонус мастерства (если есть владение инструментом)" Caption="RuleText(118)" />
         <ActionContainerViewItem Id="SendGold" Caption="SendGold(40)" />
         <ActionContainerViewItem Id="SimpleTransferGold" Caption="SimpleTransferGold(39)" />
+        <ActionContainerViewItem Id="TransferItems" Caption="TransferItems(125)" />
       </Items>
       <Layout>
         <LayoutGroup Id="Main">
@@ -178,24 +180,24 @@
                       <LayoutGroup Id="Auto3978ed44-1b31-4fe5-bee3-d08d037c8806" Caption="Auto3978ed44-1b31-4fe5-bee3-d08d037c8806(7)">
                         <LayoutGroup Id="Autoc9cac961-e5ba-4755-a58b-cb3209c04f3f" Caption="Autoc9cac961-e5ba-4755-a58b-cb3209c04f3f(9)">
                           <LayoutGroup Id="MainPanel" Caption="Основное">
-                            <LayoutGroup Id="Auto727793d8-98a4-4252-ba9c-80fc56bc6b1f" Caption="">
-                              <LayoutGroup Id="Auto2b63beb5-b742-474e-a7f1-8d889d7b3e33" Caption="" />
-                              <LayoutGroup Id="Autoec7bd90f-2a0a-4d9e-94ba-0dc8b061eac1" Caption="" />
+                            <LayoutGroup Id="Auto727793d8-98a4-4252-ba9c-80fc56bc6b1f" Caption="Auto727793d8-98a4-4252-ba9c-80fc56bc6b1f(11)">
+                              <LayoutGroup Id="Auto2b63beb5-b742-474e-a7f1-8d889d7b3e33" Caption="Auto2b63beb5-b742-474e-a7f1-8d889d7b3e33(12)" />
+                              <LayoutGroup Id="Autoec7bd90f-2a0a-4d9e-94ba-0dc8b061eac1" Caption="Autoec7bd90f-2a0a-4d9e-94ba-0dc8b061eac1(15)" />
                             </LayoutGroup>
                             <LayoutGroup Id="HealthDopInfo" Caption="Информация о здоровье" />
                             <LayoutGroup Id="Profiency" Caption="Владения" />
                           </LayoutGroup>
                           <LayoutGroup Id="Auto09b0a364-ac62-45b8-813b-98705e17e217" Caption="Auto09b0a364-ac62-45b8-813b-98705e17e217(23)">
                             <LayoutGroup Id="StatPanel" Caption="Характеристики">
-                              <LayoutGroup Id="Autofad88662-751e-4ef0-82c5-c8a6939b1e63" Caption="" />
-                              <LayoutGroup Id="Autoc0d99422-4232-4dc6-b0b6-273cea0bd6e8" Caption="">
+                              <LayoutGroup Id="Autofad88662-751e-4ef0-82c5-c8a6939b1e63" Caption="Autofad88662-751e-4ef0-82c5-c8a6939b1e63(35)" />
+                              <LayoutGroup Id="Autoc0d99422-4232-4dc6-b0b6-273cea0bd6e8" Caption="Autoc0d99422-4232-4dc6-b0b6-273cea0bd6e8(38)">
                                 <LayoutGroup Id="Auto61012211-3c52-4276-9d6e-328e512a9dc1" Caption="Auto61012211-3c52-4276-9d6e-328e512a9dc1(26)" />
                                 <LayoutGroup Id="Auto6a6e3770-6ce3-47b8-b78c-e01e83fe5a23" Caption="Auto6a6e3770-6ce3-47b8-b78c-e01e83fe5a23(29)">
                                   <LayoutGroup Id="Auto6c8eacb4-ec37-4de4-9e13-9a466d7af670" Caption="Auto6c8eacb4-ec37-4de4-9e13-9a466d7af670(32)" />
                                 </LayoutGroup>
-                                <LayoutGroup Id="Auto239e7f48-903d-4b76-b9bf-f74fe8ba5d09" Caption="">
-                                  <LayoutGroup Id="Auto64c6d6da-2be3-4c79-992e-35a90233bf2e" Caption="" />
-                                  <LayoutGroup Id="Auto8966e6ca-50f6-43e5-9334-2e6aa10a1a8d" Caption="" />
+                                <LayoutGroup Id="Auto239e7f48-903d-4b76-b9bf-f74fe8ba5d09" Caption="Auto239e7f48-903d-4b76-b9bf-f74fe8ba5d09(47)">
+                                  <LayoutGroup Id="Auto64c6d6da-2be3-4c79-992e-35a90233bf2e" Caption="Auto64c6d6da-2be3-4c79-992e-35a90233bf2e(48)" />
+                                  <LayoutGroup Id="Auto8966e6ca-50f6-43e5-9334-2e6aa10a1a8d" Caption="Auto8966e6ca-50f6-43e5-9334-2e6aa10a1a8d(52)" />
                                 </LayoutGroup>
                               </LayoutGroup>
                             </LayoutGroup>

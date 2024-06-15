@@ -1,6 +1,6 @@
-﻿namespace ZeeKer.DndTracker.Module.Controllers
+﻿namespace ZeeKer.DndTracker.Module.Controllers.TransferSystemControllers
 {
-    partial class CharacterLevelUpController
+    partial class SwapStoragesController
     {
         /// <summary>
         /// Required designer variable.

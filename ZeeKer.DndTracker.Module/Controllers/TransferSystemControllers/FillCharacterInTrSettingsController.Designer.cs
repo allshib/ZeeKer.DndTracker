@@ -1,6 +1,6 @@
-﻿namespace ZeeKer.DndTracker.Module.Controllers
+﻿namespace ZeeKer.DndTracker.Module.Controllers.TransferSystemControllers
 {
-    partial class DeleteStatsController
+    partial class FillCharacterInTrSettingsController
     {
         /// <summary>
         /// Required designer variable.

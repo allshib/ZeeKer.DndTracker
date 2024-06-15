@@ -1,4 +1,4 @@
-﻿namespace ZeeKer.DndTracker.Module.Controllers
+﻿namespace ZeeKer.DndTracker.Module.Controllers.CharacterControllers
 {
     partial class LoadCharacterFromLongStoryShort
     {

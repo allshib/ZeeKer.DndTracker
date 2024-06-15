@@ -1,6 +1,6 @@
-﻿namespace ZeeKer.DndTracker.Module.Controllers
+﻿namespace ZeeKer.DndTracker.Module.Controllers.TransferSystemControllers
 {
-    partial class ManageCoinsController
+    partial class TransferItemController
     {
         /// <summary>
         /// Required designer variable.
