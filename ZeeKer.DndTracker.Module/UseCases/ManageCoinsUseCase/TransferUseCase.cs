@@ -47,27 +47,6 @@ public class TransferUseCase : ShowViewUseCaseBase
 
     }
 
-    //private StorageOperation CreateAndFillOperation(ManageCoinsCommand request, IObjectSpace os)
-    //{
-    //    var operation = os.CreateObject<StorageOperation>();
-    //    operation.StorageId = request.StorageDestinationId;
-    //    operation.OperationType = request.Type;
-    //    operation.Coins = request.Coins;
-    //    operation.OperationMode = request.Mode;
-    //    operation.SourceStorageId = request.StorageSourceId;
-    //    operation.CampainId = request.CampainId;
-
-    //    operation.DestinationCharacter = request.DestinationCharacterId is not null
-    //        ? os.GetObjectByKey<Character>(request.DestinationCharacterId)
-    //        : operation.Storage?.Character;
-
-    //    operation.SourceCharacter = request.SourceCharacterId is not null
-    //        ? os.GetObjectByKey<Character>(request.SourceCharacterId)
-    //        : operation.StorageSource?.Character;
-
-    //    return operation;
-    //}
-
     private StorageOperation CreateAndFillOperation(TransferCommandBase request, IObjectSpace os)
     {
         var operation = os.CreateObject<StorageOperation>();
