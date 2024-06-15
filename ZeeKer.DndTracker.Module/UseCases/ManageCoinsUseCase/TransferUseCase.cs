@@ -21,10 +21,10 @@ public class TransferUseCase : ShowViewUseCaseBase
     public delegate void AfterCommitEventHandler(object? sender, AfterCommitEventArgs e);
 
     public event AfterCommitEventHandler AfterCommit;
-    public void Execute(TransferCommandBase request)
+    public void Execute(TransferCommandBase request, IObjectSpace objectSpace = null)
     {
-        var os = application
-            .CreateObjectSpace();
+        var os = objectSpace?? application
+            .CreateObjectSpace(typeof(StorageOperation));
 
         var operation = CreateAndFillOperation(request, os);
 

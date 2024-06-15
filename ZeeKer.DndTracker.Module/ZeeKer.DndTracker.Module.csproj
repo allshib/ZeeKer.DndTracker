@@ -9,11 +9,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Helpers\**" />
-    <EmbeddedResource Remove="Helpers\**" />
-    <None Remove="Helpers\**" />
-  </ItemGroup>
-  <ItemGroup>
     <None Remove="Images\Adventure.svg" />
     <None Remove="Images\Armor.svg" />
     <None Remove="Images\Box.svg" />

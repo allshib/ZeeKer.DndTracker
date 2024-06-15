@@ -64,7 +64,7 @@ namespace Zeeker.DndTracker.Tests.Mock
                 });
 
 
-            application = new TestApplication();
+            application = new TestApplication(objectSpaceProvider);
 
 
             //XafTypesInfo.Instance.RegisterEntity(typeof(PayrollRules));

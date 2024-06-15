@@ -17,6 +17,7 @@ public abstract record TransferCommandBase {
     public TransferCommandBase(GeneralTransferInfo general)
     {
         General = general;
+       
     }
 }
 

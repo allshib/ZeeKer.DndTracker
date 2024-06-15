@@ -143,7 +143,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             base.OnCreated();
             OperationDate = DateTimeOffset.Now;
             var user = ObjectSpace.GetObjectByKey<ApplicationUser>(SecuritySystem.CurrentUserId);
-            CreatedAt = user.Person;
+            CreatedAt = user?.Person;
         }
         public bool IsNewObject()
         {
