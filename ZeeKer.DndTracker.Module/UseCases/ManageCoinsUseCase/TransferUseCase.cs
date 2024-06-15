@@ -24,7 +24,7 @@ public class TransferUseCase : ShowViewUseCaseBase
     public void Execute(TransferCommandBase request)
     {
         var os = application
-            .CreateObjectSpace(typeof(StorageOperation));
+            .CreateObjectSpace();
 
         var operation = CreateAndFillOperation(request, os);
 

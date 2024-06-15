@@ -5,6 +5,8 @@ using ZeeKer.DndTracker.Module.Types;
 namespace ZeeKer.DndTracker.Module.UseCases.ManageCoinsUseCase;
 
 
+
+
 #region Base Classes
 public abstract record TransferCommandBase {
 
@@ -16,8 +18,6 @@ public abstract record TransferCommandBase {
     {
         General = general;
     }
-
-    public record GeneralTransferInfo(decimal Count, StorageOperationType Type, Guid? CampainId);
 }
 
 
@@ -46,14 +46,20 @@ public abstract record TransferSendCommand : TransferCommandBase
     }
 
 
-    public record TransferStoragesInfo(
-        Guid? StorageDestinationId = null,
-        Guid? DestinationCharacterId = null,
-        Guid? StorageSourceId = null,
-        Guid? SourceCharacterId = null);
+
 }
+#region AdditionalRecords
+public record GeneralTransferInfo(decimal Count, StorageOperationType Type, Guid? CampainId);
+public record TransferStoragesInfo(
+    Guid? StorageDestinationId = null,
+    Guid? DestinationCharacterId = null,
+    Guid? StorageSourceId = null,
+    Guid? SourceCharacterId = null);
+#endregion
 
 #endregion
+
+
 
 public record TransferMoneyStandartCommand : TransferStandartCommand
 {
