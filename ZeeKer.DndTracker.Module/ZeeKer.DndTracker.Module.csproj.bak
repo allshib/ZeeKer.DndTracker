@@ -3,17 +3,56 @@
     <TargetFramework>net8.0</TargetFramework>
     <CheckEolTargetFramework>false</CheckEolTargetFramework>
     <Deterministic>false</Deterministic>
-    <AssemblyVersion>1.0.*</AssemblyVersion>
+    <AssemblyVersion>0.3.7.2</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
     <Configurations>Debug;Release;EasyTest</Configurations>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Images\Adventure.svg" />
+    <None Remove="Images\Armor.svg" />
+    <None Remove="Images\Box.svg" />
+    <None Remove="Images\Chest.svg" />
+    <None Remove="Images\Crit.svg" />
+    <None Remove="Images\Gamepad.svg" />
+    <None Remove="Images\Medusa.svg" />
+    <None Remove="Images\Profiency.svg" />
+    <None Remove="Images\ReadMe.txt" />
+    <None Remove="Images\Shield.svg" />
+    <None Remove="Images\Skill.svg" />
+    <None Remove="Images\Sword.svg" />
+    <None Remove="Images\Vodoo.svg" />
+    <None Remove="Images\WandBlue.svg" />
+    <None Remove="Images\WandRed.svg" />
+    <None Remove="Images\WandYellow.svg" />
+    <None Remove="Images\WarlockBook.svg" />
+    <None Remove="Images\Wizard.svg" />
     <None Remove="Model.DesignedDiffs.Localization.ru-RU.xafml" />
     <None Remove="Model.DesignedDiffs.Localization.ru.xafml" />
     <None Remove="Model.DesignedDiffs.xafml" />
   </ItemGroup>
+  <PropertyGroup>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+  </PropertyGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Images\Adventure.svg" />
+    <EmbeddedResource Include="Images\Armor.svg" />
+    <EmbeddedResource Include="Images\Box.svg" />
+    <EmbeddedResource Include="Images\Chest.svg" />
+    <EmbeddedResource Include="Images\Crit.svg" />
+    <EmbeddedResource Include="Images\Gamepad.svg" />
+    <EmbeddedResource Include="Images\Medusa.svg" />
+    <EmbeddedResource Include="Images\Profiency.svg" />
+    <EmbeddedResource Include="Images\ReadMe.txt" />
+    <EmbeddedResource Include="Images\Shield.svg" />
+    <EmbeddedResource Include="Images\Skill.svg" />
+    <EmbeddedResource Include="Images\Sword.svg" />
+    <EmbeddedResource Include="Images\Vodoo.svg" />
+    <EmbeddedResource Include="Images\WandBlue.svg" />
+    <EmbeddedResource Include="Images\WandRed.svg" />
+    <EmbeddedResource Include="Images\WandYellow.svg" />
+    <EmbeddedResource Include="Images\WarlockBook.svg" />
+    <EmbeddedResource Include="Images\Wizard.svg" />
     <EmbeddedResource Include="Model.DesignedDiffs.Localization.ru-RU.xafml">
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
     </EmbeddedResource>
@@ -27,25 +66,41 @@
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.ExpressApp" Version="23.2.4" />
-    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="23.2.4" />
-    <PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance" Version="23.2.4" />
-    <PackageReference Include="DevExpress.ExpressApp.Dashboards" Version="23.2.4" />
-    <PackageReference Include="DevExpress.ExpressApp.EFCore" Version="23.2.4" />
-    <PackageReference Include="DevExpress.ExpressApp.Objects" Version="23.2.4" />
-    <PackageReference Include="DevExpress.ExpressApp.Office" Version="23.2.4" />
-    <PackageReference Include="DevExpress.ExpressApp.ReportsV2" Version="23.2.4" />
-    <PackageReference Include="DevExpress.ExpressApp.Scheduler" Version="23.2.4" />
-    <PackageReference Include="DevExpress.ExpressApp.StateMachine" Version="23.2.4" />
-    <PackageReference Include="DevExpress.ExpressApp.Validation" Version="23.2.4" />
-    <PackageReference Include="DevExpress.ExpressApp.ViewVariantsModule" Version="23.2.4" />
-    <PackageReference Include="DevExpress.Persistent.Base" Version="23.2.4" />
-    <PackageReference Include="DevExpress.Persistent.BaseImpl.EFCore" Version="23.2.4" />
+    <PackageReference Include="DevExpress.ExpressApp" Version="23.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="23.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance" Version="23.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards" Version="23.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.EFCore" Version="23.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.Objects" Version="23.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.Office" Version="23.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.ReportsV2" Version="23.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.Scheduler" Version="23.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.StateMachine" Version="23.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.Validation" Version="23.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.ViewVariantsModule" Version="23.2.6" />
+    <PackageReference Include="DevExpress.Persistent.Base" Version="23.2.6" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.EFCore" Version="23.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="8.0.1" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.34.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ZeeKer.DndTracker.LongStoryShort\ZeeKer.DndTracker.LongStoryShort.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.ExpressApp.Blazor.v23.2">
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 23.2\Components\Offline Packages\devexpress.expressapp.blazor\23.2.6\lib\net6.0\DevExpress.ExpressApp.Blazor.v23.2.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Update="UnusableNodes.xml">
@@ -54,19 +109,127 @@
     <None Update="UnusableNodes1.xml">
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
     </None>
+    <None Update="UnusableNodes10.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes11.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes12.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes13.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes14.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes15.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes16.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes17.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes18.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes19.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
     <None Update="UnusableNodes2.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes20.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes21.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes22.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes23.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes24.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes25.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes26.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes27.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes28.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes29.xml">
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
     </None>
     <None Update="UnusableNodes3.xml">
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
     </None>
+    <None Update="UnusableNodes30.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes31.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes32.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes33.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes34.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes35.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes36.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes37.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes38.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes39.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
     <None Update="UnusableNodes4.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes40.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes41.xml">
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
     </None>
     <None Update="UnusableNodes5.xml">
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
     </None>
     <None Update="UnusableNodes6.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes7.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes8.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes9.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes_ru.xml">
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
     </None>
   </ItemGroup>

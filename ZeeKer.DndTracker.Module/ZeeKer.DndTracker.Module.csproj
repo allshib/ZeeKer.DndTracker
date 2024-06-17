@@ -66,20 +66,20 @@
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.ExpressApp" Version="23.2.6" />
-    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="23.2.6" />
-    <PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance" Version="23.2.6" />
-    <PackageReference Include="DevExpress.ExpressApp.Dashboards" Version="23.2.6" />
-    <PackageReference Include="DevExpress.ExpressApp.EFCore" Version="23.2.6" />
-    <PackageReference Include="DevExpress.ExpressApp.Objects" Version="23.2.6" />
-    <PackageReference Include="DevExpress.ExpressApp.Office" Version="23.2.6" />
-    <PackageReference Include="DevExpress.ExpressApp.ReportsV2" Version="23.2.6" />
-    <PackageReference Include="DevExpress.ExpressApp.Scheduler" Version="23.2.6" />
-    <PackageReference Include="DevExpress.ExpressApp.StateMachine" Version="23.2.6" />
-    <PackageReference Include="DevExpress.ExpressApp.Validation" Version="23.2.6" />
-    <PackageReference Include="DevExpress.ExpressApp.ViewVariantsModule" Version="23.2.6" />
-    <PackageReference Include="DevExpress.Persistent.Base" Version="23.2.6" />
-    <PackageReference Include="DevExpress.Persistent.BaseImpl.EFCore" Version="23.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp" Version="24.1.3" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="24.1.3" />
+    <PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance" Version="24.1.3" />
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards" Version="24.1.3" />
+    <PackageReference Include="DevExpress.ExpressApp.EFCore" Version="24.1.3" />
+    <PackageReference Include="DevExpress.ExpressApp.Objects" Version="24.1.3" />
+    <PackageReference Include="DevExpress.ExpressApp.Office" Version="24.1.3" />
+    <PackageReference Include="DevExpress.ExpressApp.ReportsV2" Version="24.1.3" />
+    <PackageReference Include="DevExpress.ExpressApp.Scheduler" Version="24.1.3" />
+    <PackageReference Include="DevExpress.ExpressApp.StateMachine" Version="24.1.3" />
+    <PackageReference Include="DevExpress.ExpressApp.Validation" Version="24.1.3" />
+    <PackageReference Include="DevExpress.ExpressApp.ViewVariantsModule" Version="24.1.3" />
+    <PackageReference Include="DevExpress.Persistent.Base" Version="24.1.3" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.EFCore" Version="24.1.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -98,8 +98,8 @@
     <ProjectReference Include="..\ZeeKer.DndTracker.LongStoryShort\ZeeKer.DndTracker.LongStoryShort.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.ExpressApp.Blazor.v23.2">
-      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 23.2\Components\Offline Packages\devexpress.expressapp.blazor\23.2.6\lib\net6.0\DevExpress.ExpressApp.Blazor.v23.2.dll</HintPath>
+    <Reference Include="DevExpress.ExpressApp.Blazor.v24.1">
+      
     </Reference>
   </ItemGroup>
   <ItemGroup>
