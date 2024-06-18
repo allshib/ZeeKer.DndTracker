@@ -1,7 +1,9 @@
-﻿using DevExpress.Utils;
+﻿using DevExpress.ExpressApp.Win;
+using DevExpress.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +12,12 @@ namespace Zeeker.DndTracker.Win.Helpers
 {
     internal static class CloseFreeTrialFormHelper
     {
+        public static void OffAboutForm()
+        => typeof(WinWindow)
+            .GetField("isAboutFormShow", BindingFlags.NonPublic | BindingFlags.Static)?
+            .SetValue(null, true);     
+        
+
         public static void OffFreeTrialForm()
         {
             GlobalFormTracker.Initialize();
