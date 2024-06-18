@@ -42,7 +42,7 @@
       <Item Id="Default" Removed="True" />
     </Items>
   </NavigationItems>
-  <Options UIType="SingleWindowSDI" RestoreTabbedMdiLayout="True" RefreshViewOnTabFocus="False" />
+  <Options UIType="TabbedMDI" RestoreTabbedMdiLayout="True" RefreshViewOnTabFocus="False" />
   <SchemaModules>
     <SchemaModule Name="SchedulerBlazorModule" Version="24.1.3.0" IsNewNode="True" />
     <SchemaModule Name="SchedulerModuleBase" Version="24.1.3.0" IsNewNode="True" />
