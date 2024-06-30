@@ -65,6 +65,8 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         #endregion
 
 
+        [XafDisplayName("Мастер на все руки")]
+        public virtual bool IsHandyman { get; set; }
 
 
         [XafDisplayName("Сила")]

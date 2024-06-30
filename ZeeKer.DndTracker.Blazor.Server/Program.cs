@@ -4,6 +4,7 @@ using DevExpress.ExpressApp.Blazor.DesignTime;
 using DevExpress.ExpressApp.Blazor.Services;
 using DevExpress.ExpressApp.Design;
 using DevExpress.ExpressApp.Utils;
+using ZeeKer.DndTracker.Blazor.Server.Helpers;
 
 namespace ZeeKer.DndTracker.Blazor.Server;
 
@@ -25,6 +26,7 @@ public class Program : IDesignTimeApplicationFactory {
             Console.WriteLine($"            2 - {DBUpdaterStatus.UpdateNotNeeded}");
         }
         else {
+            BlazorLicenseHelper.ActivateLicense();
             DevExpress.ExpressApp.FrameworkSettings.DefaultSettingsCompatibilityMode = DevExpress.ExpressApp.FrameworkSettingsCompatibilityMode.Latest;
             DevExpress.ExpressApp.Security.SecurityStrategy.AutoAssociationReferencePropertyMode = DevExpress.ExpressApp.Security.ReferenceWithoutAssociationPermissionsMode.AllMembers;
             IHost host = CreateHostBuilder(args).Build();

@@ -604,5 +604,6 @@
   <ItemGroup>
     <Folder Include="Editors\HyperLinkEditor\" />
     <Folder Include="Editors\MultiValuesEnumEditor\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
 </Project>
