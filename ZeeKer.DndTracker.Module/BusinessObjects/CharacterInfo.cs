@@ -54,6 +54,13 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Волосы"), StringLength(50)]
         public virtual string Hair { get; set; }
 
+        [ImageEditor(
+            ListViewImageEditorMode = ImageEditorMode.DropDownPictureEdit,
+        DetailViewImageEditorMode = ImageEditorMode.DropDownPictureEdit,
+            DetailViewImageEditorFixedHeight = 500, 
+            DetailViewImageEditorFixedWidth = 500)]
+        [XafDisplayName("Аватар")]
+        public virtual byte[] Picture { get; set; }
 
         //[XafDisplayName("Заметки")]
         //[FieldSize(FieldSizeAttribute.Unlimited)]

@@ -1,6 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application Company="ZeeKer">
   <Views>
+    <DetailView Id="Character_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Character">
+              <LayoutGroup Id="Character_col2">
+                <TabbedGroup Id="Item2">
+                  <LayoutGroup Id="About">
+                    <LayoutGroup Id="Auto8ab736c5-b9a3-406a-a204-5a3ee18a7d70">
+                      <LayoutGroup Id="Autob245ec60-d262-47f1-a06f-2f51c4aec2e7" Caption="Autob245ec60-d262-47f1-a06f-2f51c4aec2e7(81)">
+                        <LayoutGroup Id="Autoe83ab572-c287-4f06-bdbb-a107357ef94f" Caption="Autoe83ab572-c287-4f06-bdbb-a107357ef94f(82)" />
+                        <LayoutGroup Id="Autoa5936706-c376-4ea9-bceb-658df5bd9337" Caption="Autoa5936706-c376-4ea9-bceb-658df5bd9337(68)">
+                          <LayoutGroup Id="Autoaf90cbbb-d0b9-448f-a762-74e164cc2fd7" Caption="Autoaf90cbbb-d0b9-448f-a762-74e164cc2fd7(35)" />
+                          <LayoutGroup Id="Auto00091fed-9288-46c7-871f-e3f5db99503e" Caption="Auto00091fed-9288-46c7-871f-e3f5db99503e(38)" />
+                        </LayoutGroup>
+                      </LayoutGroup>
+                    </LayoutGroup>
+                  </LayoutGroup>
+                </TabbedGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Character_DetailView_Desktop">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Character">
+              <LayoutGroup Id="Character_col2">
+                <TabbedGroup Id="Item2">
+                  <LayoutGroup Id="About">
+                    <LayoutGroup Id="Auto8ab736c5-b9a3-406a-a204-5a3ee18a7d70">
+                      <LayoutGroup Id="Autoa5936706-c376-4ea9-bceb-658df5bd9337">
+                        <LayoutGroup Id="Auto00091fed-9288-46c7-871f-e3f5db99503e">
+                          <LayoutGroup Id="Auto07ddca6c-5bc1-463e-aaac-5a6299e21127" Caption="" />
+                        </LayoutGroup>
+                      </LayoutGroup>
+                    </LayoutGroup>
+                  </LayoutGroup>
+                </TabbedGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <DetailView Id="DocumentationInfo_DetailView">
       <Items>
         <PropertyEditor Id="HyperLink.InputLink" Caption="Ссылка (ввод)" />
