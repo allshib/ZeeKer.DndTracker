@@ -26,7 +26,12 @@ public class Updater : ModuleUpdater {
     public override void UpdateDatabaseAfterUpdateSchema() {
         base.UpdateDatabaseAfterUpdateSchema();
 
-        if (CurrentDBVersion < new Version("0.2.1"))
+        if (CurrentDBVersion <= new Version("0.0.0.0"))
+        {
+            return;
+        }
+
+            if (CurrentDBVersion < new Version("0.2.1"))
         {
             CreateDefaulUsers();
             CreateDefaultEntities();

@@ -1,21 +1,17 @@
-﻿using DevExpress.ExpressApp.Security;
-using DevExpress.Persistent.Base;
+﻿using DevExpress.Persistent.Base;
 using Microsoft.EntityFrameworkCore;
-using DevExpress.Persistent.BaseImpl.EF.PermissionPolicy;
-using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using DevExpress.ExpressApp.WebApi.Services;
 using Microsoft.AspNetCore.OData;
-using ZeeKer.DndTracker.WebApi.JWT;
-using DevExpress.ExpressApp.Security.Authentication.ClientServer;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.ApplicationBuilder;
 using ZeeKer.DndTracker.WebApi.Services;
+using Microsoft.AspNetCore;
+using Telegram.Bot;
+using Zeeker.DndTracker.Bot.WebApi.Services;
 
-namespace ZeeKer.DndTracker.WebApi;
+
+namespace Zeeker.DndTracker.Bot.WebApi;
 
 public class Startup {
     public Startup(IConfiguration configuration) {
@@ -23,9 +19,18 @@ public class Startup {
     }
 
     public IConfiguration Configuration { get; }
+
+    // This method gets called by the runtime. Use this method to add services to the container.
+    // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
     public void ConfigureServices(IServiceCollection services) {
-        services.AddScoped<IAuthenticationTokenProvider, JwtTokenProviderService>();
-        services.AddHostedService<TelegramService>();
+
+        var botConfigSection = Configuration.GetSection("BotConfiguration");
+        services.Configure<BotConfiguration>(botConfigSection);
+        services.AddHttpClient("tgwebhook").RemoveAllLoggers().AddTypedClient<ITelegramBotClient>(
+            httpClient => new TelegramBotClient(botConfigSection.Get<BotConfiguration>()!.BotToken, httpClient));
+        services.AddSingleton<UpdateHandler>();
+        services.ConfigureTelegramBotMvc();
+
 
         services.AddXafWebApi(builder => {
             builder.ConfigureOptions(options => {
@@ -34,16 +39,15 @@ public class Startup {
             });
 
             builder.Modules
-                .AddReports(options => {
+                .Add<ZeeKer.DndTracker.Module.DndTrackerModule>()
+                .AddReports(options =>
+                {
                     options.ReportDataType = typeof(DevExpress.Persistent.BaseImpl.EF.ReportDataV2);
-                })
-                .AddValidation()
-                .Add<ZeeKer.DndTracker.Module.DndTrackerModule>();
-
+                });
 
             builder.ObjectSpaceProviders
-                .AddSecuredEFCore(options => options.PreFetchReferenceProperties())
-                    .WithDbContext<Module.BusinessObjects.DndTrackerEFCoreDbContext>((serviceProvider, options) => {
+                .AddEFCore(options => options.PreFetchReferenceProperties())
+                    .WithDbContext<ZeeKer.DndTracker.Module.BusinessObjects.DndTrackerEFCoreDbContext>((serviceProvider, options) => {
                         var connectionString = GetConnectionString();
                         options.UseSqlServer(
                             connectionString,
@@ -52,7 +56,6 @@ public class Startup {
                                 sqlOptions.EnableRetryOnFailure();
                                 sqlOptions.CommandTimeout(120); // Установка тайм-аута команды в 60 секунд
                                 sqlOptions.UseQuerySplittingBehavior(QuerySplittingBehavior.SingleQuery);
-
                             });
                         options.UseChangeTrackingProxies();
                         options.UseObjectSpaceLinkProxies();
@@ -60,27 +63,9 @@ public class Startup {
                     })
                 .AddNonPersistent();
 
-            builder.Security
-                .UseIntegratedMode(options => {
-                    options.Lockout.Enabled = true;
-
-                    options.RoleType = typeof(PermissionPolicyRole);
-
-                    options.UserType = typeof(Module.BusinessObjects.ApplicationUser);
-
-                    options.UserLoginInfoType = typeof(Module.BusinessObjects.ApplicationUserLoginInfo);
-                    options.Events.OnSecurityStrategyCreated += securityStrategy => {
-                        ((SecurityStrategy)securityStrategy).PermissionsReloadMode = PermissionsReloadMode.CacheOnFirstAccess;
-                    };
-                })
-                .AddPasswordAuthentication(options => {
-                    options.IsSupportChangePassword = true;
-                });
-
             builder.AddBuildStep(application => {
-                application.ApplicationName = "DndTracker.Bot";
-                application.CheckCompatibilityType = CheckCompatibilityType.ModuleInfo;
-                application.DatabaseUpdateMode = DatabaseUpdateMode.Never;
+                application.ApplicationName = "ZeeKer.DndTracker";
+                application.CheckCompatibilityType = DevExpress.ExpressApp.CheckCompatibilityType.ModuleInfo;
             });
         }, Configuration);
 
@@ -92,52 +77,12 @@ public class Startup {
                     .EnableQueryFeatures(100);
             });
 
-        services
-            .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options => {
-                options.TokenValidationParameters = new TokenValidationParameters() {
-                    ValidateIssuerSigningKey = true,
-                    //ValidIssuer = Configuration["Authentication:Jwt:Issuer"],
-                    //ValidAudience = Configuration["Authentication:Jwt:Audience"],
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Authentication:Jwt:IssuerSigningKey"]))
-                };
-            });
-
-        services.AddAuthorization(options => {
-            options.DefaultPolicy = new AuthorizationPolicyBuilder(
-                JwtBearerDefaults.AuthenticationScheme)
-                    .RequireAuthenticatedUser()
-                    .RequireXafAuthentication()
-                    .Build();
-        });
-
         services.AddSwaggerGen(c => {
             c.EnableAnnotations();
             c.SwaggerDoc("v1", new OpenApiInfo {
-                Title = "ZeeKer.DndTracker API",
+                Title = "Zeeker.DndTracker.Bot API",
                 Version = "v1",
-                Description = @"Use AddXafWebApi(options) in the ZeeKer.DndTracker.WebApi\Startup.cs file to make Business Objects available in the Web API."
-            });
-            c.AddSecurityDefinition("JWT", new OpenApiSecurityScheme() {
-                Type = SecuritySchemeType.Http,
-                Name = "Bearer",
-                Scheme = "bearer",
-                BearerFormat = "JWT",
-                In = ParameterLocation.Header
-            });
-            c.AddSecurityRequirement(new OpenApiSecurityRequirement()
-                {
-                    {
-                        new OpenApiSecurityScheme() {
-                            Reference = new OpenApiReference() {
-                                Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
-                                Id = "JWT"
-                            }
-                        },
-                        new string[0]
-                    },
+                Description = @"Use AddXafWebApi(options) in the Zeeker.DndTracker.Bot.WebApi\Startup.cs file to make Business Objects available in the Web API."
             });
         });
 
@@ -152,7 +97,7 @@ public class Startup {
             app.UseDeveloperExceptionPage();
             app.UseSwagger();
             app.UseSwaggerUI(c => {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "ZeeKer.DndTracker WebApi v1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Zeeker.DndTracker.Bot WebApi v1");
             });
         }
         else {
@@ -171,7 +116,6 @@ public class Startup {
             endpoints.MapXafEndpoints();
         });
     }
-
     private string GetConnectionString()
     {
         string connectionString = Environment.GetEnvironmentVariable("ConnectionString");
