@@ -21,7 +21,11 @@ public class BotController(IOptions<BotConfiguration> Config) : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] Update update, [FromServices] ITelegramBotClient bot, [FromServices] UpdateHandler handleUpdateService, CancellationToken ct)
+    public async Task<IActionResult> Post(
+        [FromBody] Update update, 
+        [FromServices] ITelegramBotClient bot, 
+        [FromServices] UpdateHandler handleUpdateService, 
+        CancellationToken ct)
     {
         if (Request.Headers["X-Telegram-Bot-Api-Secret-Token"] != Config.Value.SecretToken)
             return Forbid();
