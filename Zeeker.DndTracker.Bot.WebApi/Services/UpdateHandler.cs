@@ -1,17 +1,61 @@
-﻿using Telegram.Bot;
+﻿using DevExpress.ExpressApp.Core;
+using DevExpress.ExpressApp.Security;
+using System.Text;
+using Telegram.Bot;
 using Telegram.Bot.Exceptions;
 using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.InlineQueryResults;
 using Telegram.Bot.Types.ReplyMarkups;
+using Zeeker.DndTracker.Bot.WebApi.Types;
+using ZeeKer.DndTracker.Module.BusinessObjects;
 
 namespace Zeeker.DndTracker.Bot.WebApi.Services;
 
-public class UpdateHandler(ITelegramBotClient bot, ILogger<UpdateHandler> logger) : IUpdateHandler
+public class UpdateHandler : IUpdateHandler
 {
     private static readonly InputPollOption[] PollOptions = ["Hello", "World!"];
+    private const string usage = "<b><u>Меню</u></b>:";
+    
+    private static readonly List<List<InlineKeyboardButton>> DefaultMenuButtons =
+        [
+            [InlineKeyboardButton.WithCallbackData("Кампейн", BotStates.ChooseCampain)],
+            [InlineKeyboardButton.WithCallbackData("Предметы", BotStates.Items)],
+        ];
 
+    private readonly ITelegramBotClient bot;
+    private readonly ILogger<UpdateHandler> logger;
+    private readonly INonSecuredObjectSpaceFactory objectSpaceFactory;
+
+
+    public UpdateHandler(ITelegramBotClient bot, ILogger<UpdateHandler> logger, IServiceProvider serviceProvider)
+    {
+        this.bot = bot;
+        this.logger = logger;
+        var scope = serviceProvider.CreateScope();
+        objectSpaceFactory = scope.ServiceProvider.GetRequiredService<INonSecuredObjectSpaceFactory>();
+        
+    }
+    public async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+        await (update switch
+        {
+            { Message: { } message } => OnMessage(message),
+            //{ EditedMessage: { } message } => OnMessage(message),
+            { CallbackQuery: { } callbackQuery } => OnCallbackQuery(callbackQuery, cancellationToken),
+            //{ InlineQuery: { } inlineQuery } => OnInlineQuery(inlineQuery),
+            //{ ChosenInlineResult: { } chosenInlineResult } => OnChosenInlineResult(chosenInlineResult),
+            //{ Poll: { } poll } => OnPoll(poll),
+            //{ PollAnswer: { } pollAnswer } => OnPollAnswer(pollAnswer),
+            // UpdateType.ChannelPost:
+            // UpdateType.EditedChannelPost:
+            // UpdateType.ShippingQuery:
+            // UpdateType.PreCheckoutQuery:
+            _ => UnknownUpdateHandlerAsync(update)
+        });
+    }
     public async Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, HandleErrorSource source, CancellationToken cancellationToken)
     {
         logger.LogInformation("HandleError: {Exception}", exception);
@@ -19,25 +63,10 @@ public class UpdateHandler(ITelegramBotClient bot, ILogger<UpdateHandler> logger
         if (exception is RequestException)
             await Task.Delay(TimeSpan.FromSeconds(2), cancellationToken);
     }
-
-    public async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    private Task UnknownUpdateHandlerAsync(Update update)
     {
-        cancellationToken.ThrowIfCancellationRequested();
-        await (update switch
-        {
-            { Message: { } message } => OnMessage(message),
-            { EditedMessage: { } message } => OnMessage(message),
-            { CallbackQuery: { } callbackQuery } => OnCallbackQuery(callbackQuery),
-            { InlineQuery: { } inlineQuery } => OnInlineQuery(inlineQuery),
-            { ChosenInlineResult: { } chosenInlineResult } => OnChosenInlineResult(chosenInlineResult),
-            { Poll: { } poll } => OnPoll(poll),
-            { PollAnswer: { } pollAnswer } => OnPollAnswer(pollAnswer),
-            // UpdateType.ChannelPost:
-            // UpdateType.EditedChannelPost:
-            // UpdateType.ShippingQuery:
-            // UpdateType.PreCheckoutQuery:
-            _ => UnknownUpdateHandlerAsync(update)
-        });
+        logger.LogInformation("Unknown update type: {UpdateType}", update.Type);
+        return Task.CompletedTask;
     }
 
     private async Task OnMessage(Message msg)
@@ -46,154 +75,75 @@ public class UpdateHandler(ITelegramBotClient bot, ILogger<UpdateHandler> logger
         if (msg.Text is not { } messageText)
             return;
 
-        Message sentMessage = await (messageText.Split(' ')[0] switch
+        Message? sentMessage = await (messageText.Split(' ')[0] switch
         {
-            "/photo" => SendPhoto(msg),
-            "/inline_buttons" => SendInlineKeyboard(msg),
-            "/keyboard" => SendReplyKeyboard(msg),
-            "/remove" => RemoveKeyboard(msg),
-            "/request" => RequestContactAndLocation(msg),
-            "/inline_mode" => StartInlineQuery(msg),
-            "/poll" => SendPoll(msg),
-            "/poll_anonymous" => SendAnonymousPoll(msg),
-            "/throw" => FailingHandler(msg),
-            _ => Usage(msg)
+            "/start" => OpenMenu(msg),
+            "/menu" => OpenMenu(msg),
+            _ => Task.FromResult(new Message())
         });
-        logger.LogInformation("The message was sent with id: {SentMessageId}", sentMessage.MessageId);
+        logger.LogInformation("The message was sent with id: {SentMessageId}", sentMessage?.MessageId);
     }
 
-    async Task<Message> Usage(Message msg)
-    {
-        const string usage = """
-                <b><u>Bot menu</u></b>:
-                /photo          - send a photo
-                /inline_buttons - send inline buttons
-                /keyboard       - send keyboard buttons
-                /remove         - remove keyboard buttons
-                /request        - request location or contact
-                /inline_mode    - send inline-mode results list
-                /poll           - send a poll
-                /poll_anonymous - send an anonymous poll
-                /throw          - what happens if handler fails
-            """;
-        return await bot.SendTextMessageAsync(msg.Chat, usage, parseMode: ParseMode.Html, replyMarkup: new ReplyKeyboardRemove());
-    }
-
-    async Task<Message> SendPhoto(Message msg)
-    {
-        await bot.SendChatActionAsync(msg.Chat, ChatAction.UploadPhoto);
-        await Task.Delay(2000); // simulate a long task
-        await using var fileStream = new FileStream("Files/bot.gif", FileMode.Open, FileAccess.Read);
-        return await bot.SendPhotoAsync(msg.Chat, fileStream, caption: "Read https://telegrambots.github.io/book/");
-    }
-
-    // Send inline keyboard. You can process responses in OnCallbackQuery handler
-    async Task<Message> SendInlineKeyboard(Message msg)
-    {
-        List<List<InlineKeyboardButton>> buttons =
-        [
-            ["1.1", "1.2", "1.3"],
-            [
-                InlineKeyboardButton.WithCallbackData("WithCallbackData", "CallbackData"),
-                InlineKeyboardButton.WithUrl("WithUrl", "https://github.com/TelegramBots/Telegram.Bot")
-            ],
-        ];
-        return await bot.SendTextMessageAsync(msg.Chat, "Inline buttons:", replyMarkup: new InlineKeyboardMarkup(buttons));
-    }
-
-    async Task<Message> SendReplyKeyboard(Message msg)
-    {
-        List<List<KeyboardButton>> keys =
-        [
-            ["1.1", "1.2", "1.3"],
-            ["2.1", "2.2"],
-        ];
-        return await bot.SendTextMessageAsync(msg.Chat, "Keyboard buttons:", replyMarkup: new ReplyKeyboardMarkup(keys) { ResizeKeyboard = true });
-    }
-
-    async Task<Message> RemoveKeyboard(Message msg)
-    {
-        return await bot.SendTextMessageAsync(msg.Chat, "Removing keyboard", replyMarkup: new ReplyKeyboardRemove());
-    }
-
-    async Task<Message> RequestContactAndLocation(Message msg)
-    {
-        List<KeyboardButton> buttons =
-            [
-                KeyboardButton.WithRequestLocation("Location"),
-                KeyboardButton.WithRequestContact("Contact"),
-            ];
-        return await bot.SendTextMessageAsync(msg.Chat, "Who or Where are you?", replyMarkup: new ReplyKeyboardMarkup(buttons));
-    }
-
-    async Task<Message> StartInlineQuery(Message msg)
-    {
-        var button = InlineKeyboardButton.WithSwitchInlineQueryCurrentChat("Inline Mode");
-        return await bot.SendTextMessageAsync(msg.Chat, "Press the button to start Inline Query\n\n" +
-            "(Make sure you enabled Inline Mode in @BotFather)", replyMarkup: new InlineKeyboardMarkup(button));
-    }
-
-    async Task<Message> SendPoll(Message msg)
-    {
-        return await bot.SendPollAsync(msg.Chat, "Question", PollOptions, isAnonymous: false);
-    }
-
-    async Task<Message> SendAnonymousPoll(Message msg)
-    {
-        return await bot.SendPollAsync(chatId: msg.Chat, "Question", PollOptions);
-    }
-
-    static Task<Message> FailingHandler(Message msg)
-    {
-        throw new NotImplementedException("FailingHandler");
-    }
 
     // Process Inline Keyboard callback data
-    private async Task OnCallbackQuery(CallbackQuery callbackQuery)
+    private async Task OnCallbackQuery(CallbackQuery callbackQuery, CancellationToken cancellationToken)
     {
-        logger.LogInformation("Received inline keyboard callback from: {CallbackQueryId}", callbackQuery.Id);
-        await bot.AnswerCallbackQueryAsync(callbackQuery.Id, $"Received {callbackQuery.Data}");
-        await bot.SendTextMessageAsync(callbackQuery.Message!.Chat, $"Received {callbackQuery.Data}");
+        switch (callbackQuery.Data)
+        {
+            case BotStates.ChooseCampain:
+                await GoToChooseCampain(callbackQuery, cancellationToken);
+                break;
+            case BotStates.MainMenu:
+                await GoToMenu(callbackQuery, cancellationToken);
+                break;
+            default:
+                logger.LogInformation("Received inline keyboard callback from: {CallbackQueryId}", callbackQuery.Id);
+                await bot.AnswerCallbackQueryAsync(callbackQuery.Id, $"Received {callbackQuery.Data}");
+                await bot.SendTextMessageAsync(callbackQuery.Message!.Chat, $"Received {callbackQuery.Data}");
+                break;
+        }
+
+
     }
 
-    #region Inline Mode
-
-    private async Task OnInlineQuery(InlineQuery inlineQuery)
+    private async Task GoToMenu(CallbackQuery callbackQuery, CancellationToken cancellationToken)
     {
-        logger.LogInformation("Received inline query from: {InlineQueryFromId}", inlineQuery.From.Id);
-
-        InlineQueryResult[] results = [ // displayed result
-            new InlineQueryResultArticle("1", "Telegram.Bot", new InputTextMessageContent("hello")),
-            new InlineQueryResultArticle("2", "is the best", new InputTextMessageContent("world"))
-        ];
-        await bot.AnswerInlineQueryAsync(inlineQuery.Id, results, cacheTime: 0, isPersonal: true);
+        await bot.EditMessageTextAsync(
+                chatId: callbackQuery.Message.Chat.Id,
+                messageId: callbackQuery.Message.MessageId,
+                text: usage,
+                parseMode: ParseMode.Html,
+                replyMarkup: new InlineKeyboardMarkup(DefaultMenuButtons));
     }
 
-    private async Task OnChosenInlineResult(ChosenInlineResult chosenInlineResult)
+    private async Task GoToChooseCampain(CallbackQuery callbackQuery, CancellationToken cancellationToken)
     {
-        logger.LogInformation("Received inline result: {ChosenInlineResultId}", chosenInlineResult.ResultId);
-        await bot.SendTextMessageAsync(chosenInlineResult.From.Id, $"You chose result with Id: {chosenInlineResult.ResultId}");
+        await bot.EditMessageTextAsync(
+            chatId: callbackQuery.Message.Chat.Id, 
+            messageId: callbackQuery.Message.MessageId,
+            text: "Ваши Кампейны:",
+            replyMarkup: new InlineKeyboardMarkup(GetCampainsMarkup()), 
+            cancellationToken: cancellationToken);
+        
     }
 
-    #endregion
-
-    private Task OnPoll(Poll poll)
+    private List<List<InlineKeyboardButton>> GetCampainsMarkup()
     {
-        logger.LogInformation("Received Poll info: {Question}", poll.Question);
-        return Task.CompletedTask;
+        using var objectSpace = objectSpaceFactory.CreateNonSecuredObjectSpace(typeof(Campain));
+        var campains = objectSpace.GetObjects<Campain>();
+        var number = 1;
+        var buttons = new List<List<InlineKeyboardButton>>();
+
+        foreach (var campain in campains)
+            buttons.Add([InlineKeyboardButton.WithCallbackData($"{number++}. {campain.Name}", campain.ID.ToString())]);
+        buttons.Add([InlineKeyboardButton.WithCallbackData("Назад", BotStates.MainMenu)]);
+
+        return buttons;
     }
 
-    private async Task OnPollAnswer(PollAnswer pollAnswer)
+    private async Task<Message> OpenMenu(Message msg)
     {
-        var answer = pollAnswer.OptionIds.FirstOrDefault();
-        var selectedOption = PollOptions[answer];
-        if (pollAnswer.User != null)
-            await bot.SendTextMessageAsync(pollAnswer.User.Id, $"You've chosen: {selectedOption.Text} in poll");
-    }
-
-    private Task UnknownUpdateHandlerAsync(Update update)
-    {
-        logger.LogInformation("Unknown update type: {UpdateType}", update.Type);
-        return Task.CompletedTask;
+        
+        return await bot.SendTextMessageAsync(msg.Chat, usage, parseMode: ParseMode.Html, replyMarkup: new InlineKeyboardMarkup(DefaultMenuButtons));
     }
 }

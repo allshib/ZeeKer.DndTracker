@@ -9,6 +9,7 @@ using ZeeKer.DndTracker.WebApi.Services;
 using Microsoft.AspNetCore;
 using Telegram.Bot;
 using Zeeker.DndTracker.Bot.WebApi.Services;
+using ZeeKer.DndTracker.Module.BusinessObjects;
 
 
 namespace Zeeker.DndTracker.Bot.WebApi;
@@ -47,7 +48,7 @@ public class Startup {
 
             builder.ObjectSpaceProviders
                 .AddEFCore(options => options.PreFetchReferenceProperties())
-                    .WithDbContext<ZeeKer.DndTracker.Module.BusinessObjects.DndTrackerEFCoreDbContext>((serviceProvider, options) => {
+                    .WithDbContext<DndTrackerEFCoreDbContext>((serviceProvider, options) => {
                         var connectionString = GetConnectionString();
                         options.UseSqlServer(
                             connectionString,
@@ -60,6 +61,7 @@ public class Startup {
                         options.UseChangeTrackingProxies();
                         options.UseObjectSpaceLinkProxies();
                         options.UseLazyLoadingProxies();
+                        
                     })
                 .AddNonPersistent();
 
@@ -68,6 +70,7 @@ public class Startup {
                 application.CheckCompatibilityType = DevExpress.ExpressApp.CheckCompatibilityType.ModuleInfo;
             });
         }, Configuration);
+
 
         services
             .AddControllers()

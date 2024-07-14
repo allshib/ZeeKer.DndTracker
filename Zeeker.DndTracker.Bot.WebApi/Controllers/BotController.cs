@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DevExpress.ExpressApp.Core;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Telegram.Bot;
 using Telegram.Bot.Types;
@@ -25,12 +26,14 @@ public class BotController(IOptions<BotConfiguration> Config) : ControllerBase
         [FromBody] Update update, 
         [FromServices] ITelegramBotClient bot, 
         [FromServices] UpdateHandler handleUpdateService, 
+        [FromServices] INonSecuredObjectSpaceFactory objectSpaceFactory,
         CancellationToken ct)
     {
         if (Request.Headers["X-Telegram-Bot-Api-Secret-Token"] != Config.Value.SecretToken)
             return Forbid();
         try
         {
+            
             await handleUpdateService.HandleUpdateAsync(bot, update, ct);
         }
         catch (Exception exception)
