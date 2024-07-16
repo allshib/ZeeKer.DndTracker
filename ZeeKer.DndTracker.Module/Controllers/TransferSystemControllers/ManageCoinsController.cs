@@ -91,7 +91,7 @@ namespace ZeeKer.DndTracker.Module.Controllers.TransferSystemControllers
 
         #endregion
 
-
+        #region Transfer With Another Storage
         /// <summary>
         /// Отправить голду
         /// </summary>
@@ -127,6 +127,7 @@ namespace ZeeKer.DndTracker.Module.Controllers.TransferSystemControllers
 
             useCase.Execute(command);
         }
+        #endregion
 
         #region RemoveCoins
         private void RemoveGold100Gold_Execute(object sender, SimpleActionExecuteEventArgs e)
