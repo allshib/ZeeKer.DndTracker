@@ -8,7 +8,7 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
 WORKDIR /src
-RUN  dotnet nuget add source https://nuget.devexpress.com/6tfj2fZPKI1YPdLHd9xb8wZ5po5hbUYgE8SxxYeKWPMv3UGETS/api/v3/index.json -n devexpress-nuget
+RUN  dotnet nuget add source https://nuget.devexpress.com/rwKmNdqY94SpyRsYPPVUAvHgyP4Zfz4Ile3pNBzse3BwdqU1WF/api/v3/index.json -n devexpress-nuget
 COPY ["ZeeKer.DndTracker.Blazor.Server/ZeeKer.DndTracker.Blazor.Server.csproj", "ZeeKer.DndTracker.Blazor.Server/"]
 COPY ["ZeeKer.DndTracker.Module/ZeeKer.DndTracker.Module.csproj", "ZeeKer.DndTracker.Module/"]
 COPY ["ZeeKer.DndTracker.LongStoryShort/ZeeKer.DndTracker.LongStoryShort.csproj", "ZeeKer.DndTracker.LongStoryShort/"]
