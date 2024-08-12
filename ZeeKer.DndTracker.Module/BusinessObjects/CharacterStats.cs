@@ -220,7 +220,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [XafDisplayName("Инициатива"), NotMapped]
         [ModelDefault("DisplayFormat", "{0:+0;-0;0}")]
-        public virtual int Initiative => DexterityBonus;
+        public virtual int Initiative => DexterityBonus + GetHandymanBonus();
 
         //[XafDisplayName("Скорость")]
         //public virtual int Speed { get; set; }
@@ -244,10 +244,15 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         private string CalcStatInfo(int stat, int bonus, ProficiencyType spasType )
         {
             var spas = Character?.Profiencies?.Any(x => x.Profiency.ProfiencyType == spasType) == true 
-                ? Profiency + bonus
-                : bonus;
+                ? bonus + Profiency
+                : bonus + GetHandymanBonus();
 
             return $"{stat} ({(stat >= 10 ? "+" : "")}{bonus}, Спас: {(spas > 0 ? "+" : "")}{spas})";
+        }
+
+        private int GetHandymanBonus()
+        {
+               return IsHandyman ? Profiency / 2 : 0;
         }
 
         public override void OnCreated()

@@ -65,9 +65,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         private int CalculateProfiencyBonus()
             => HasCompetence
             ? Skills.Stats.Profiency * 2 
-            : HasSkill ? Skills.Stats.Profiency : AddHandymanBonus();
+            : HasSkill ? Skills.Stats.Profiency : GetHandymanBonus();
 
-        private int AddHandymanBonus()
+        private int GetHandymanBonus()
             => Skills.Stats.IsHandyman ? Skills.Stats.Profiency / 2 : 0;
 
 
