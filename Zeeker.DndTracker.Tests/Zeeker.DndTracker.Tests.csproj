@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ZeeKer.DndTracker.DndSu\ZeeKer.DndTracker.DndSu.csproj" />
     <ProjectReference Include="..\ZeeKer.DndTracker.Module\ZeeKer.DndTracker.Module.csproj" />
   </ItemGroup>
 
