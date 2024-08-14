@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using ZeeKer.DndTracker.Blazor.Server.Services;
 using DevExpress.Persistent.BaseImpl.EF.PermissionPolicy;
 using ZeeKer.DndTracker.Module.BusinessObjects;
+using ZeeKer.DndTracker.Contracts.Parsers.SpellParser;
+using ZeeKer.DndTracker.DndSu.Parsers;
+using ZeeKer.DndTracker.Module.UseCases.LoadSpellsUseCase;
 
 namespace ZeeKer.DndTracker.Blazor.Server;
 
@@ -20,6 +23,9 @@ public class Startup {
 
     public void ConfigureServices(IServiceCollection services) {
         services.AddSingleton(typeof(Microsoft.AspNetCore.SignalR.HubConnectionHandler<>), typeof(ProxyHubConnectionHandler<>));
+        services.AddScoped<ISpellParser, DndsuSpellParser>();
+        services.AddScoped<ILoadSpellUseCase, LoadSpellsUseCase>();
+
 
         services.AddRazorPages();
         services.AddServerSideBlazor();

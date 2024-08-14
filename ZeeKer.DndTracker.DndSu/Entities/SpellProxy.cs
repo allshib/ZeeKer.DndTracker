@@ -12,7 +12,7 @@ public record SpellProxy(
     string Components,
     string Duration,
     bool NeedConcentration,
-    bool isRitual,
+    bool IsRitual,
     string Classes,
     string Source,
     string Description,

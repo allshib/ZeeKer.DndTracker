@@ -22,24 +22,33 @@ namespace ZeeKer.DndTracker.DndSu.Parsers
             
         }
 
-        public async Task<SpellProxy?> GetSpellCard(string spellLink)
+        public async Task<ISpell?> FindSpell(string name)
         {
-            HttpResponseMessage response = await client.GetAsync(spellLink);
+            if(cachedSpells.Count == 0)
+                await GetSpellLinksCached();
+            
+            var card = cachedSpellLinks.FirstOrDefault(x => x.Name == name);
+            
+            if (card is null)
+                return null;
 
-            string htmlContent = await response.Content.ReadAsStringAsync();
-            IDocument document = await context.OpenAsync(req => req.Content(htmlContent));
-            IElement spellCard = document!.QuerySelector(".card-wrapper")!;
-
-            return GetSpellFromHTMLWrapper(document, spellLink);
-
+            return await GetSpellCard(card.FullLink);
         }
+
+        public async Task<ISpell?> FindSpell(ISpellLink spellLink)
+        {
+            return await GetSpellCard(spellLink.FullLink);
+        }
+
+
 
 
         public async IAsyncEnumerable<ISpell> GetAllSpells()
         {
             cachedSpells.Clear();
+            var spellLinks = await GetSpellLinksCached();
 
-            await foreach (var card in GetSimpleCards())
+            foreach (var card in spellLinks)
             {
                 var spell = await GetSpellCard(card.FullLink) ?? await GetSpellCard(card.FullLink);
 
@@ -55,11 +64,62 @@ namespace ZeeKer.DndTracker.DndSu.Parsers
 
         }
 
-        public IEnumerable<ISpell> GetCachedSpells()
+        public async Task<IEnumerable<ISpell>> GetCachedSpells()
         {
+            if (cachedSpells.Count == 0)
+                await GetSpellLinksCached();
+
             return cachedSpells;
         }
 
+        public async Task<IEnumerable<ISpellLink?>> GetSpellLinksCached(string? html = null)
+        {
+            if (cachedSpellLinks.Count > 0)
+                return cachedSpellLinks;
+
+            string spellsHtml = File.ReadLines("spells.txt").First();
+
+            var document = await context.OpenAsync(req => req.Content(spellsHtml));
+            var pageTitle = document.QuerySelectorAll(".cards_list__item");
+
+            foreach (var item in pageTitle)
+            {
+                var name = item.QuerySelector(".cards_list__item-name")?.TextContent;
+                var spellLink = html?? item.QuerySelector("a.cards_list__item-wrapper")?
+                    .GetAttribute("href");
+
+                if (name is not null && spellLink is not null)
+                    cachedSpellLinks.Add(new SimpleSpellCard(name, $"{baseUrl}{spellLink}"));
+            }
+            return cachedSpellLinks;
+        }
+        private async Task<SpellProxy?> GetSpellCard(string spellLink)
+        {
+            HttpResponseMessage response = await client.GetAsync(spellLink);
+
+            string htmlContent = await response.Content.ReadAsStringAsync();
+            IDocument document = await context.OpenAsync(req => req.Content(htmlContent));
+            IElement spellCard = document!.QuerySelector(".card-wrapper")!;
+
+            return GetSpellFromHTMLWrapper(document, spellLink);
+
+        }
+        private string GetSourceText(IDocument document)
+        {
+            // Извлекаем все источники, которые находятся в <span> внутри <li> с текстом "Источник" или "Источники"
+            var sourceElement = document.QuerySelector("ul.params li:contains('Источник'), ul.params li:contains('Источники') span");
+
+            if (sourceElement is null)
+                return string.Empty;
+
+            var sources = sourceElement.TextContent.Trim();
+
+            if (sources.Contains("Источники"))
+                sources = sources.Replace("Источники: ", "");
+            else if (sources.Contains("Источник"))
+                sources = sources.Replace("Источник: ", "");
+            return sources;
+        }
         private SpellProxy? GetSpellFromHTMLWrapper(IDocument document, string spellLink)
         {
             string name = document.QuerySelector("h2.card-title span")?.TextContent.Split('[')[0].Trim();
@@ -86,45 +146,6 @@ namespace ZeeKer.DndTracker.DndSu.Parsers
                 duration, needConcentration, isRitual, clasesses, source, description, spellLink);
         }
 
-        private string GetSourceText(IDocument document)
-        {
-            // Извлекаем все источники, которые находятся в <span> внутри <li> с текстом "Источник" или "Источники"
-            var sourceElement = document.QuerySelector("ul.params li:contains('Источник'), ul.params li:contains('Источники') span");
-
-            if (sourceElement is null)
-                return string.Empty;
-
-            var sources = sourceElement.TextContent.Trim();
-
-            if (sources.Contains("Источники"))
-                sources = sources.Replace("Источники: ", "");
-            else if (sources.Contains("Источник"))
-                sources = sources.Replace("Источник: ", "");
-            return sources;
-        }
-
-
-
-        public async Task<IEnumerable<ISpellLink?>> GetSpellLinks(string? html = null)
-        {
-            if (cachedSpellLinks.Count > 0)
-                return cachedSpellLinks;
-
-            string spellsHtml = File.ReadLines("spells.txt").First();
-
-            var document = await context.OpenAsync(req => req.Content(spellsHtml));
-            var pageTitle = document.QuerySelectorAll(".cards_list__item");
-
-            foreach (var item in pageTitle)
-            {
-                var name = item.QuerySelector(".cards_list__item-name")?.TextContent;
-                var spellLink = html?? item.QuerySelector("a.cards_list__item-wrapper")?
-                    .GetAttribute("href");
-
-                if (name is not null && spellLink is not null)
-                    cachedSpellLinks.Add(new SimpleSpellCard(name, $"{baseUrl}{spellLink}"));
-            }
-            return cachedSpellLinks;
-        }
+        
     }
 }

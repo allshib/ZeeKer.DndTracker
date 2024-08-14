@@ -95,6 +95,7 @@
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.34.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ZeeKer.DndTracker.Contracts\ZeeKer.DndTracker.Contracts.csproj" />
     <ProjectReference Include="..\ZeeKer.DndTracker.LongStoryShort\ZeeKer.DndTracker.LongStoryShort.csproj" />
   </ItemGroup>
   <ItemGroup>

@@ -32,7 +32,13 @@ public class DndParserShould : TestBase
     public async Task ParseSpell()
     {
         var parser = new DndsuSpellParser();
-        await parser.GetSpellCard("https://dnd.su/spells/1-hellish_rebuke/");
+        var spell = await parser.FindSpell("Адское возмездие");
+
+
+        Assert.Equal("Адское возмездие", spell?.Name);
+        Assert.Equal("Мгновенная", spell?.Duration);
+        Assert.Equal("1 уровень", spell?.SpellLevel);
+        Assert.Equal("60 футов", spell?.Distance);
     }
 
 

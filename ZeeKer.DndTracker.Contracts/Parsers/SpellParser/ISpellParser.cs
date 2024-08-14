@@ -9,10 +9,11 @@ namespace ZeeKer.DndTracker.Contracts.Parsers.SpellParser
     public interface ISpellParser
     {
         IAsyncEnumerable<ISpell> GetAllSpells();
-
-        IEnumerable<ISpell> GetCachedSpells();
-
+        Task<IEnumerable<ISpell>> GetCachedSpells();
         Task<IEnumerable<ISpellLink?>> GetSpellLinksCached(string? html = null);
+
+        Task<ISpell?> FindSpell(string name);
+        Task<ISpell?> FindSpell(ISpellLink spellLink);
 
     }
 }
