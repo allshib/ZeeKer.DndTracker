@@ -11,6 +11,7 @@ using ZeeKer.DndTracker.Module.BusinessObjects;
 using ZeeKer.DndTracker.Contracts.Parsers.SpellParser;
 using ZeeKer.DndTracker.DndSu.Parsers;
 using ZeeKer.DndTracker.Module.UseCases.LoadSpellsUseCase;
+using ZeeKer.DndTracker.Module.UseCases.GetDndSuLinkBySpellNameUseCase;
 
 namespace ZeeKer.DndTracker.Blazor.Server;
 
@@ -25,6 +26,7 @@ public class Startup {
         services.AddSingleton(typeof(Microsoft.AspNetCore.SignalR.HubConnectionHandler<>), typeof(ProxyHubConnectionHandler<>));
         services.AddScoped<ISpellParser, DndsuSpellParser>();
         services.AddScoped<ILoadSpellUseCase, LoadSpellsUseCase>();
+        services.AddScoped<IGetDndSuLinkBySpellNameUseCase, GetDndSuLinkBySpellNameUseCase>();
 
 
         services.AddRazorPages();
