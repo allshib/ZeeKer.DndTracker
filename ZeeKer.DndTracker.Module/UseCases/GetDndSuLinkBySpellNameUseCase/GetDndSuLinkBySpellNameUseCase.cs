@@ -12,7 +12,7 @@ namespace ZeeKer.DndTracker.Module.UseCases.GetDndSuLinkBySpellNameUseCase
     {
         public async Task Execute(GetDndSuLinkBySpellNameCommand request)
         {
-            var spells = await parser.GetSpellLinksCached();
+            var spells = await parser.GetSpellLinks();
 
             var spell = spells.FirstOrDefault(s => s.Name == request.Spell.Name);
 

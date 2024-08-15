@@ -11,9 +11,11 @@ using ZeeKer.DndTracker.DndSu.Entities;
 
 namespace ZeeKer.DndTracker.DndSu.Parsers
 {
-    public abstract class DndsuParser
+    public abstract class DndsuParser : IDisposable
     {
         protected const string baseUrl = "https://dnd.su";
+
+        protected int sleepTime = 100;
         protected string spellsUrl => $"{baseUrl}/spells/";
 
         protected readonly HttpClient client;
@@ -34,6 +36,11 @@ namespace ZeeKer.DndTracker.DndSu.Parsers
 
             var config = Configuration.Default.WithDefaultLoader();
             context = BrowsingContext.New(config);
-        } 
+        }
+
+        public void Dispose()
+        {
+            client.Dispose();
+        }
     }
 }

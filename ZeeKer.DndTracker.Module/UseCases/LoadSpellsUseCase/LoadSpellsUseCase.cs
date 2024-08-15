@@ -14,7 +14,7 @@ public class LoadSpellsUseCase(ISpellParser parser) : ILoadSpellUseCase
 {
     public async Task Execute(LoadSpellsCommand request)
     {
-        var spellCards = await parser.GetSpellLinksCached();
+        var spellCards = await parser.GetSpellLinks();
 
         foreach (var spellCard in spellCards)
         {
@@ -30,7 +30,7 @@ public class LoadSpellsUseCase(ISpellParser parser) : ILoadSpellUseCase
 
             spell.ToPersistent(request.ObjectSpace);
 
-            Thread.Sleep(350);
+            Thread.Sleep(100);
         }
     }
 }

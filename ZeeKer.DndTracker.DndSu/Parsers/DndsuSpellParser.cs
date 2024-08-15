@@ -25,7 +25,7 @@ namespace ZeeKer.DndTracker.DndSu.Parsers
         public async Task<ISpell?> FindSpell(string name)
         {
             if(cachedSpells.Count == 0)
-                await GetSpellLinksCached();
+                await GetSpellLinks();
             
             var card = cachedSpellLinks.FirstOrDefault(x => x.Name == name);
             
@@ -46,7 +46,7 @@ namespace ZeeKer.DndTracker.DndSu.Parsers
         public async IAsyncEnumerable<ISpell> GetAllSpells()
         {
             cachedSpells.Clear();
-            var spellLinks = await GetSpellLinksCached();
+            var spellLinks = await GetSpellLinks();
 
             foreach (var card in spellLinks)
             {
@@ -59,7 +59,7 @@ namespace ZeeKer.DndTracker.DndSu.Parsers
                 }
 
 
-                Thread.Sleep(350);
+                Thread.Sleep(sleepTime);
             }
 
         }
@@ -67,12 +67,12 @@ namespace ZeeKer.DndTracker.DndSu.Parsers
         public async Task<IEnumerable<ISpell>> GetCachedSpells()
         {
             if (cachedSpells.Count == 0)
-                await GetSpellLinksCached();
+                await GetSpellLinks();
 
             return cachedSpells;
         }
 
-        public async Task<IEnumerable<ISpellLink?>> GetSpellLinksCached(string? html = null)
+        public async Task<IEnumerable<ISpellLink?>> GetSpellLinks(string? html = null)
         {
             if (cachedSpellLinks.Count > 0)
                 return cachedSpellLinks;
@@ -101,10 +101,10 @@ namespace ZeeKer.DndTracker.DndSu.Parsers
             IDocument document = await context.OpenAsync(req => req.Content(htmlContent));
             IElement spellCard = document!.QuerySelector(".card-wrapper")!;
 
-            return GetSpellFromHTMLWrapper(document, spellLink);
+            return GetSpellFromHTMLWrapper(spellCard, spellLink);
 
         }
-        private string GetSourceText(IDocument document)
+        private string GetSourceText(IElement document)
         {
             // Извлекаем все источники, которые находятся в <span> внутри <li> с текстом "Источник" или "Источники"
             var sourceElement = document.QuerySelector("ul.params li:contains('Источник'), ul.params li:contains('Источники') span");
@@ -120,26 +120,26 @@ namespace ZeeKer.DndTracker.DndSu.Parsers
                 sources = sources.Replace("Источник: ", "");
             return sources;
         }
-        private SpellProxy? GetSpellFromHTMLWrapper(IDocument document, string spellLink)
+        private SpellProxy? GetSpellFromHTMLWrapper(IElement document, string spellLink)
         {
-            string name = document.QuerySelector("h2.card-title span")?.TextContent.Split('[')[0].Trim();
+            var name = document.QuerySelector("h2.card-title span")?.TextContent.Split('[')[0].Trim();
+            
             if (name is null)
                 return null;
-            string englishName = document.QuerySelector("h2.card-title span")?.TextContent.Split('[')[1].Replace("]", "").Trim();
-            string levelAndSchool = document.QuerySelector("ul.params li.size-type-alignment")?.TextContent.Trim();
-            string level = levelAndSchool?.Split(',')[0];
-            string school = levelAndSchool?.Split(',')[1].Trim();
-            bool isRitual = school?.Contains("ритуал") ?? false;
-            string castingTime = document.QuerySelector("ul.params li:nth-child(2)")?.TextContent.Replace("Время накладывания:", "").Trim();
-            string range = document.QuerySelector("ul.params li:nth-child(3)")?.TextContent.Replace("Дистанция:", "").Trim();
-            string components = document.QuerySelector("ul.params li:nth-child(4)")?.TextContent.Replace("Компоненты:", "").Trim();
-            string duration = document.QuerySelector("ul.params li:nth-child(5)")?.TextContent.Replace("Длительность:", "").Trim();
-            bool needConcentration = duration?.Contains("Концентрация") ?? false;
-            string clasesses = document.QuerySelector("ul.params li:nth-child(6)")?.TextContent.Replace("Классы:", "").Trim();
-            string source = GetSourceText(document);
-            string description = document.QuerySelector("div[itemprop='description']")?.TextContent.Trim();
 
-
+            var englishName = document.QuerySelector("h2.card-title span")?.TextContent.Split('[')[1].Replace("]", "").Trim();
+            var levelAndSchool = document.QuerySelector("ul.params li.size-type-alignment")?.TextContent.Trim();
+            var level = levelAndSchool?.Split(',')[0].Trim();
+            var school = levelAndSchool?.Split(',')[1].Trim();
+            var isRitual = school?.Contains("ритуал") ?? false;
+            var castingTime = document.QuerySelector("ul.params li:nth-child(2)")?.TextContent.Replace("Время накладывания:", "").Trim();
+            var range = document.QuerySelector("ul.params li:nth-child(3)")?.TextContent.Replace("Дистанция:", "").Trim();
+            var components = document.QuerySelector("ul.params li:nth-child(4)")?.TextContent.Replace("Компоненты:", "").Trim();
+            var duration = document.QuerySelector("ul.params li:nth-child(5)")?.TextContent.Replace("Длительность:", "").Trim();
+            var needConcentration = duration?.Contains("Концентрация") ?? false;
+            var clasesses = document.QuerySelector("ul.params li:nth-child(6)")?.TextContent.Replace("Классы:", "").Trim();
+            var source = GetSourceText(document);
+            var description = document.QuerySelector("div[itemprop='description']")?.TextContent.Trim();
 
             return new SpellProxy(
                 name, englishName, level, school, castingTime, range, components,
