@@ -30,7 +30,26 @@ namespace ZeeKer.DndTracker.Module.Extensions
             spell.IsRitual = spellProxy.IsRitual;
             spell.NeedConcentration = spellProxy.NeedConcentration;
             spell.Source = ConvertToSourceType(spellProxy.Source);
+            spell.LoadResult = LoadSpellResult.LoadSuccess;
+
             return spell;
+        }
+
+        public static void MapTo(this ISpell spellProxy, Spell spell)
+        {
+            spell.Name = spellProxy.Name;
+            spell.SpellLevel = ToMagicSchoolLevel(spellProxy.SpellLevel);
+            spell.MagicSchool = ConvertToMagicSchoolType(spellProxy.MagicSchool);
+            spell.SpellCastingTime = spellProxy.SpellCastingTime;
+            spell.Distance = spellProxy.Distance;
+            spell.Components = spellProxy.Components;
+            spell.Duration = spellProxy.Duration;
+            spell.Descripton = spellProxy.Description;
+            spell.DndsuLink = spellProxy.FullLink;
+            spell.IsRitual = spellProxy.IsRitual;
+            spell.NeedConcentration = spellProxy.NeedConcentration;
+            spell.Source = ConvertToSourceType(spellProxy.Source);
+            spell.LoadResult = LoadSpellResult.LoadSuccess;
         }
 
         private static SourceType ConvertToSourceType(string sourceName)
@@ -56,21 +75,21 @@ namespace ZeeKer.DndTracker.Module.Extensions
             }
         }
 
-        private static SourceType ContainsCheck(string sourceName)
+        private static SourceType ContainsCheck(string schoolName)
         {
-            if (sourceName.Contains("Player's handbook", StringComparison.OrdinalIgnoreCase))
+            if (schoolName.Contains("Player's handbook", StringComparison.OrdinalIgnoreCase))
                 return SourceType.PHB;
-            else if (sourceName.Contains("Xanathar's Guide to Everything", StringComparison.OrdinalIgnoreCase))
+            else if (schoolName.Contains("Xanathar's Guide to Everything", StringComparison.OrdinalIgnoreCase))
                 return SourceType.XGE;
-            else if (sourceName.Contains("Tasha's Cauldron of Everything", StringComparison.OrdinalIgnoreCase))
+            else if (schoolName.Contains("Tasha's Cauldron of Everything", StringComparison.OrdinalIgnoreCase))
                 return SourceType.TCE;
-            else if (sourceName.Contains("Fizban's Treasury of Dragons", StringComparison.OrdinalIgnoreCase))
+            else if (schoolName.Contains("Fizban's Treasury of Dragons", StringComparison.OrdinalIgnoreCase))
                 return SourceType.FTD;
-            else if (sourceName.Contains("The Book of Many Things", StringComparison.OrdinalIgnoreCase))
+            else if (schoolName.Contains("The Book of Many Things", StringComparison.OrdinalIgnoreCase))
                 return SourceType.BMT;
-            else if (sourceName.Contains("Homebrew", StringComparison.OrdinalIgnoreCase))   
+            else if (schoolName.Contains("Homebrew", StringComparison.OrdinalIgnoreCase))   
                 return SourceType.HB;      
-            else if (sourceName.Contains("Sword Coast Adventurer's Guide", StringComparison.OrdinalIgnoreCase))
+            else if (schoolName.Contains("Sword Coast Adventurer's Guide", StringComparison.OrdinalIgnoreCase))
                 return SourceType.PG;
 
             return SourceType.None;
@@ -97,8 +116,30 @@ namespace ZeeKer.DndTracker.Module.Extensions
                 case "преобразование":
                     return MagicSchoolType.Transmutation;
                 default:
-                    return MagicSchoolType.Unknown;
+                    return ContainsCheckSchool(schoolName);
             }
+        }
+
+        private static MagicSchoolType ContainsCheckSchool(string schoolName)
+        {
+            if (schoolName.Contains("ограждение", StringComparison.OrdinalIgnoreCase))
+                return MagicSchoolType.Abjuration;
+            else if (schoolName.Contains("вызов", StringComparison.OrdinalIgnoreCase))
+                return MagicSchoolType.Conjuration;
+            else if (schoolName.Contains("прорицание", StringComparison.OrdinalIgnoreCase))
+                return MagicSchoolType.Divination;
+            else if (schoolName.Contains("очарование", StringComparison.OrdinalIgnoreCase))
+                return MagicSchoolType.Enchantment;
+            else if (schoolName.Contains("воплощение", StringComparison.OrdinalIgnoreCase))
+                return MagicSchoolType.Evocation;
+            else if (schoolName.Contains("иллюзия", StringComparison.OrdinalIgnoreCase))
+                return MagicSchoolType.Illusion;
+            else if (schoolName.Contains("некромантия", StringComparison.OrdinalIgnoreCase))
+                return MagicSchoolType.Necromancy;
+            else if (schoolName.Contains("преобразование", StringComparison.OrdinalIgnoreCase))
+                return MagicSchoolType.Transmutation;
+
+            return MagicSchoolType.Unknown;
         }
 
         private static int ToMagicSchoolLevel(string magicSchoolLevel)

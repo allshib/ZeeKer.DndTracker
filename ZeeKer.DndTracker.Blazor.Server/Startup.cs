@@ -12,6 +12,7 @@ using ZeeKer.DndTracker.Contracts.Parsers.SpellParser;
 using ZeeKer.DndTracker.DndSu.Parsers;
 using ZeeKer.DndTracker.Module.UseCases.LoadSpellsUseCase;
 using ZeeKer.DndTracker.Module.UseCases.GetDndSuLinkBySpellNameUseCase;
+using ZeeKer.DndTracker.Module.UseCases.UpdateSpellUseCase;
 
 namespace ZeeKer.DndTracker.Blazor.Server;
 
@@ -27,6 +28,7 @@ public class Startup {
         services.AddScoped<ISpellParser, DndsuSpellParser>();
         services.AddScoped<ILoadSpellUseCase, LoadSpellsUseCase>();
         services.AddScoped<IGetDndSuLinkBySpellNameUseCase, GetDndSuLinkBySpellNameUseCase>();
+        services.AddScoped<IUpdateSpellUseCase, UpdateSpellUseCase>();
 
 
         services.AddRazorPages();

@@ -125,6 +125,7 @@
       <OwnMembers>
         <Member Name="Components" RowCount="1" />
         <Member Name="Descripton" RowCount="13" />
+        <Member Name="LoadResult" AllowEdit="False" />
       </OwnMembers>
     </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.StorageOperation" ImageName="BO_StateMachine">
@@ -1691,9 +1692,9 @@
                   <LayoutGroup Id="Autod11b71cb-9323-4b25-a990-68d5ccbb06fc" ShowCaption="False" Direction="Vertical" Index="0" RelativeSize="100" IsNewNode="True">
                     <LayoutGroup Id="Auto92493f6f-2196-4a5d-ab9a-d0eddff95270" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
                       <LayoutGroup Id="Autoaa4fe54a-8d1c-4c49-9a19-186cff921c24" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="100" IsNewNode="True">
-                        <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="49.86807387862797" IsNewNode="True">
-                          <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="6.299212598425197" IsNewNode="True" />
-                          <LayoutGroup Id="Auto3471b7d7-2438-4af5-b50e-4988a358be76" ShowCaption="False" Direction="Vertical" Index="1" RelativeSize="27.165354330708663" IsNewNode="True">
+                        <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="44.42815249266862" IsNewNode="True">
+                          <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="6.837606837606837" IsNewNode="True" />
+                          <LayoutGroup Id="Auto3471b7d7-2438-4af5-b50e-4988a358be76" ShowCaption="False" Direction="Vertical" Index="1" RelativeSize="29.487179487179485" IsNewNode="True">
                             <LayoutItem Id="SpellCastingTime" ViewItem="SpellCastingTime" Index="0" RelativeSize="21.73913043478261" IsNewNode="True" />
                             <LayoutItem Id="Distance" ViewItem="Distance" Index="1" RelativeSize="17.391304347826086" IsNewNode="True" />
                             <LayoutGroup Id="Auto51a50f5a-2394-47ae-a443-92cb5ab90c89" ShowCaption="False" Direction="Vertical" Index="2" RelativeSize="60.869565217391305" IsNewNode="True">
@@ -1704,16 +1705,20 @@
                               </LayoutGroup>
                             </LayoutGroup>
                           </LayoutGroup>
-                          <LayoutItem Id="Descripton" ViewItem="Descripton" CaptionLocation="Top" Index="2" RelativeSize="66.53543307086615" IsNewNode="True" />
+                          <LayoutItem Id="Descripton" ViewItem="Descripton" CaptionLocation="Top" Index="2" RelativeSize="63.675213675213676" IsNewNode="True" />
                         </LayoutGroup>
-                        <LayoutGroup Id="AdditionalInfo" ShowCaption="True" CaptionLocation="Top" IsCollapsibleGroup="True" Index="1" RelativeSize="50.13192612137203" IsNewNode="True">
-                          <LayoutGroup Id="Autob263ce15-c0b8-4caf-accd-ffb2a3c4b169" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="7.480314960629921" IsNewNode="True">
-                            <LayoutItem Id="SpellLevel" ViewItem="SpellLevel" Index="0" RelativeSize="58.58951175406872" IsNewNode="True" />
-                            <LayoutItem Id="MagicSchool" ShowCaption="False" ViewItem="MagicSchool" Index="1" RelativeSize="41.41048824593128" IsNewNode="True" />
+                        <LayoutGroup Id="AdditionalInfo" ShowCaption="True" CaptionLocation="Top" IsCollapsibleGroup="True" Index="1" RelativeSize="55.57184750733138" IsNewNode="True">
+                          <LayoutGroup Id="Autob263ce15-c0b8-4caf-accd-ffb2a3c4b169" ShowCaption="False" Direction="Vertical" Index="0" RelativeSize="13.247863247863247" Caption="Autob263ce15-c0b8-4caf-accd-ffb2a3c4b169" IsNewNode="True">
+                            <LayoutItem Id="LoadResult" ViewItem="LoadResult" Index="0" RelativeSize="51.61290322580645" IsNewNode="True" />
+                            <LayoutGroup Id="Autodfd298a0-a357-46c5-8c85-03cc16fbba2a" ShowCaption="False" Caption="" Direction="Horizontal" Index="1" RelativeSize="48.38709677419355" IsNewNode="True">
+                              <LayoutItem Id="SpellLevel" ViewItem="SpellLevel" Index="0" RelativeSize="50" IsNewNode="True" />
+                              <LayoutItem Id="MagicSchool" ShowCaption="False" ViewItem="MagicSchool" Index="1" RelativeSize="50" IsNewNode="True" />
+                            </LayoutGroup>
                           </LayoutGroup>
-                          <LayoutItem Id="Components" ViewItem="Components" Index="1" RelativeSize="4.724409448818897" IsNewNode="True" />
-                          <LayoutItem Id="Source" ViewItem="Source" Index="2" RelativeSize="4.724409448818897" IsNewNode="True" />
-                          <LayoutItem Id="ClassObjects" ShowCaption="True" ViewItem="ClassObjects" CaptionLocation="Top" Index="3" RelativeSize="83.07086614173228" IsNewNode="True" />
+                          <LayoutItem Id="Components" ViewItem="Components" Index="1" RelativeSize="5.128205128205129" IsNewNode="True" />
+                          <LayoutItem Id="Source" ViewItem="Source" Index="2" RelativeSize="5.128205128205129" IsNewNode="True" />
+                          <LayoutItem Id="DndsuLink" ViewItem="DndsuLink" Index="3" RelativeSize="5.128205128205129" IsNewNode="True" />
+                          <LayoutItem Id="ClassObjects" ShowCaption="True" ViewItem="ClassObjects" CaptionLocation="Top" Index="4" RelativeSize="71.36752136752136" IsNewNode="True" />
                         </LayoutGroup>
                       </LayoutGroup>
                     </LayoutGroup>
