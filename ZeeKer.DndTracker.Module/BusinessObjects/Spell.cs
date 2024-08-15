@@ -41,16 +41,16 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         public virtual int SpellLevel { get; set; }
 
 
-        [XafDisplayName("Описание"), StringLength(1700)]
+        [XafDisplayName("Описание"), StringLength(4500)]
         public virtual string Descripton { get; set; }
 
-        [XafDisplayName("Компоненты"), StringLength(300)]
+        [XafDisplayName("Компоненты"), StringLength(500)]
         public virtual string Components { get; set; }
 
-        [XafDisplayName("Длительность"), StringLength(150)]
+        [XafDisplayName("Длительность"), StringLength(200)]
         public virtual string Duration { get; set; }
 
-        [XafDisplayName("Дистанция"), StringLength(100)]
+        [XafDisplayName("Дистанция"), StringLength(150)]
         public virtual string Distance { get; set; }
 
         [XafDisplayName("Время накладывания"), StringLength(150)]

@@ -26,9 +26,11 @@ public class LoadSpellsUseCase(ISpellParser parser) : ILoadSpellUseCase
                 continue;
             }
 
-            var spell = await parser.FindSpell(spellCard);
+            var spell = await parser.FindSpell(spellCard)?? await parser.FindSpell(spellCard);
 
             spell.ToPersistent(request.ObjectSpace);
+
+            Thread.Sleep(350);
         }
     }
 }

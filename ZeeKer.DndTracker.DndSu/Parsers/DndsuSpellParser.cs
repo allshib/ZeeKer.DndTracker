@@ -128,7 +128,7 @@ namespace ZeeKer.DndTracker.DndSu.Parsers
             string englishName = document.QuerySelector("h2.card-title span")?.TextContent.Split('[')[1].Replace("]", "").Trim();
             string levelAndSchool = document.QuerySelector("ul.params li.size-type-alignment")?.TextContent.Trim();
             string level = levelAndSchool?.Split(',')[0];
-            string school = levelAndSchool?.Split(',')[1];
+            string school = levelAndSchool?.Split(',')[1].Trim();
             bool isRitual = school?.Contains("ритуал") ?? false;
             string castingTime = document.QuerySelector("ul.params li:nth-child(2)")?.TextContent.Replace("Время накладывания:", "").Trim();
             string range = document.QuerySelector("ul.params li:nth-child(3)")?.TextContent.Replace("Дистанция:", "").Trim();

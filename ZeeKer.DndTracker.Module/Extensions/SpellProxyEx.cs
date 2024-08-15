@@ -20,7 +20,7 @@ namespace ZeeKer.DndTracker.Module.Extensions
             var spell = objectSpace.CreateObject<Spell>();
             spell.Name = spellProxy.Name;
             spell.SpellLevel = ToMagicSchoolLevel(spellProxy.SpellLevel);
-            spell.MagicSchool = ToMagicSchoolType(spellProxy.MagicSchool);
+            spell.MagicSchool = ConvertToMagicSchoolType(spellProxy.MagicSchool);
             spell.SpellCastingTime = spellProxy.SpellCastingTime;
             spell.Distance = spellProxy.Distance;
             spell.Components = spellProxy.Components;
@@ -29,29 +29,83 @@ namespace ZeeKer.DndTracker.Module.Extensions
             spell.DndsuLink = spellProxy.FullLink;
             spell.IsRitual = spellProxy.IsRitual;
             spell.NeedConcentration = spellProxy.NeedConcentration;
-            //spell.Source = spellProxy.Source;
+            spell.Source = ConvertToSourceType(spellProxy.Source);
             return spell;
         }
 
-
-        private static MagicSchoolType ToMagicSchoolType(string magicSchool)
+        private static SourceType ConvertToSourceType(string sourceName)
         {
-            return magicSchool switch
+            switch (sourceName)
             {
-                "Abjuration" => MagicSchoolType.Abjuration,
-                "Conjuration" => MagicSchoolType.Conjuration,
-                "Divination" => MagicSchoolType.Divination,
-                "Enchantment" => MagicSchoolType.Enchantment,
-                "Evocation" => MagicSchoolType.Evocation,
-                "Illusion" => MagicSchoolType.Illusion,
-                "Necromancy" => MagicSchoolType.Necromancy
-            };
+                case "«Player's handbook»":
+                    return SourceType.PHB;
+                case "«Xanathar's Guide to Everything»":
+                    return SourceType.XGE;
+                case "«Tasha's Cauldron of Everything»":
+                    return SourceType.TCE;
+                case "«Fizban's Treasury of Dragons»":
+                    return SourceType.FTD;
+                case "«The Book of Many Things»":
+                    return SourceType.BMT;
+                case "Homebrew":
+                    return SourceType.HB;
+                case "«Sword Coast Adventurer's Guide»":
+                    return SourceType.PG;
+                default:
+                    return ContainsCheck(sourceName);
+            }
+        }
+
+        private static SourceType ContainsCheck(string sourceName)
+        {
+            if (sourceName.Contains("Player's handbook", StringComparison.OrdinalIgnoreCase))
+                return SourceType.PHB;
+            else if (sourceName.Contains("Xanathar's Guide to Everything", StringComparison.OrdinalIgnoreCase))
+                return SourceType.XGE;
+            else if (sourceName.Contains("Tasha's Cauldron of Everything", StringComparison.OrdinalIgnoreCase))
+                return SourceType.TCE;
+            else if (sourceName.Contains("Fizban's Treasury of Dragons", StringComparison.OrdinalIgnoreCase))
+                return SourceType.FTD;
+            else if (sourceName.Contains("The Book of Many Things", StringComparison.OrdinalIgnoreCase))
+                return SourceType.BMT;
+            else if (sourceName.Contains("Homebrew", StringComparison.OrdinalIgnoreCase))   
+                return SourceType.HB;      
+            else if (sourceName.Contains("Sword Coast Adventurer's Guide", StringComparison.OrdinalIgnoreCase))
+                return SourceType.PG;
+
+            return SourceType.None;
+        }
+
+        private static MagicSchoolType ConvertToMagicSchoolType(string schoolName)
+        {
+            switch (schoolName)
+            {
+                case "ограждение":
+                    return MagicSchoolType.Abjuration;
+                case "вызов":
+                    return MagicSchoolType.Conjuration;
+                case "прорицание":
+                    return MagicSchoolType.Divination;
+                case "очарование":
+                    return MagicSchoolType.Enchantment;
+                case "воплощение":
+                    return MagicSchoolType.Evocation;
+                case "иллюзия":
+                    return MagicSchoolType.Illusion;
+                case "некромантия":
+                    return MagicSchoolType.Necromancy;
+                case "преобразование":
+                    return MagicSchoolType.Transmutation;
+                default:
+                    return MagicSchoolType.Unknown;
+            }
         }
 
         private static int ToMagicSchoolLevel(string magicSchoolLevel)
         {
             return magicSchoolLevel switch
             {
+                "Заговор" => 0,
                 "1 уровень" => 1,
                 "2 уровень" => 2,
                 "3 уровень" => 3,
