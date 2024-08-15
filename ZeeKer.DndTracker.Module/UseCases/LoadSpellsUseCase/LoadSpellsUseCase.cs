@@ -18,7 +18,7 @@ public class LoadSpellsUseCase(ISpellParser parser) : ILoadSpellUseCase
 
         foreach (var spellCard in spellCards)
         {
-            var existingSpell = request.ObjectSpace.FindObject<Spell>(CriteriaOperator.Parse("Name = ?", spellCard.Name));
+            var existingSpell = request.ObjectSpace.FindObject<Spell>(CriteriaOperator.Parse("Name = ?", spellCard.Name.Trim()));
             if (existingSpell is not null)
             {
                 if (String.IsNullOrEmpty(existingSpell.DndsuLink))

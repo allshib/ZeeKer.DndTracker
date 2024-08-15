@@ -7,16 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="spells.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="spells.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AngleSharp" Version="1.1.2" />
   </ItemGroup>
 

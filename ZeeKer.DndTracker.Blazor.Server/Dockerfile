@@ -12,6 +12,9 @@ RUN  dotnet nuget add source https://nuget.devexpress.com/rwKmNdqY94SpyRsYPPVUAv
 COPY ["ZeeKer.DndTracker.Blazor.Server/ZeeKer.DndTracker.Blazor.Server.csproj", "ZeeKer.DndTracker.Blazor.Server/"]
 COPY ["ZeeKer.DndTracker.Module/ZeeKer.DndTracker.Module.csproj", "ZeeKer.DndTracker.Module/"]
 COPY ["ZeeKer.DndTracker.LongStoryShort/ZeeKer.DndTracker.LongStoryShort.csproj", "ZeeKer.DndTracker.LongStoryShort/"]
+COPY ["ZeeKer.DndTracker.Contracts/ZeeKer.DndTracker.Contracts.csproj", "ZeeKer.DndTracker.Contracts/"]
+COPY ["ZeeKer.DndTracker.DndSu/ZeeKer.DndTracker.DndSu.csproj", "ZeeKer.DndTracker.DndSu/"]
+
 RUN dotnet restore "./ZeeKer.DndTracker.Blazor.Server/ZeeKer.DndTracker.Blazor.Server.csproj"
 COPY . .
 WORKDIR "/src/ZeeKer.DndTracker.Blazor.Server"
