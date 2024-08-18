@@ -33,6 +33,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Наименование"), StringLength(170)]
         public virtual string Name { get; set; }
 
+        [XafDisplayName("Оригинальное название"), StringLength(170)]
+        public virtual string EnglishName { get; set; }
+
         [XafDisplayName("Школа")]
         public virtual MagicSchoolType MagicSchool { get; set; }
 

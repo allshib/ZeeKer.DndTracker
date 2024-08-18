@@ -54,6 +54,17 @@ public class DndParserShould : TestBase
     }
 
 
+    [Fact]
+
+    public async Task ParseItems()
+    {
+        var parser = new DndsuItemParser();
+        var spell = await parser.GetItemLinks();
+
+
+        
+    }
+
 
     //[Fact]
 
