@@ -87,6 +87,22 @@ public class Updater : ModuleUpdater {
         {
             CreateSpasProfiencies();
         }
+
+        if (CurrentDBVersion < new Version("0.3.8"))
+        {
+            CreateDefaultStoragesForClasses();
+        }
+    }
+
+    private void CreateDefaultStoragesForClasses()
+    {
+        var classes = ObjectSpace.GetObjects<CharacterClass>();
+
+        foreach (var c in classes)
+        {
+            c.CreateLocalStorage();
+        }
+        ObjectSpace.CommitChanges();
     }
 
     private void CreateSpasProfiencies()

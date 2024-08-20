@@ -44,11 +44,29 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Заклинания")]
         public virtual IList<Spell> Spells { get; set; } = new ObservableCollection<Spell>();
 
-        
+
+        [XafDisplayName("Стандартный инвентарь")]
+        public virtual CharacterStorage DefaultStorage { get; set; }
 
 
         [XafDisplayName("Источник")]
         public virtual SourceType Source { get; set; }
 
+
+        public override void OnCreated()
+        {
+            base.OnCreated();
+
+            CreateLocalStorage();
+        }
+
+
+        public void CreateLocalStorage()
+        {
+            var storage = ObjectSpace.CreateObject<CharacterStorage>();
+            storage.Name = "Стадартный инвентарь";
+            storage.Local = true;
+            DefaultStorage = storage;
+        }
     }
 }

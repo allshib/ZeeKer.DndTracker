@@ -985,14 +985,24 @@
     <DetailView Id="CharacterClass_DetailView">
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="14.551607445008461">
-            <LayoutGroup Id="CharacterClass" RelativeSize="100">
-              <LayoutItem Id="Name" RelativeSize="37.2093023255814" />
-              <LayoutItem Id="ClassType" Index="1" RelativeSize="27.906976744186046" />
-              <LayoutItem Id="HealthDice" Index="2" RelativeSize="34.883720930232556" />
+          <LayoutGroup Id="SimpleEditors" RelativeSize="54.97076023391813">
+            <LayoutGroup Id="CharacterClass" RelativeSize="100" Direction="Vertical">
+              <LayoutGroup Id="Autod88121fd-cdda-4e05-9100-696665b098ff" ShowCaption="False" Caption="" Direction="Horizontal" Index="0" RelativeSize="63.44827586206897" IsNewNode="True">
+                <LayoutGroup Id="CharacterClass_col1" ShowCaption="False" Index="0" RelativeSize="49.92805755395683" IsNewNode="True">
+                  <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="36.95652173913044" IsNewNode="True" />
+                  <LayoutItem Id="HealthDice" ViewItem="HealthDice" Index="1" RelativeSize="28.26086956521739" IsNewNode="True" />
+                  <LayoutItem Id="ClassType" ViewItem="ClassType" Index="2" RelativeSize="34.78260869565217" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="CharacterClass_col2" ShowCaption="False" Index="1" RelativeSize="50.07194244604317" IsNewNode="True">
+                  <LayoutItem Id="Source" ViewItem="Source" Index="0" RelativeSize="100" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutItem Id="DefaultStorage" ViewItem="DefaultStorage" Index="1" RelativeSize="36.55172413793103" CaptionLocation="Top" IsNewNode="True" />
+              <LayoutGroup Id="CharacterClass_col1" Removed="True" />
+              <LayoutGroup Id="CharacterClass_col2" Removed="True" />
             </LayoutGroup>
           </LayoutGroup>
-          <TabbedGroup Id="Tabs" RelativeSize="85.44839255499154">
+          <TabbedGroup Id="Tabs" RelativeSize="45.02923976608187">
             <LayoutGroup Id="Characters" RelativeSize="100">
               <LayoutItem Id="Characters" RelativeSize="100" />
             </LayoutGroup>
