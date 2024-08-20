@@ -9,19 +9,20 @@ namespace ZeeKer.DndTracker.Contracts.Parsers.ItemParser;
 
 public interface IItem
 {
-    string Name { get; }
-    string EnglishName { get; }
-    string Description { get; }
+    string? Name { get; }
+    string? EnglishName { get; }
+    string? Description { get; }
 
-    string Rarity { get; }
+    string? Rarity { get; }
 
 
     ItemType ItemType { get; }
     
     
-    string Source { get; }
-    string FullLink { get; }
+    string? Source { get; }
+    string? FullLink { get; }
 
     bool NeedSetting { get; }
+    string? SpecificWeaponType { get; }
 }
 

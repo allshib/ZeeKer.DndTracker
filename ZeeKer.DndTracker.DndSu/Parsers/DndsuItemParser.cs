@@ -115,6 +115,11 @@ namespace ZeeKer.DndTracker.DndSu.Parsers
             var description = descriptionElement?.TextContent.Trim();
 
 
+            var weapon = type == ItemType.Weapon
+                    ? ExtractSpecificWeaponType(typeAndRarityElement?.TextContent)
+                    : "";
+            var weaponType = GetWeaponType(weapon);
+
             return new ItemProxy {
                 Name = name,
                 Source = source,
@@ -123,14 +128,83 @@ namespace ZeeKer.DndTracker.DndSu.Parsers
                 NeedSetting = needNeedSetting,
                 ItemType = type,
                 EnglishName = engName,
-                Rarity = rarity
+                Rarity = rarity,
+                SpecificWeaponType = type == ItemType.Weapon
+                    ? ExtractSpecificWeaponType(typeAndRarityElement?.TextContent)
+                    : "",
+                WeaponType = weaponType
             };
         }
-        private string ExtractRarity(string text)
+        private WeaponType GetWeaponType(string? specificWeaponType)
+        {
+            if (string.IsNullOrEmpty(specificWeaponType))
+                return WeaponType.Unknown;
+
+            // Приводим текст к нижнему регистру для облегчения сравнения
+            var lowerCaseType = specificWeaponType.ToLower();
+
+            return lowerCaseType switch
+            {
+                "дубинка" => WeaponType.Club,
+                "кинжал" => WeaponType.Dagger,
+                "большая дубинка" => WeaponType.Greatclub,
+                "ручной топор" => WeaponType.Handaxe,
+                "метательное копье" => WeaponType.Javelin,
+                "легкий молот" => WeaponType.LightHammer,
+                "булава" => WeaponType.Mace,
+                "боевой посох" => WeaponType.Quarterstaff,
+                "серп" => WeaponType.Sickle,
+                "копье" => WeaponType.Spear,
+                "легкий арбалет" => WeaponType.CrossbowLight,
+                "дротик" => WeaponType.Dart,
+                "короткий лук" => WeaponType.Shortbow,
+                "праща" => WeaponType.Sling,
+                "боевой топор" => WeaponType.Battleaxe,
+                "цеп" => WeaponType.Flail,
+                "глефа" => WeaponType.Glaive,
+                "большой топор" => WeaponType.Greataxe,
+                "большой меч" => WeaponType.Greatsword,
+                "алебарда" => WeaponType.Halberd,
+                "копье для рыцарских турниров" => WeaponType.Lance,
+                "длинный меч" => WeaponType.Longsword,
+                "молот" => WeaponType.Maul,
+                "моргенштерн" => WeaponType.Morningstar,
+                "пика" => WeaponType.Pike,
+                "рапира" => WeaponType.Rapier,
+                "скимитар" => WeaponType.Scimitar,
+                "короткий меч" => WeaponType.Shortsword,
+                "трезубец" => WeaponType.Trident,
+                "боевое копье" => WeaponType.WarPick,
+                "боевой молот" => WeaponType.Warhammer,
+                "кнут" => WeaponType.Whip,
+                "духовая трубка" => WeaponType.Blowgun,
+                "ручной арбалет" => WeaponType.CrossbowHand,
+                "тяжелый арбалет" => WeaponType.CrossbowHeavy,
+                "длинный лук" => WeaponType.Longbow,
+                "сеть" => WeaponType.Net,
+                "любой меч" => WeaponType.AnySword,
+                "любой арбалет" => WeaponType.AnyCrossbow,
+                "любое" => WeaponType.AnyWeapon,
+                _ => WeaponType.Unknown
+            };
+        }
+
+        private string? ExtractSpecificWeaponType(string? text)
+        {
+            if (string.IsNullOrEmpty(text))
+                return null;
+
+            var match = Regex.Match(text, @"\((.*?)\)");
+            return match.Success ? match.Groups[1].Value : null;
+        }
+
+        private string ExtractRarity(string? text)
         {
             if (string.IsNullOrEmpty(text)) return "Неизвестный";
 
             // Учитываем все возможные окончания и новые типы редкости
+            if (Regex.IsMatch(text, @"\bредкость варьируется\b", RegexOptions.IgnoreCase))
+                return "Редкость варьируется";
             if (Regex.IsMatch(text, @"\bочень\sредк(?:ий|ая|ое|ие|ого|ой|ому|ыми|ых)\b", RegexOptions.IgnoreCase))
                 return "Очень редкий";
             if (Regex.IsMatch(text, @"\bредк(?:ий|ая|ое|ие|ого|ой|ому|ыми|ых)\b", RegexOptions.IgnoreCase))
@@ -145,12 +219,11 @@ namespace ZeeKer.DndTracker.DndSu.Parsers
                 return "Артефакт";
             if (Regex.IsMatch(text, @"\bне имеет редкости\b", RegexOptions.IgnoreCase))
                 return "Не имеет редкости";
-            if (Regex.IsMatch(text, @"\bредкость варьируется\b", RegexOptions.IgnoreCase))
-                return "Редкость варьируется";
+            
 
             return "Неизвестный";
         }
-        ItemType DetermineItemType(string text)
+        ItemType DetermineItemType(string? text)
         {
             if (string.IsNullOrEmpty(text))
                 return ItemType.Unknown;
