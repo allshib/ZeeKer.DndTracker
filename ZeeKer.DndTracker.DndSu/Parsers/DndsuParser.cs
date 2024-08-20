@@ -16,7 +16,6 @@ namespace ZeeKer.DndTracker.DndSu.Parsers
         protected const string baseUrl = "https://dnd.su";
 
         protected int sleepTime = 100;
-        protected string spellsUrl => $"{baseUrl}/spells/";
 
         protected readonly HttpClient client;
 

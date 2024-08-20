@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Zeeker.DndTracker.Tests.Mock;
+using ZeeKer.DndTracker.Contracts.Parsers.ItemParser;
+using ZeeKer.DndTracker.Contracts.Types;
 using ZeeKer.DndTracker.DndSu;
 using ZeeKer.DndTracker.DndSu.Parsers;
 
@@ -56,7 +58,7 @@ public class DndParserShould : TestBase
 
     [Fact]
 
-    public async Task ParseItems()
+    public async Task ParseItemLinks()
     {
         var parser = new DndsuItemParser();
         var spell = await parser.GetItemLinks();
@@ -65,6 +67,35 @@ public class DndParserShould : TestBase
         
     }
 
+    [Fact]
+
+    public async Task FindItem()
+    {
+        var parser = new DndsuItemParser();
+        //var item = await parser.FindItem("Амулет планов");
+        //var item2 = await parser.FindItem("Кольцо защиты");
+        
+        //var item3 = await parser.FindItem("Посох грома и молнии");
+        //Акмон, молот Пирфора
+        var item4 = await parser.FindItem("Акмон, молот Пирфора");
+    }
+
+    [Fact]
+
+    public async Task ParseItems()
+    {
+        var parser = new DndsuItemParser();
+        var list = new List<IItem>();
+        await foreach (var item in parser.GetAllItems())
+        {
+
+            list.Add(item);
+            if (item.ItemType == ItemType.Unknown)
+            {
+
+            }
+        }
+    }
 
     //[Fact]
 
