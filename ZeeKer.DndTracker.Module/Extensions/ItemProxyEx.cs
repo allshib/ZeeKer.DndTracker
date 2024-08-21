@@ -19,7 +19,7 @@ public static class ItemProxyEx
 
     public static Item ToPersistent(this IItem itemProxy, IObjectSpace objectSpace)
     {
-        var item = objectSpace.CreateObject<Item>();
+        var item = CreateItem(objectSpace, itemProxy.ItemType);
 
 
         item.Name = itemProxy.Name;

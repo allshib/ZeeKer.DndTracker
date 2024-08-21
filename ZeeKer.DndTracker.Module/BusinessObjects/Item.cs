@@ -32,7 +32,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         public virtual string EnglishName { get; set; }
 
 
-        [XafDisplayName("Описание"), StringLength(1000)]
+        [XafDisplayName("Описание"), StringLength(4500)]
         public virtual string Description { get; set; }
 
         [XafDisplayName("Тип")]

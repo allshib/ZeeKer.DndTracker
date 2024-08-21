@@ -11,6 +11,7 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="items.txt" />
     <None Remove="Model.xafml" />
     <None Remove="Model_ru-RU.xafml" />
     <None Remove="Model_ru.xafml" />
@@ -153,6 +154,9 @@
     <None Remove="spells.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="items.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Model.xafml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
