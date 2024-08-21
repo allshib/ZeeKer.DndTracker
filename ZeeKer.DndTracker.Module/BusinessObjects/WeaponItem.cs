@@ -13,7 +13,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using ZeeKer.DndTracker.Contracts.Types;
 using ZeeKer.DndTracker.Module.Types;
+using ItemType = ZeeKer.DndTracker.Module.Types.ItemType;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
@@ -57,6 +59,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         public override ItemType ItemType => ItemType.Weapon;
 
-
+        [XafDisplayName("Тип оружия")]
+        public virtual WeaponType WeaponType { get; set; }
     }
 }

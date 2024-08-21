@@ -38,9 +38,9 @@ namespace ZeeKer.DndTracker.DndSu.Parsers
             return await GetItemCard(card.FullLink);
         }
 
-        public Task<IItem?> FindItem(ISpellLink spellLink)
+        public async Task<IItem?> FindItem(IItemLink itemLink)
         {
-            throw new NotImplementedException();
+            return await GetItemCard(itemLink.FullLink);
         }
 
         public async IAsyncEnumerable<IItem> GetAllItems()
@@ -198,30 +198,31 @@ namespace ZeeKer.DndTracker.DndSu.Parsers
             return match.Success ? match.Groups[1].Value : null;
         }
 
-        private string ExtractRarity(string? text)
+        private RarityType ExtractRarity(string? text)
         {
-            if (string.IsNullOrEmpty(text)) return "Неизвестный";
+            if (string.IsNullOrEmpty(text)) return RarityType.Unknown;
 
             // Учитываем все возможные окончания и новые типы редкости
             if (Regex.IsMatch(text, @"\bредкость варьируется\b", RegexOptions.IgnoreCase))
-                return "Редкость варьируется";
+                return RarityType.Unknown;
             if (Regex.IsMatch(text, @"\bочень\sредк(?:ий|ая|ое|ие|ого|ой|ому|ыми|ых)\b", RegexOptions.IgnoreCase))
-                return "Очень редкий";
+                return RarityType.VeryRare;
             if (Regex.IsMatch(text, @"\bредк(?:ий|ая|ое|ие|ого|ой|ому|ыми|ых)\b", RegexOptions.IgnoreCase))
-                return "Редкий";
+                return RarityType.Rare;
             if (Regex.IsMatch(text, @"\bнеобычн(?:ый|ая|ое|ие|ого|ой|ому|ыми|ых)\b", RegexOptions.IgnoreCase))
-                return "Необычный";
+                return RarityType.Uncommon;
             if (Regex.IsMatch(text, @"\bлегендарн(?:ый|ая|ое|ие|ого|ой|ому|ыми|ых)\b", RegexOptions.IgnoreCase))
-                return "Легендарный";
+                return RarityType.Legendary;
             if (Regex.IsMatch(text, @"\bобычн(?:ый|ая|ое|ие|ого|ой|ому|ыми|ых)\b", RegexOptions.IgnoreCase))
-                return "Обычный";
+                return RarityType.Common;
             if (Regex.IsMatch(text, @"\bартефакт\b", RegexOptions.IgnoreCase))
-                return "Артефакт";
+                return RarityType.Artifact;
             if (Regex.IsMatch(text, @"\bне имеет редкости\b", RegexOptions.IgnoreCase))
-                return "Не имеет редкости";
-            
+                return RarityType.Unknown;
 
-            return "Неизвестный";
+
+
+            return RarityType.Unknown;
         }
         ItemType DetermineItemType(string? text)
         {

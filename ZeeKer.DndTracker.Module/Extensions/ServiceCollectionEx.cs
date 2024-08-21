@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZeeKer.DndTracker.Module.UseCases.GetDndSuLinkBySpellNameUseCase;
+using ZeeKer.DndTracker.Module.UseCases.LoadItemsUseCase;
 using ZeeKer.DndTracker.Module.UseCases.LoadSpellsUseCase;
 using ZeeKer.DndTracker.Module.UseCases.UpdateSpellUseCase;
 
@@ -20,6 +21,7 @@ namespace ZeeKer.DndTracker.Module.Extensions
             services.AddScoped<ILoadSpellUseCase, LoadSpellsUseCase>();
             services.AddScoped<IGetDndSuLinkBySpellNameUseCase, GetDndSuLinkBySpellNameUseCase>();
             services.AddScoped<IUpdateSpellUseCase, UpdateSpellUseCase>();
+            services.AddScoped<ILoadItemsUseCase, LoadItemsUseCase>();
 
             return services;
         }

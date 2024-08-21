@@ -23,7 +23,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
     {
         public Item()
         {
-            
+
         }
         [XafDisplayName("Наименование"), StringLength(200)]
         public virtual string Name { get; set; }
@@ -59,10 +59,19 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
 
         [XafDisplayName("Нужна настройка")]
-        public virtual bool NeedSetting { get;set; }
+        public virtual bool NeedSetting { get; set; }
 
 
         [XafDisplayName("Число зарядов")]
         public virtual int MaxNumbersOfUses { get; set; }
+
+        [XafDisplayName("Ссылка Dndsu"), StringLength(150)]
+        public virtual string DndsuLink { get; set; }
+
+        [XafDisplayName("Категория")]
+        public virtual Contracts.Types.ItemType Category {get;set;}
+
+        [XafDisplayName("Источник")]
+        public virtual SourceType Source { get; set; }
     }
 }

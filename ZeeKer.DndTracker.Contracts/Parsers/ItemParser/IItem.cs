@@ -13,7 +13,7 @@ public interface IItem
     string? EnglishName { get; }
     string? Description { get; }
 
-    string? Rarity { get; }
+    RarityType Rarity { get; }
 
 
     ItemType ItemType { get; }
@@ -24,5 +24,7 @@ public interface IItem
 
     bool NeedSetting { get; }
     string? SpecificWeaponType { get; }
+
+    public WeaponType WeaponType { get; }
 }
 

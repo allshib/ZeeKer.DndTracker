@@ -27,7 +27,7 @@ namespace ZeeKer.DndTracker.DndSu.Entities
         /// <summary>
         /// Редкость
         /// </summary>
-        public string? Rarity { get; init; }
+        public RarityType Rarity { get; init; }
 
 
         /// <summary>

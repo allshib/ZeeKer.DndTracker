@@ -38,9 +38,9 @@ namespace ZeeKer.DndTracker.Contracts.Parsers.SpellParser
         /// <summary>
         /// Метод поиска заклинания по ссылке
         /// </summary>
-        /// <param name="spellLink"></param>
+        /// <param name="itemLink"></param>
         /// <returns></returns>
-        Task<IItem?> FindItem(ISpellLink spellLink);
+        Task<IItem?> FindItem(IItemLink itemLink);
 
     }
 }
