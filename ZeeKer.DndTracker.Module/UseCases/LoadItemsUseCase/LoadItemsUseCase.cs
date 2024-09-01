@@ -21,8 +21,8 @@ public class LoadItemsUseCase(IItemParser parser) : ILoadItemsUseCase
             var existingItem = request.ObjectSpace.FindObject<Item>(CriteriaOperator.Parse("Name = ?", card.Name.Trim()));
             if (existingItem is not null)
             {
-                if (String.IsNullOrEmpty(existingItem.DndsuLink))
-                    existingItem.DndsuLink = card.FullLink;
+                //if (String.IsNullOrEmpty(existingItem.DndsuLink))
+                //    existingItem.DndsuLink = card.FullLink;
                 continue;
             }
 

@@ -3,7 +3,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <CheckEolTargetFramework>false</CheckEolTargetFramework>
     <Deterministic>false</Deterministic>
-    <AssemblyVersion>0.3.9</AssemblyVersion>
+    <AssemblyVersion>0.4.1</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
     <Configurations>Debug;Release;EasyTest</Configurations>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -11,6 +11,7 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="items.txt" />
     <None Remove="Model.xafml" />
     <None Remove="Model_ru-RU.xafml" />
     <None Remove="Model_ru.xafml" />
@@ -150,8 +151,12 @@
     <None Remove="ru\DevExpress.XtraTreeList.v24.1.resources.dll" />
     <None Remove="ru\DevExpress.XtraVerticalGrid.v24.1.resources.dll" />
     <None Remove="ru\DevExpress.XtraWizard.v24.1.resources.dll" />
+    <None Remove="spells.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="items.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Model.xafml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -571,17 +576,20 @@
     <Content Include="ru\DevExpress.XtraWizard.v24.1.resources.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="spells.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.Drawing.Skia" Version="24.1.3" />
-    <PackageReference Include="DevExpress.ExpressApp.Blazor" Version="24.1.3" />
-    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="24.1.3" />
-    <PackageReference Include="DevExpress.ExpressApp.Dashboards.Blazor" Version="24.1.3" />
-    <PackageReference Include="DevExpress.ExpressApp.FileAttachment.Blazor" Version="24.1.3" />
-    <PackageReference Include="DevExpress.ExpressApp.Office.Blazor" Version="24.1.3" />
-    <PackageReference Include="DevExpress.ExpressApp.ReportsV2.Blazor" Version="24.1.3" />
-    <PackageReference Include="DevExpress.ExpressApp.Scheduler.Blazor" Version="24.1.3" />
-    <PackageReference Include="DevExpress.ExpressApp.Validation.Blazor" Version="24.1.3" />
+    <PackageReference Include="DevExpress.Drawing.Skia" Version="24.1.4" />
+    <PackageReference Include="DevExpress.ExpressApp.Blazor" Version="24.1.4" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="24.1.4" />
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards.Blazor" Version="24.1.4" />
+    <PackageReference Include="DevExpress.ExpressApp.FileAttachment.Blazor" Version="24.1.4" />
+    <PackageReference Include="DevExpress.ExpressApp.Office.Blazor" Version="24.1.4" />
+    <PackageReference Include="DevExpress.ExpressApp.ReportsV2.Blazor" Version="24.1.4" />
+    <PackageReference Include="DevExpress.ExpressApp.Scheduler.Blazor" Version="24.1.4" />
+    <PackageReference Include="DevExpress.ExpressApp.Validation.Blazor" Version="24.1.4" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
       <PrivateAssets>all</PrivateAssets>
@@ -594,6 +602,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ZeeKer.DndTracker.DndSu\ZeeKer.DndTracker.DndSu.csproj" />
     <ProjectReference Include="..\ZeeKer.DndTracker.Module\ZeeKer.DndTracker.Module.csproj" />
   </ItemGroup>
   <ItemGroup>
