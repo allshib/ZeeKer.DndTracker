@@ -74,6 +74,9 @@ public static class ItemProxyEx
 
     private static SourceType GetSource(string source)
     {
+        if(string.IsNullOrEmpty(source))
+            return SourceType.None;
+
         if (source.Contains("Player's handbook", StringComparison.OrdinalIgnoreCase))
             return SourceType.PHB;
         else if (source.Contains("Xanathar's Guide to Everything", StringComparison.OrdinalIgnoreCase))

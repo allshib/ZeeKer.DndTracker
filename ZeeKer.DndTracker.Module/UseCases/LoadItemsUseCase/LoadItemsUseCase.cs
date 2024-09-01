@@ -28,6 +28,12 @@ public class LoadItemsUseCase(IItemParser parser) : ILoadItemsUseCase
 
             var spell = await parser.FindItem(card) ?? await parser.FindItem(card);
 
+            if(spell?.Name is null)
+            {
+                Thread.Sleep(300);
+                spell = await parser.FindItem(card);
+            }
+
             spell.ToPersistent(request.ObjectSpace);
 
             Thread.Sleep(150);

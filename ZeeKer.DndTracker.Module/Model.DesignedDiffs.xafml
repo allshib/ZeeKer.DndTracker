@@ -92,6 +92,7 @@
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Item" ImageName="Box">
       <OwnMembers>
         <Member Name="Description" RowCount="6" />
+        <Member Name="LoadResult" AllowEdit="False" />
       </OwnMembers>
     </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.MultipleTransaction" ImageName="Action_StateMachine">

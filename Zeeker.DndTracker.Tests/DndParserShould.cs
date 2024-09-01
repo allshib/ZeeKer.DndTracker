@@ -84,9 +84,20 @@ public class DndParserShould : TestBase
     [Fact]
     public async Task ParseShield()
     {
+        //
         var parser = new DndsuItemParser();
         
         var item4 = await parser.FindItem("Щит Парии");
+    }
+
+
+    [Fact]
+    public async Task MagicItem()
+    {
+        //
+        var parser = new DndsuItemParser();
+
+        var item4 = await parser.FindItem("Драконий сосуд");
     }
 
     [Fact]
