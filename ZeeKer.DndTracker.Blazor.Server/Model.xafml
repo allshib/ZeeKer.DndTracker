@@ -16,6 +16,11 @@
         <Member Name="HyperLink" PropertyEditorType="HyperLinkEditor.Blazor.Server.Editors.HyperLinkProperyEditor.HyperLinkPropertyEditor" />
       </OwnMembers>
     </Class>
+    <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Item">
+      <OwnMembers>
+        <Member Name="DndsuLink" PropertyEditorType="HyperLinkEditor.Blazor.Server.Editors.HyperLinkProperyEditor.HyperLinkPropertyEditor" />
+      </OwnMembers>
+    </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Spell">
       <OwnMembers>
         <Member Name="ClassObjects" PropertyEditorType="ZeeKer.DndTracker.Blazor.Editors.TagBoxPropertyEditor" />

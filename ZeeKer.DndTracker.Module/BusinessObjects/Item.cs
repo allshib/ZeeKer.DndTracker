@@ -73,5 +73,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
         [XafDisplayName("Источник")]
         public virtual SourceType Source { get; set; }
+
+
+        [XafDisplayName("Статус загрузки")]
+        public virtual LoadSpellResult LoadResult { get; set; }
     }
 }

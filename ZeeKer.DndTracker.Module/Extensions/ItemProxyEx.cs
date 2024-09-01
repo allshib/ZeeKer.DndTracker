@@ -30,8 +30,8 @@ public static class ItemProxyEx
         item.Source = GetSource(itemProxy.Source);
         item.DndsuLink = itemProxy.FullLink;
         item.NeedSetting = itemProxy.NeedSetting;
-
-        if(item is WeaponItem weapon)
+        item.LoadResult = LoadSpellResult.LoadSuccess;
+        if (item is WeaponItem weapon)
             weapon.WeaponType = itemProxy.WeaponType;
 
 

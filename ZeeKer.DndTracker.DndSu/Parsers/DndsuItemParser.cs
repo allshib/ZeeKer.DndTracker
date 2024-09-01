@@ -229,6 +229,8 @@ namespace ZeeKer.DndTracker.DndSu.Parsers
             if (string.IsNullOrEmpty(text))
                 return ItemType.Unknown;
 
+            if (text.Contains("щит"))
+                return ItemType.ShieldItem;
             if (text.Contains("Доспех"))
                 return ItemType.Armor;
             if (text.Contains("Оружие"))

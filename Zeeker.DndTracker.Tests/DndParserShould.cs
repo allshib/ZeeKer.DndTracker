@@ -80,6 +80,15 @@ public class DndParserShould : TestBase
         var item4 = await parser.FindItem("Акмон, молот Пирфора");
     }
 
+
+    [Fact]
+    public async Task ParseShield()
+    {
+        var parser = new DndsuItemParser();
+        
+        var item4 = await parser.FindItem("Щит Парии");
+    }
+
     [Fact]
 
     public async Task ParseItems()
