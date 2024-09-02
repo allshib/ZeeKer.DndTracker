@@ -20,9 +20,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zeeker.DndTracker.Tests", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zeeker.DndTracker.Bot.WebApi", "Zeeker.DndTracker.Bot.WebApi\Zeeker.DndTracker.Bot.WebApi.csproj", "{1AE70815-A395-4EB2-8C15-337F135EAC2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeeKer.DndTracker.DndSu", "ZeeKer.DndTracker.DndSu\ZeeKer.DndTracker.DndSu.csproj", "{DE1375EC-9F21-44F1-BB8C-46AB0FB825AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeeKer.DndTracker.DndSu", "ZeeKer.DndTracker.DndSu\ZeeKer.DndTracker.DndSu.csproj", "{DE1375EC-9F21-44F1-BB8C-46AB0FB825AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeeKer.DndTracker.Contracts", "ZeeKer.DndTracker.Contracts\ZeeKer.DndTracker.Contracts.csproj", "{919DB8E0-E343-46FD-8018-834B8B43B3FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeeKer.DndTracker.Contracts", "ZeeKer.DndTracker.Contracts\ZeeKer.DndTracker.Contracts.csproj", "{919DB8E0-E343-46FD-8018-834B8B43B3FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

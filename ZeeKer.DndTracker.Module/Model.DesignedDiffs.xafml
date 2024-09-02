@@ -15,10 +15,14 @@
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.AssignedFeatBonus" ImageName="Skill" />
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.AssignedItem">
       <AppearanceRules>
-        <AppearanceRule Id="BlueSetting" BackColor="192, 255, 255" TargetItems="*" Criteria="[SettingOnThis] = True" IsNewNode="True" />
+        <AppearanceRule Id="BlueSetting" BackColor="192, 255, 255" TargetItems="Count" Criteria="[SettingOnThis] = True" IsNewNode="True" />
         <AppearanceRule Id="HideCountUses" Priority="0" TargetItems="CurrentNumberOfUses" Visibility="Hide" Criteria="[Item.MaxNumbersOfUses] = 0 Or [Count] &lt;&gt; 1" IsNewNode="True" />
         <AppearanceRule Id="HideSetting" TargetItems="SettingOnThis" Visibility="Hide" Criteria="[Item] Is Null Or [Item.NeedSetting] = False Or [Storage.Local] = False" IsNewNode="True" />
-        <AppearanceRule Id="OrangeSetting" Priority="0" BackColor="255, 224, 192" TargetItems="*" Criteria="[SettingOnThis] = False And [Item.NeedSetting] = True" IsNewNode="True" />
+        <AppearanceRule Id="OrangeSetting" Priority="0" BackColor="255, 224, 192" TargetItems="Count" Criteria="[SettingOnThis] = False And [Item.NeedSetting] = True" IsNewNode="True" />
+        <AppearanceRule Id="RarityLegendaryColor" Priority="0" BackColor="255, 128, 0" Context="ListView" Criteria="[Item.Rarity] = ##Enum#ZeeKer.DndTracker.Module.Types.ItemRarityType,Legendary# Or [Item.Rarity] = ##Enum#ZeeKer.DndTracker.Module.Types.ItemRarityType,Artifact#" TargetItems="*" IsNewNode="True" />
+        <AppearanceRule Id="RarityRareColor" Priority="0" BackColor="128, 128, 255" Context="ListView" Criteria="[Item.Rarity] = ##Enum#ZeeKer.DndTracker.Module.Types.ItemRarityType,Rare#" TargetItems="*" IsNewNode="True" />
+        <AppearanceRule Id="RarityUncommonColor" BackColor="0, 192, 0" Context="ListView" Criteria="[Item.Rarity] = ##Enum#ZeeKer.DndTracker.Module.Types.ItemRarityType,Uncommon#" TargetItems="*" IsNewNode="True" />
+        <AppearanceRule Id="RarityVeryRareColor" BackColor="Fuchsia" Context="ListView" Criteria="[Item.Rarity] = ##Enum#ZeeKer.DndTracker.Module.Types.ItemRarityType,VeryRare#" TargetItems="*" IsNewNode="True" />
       </AppearanceRules>
       <OwnMembers>
         <Member Name="Item" LookupEditorMode="AllItemsWithSearch" />
@@ -90,6 +94,12 @@
       </AppearanceRules>
     </Class>
     <Class Name="ZeeKer.DndTracker.Module.BusinessObjects.Item" ImageName="Box">
+      <AppearanceRules>
+        <AppearanceRule Id="RarityLegendaryColor" BackColor="255, 128, 0" Context="ListView" Criteria="[Rarity] = ##Enum#ZeeKer.DndTracker.Module.Types.ItemRarityType,Legendary# Or [Rarity] = ##Enum#ZeeKer.DndTracker.Module.Types.ItemRarityType,Artifact#" TargetItems="*" IsNewNode="True" />
+        <AppearanceRule Id="RarityRareColor" BackColor="128, 128, 255" Context="ListView" Criteria="[Rarity] = ##Enum#ZeeKer.DndTracker.Module.Types.ItemRarityType,Rare#" TargetItems="*" IsNewNode="True" />
+        <AppearanceRule Id="RarityUncommonColor" Priority="0" BackColor="0, 192, 0" Context="ListView" Criteria="[Rarity] = ##Enum#ZeeKer.DndTracker.Module.Types.ItemRarityType,Uncommon#" TargetItems="*" IsNewNode="True" />
+        <AppearanceRule Id="RarityVeryRareColor" Priority="0" BackColor="Fuchsia" Context="ListView" Criteria="[Rarity] = ##Enum#ZeeKer.DndTracker.Module.Types.ItemRarityType,VeryRare#" TargetItems="*" IsNewNode="True" />
+      </AppearanceRules>
       <OwnMembers>
         <Member Name="Description" RowCount="6" />
         <Member Name="LoadResult" AllowEdit="False" />
