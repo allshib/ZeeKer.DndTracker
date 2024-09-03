@@ -230,4 +230,7 @@
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UseCases\CreateWeaponUseCase\" />
+  </ItemGroup>
 </Project>
