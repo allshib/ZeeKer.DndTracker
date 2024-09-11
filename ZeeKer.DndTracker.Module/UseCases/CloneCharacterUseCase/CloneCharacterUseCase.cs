@@ -23,6 +23,11 @@ namespace ZeeKer.DndTracker.Module.UseCases.CloneCharacterUseCase
             
             command.Character.CustomMapTo(newCharacter);
 
+            var dv = application.CreateDetailView(os, newCharacter);
+
+
+            OpenDetailView(dv);
+
         }
     }
 }
