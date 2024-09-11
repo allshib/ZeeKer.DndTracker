@@ -16,6 +16,7 @@ using System.Text;
 using DevExpress.XtraReports.Parameters;
 using ZeeKer.DndTracker.Module.Extensions;
 using ZeeKer.DndTracker.Module.Types;
+using Riok.Mapperly.Abstractions;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
@@ -72,7 +73,7 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Сила")]
         public virtual int Strength { get; set; }
 
-        [XafDisplayName("Сила (calc)"), NotMapped]
+        [XafDisplayName("Сила (calc)"), NotMapped, MapperIgnore]
         public virtual string StrengthCalc {
             get
             {
@@ -89,13 +90,13 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         }
 
         [ModelDefault("DisplayFormat", "{0:+0;-0;0}")]
-        [XafDisplayName("Сила Бонус"), NotMapped]
+        [XafDisplayName("Сила Бонус"), NotMapped, MapperIgnore]
         public virtual int StrengthBonus => Strength.CalcStatsBonus();
 
 
         [XafDisplayName("Телосложение")]
         public virtual int Constitution { get; set; }
-        [XafDisplayName("Телосложение (calc)"), NotMapped]
+        [XafDisplayName("Телосложение (calc)"), NotMapped, MapperIgnore]
         public virtual string ConstitutionCalc
         {
             get
@@ -112,12 +113,12 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             }
         }
 
-        [XafDisplayName("Телосложение Бонус"), NotMapped]
+        [XafDisplayName("Телосложение Бонус"), NotMapped, MapperIgnore]
         [ModelDefault("DisplayFormat", "{0:+0;-0;0}")]
         public virtual int ConstitutionBonus => Constitution.CalcStatsBonus();
         [XafDisplayName("Интеллект")]
         public virtual int Intelegence { get; set; }
-        [XafDisplayName("Интеллект (calc)"), NotMapped]
+        [XafDisplayName("Интеллект (calc)"), NotMapped, MapperIgnore]
         public virtual string IntelegenceCalc
         {
             get
@@ -133,13 +134,13 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
             }
         }
-        [XafDisplayName("Интеллект Бонус"), NotMapped]
+        [XafDisplayName("Интеллект Бонус"), NotMapped, MapperIgnore]
         [ModelDefault("DisplayFormat", "{0:+0;-0;0}")]
         public virtual int IntelegenceBonus => Intelegence.CalcStatsBonus();
 
         [XafDisplayName("Харизма")]
         public virtual int Charisma { get; set; }
-        [XafDisplayName("Харизма (calc)"), NotMapped]
+        [XafDisplayName("Харизма (calc)"), NotMapped, MapperIgnore]
         public virtual string CharismaCalc
         {
             get
@@ -156,14 +157,14 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             }
         }
 
-        [XafDisplayName("Харизма Бонус"), NotMapped]
+        [XafDisplayName("Харизма Бонус"), NotMapped, MapperIgnore]
         [ModelDefault("DisplayFormat", "{0:+0;-0;0}")]
         public virtual int CharismaBonus => Charisma.CalcStatsBonus();
 
         [XafDisplayName("Ловкость")]
         public virtual int Dexterity { get; set; }
 
-        [XafDisplayName("Ловкость (calc)"), NotMapped]
+        [XafDisplayName("Ловкость (calc)"), NotMapped, MapperIgnore]
         public virtual string DexterityCalc
         {
             get
@@ -180,13 +181,13 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             }
         }
 
-        [XafDisplayName("Ловкость Бонус"), NotMapped]
+        [XafDisplayName("Ловкость Бонус"), NotMapped, MapperIgnore]
         [ModelDefault("DisplayFormat", "{0:+0;-0;0}")]
         public virtual int DexterityBonus => Dexterity.CalcStatsBonus();
 
         [XafDisplayName("Мудрость")]
         public virtual int Wisdom { get; set; }
-        [XafDisplayName("Мудрость (calc)"), NotMapped]
+        [XafDisplayName("Мудрость (calc)"), NotMapped, MapperIgnore]
         public virtual string WisdomCalc
         {
             get
@@ -203,31 +204,31 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
             }
         }
 
-        [XafDisplayName("Мудрость Бонус"), NotMapped]
+        [XafDisplayName("Мудрость Бонус"), NotMapped, MapperIgnore]
         [ModelDefault("DisplayFormat", "{0:+0;-0;0}")]
         public virtual int WisdomBonus =>  Wisdom.CalcStatsBonus();
 
-        [Browsable(false)]
+        [Browsable(false), MapperIgnore]
         public virtual Guid? CharacterId { get; set; }
 
-        [XafDisplayName("Персонаж")]
+        [XafDisplayName("Персонаж"), MapperIgnore]
         public virtual Character? Character { get; set; }
 
 
-        [XafDisplayName("Бонус мастерства"), NotMapped]
+        [XafDisplayName("Бонус мастерства"), NotMapped, MapperIgnore]
         [ModelDefault("DisplayFormat", "{0:+0;-0;0}")]
         public virtual int Profiency => CalculateProfiency();
 
-        [XafDisplayName("Инициатива"), NotMapped]
+        [XafDisplayName("Инициатива"), NotMapped, MapperIgnore]
         [ModelDefault("DisplayFormat", "{0:+0;-0;0}")]
         public virtual int Initiative => DexterityBonus + GetHandymanBonus();
 
         //[XafDisplayName("Скорость")]
         //public virtual int Speed { get; set; }
 
-        [Browsable(false)]
+        [Browsable(false), MapperIgnore]
         public virtual Guid? SkillsId { get; set; }
-        [XafDisplayName("Навыки")]
+        [XafDisplayName("Навыки"), MapperIgnore]
         public virtual Skills Skills { get; set; }
 
         private int CalculateProfiency()

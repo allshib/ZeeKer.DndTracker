@@ -1,7 +1,7 @@
 using DevExpress.ExpressApp.DC;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl.EF;
-
+using Riok.Mapperly.Abstractions;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -18,11 +18,11 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects;
         {
         }
 
-        [XafDisplayName("Предметы"), Aggregated]
+        [XafDisplayName("Предметы"), Aggregated, MapperIgnore]
         public virtual IList<AssignedItem> Items { get; set; } = new ObservableCollection<AssignedItem>();
 
         #region Fields
-        [XafDisplayName("Хранилище")]
+        [XafDisplayName("Хранилище"), MapperIgnore]
         public string DefaultProperty => $"{Character?.Name} {Name}: {CoinsInfo}";
 
         [XafDisplayName("Наименование"), StringLength(150)]
@@ -39,14 +39,14 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects;
         [Column(TypeName = "decimal(18,2)")]
         public virtual decimal CopperCoins { get; set; }
 
-        [XafDisplayName("Серебрянные монеты")]
+        [XafDisplayName("Серебрянные монеты"), MapperIgnore]
         public decimal SilverCoins => CopperCoins / 10;
         [XafDisplayName("Золотые монеты")]
         public decimal GoldCoins => CopperCoins / 100;
-        [XafDisplayName("Платиновые монеты")]
+        [XafDisplayName("Платиновые монеты"),MapperIgnore]
         public decimal PlatinumCoins => CopperCoins / 1000;
 
-        [XafDisplayName("Деньги")]
+        [XafDisplayName("Деньги"), MapperIgnore]
         public string CoinsInfo =>
             $"{TruncateCoins(GoldCoins, "зм", true)}{TruncateCoins((CopperCoins % 100)/10, "см", true)}{TruncateCoins(CopperCoins % 10, "мм")}";
 
@@ -54,26 +54,26 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects;
         [XafDisplayName("Инвентарь персонажа")]
         public virtual bool Local { get; set; }
 
-        [Browsable(false)]
+        [Browsable(false), MapperIgnore]
         public virtual Guid? CharacterId { get; set; }
 
 
-        [ForeignKey(nameof(CharacterId))]
+        [ForeignKey(nameof(CharacterId)), MapperIgnore]
         [XafDisplayName("Персонаж")]
         public virtual Character? Character { get; set; }
 
 
         [Aggregated]
-        [XafDisplayName("Простые Операции/Входящие")]
+        [XafDisplayName("Простые Операции/Входящие"), MapperIgnore]
         public virtual IList<StorageOperation> Operations { get; set; } = new ObservableCollection<StorageOperation>();
 
         [Aggregated]
-        [XafDisplayName("Исходящие Операции")]
+        [XafDisplayName("Исходящие Операции"), MapperIgnore]
         public virtual IList<StorageOperation> OperationsFromThis { get; set; } = new ObservableCollection<StorageOperation>();
-        [XafDisplayName("Настройки мульти-транзакций"), Aggregated]
+        [XafDisplayName("Настройки мульти-транзакций"), Aggregated, MapperIgnore]
         public virtual IList<MultipleTransaction> MultipleTransactions { get; set; } = new ObservableCollection<MultipleTransaction>();
 
-    [XafDisplayName("Предметы (строка)"), NotMapped]
+    [XafDisplayName("Предметы (строка)"), NotMapped, MapperIgnore]
     public virtual string ItemsString => String.Join(", ", Items.Select(x => $"{x.Item?.Name} {x.Count}шт"));
         #endregion
 

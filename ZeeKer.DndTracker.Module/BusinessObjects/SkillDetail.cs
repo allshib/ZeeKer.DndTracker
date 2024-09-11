@@ -12,6 +12,7 @@ using DevExpress.ExpressApp.Utils;
 using DevExpress.ExpressApp.Actions;
 using DevExpress.Persistent.Base;
 using ZeeKer.DndTracker.Module.UseCases.ExecuteMultipleTransactionUseCase;
+using Riok.Mapperly.Abstractions;
 
 namespace ZeeKer.DndTracker.Module.BusinessObjects
 {
@@ -20,10 +21,10 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
     public class SkillDetail : BaseObject
     {
         public SkillDetail() : base() { }
-        [XafDisplayName("Навык (Текст)"), NotMapped]
+        [XafDisplayName("Навык (Текст)"), NotMapped, MapperIgnore]
         public virtual string DefaultProperty => $"{CaptionHelper.GetDisplayText(SkillType)} ({(Value > 0 ? "+" : "")}{Value})";
 
-        [XafDisplayName("Значение"), NotMapped]
+        [XafDisplayName("Значение"), NotMapped, MapperIgnore]
         public virtual int Value => GetBonus();
         [XafDisplayName("Владение")]
         public virtual bool HasSkill { get; set; }
@@ -39,9 +40,9 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
 
 
         [ForeignKey(nameof(SkillsId))]
-        [XafDisplayName("Навыки")]
+        [XafDisplayName("Навыки"), MapperIgnore]
         public virtual Skills Skills { get; set; }
-        [Browsable(false)]
+        [Browsable(false), MapperIgnore]
         public virtual Guid? SkillsId { get; set; }
 
         private int GetBonus()
