@@ -30,25 +30,36 @@ namespace ZeeKer.DndTracker.Module.Controllers.CharacterControllers
             TargetObjectType = typeof(Character);
 
 
-            var action = new SimpleAction(this, "CloneCharacter", PredefinedCategory.Edit)
+            var action = new SimpleAction(this, "CloneCharacterWithItems", PredefinedCategory.Edit)
             {
-                Caption = "Клонировать персонажа",
+                Caption = "Клонировать персонажа с предметами",
             };
 
             action.Execute += Action_Execute;
 
+            var action1 = new SimpleAction(this, "CloneCharacter", PredefinedCategory.Edit)
+            {
+                Caption = "Клонировать персонажа",
+            };
 
+            action1.Execute += Action_Execute1;
 
         }
 
-        
+        private void Action_Execute1(object sender, SimpleActionExecuteEventArgs e)
+        {
+            var cloner = new CloneCharacterUseCase(Application);
+
+
+            cloner.Execute(new CloneCharacterCommand((Character)View.CurrentObject));
+        }
 
         private void Action_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
             var cloner = new CloneCharacterUseCase(Application);
 
 
-            cloner.Execute(new CloneCharacterCommand((Character)View.CurrentObject));
+            cloner.Execute(new CloneCharacterCommand((Character)View.CurrentObject, true));
         }
 
         protected override void OnActivated()

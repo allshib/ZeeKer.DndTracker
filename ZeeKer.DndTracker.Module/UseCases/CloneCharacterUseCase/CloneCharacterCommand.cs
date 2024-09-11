@@ -8,5 +8,5 @@ using ZeeKer.DndTracker.Module.BusinessObjects;
 
 namespace ZeeKer.DndTracker.Module.UseCases.CloneCharacterUseCase
 {
-    public record CloneCharacterCommand(Character Character);
+    public record CloneCharacterCommand(Character Character, bool withLocalStorage = false);
 }

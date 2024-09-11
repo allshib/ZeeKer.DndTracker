@@ -21,7 +21,7 @@ namespace ZeeKer.DndTracker.Module.UseCases.CloneCharacterUseCase
 
             var newCharacter = os.CreateObject<Character>();
             
-            command.Character.CustomMapTo(newCharacter);
+            command.Character.CustomMapTo(newCharacter, command.withLocalStorage);
 
             var dv = application.CreateDetailView(os, newCharacter);
 

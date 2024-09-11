@@ -21,7 +21,7 @@ public static partial class CharacterMapperEx
     public static partial void MapTo(this Character source, Character target);
 
 
-    public static void CustomMapTo(this Character source, Character target)
+    public static void CustomMapTo(this Character source, Character target, bool withStorage = false)
     {
 
 
@@ -36,8 +36,31 @@ public static partial class CharacterMapperEx
             skill.MapTo(newSkill);
         }
 
-        source.LocalStorage.MapTo(target.LocalStorage);
+        
+        
+        
+
+
         var osTarget = target.GetObjectSpace();
+
+        if (withStorage)
+        {
+            source.LocalStorage.MapTo(target.LocalStorage);
+
+            foreach (var item in source.LocalStorage.Items)
+            {
+                var newItem = target.LocalStorage.Items.FirstOrDefault(x => x.ItemId == item.ItemId) ??
+                    osTarget.CreateObject<AssignedItem>();
+                
+                newItem.ItemId = item.ItemId;
+                newItem.Count = item.Count;
+                newItem.Storage = target.LocalStorage;
+                newItem.CurrentNumberOfUses = item.CurrentNumberOfUses;
+                newItem.SettingOnThis  = item.SettingOnThis;
+            }
+
+        }
+
 
         foreach (var spell in source.AvailableSpells)
         {
