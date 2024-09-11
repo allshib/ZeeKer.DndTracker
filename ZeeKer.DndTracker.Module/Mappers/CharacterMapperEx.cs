@@ -44,22 +44,8 @@ public static partial class CharacterMapperEx
         var osTarget = target.GetObjectSpace();
 
         if (withStorage)
-        {
-            source.LocalStorage.MapTo(target.LocalStorage);
-
-            foreach (var item in source.LocalStorage.Items)
-            {
-                var newItem = target.LocalStorage.Items.FirstOrDefault(x => x.ItemId == item.ItemId) ??
-                    osTarget.CreateObject<AssignedItem>();
-                
-                newItem.ItemId = item.ItemId;
-                newItem.Count = item.Count;
-                newItem.Storage = target.LocalStorage;
-                newItem.CurrentNumberOfUses = item.CurrentNumberOfUses;
-                newItem.SettingOnThis  = item.SettingOnThis;
-            }
-
-        }
+            source.LocalStorage.CustomMapTo(target.LocalStorage);
+        
 
 
         foreach (var spell in source.AvailableSpells)

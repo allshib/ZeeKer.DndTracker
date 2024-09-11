@@ -5,6 +5,7 @@ using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl.EF;
 using DevExpress.Persistent.Validation;
+using DevExpress.XtraRichEdit.Import.Rtf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -52,6 +53,12 @@ namespace ZeeKer.DndTracker.Module.BusinessObjects
         [XafDisplayName("Источник")]
         public virtual SourceType Source { get; set; }
 
+
+        //[Browsable(false)]
+        //public virtual Guid DefaultCharacterId { get; set; }
+
+        //[XafDisplayName("Стандартный персонаж класса")]
+        //public virtual Character DefaultCharacter { get; set; }
 
         public override void OnCreated()
         {
