@@ -114,6 +114,7 @@ public class DndTrackerEFCoreDbContext : DbContext {
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
+        
         modelBuilder.SetOneToManyAssociationDeleteBehavior(DeleteBehavior.SetNull, DeleteBehavior.Cascade);
         modelBuilder.HasChangeTrackingStrategy(ChangeTrackingStrategy.ChangingAndChangedNotificationsWithOriginalValues);
         modelBuilder.UsePropertyAccessMode(PropertyAccessMode.PreferFieldDuringConstruction);
@@ -164,6 +165,7 @@ public class DndTrackerEFCoreDbContext : DbContext {
 
 
         base.OnModelCreating(modelBuilder);
+        modelBuilder.UseDeferredDeletion(this);
     }
 
 
