@@ -66,35 +66,35 @@
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.ExpressApp" Version="24.1.5" />
-    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="24.1.5" />
-    <PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance" Version="24.1.5" />
-    <PackageReference Include="DevExpress.ExpressApp.Dashboards" Version="24.1.5" />
-    <PackageReference Include="DevExpress.ExpressApp.EFCore" Version="24.1.5" />
-    <PackageReference Include="DevExpress.ExpressApp.Objects" Version="24.1.5" />
-    <PackageReference Include="DevExpress.ExpressApp.Office" Version="24.1.5" />
-    <PackageReference Include="DevExpress.ExpressApp.ReportsV2" Version="24.1.5" />
-    <PackageReference Include="DevExpress.ExpressApp.Scheduler" Version="24.1.5" />
-    <PackageReference Include="DevExpress.ExpressApp.StateMachine" Version="24.1.5" />
-    <PackageReference Include="DevExpress.ExpressApp.Validation" Version="24.1.5" />
-    <PackageReference Include="DevExpress.ExpressApp.ViewVariantsModule" Version="24.1.5" />
-    <PackageReference Include="DevExpress.Persistent.Base" Version="24.1.5" />
-    <PackageReference Include="DevExpress.Persistent.BaseImpl.EFCore" Version="24.1.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
+    <PackageReference Include="DevExpress.ExpressApp" Version="24.2.3" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="24.2.3" />
+    <PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance" Version="24.2.3" />
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards" Version="24.2.3" />
+    <PackageReference Include="DevExpress.ExpressApp.EFCore" Version="24.2.3" />
+    <PackageReference Include="DevExpress.ExpressApp.Objects" Version="24.2.3" />
+    <PackageReference Include="DevExpress.ExpressApp.Office" Version="24.2.3" />
+    <PackageReference Include="DevExpress.ExpressApp.ReportsV2" Version="24.2.3" />
+    <PackageReference Include="DevExpress.ExpressApp.Scheduler" Version="24.2.3" />
+    <PackageReference Include="DevExpress.ExpressApp.StateMachine" Version="24.2.3" />
+    <PackageReference Include="DevExpress.ExpressApp.Validation" Version="24.2.3" />
+    <PackageReference Include="DevExpress.ExpressApp.ViewVariantsModule" Version="24.2.3" />
+    <PackageReference Include="DevExpress.Persistent.Base" Version="24.2.3" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.EFCore" Version="24.2.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="8.0.1" />
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="8.0.11" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
     <PackageReference Include="Riok.Mapperly" Version="3.6.0" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.34.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.5.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ZeeKer.DndTracker.Contracts\ZeeKer.DndTracker.Contracts.csproj" />

@@ -50,9 +50,9 @@
   </NavigationItems>
   <Options UIType="TabbedMDI" RestoreTabbedMdiLayout="True" RefreshViewOnTabFocus="False" />
   <SchemaModules>
-    <SchemaModule Name="SchedulerBlazorModule" Version="24.1.4.0" IsNewNode="True" />
-    <SchemaModule Name="SchedulerModuleBase" Version="24.1.4.0" IsNewNode="True" />
-    <SchemaModule Name="SystemModule" Version="24.1.4.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerBlazorModule" Version="24.2.3.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerModuleBase" Version="24.2.3.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="24.2.3.0" IsNewNode="True" />
   </SchemaModules>
   <Views DefaultListEditor="DevExpress.ExpressApp.Blazor.Editors.DxGridListEditor">
     <DetailView Id="Feat_DetailView">

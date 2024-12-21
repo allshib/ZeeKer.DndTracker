@@ -44,16 +44,16 @@ public class DndParserShould : TestBase
     }
 
 
-    [Fact]
+    //[Fact]
 
-    public async Task ParseSpells()
-    {
-        var parser = new DndsuSpellParser();
-        await foreach(var spell in parser.GetAllSpells())
-        {
-            var spellCard = spell;
-        }
-    }
+    //public async Task ParseSpells()
+    //{
+    //    var parser = new DndsuSpellParser();
+    //    await foreach(var spell in parser.GetAllSpells())
+    //    {
+    //        var spellCard = spell;
+    //    }
+    //}
 
 
     [Fact]

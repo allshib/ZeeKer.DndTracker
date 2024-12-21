@@ -9,9 +9,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.Drawing.Skia" Version="24.1.4" />
-    <PackageReference Include="DevExpress.ExpressApp.Api.EFCore.All" Version="24.1.4" />
-    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="24.1.4" />
+    <PackageReference Include="DevExpress.Drawing.Skia" Version="24.1.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Api.EFCore.All" Version="24.1.5" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="24.1.5" />
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="Telegram.Bot" Version="21.6.2" />
