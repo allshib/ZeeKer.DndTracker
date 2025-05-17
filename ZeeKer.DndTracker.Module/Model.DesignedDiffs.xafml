@@ -274,8 +274,8 @@
     <LayoutManagerOptions RequiredFieldMark="*" />
   </Options>
   <SchemaModules>
-    <SchemaModule Name="SchedulerModuleBase" Version="24.2.3.0" IsNewNode="True" />
-    <SchemaModule Name="SystemModule" Version="24.2.3.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerModuleBase" Version="24.2.7.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="24.2.7.0" IsNewNode="True" />
   </SchemaModules>
   <Validation>
     <Rules>
@@ -672,7 +672,7 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <DetailView Id="Character_DetailView_Desktop" EnableCaptionColon="True" CaptionLocation="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" CaptionWordWrap="Default" EnableLayoutGroupImages="True" CustomizationEnabled="True" ClassName="ZeeKer.DndTracker.Module.BusinessObjects.Character" FreezeLayout="True" IsNewNode="True">
+    <DetailView Id="Character_DetailView_Desktop" EnableCaptionColon="True" CaptionLocation="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" CaptionWordWrap="Default" EnableLayoutGroupImages="True" CustomizationFormEnabled="True" ClassName="ZeeKer.DndTracker.Module.BusinessObjects.Character" FreezeLayout="True" IsNewNode="True">
       <Items IsNewNode="True">
         <ActionContainerViewItem Id="AddGold" PaintStyle="Caption" ActionContainer="AddGoldCategory" IsNewNode="True" />
         <PropertyEditor Id="Armor" PropertyName="Armor" IsNewNode="True" />
