@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 RUN apt-get update
 RUN apt-get install -y libc6 libicu-dev libfontconfig1
 WORKDIR /app
